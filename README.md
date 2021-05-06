@@ -19,6 +19,9 @@ https://linuxhandbook.com/yaml-basics/?fbclid=IwAR1ulfdLuk8g545hDak0IGqqPSikkEpq
 **Ansible vs Chef vs Puppet**<br/>
 https://www.whizlabs.com/blog/wp-content/uploads/2020/01/Ansible_Vs_Puppet_Vs_Chef.png
 
+**Ansible vs Terraform **<br/>
+https://www.whizlabs.com/blog/wp-content/uploads/2019/12/Ansible_vs_Terraform.png
+
 **Kubernetes Interview Questions**<br/>
 https://www.guru99.com/kubernetes-interview-questions-answers.html
 
