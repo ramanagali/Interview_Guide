@@ -85,11 +85,11 @@ https://www.allthingsdistributed.com/articles.html
 https://github.com/joeyajames/Python
 
 
-##Site Reliability Engineer (SRE)
+## Site Reliability Engineer (SRE)
 https://github.com/mxssl/sre-interview-prep-guide
 
 
-##DevSecOps
+## DevSecOps
 **Penetration testing Docker**
 Owasp-Zap2docker-weekly
 
@@ -125,6 +125,7 @@ https://aws.amazon.com/blogs/devops/building-end-to-end-aws-devsecops-ci-cd-pipe
 https://owasp.org/www-project-top-ten/
 https://www.synopsys.com/glossary/what-is-owasp-top-10.html
 
-##Behavrioural Interview Questions
+
+## Behavrioural Interview Questions
 https://www.thebalancecareers.com/top-behavioral-interview-questions-2059618
 
