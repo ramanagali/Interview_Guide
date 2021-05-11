@@ -21,7 +21,11 @@ https://linuxhandbook.com/yaml-basics/?fbclid=IwAR1ulfdLuk8g545hDak0IGqqPSikkEpq
 **Ansible vs Chef vs Puppet**<br/>
 https://www.whizlabs.com/blog/wp-content/uploads/2020/01/Ansible_Vs_Puppet_Vs_Chef.png
 
-**Ansible vs Terraform**<<br/>
+**Terraform**<br/>
+https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2020/11/terraform-cheatsheet-from-ACG.pdf<br/>
+https://jayendrapatil.com/terraform-cheat-sheet/
+
+**Ansible vs Terraform**<br/>
 https://www.whizlabs.com/blog/wp-content/uploads/2019/12/Ansible_vs_Terraform.png
 
 **Kubernetes Interview Questions**<br/>
