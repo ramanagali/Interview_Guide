@@ -6,7 +6,9 @@
 
 **DevOps Principle**<br />https://www.cmswire.com/information-management/7-key-principles-for-a-successful-devops-culture/
 
-**GIT**<br/>https://blog.bhanuteja.dev/30-git-commands-that-i-frequently-use#git-clone
+**GIT**<br/>
+https://blog.bhanuteja.dev/30-git-commands-that-i-frequently-use#git-clone<br/>
+https://nvie.com/posts/a-successful-git-branching-model/<br/>
 
 **Linux**<br/>
 https://dev.to/ptuladhar3/linux-commands-for-developers-17j
