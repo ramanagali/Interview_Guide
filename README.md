@@ -135,4 +135,7 @@ https://www.synopsys.com/glossary/what-is-owasp-top-10.html
 ## Behavrioural Interview Questions
 https://www.thebalancecareers.com/top-behavioral-interview-questions-2059618
 
+## Cultural fit Interview Questions
+https://www.thebalancecareers.com/cultural-fit-interview-questions-1918498
+
 
