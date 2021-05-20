@@ -66,6 +66,13 @@ https://thenewstack.io/deployment-strategies/
 **API**<br/>
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
 
+**HTTP Load Testing***<br/>
+https://k6.io/docs/using-k6/http-requests/
+
+**Bechmarking**<br/>
+https://pkg.go.dev/github.com/codesenberg/bombardier#readme-installation
+
+
 ## Cloud
 
 **Networking Stateful vs Stateles**<br/>
