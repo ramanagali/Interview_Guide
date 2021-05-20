@@ -63,6 +63,9 @@ https://www.katalon.com/resources-center/blog/devops-interview-questions/
 **DevOps Deployment Strategies**<br/>
 https://thenewstack.io/deployment-strategies/
 
+**API**<br/>
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+
 ## Cloud
 
 **Networking Stateful vs Stateles**<br/>
