@@ -6,13 +6,35 @@
 * Biggest issue in PROD
 * Scale prod
 * DevOps vs Agile
+* What you monitor in Sonarqube
 
 ### Git
 * Diff between git pull and git clone
+   	- pull is remote branch changes will be added locally & commit
+   	- fetch is fetches but not commit
 * How to delete previous commit from pushed repo
-* Diff between git merge and git push
+	- git reset --hard <commit>
+* Diff between git merge and git rebase
+	- merge combines source branch to a target branch, preserves the entire history
+	- rebase overwrites the changes
+	
 * Diff between git pull vs git fetch
+* git clone specific branch
+  	- git clone -b brnachname
+* git stash
+ 	- temparary save
+* git how to revert specific branch 
+	- git log             	(Shows the commit logs)
+	- git revert commitID         (directly commits/reverts )
+	- git revert -n commitID      (merges the changes but not commit)
+	- git reset  --hard commitID  (resets & reverts the changes)
+	
+* git differnece
+	- git diff	(Shows the changes between unstaged files and the commits)
+	- git diff --staged	(Shows the changes between staged(ready-to-be-committed) files and the commits)
 
+* git find list of commited files
+	- git log --oneline
 
 ### Docker
 * What is default docker network applies when creating containers
@@ -27,6 +49,7 @@
 * What is the end to end flow of CI CD
 * Explain CI
 * Explain CD
+* Where to store artefacts
 
 ### Ansible
 * How you used Ansible in your project
@@ -135,6 +158,9 @@
 ### Packer
 
 ### AWS
+* Where to Host DB if DB has to be in the region where AWS/AZURE not avail
+* Scaling in PRD
+
 
 ### GCP
 
@@ -145,6 +171,9 @@
 ### SRE
 
 ### DevSecOps
+* What is the benefit of Fortify
+* What you monitor in Sonarqube
+* How you deal Cross site scripting
 
 ### Python
 
