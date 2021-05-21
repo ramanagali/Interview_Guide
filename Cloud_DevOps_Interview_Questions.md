@@ -140,6 +140,7 @@
 	Using handshake protocol like SYN, SYN-ACK, ACK	No handshake (so connectionless protocol)
 	- TCP is reliable as it guarantees delivery of data to the destination router.	The delivery of data to the destination can't be guaranteed in UDP.
 * port for http, https, nfs, ICMP
+	- http 80, https 443, nfs 2049, ICMP 7
 
 ### Kubernetes
 * Explain kubernetes architecture
@@ -150,12 +151,42 @@
 * What are the taints & tolerations
 	- Taint will be applied to nodes as key value paid, will allow to force set of pods
 	- Tolerations will be applied to pods, allow the pods to schedule onto nodes with matching taints.
+* Assigning Pods to Nodes - Node Affinity
+	- nodeSelector is a field of PodSpec 
+	- Node affinity (under pod spec) is similar to nodeSelector but more expressive syntax
+	   	- requiredDuringSchedulingRequiredDuringExecution. it allows you to constrain which nodes your pod is eligible to be scheduled on, based on labels on the node
 * How you acheive pod security
-* Stateful sets
-* what is Init container
+	- use securityContext in pods runAsUser, runAsGroup, runAsNonRoot & fsGroup
+	- use securityContext => linux capabilities
+* Explain about Stateful sets
+	- like deployment but maintains a sticky identity for each Pods, not interchangeable & persistent identifier 
+	- must need pv, headless service
+	- Stable, unique network identifiers
+	- Stable, persistent storage
+	- Ordered, graceful deployment and scaling
+	- Ordered, Automated rolling updates
+* Headless service
+	- used for Statefiul set pod
+	- No Load balancing, directly interact with Pod
+	- service discovery with service name
+* What is Init container
+	- Specialized containers that run before app containers in a Pod
+	- used for setup scripts
 * Diff between deployment, service and daemonset
+	- Deployments manage stateless services
+	- DaemonSets attempt to adhere to a one-Pod-per-node model
+	- Service is an abstract way to expose an app running on a set of Pods as a network service
 * Explain kubernetes reverse proxy
+	- Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster
+	- Ingress maps service
+	- http path based
+* Proxies in Kubernetes
+	- kubectl proxy
+	- apiserver proxy
+	- kube proxy
 * k8s create vs apply
+	- imperative
+	- declarative
 * k8s pod life cycle
 * k8s startup probe liveness  & ready probe
 * k8s High avail: 
