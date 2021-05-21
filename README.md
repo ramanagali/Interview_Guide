@@ -100,6 +100,9 @@ https://www.allthingsdistributed.com/articles.html
 **Python**<br/>
 https://github.com/joeyajames/Python
 
+**Go**<br/>
+https://www.tutorialspoint.com/go/go_error_handling.htm
+
 
 ## Site Reliability Engineer (SRE)
 https://github.com/mxssl/sre-interview-prep-guide
