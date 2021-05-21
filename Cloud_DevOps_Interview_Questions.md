@@ -38,6 +38,7 @@
 
 ### Docker
 * What is default docker network applies when creating containers
+	- default bridge network are usually used when your apps run in standalone containers that need to communicate
 * How docker resolves the container names
 * What is docker compose
 * Diff between docker CMD and ENTRYPOINT
@@ -74,17 +75,71 @@
 
 ## Linux
 * How ssh works
+	- server configured with public key & sshd service running
+	- client will verify server in network ~/.ssh/known_hosts
+	- negotiate with shared session key
+	- client sends ID of the key pair
+	- sserver checks the authorized_keys file
+	- server generate random num with public key and sends msgs
+	- client decrypt msg get random num
+	- client combine random num + session key sends MD5 hash
+	- server uses same shared session key
+	
 * explain private & public key role in ssh 
+	- private key stores at client
+	- public key will be at server
 * Linux command to check the logs
-* tail
-* follow
+	- tail -f /var/log/mail.log
+	
 * how to find system slow, NFS slow
-* how to run sh in background
-* How to check server is slow
+	- nfsstat -s (server)
+	- nfsstat -c (cient)
+	- nfsiostat (check its performance)
+* how to run shell script in background
+	- nohup script.sh &
+	- nohup /path/to/your/script.sh > /dev/null 2>&1 & 
+	- script.sh & disown &
+* How to check server is slow?
+	- cat /proc/cpuinfo 
+	- lscpu
+	- service --status-all
+	- chkconfig --list
+	- uptime
+	- Step 1: Check I/O wait and CPU Idletime using top 
+		- "wa" (I/O wait) 
+		- "id" (CPU idletime)
+	- Step 2: IO Wait is low and idle time is low: check CPU user time
+		- %us
+	- Step 3: IO wait is low and idle time is high
+		- slowness isn't due to CPU or IO problems, it's likely an app-specific issue
+		- starce or lsof
+	- Step 4: IO Wait is high: check your swap usage
+		- top or free -m
+	- Step 5: swap usage is high 
+		- means out of RAM
+	- Step 6: swap usage is low
+		- means real" IO wait 
+		- use iotop
+	- Step 7: Check memory usage
 * TCP vs UDP
+	- TCP is a connection-oriented protocol, whereas UDP is a connectionless protocol.
+	- The speed for TCP is slower while the speed of UDP is faster
+	- TCP uses handshake protocol like SYN, SYN-ACK, ACK while UDP uses no handshake protocols
+	- TCP does error checking and also makes error recovery, on the other hand, UDP performs error checking, but it discards erroneous packets.
+	- TCP has acknowledgment segments, but UDP does not have any acknowledgment segment.
+	- TCP is heavy-weight, and UDP is lightweight.
+	- It is a connection-oriented protocol.	It is a connectionless protocol.
+	- TCP reads data as streams of bytes, and the message is transmitted to segment boundaries.	UDP messages contain packets that were sent one by one. It also checks for integrity at the arrival time.
+	- TCP messages make their way across the internet from one computer to another.	It is not connection-based, so one program can send lots of packets to another.
+	- TCP rearranges data packets in the specific order.	UDP protocol has no fixed order because all packets are independent of each other.
+	The speed for TCP is slower.	UDP is faster as error recovery is not attempted.
+	Header size is 20 bytes	Header size is 8 bytes.
+	- TCP is heavy-weight. TCP needs three packets to set up a socket connection before any user data can be sent.	UDP is lightweight. There are no tracking connections, ordering of messages, etc.
+	- TCP does error checking and also makes error recovery.	UDP performs error checking, but it discards erroneous packets.
+	Acknowledgment segments	No Acknowledgment segments
+	Using handshake protocol like SYN, SYN-ACK, ACK	No handshake (so connectionless protocol)
+	- TCP is reliable as it guarantees delivery of data to the destination router.	The delivery of data to the destination can't be guaranteed in UDP.
 * port for http, https, nfs, ICMP
-* bamboo agent setup steps
-
 
 ### Kubernetes
 * Explain kubernetes architecture
@@ -93,6 +148,8 @@
   - master, controller, scheduler, ETCD, flannel & caliko
   - node, container run time, kubelet, kubeproxy
 * What are the taints & tolerations
+	- Taint will be applied to nodes as key value paid, will allow to force set of pods
+	- Tolerations will be applied to pods, allow the pods to schedule onto nodes with matching taints.
 * How you acheive pod security
 * Stateful sets
 * what is Init container
