@@ -19,6 +19,8 @@
 	- rebase overwrites the changes
 	
 * Diff between git pull vs git fetch
+	- git fetch retrieve the latest meta-data from original
+	- git pull brings the changes from remote & adds in local but not commit
 * git clone specific branch
   	- git clone -b brnachname
 * git stash
