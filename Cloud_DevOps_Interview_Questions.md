@@ -51,7 +51,11 @@
 * How you will fix prod issues
 * What is the end to end flow of CI CD
 * Explain CI
-* Explain CD
+* Explain Continuous Delivery and Continuous deployment
+	- Delivery automating the entire software release process
+	- Delivery everthing is auto but  has manual step before deploying in PRD 
+	- Deployment is a step up from Continuous Delivery 
+	- Deployment evey step is auto
 * Where to store artefacts
 
 ### Ansible
