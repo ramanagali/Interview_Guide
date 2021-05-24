@@ -97,7 +97,7 @@
 * Linux command to check the logs
 	- tail -f /var/log/mail.log
 	
-* how to find system slow, NFS slow
+* how to find system slow, EFS slow
 	- nfsstat -s (server)
 	- nfsstat -c (cient)
 	- nfsiostat (check its performance)
