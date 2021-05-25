@@ -28,13 +28,15 @@ https://jayendrapatil.com/terraform-cheat-sheet/
 **Ansible vs Terraform**<br/>
 https://www.whizlabs.com/blog/wp-content/uploads/2019/12/Ansible_vs_Terraform.png
 
-**Kubernetes Interview Questions**<br/>
+**Kubernetes K8S Interview Questions**<br/>
 https://www.guru99.com/kubernetes-interview-questions-answers.html
 
-**K8S Cheatsheet**<br/>
+**Kubernetes K8S Cheatsheet**<br/>
 https://gist.github.com/pydevops/0efd399befd960b5eb18d40adb68ef83
 
-**K8S Commands**<br/>
+https://github.com/dgkanatsios/CKAD-exercises
+
+**Kubernetes K8S Commands**<br/>
 https://gist.github.com/edsiper/fac9a816898e16fc0036f5508320e8b4
 
 **Docker**<br/>
