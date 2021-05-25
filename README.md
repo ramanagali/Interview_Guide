@@ -11,9 +11,9 @@ https://blog.bhanuteja.dev/30-git-commands-that-i-frequently-use#git-clone<br/>
 https://nvie.com/posts/a-successful-git-branching-model/<br/>
 
 **Linux**<br/>
-https://dev.to/ptuladhar3/linux-commands-for-developers-17j
-https://www.guru99.com/linux-commands-cheat-sheet.html
-http://linuxcommand.org/lc3_learning_the_shell.php
+https://dev.to/ptuladhar3/linux-commands-for-developers-17j<br/>
+https://www.guru99.com/linux-commands-cheat-sheet.html<br/>
+http://linuxcommand.org/lc3_learning_the_shell.php<br/>
 
 **YAML**<br/>
 https://linuxhandbook.com/yaml-basics/?fbclid=IwAR1ulfdLuk8g545hDak0IGqqPSikkEpq9Ea2sPM74b-nOA3V1gmsUweORUg
