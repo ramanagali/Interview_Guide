@@ -76,9 +76,20 @@
 
 ### Terraform
 * How do you store secrets in terraform
+	- store in AWS Secret manager 
+	- read from TF code using aws_secretsmanager_secret_version
+	- using TF locals jsondecode and give reference
 * What is local & remote provisioner
+	- local exec executes code on the machine running terraform
+	- runs on the provisioned resource
 * What are the terraform modules, explain an an example
-
+	- code reuse, versioning, support remote storage
+* Where the terraform logs are stored
+	- TF_LOG to JSON outputs logs at the TRACE level 
+		- $ export TF_LOG="TRACE"
+	- TF_LOG_PATH for persistent log path
+		- $ export TF_LOG_PATH="terraform.txt"
+	
 ## Linux
 * How ssh works
 	- server configured with public key & sshd service running
