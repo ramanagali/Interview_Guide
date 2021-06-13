@@ -42,9 +42,10 @@ https://github.com/dgkanatsios/CKAD-exercises
 https://gist.github.com/edsiper/fac9a816898e16fc0036f5508320e8b4
 
 **Docker**<br/>
-https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf
-https://design.jboss.org/redhatdeveloper/marketing/docker_cheatsheet/cheatsheet/images/docker_cheatsheet_r3v2.pdf
-https://dzone.com/articles/top-docker-commands-itsyndicate
+https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
+https://design.jboss.org/redhatdeveloper/marketing/docker_cheatsheet/cheatsheet/images/docker_cheatsheet_r3v2.pdf<br/>
+https://dzone.com/articles/top-docker-commands-itsyndicate<br/>
+https://www.bmc.com/blogs/docker-security-best-practices/#<br/>
 
 **Docker examples**<br/>
 https://github.com/docker/awesome-compose
