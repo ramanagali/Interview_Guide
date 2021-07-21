@@ -28,6 +28,9 @@ https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https:/
 https://jayendrapatil.com/terraform-cheat-sheet/<br/>
 https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-exam<br/>
 
+**Packer**<br/>
+https://devopscube.com/packer-tutorial-for-beginners/<br/>
+
 **Ansible vs Terraform**<br/>
 https://www.whizlabs.com/blog/wp-content/uploads/2019/12/Ansible_vs_Terraform.png
 
