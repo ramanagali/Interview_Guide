@@ -119,6 +119,9 @@ https://www.tutorialspoint.com/go/go_error_handling.htm
 ## Site Reliability Engineer (SRE)
 https://github.com/mxssl/sre-interview-prep-guide
 
+**Diff Between DevOps & SRE**<br/>
+https://www.bunnyshell.com/blog/sre-vs-devops-whats-the-difference/<br/>
+
 
 ## DevSecOps
 **Penetration testing Docker**
