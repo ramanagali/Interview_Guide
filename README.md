@@ -63,7 +63,8 @@ https://dockerlabs.collabnix.com/docker/cheatsheet/
 **Docker Best Practices**<br/>
 https://snyk.io/wp-content/uploads/10-best-practices-to-containerize-Node.js-web-applications-with-Docker.pdf
 
-**Bamboo CICD**<br/>
+** CICD Bamboo**<br/>
+https://www.opsmx.com/blog/what-is-a-ci-cd-pipeline/
 https://mindmajix.com/atlassian-bamboo-interview-questions
 
 **DevOps Interview Questions**<br/>
