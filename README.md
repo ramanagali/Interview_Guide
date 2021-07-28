@@ -32,19 +32,19 @@ https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-ex
 https://devopscube.com/packer-tutorial-for-beginners/<br/>
 
 **Ansible vs Terraform**<br/>
-https://www.whizlabs.com/blog/wp-content/uploads/2019/12/Ansible_vs_Terraform.png
+https://www.whizlabs.com/blog/wp-content/uploads/2019/12/Ansible_vs_Terraform.png<br/>
 
 **Kubernetes K8S Interview Questions**<br/>
-https://www.guru99.com/kubernetes-interview-questions-answers.html
+https://www.guru99.com/kubernetes-interview-questions-answers.html<br/>
 
 **Kubernetes K8S Cheatsheet**<br/>
-https://gist.github.com/pydevops/0efd399befd960b5eb18d40adb68ef83
+https://gist.github.com/pydevops/0efd399befd960b5eb18d40adb68ef83<br/>
 
-https://github.com/dgkanatsios/CKAD-exercises
+https://github.com/dgkanatsios/CKAD-exercises<br/>
 
 **Kubernetes K8S Commands**<br/>
-https://gist.github.com/edsiper/fac9a816898e16fc0036f5508320e8b4
-https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c25535f7
+https://gist.github.com/edsiper/fac9a816898e16fc0036f5508320e8b4<br/>
+https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c25535f7<br/>
 
 **Docker**<br/>
 https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
