@@ -64,7 +64,7 @@ https://dockerlabs.collabnix.com/docker/cheatsheet/
 **Docker Best Practices**<br/>
 https://snyk.io/wp-content/uploads/10-best-practices-to-containerize-Node.js-web-applications-with-Docker.pdf
 
-** CICD Bamboo**<br/>
+**CICD Bamboo**<br/>
 https://www.opsmx.com/blog/what-is-a-ci-cd-pipeline/
 https://mindmajix.com/atlassian-bamboo-interview-questions
 
@@ -92,7 +92,7 @@ https://k2y3h8q6.stackpathcdn.com/wp-content/uploads/2019/01/SGNCL-latest.jpg
 **Iaas Paas Saas**<br/>
 https://stackoverflow.com/questions/16820336/what-is-saas-paas-and-iaas-with-examples
 
-**AWS Cheat Sheets All **<br/>
+**AWS Cheat Sheets All**<br/>
 https://tutorialsdojo.com/aws-cheat-sheets/
 
 **Azure AWS comparison**<br/>
