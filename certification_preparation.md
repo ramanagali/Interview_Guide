@@ -14,6 +14,9 @@ https://medium.com/bb-tutorials-and-thoughts/practice-enough-with-these-question
 ## CKA
 https://github.com/vkharge/CKA/tree/master/docs
 
+**KodeKloud CKS Mock Exam Answers**
+https://junior-developer.tistory.com/97
+
 ## DCA
 
 ## AZ-900
