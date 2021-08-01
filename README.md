@@ -45,6 +45,7 @@ https://github.com/dgkanatsios/CKAD-exercises<br/>
 **Kubernetes K8S Commands**<br/>
 https://gist.github.com/edsiper/fac9a816898e16fc0036f5508320e8b4<br/>
 https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c25535f7<br/>
+https://faun.pub/kubectl-commands-cheatsheet-43ce8f13adfb<br/>
 
 **Docker**<br/>
 https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
