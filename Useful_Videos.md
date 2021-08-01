@@ -2,6 +2,10 @@
 
 ## Useful Youtbue Playlists 
 
+
+**HashiCrop Terraform**<br/>
+https://www.youtube.com/watch?v=SLB_c_ayRMo
+
 **HashiCrop Packer**<br/>
 https://www.youtube.com/playlist?list=PL8VzFQ8k4U1Jp6eWgHSXHiiRWRvPyCKRj
 
