@@ -5,7 +5,12 @@
 
 ## Terraform Associate 
 https://jayendrapatil.com/terraform-cheat-sheet/<br/>
+
+https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-terraform-associate-certification-7a3ccebe6a1a<br/>
+
 https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-exam<br/>
+
+https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2020/11/terraform-cheatsheet-from-ACG.pdf<br/>
 
 
 ## CKAD
