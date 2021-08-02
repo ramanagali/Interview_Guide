@@ -28,6 +28,9 @@ https://medium.com/bb-tutorials-and-thoughts/practice-enough-with-these-question
 **Json Path**<br/>
 https://github.com/json-path/jsonpath
 
+**Bookmarks**<br/>
+https://gist.github.com/Piotr1215/016ba7218a1a949574786fb9b92382c1
+
 ## CKA
 https://github.com/vkharge/CKA/tree/master/docs
 
