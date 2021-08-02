@@ -22,14 +22,19 @@ https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c
 **Excercises**<br/>
 https://github.com/dgkanatsios/CKAD-exercises
 
+**150 Exam Questions**<br/>
+https://medium.com/bb-tutorials-and-thoughts/practice-enough-with-these-questions-for-the-ckad-exam-2f42d1228552
+
 **Json Path**<br/>
 https://github.com/json-path/jsonpath
 
 ## CKA
 https://github.com/vkharge/CKA/tree/master/docs
 
-**KodeKloud CKS Mock Exam Answers**<br/>
+**KodeKloud CKA Mock Exam Answers**<br/>
 https://junior-developer.tistory.com/97<br/>
+
+
 
 ## DCA
 
