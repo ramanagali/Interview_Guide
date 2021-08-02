@@ -22,6 +22,8 @@ https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c
 **Excercises**<br/>
 https://github.com/dgkanatsios/CKAD-exercises
 
+**Json Path**<br/>
+https://github.com/json-path/jsonpath
 
 ## CKA
 https://github.com/vkharge/CKA/tree/master/docs
