@@ -31,6 +31,9 @@ https://github.com/json-path/jsonpath
 ## CKA
 https://github.com/vkharge/CKA/tree/master/docs
 
+**Practice Excercises**<br/>
+https://github.com/alijahnas/CKA-practice-exercises
+
 **KodeKloud CKA Mock Exam Answers**<br/>
 https://junior-developer.tistory.com/97<br/>
 
