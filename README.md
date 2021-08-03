@@ -47,6 +47,9 @@ https://gist.github.com/edsiper/fac9a816898e16fc0036f5508320e8b4<br/>
 https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c25535f7<br/>
 https://faun.pub/kubectl-commands-cheatsheet-43ce8f13adfb<br/>
 
+**Kubernetes Network Troubleshooting**<br/>
+https://github.com/nicolaka/netshoot
+
 **Docker**<br/>
 https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
 https://design.jboss.org/redhatdeveloper/marketing/docker_cheatsheet/cheatsheet/images/docker_cheatsheet_r3v2.pdf<br/>
