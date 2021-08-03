@@ -1,7 +1,10 @@
 
 # Certification Preparation Material
 
-## AWS SAA-C02 
+## AWS Certified Solutions Architect Associate: SAA-C02 
+
+## AWS DevOps Engineer Professional DOP-CO1
+https://dannys.cloud/aws-devops-engineer-professional-exam-guide
 
 ## Terraform Associate 
 https://jayendrapatil.com/terraform-cheat-sheet/<br/>
