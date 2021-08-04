@@ -17,6 +17,9 @@ https://dev.to/ptuladhar3/linux-commands-for-developers-17j<br/>
 https://www.guru99.com/linux-commands-cheat-sheet.html<br/>
 http://linuxcommand.org/lc3_learning_the_shell.php<br/>
 
+**Vi Editor Cheatsheet**<br/>
+https://vim.rtorr.com/
+
 **YAML**<br/>
 https://linuxhandbook.com/yaml-basics/?fbclid=IwAR1ulfdLuk8g545hDak0IGqqPSikkEpq9Ea2sPM74b-nOA3V1gmsUweORUg
 
