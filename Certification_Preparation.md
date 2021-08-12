@@ -44,7 +44,8 @@ https://github.com/alijahnas/CKA-practice-exercises
 **KodeKloud CKA Mock Exam Answers**<br/>
 https://junior-developer.tistory.com/97<br/>
 
-
+**Kubernetes Tips and Tricks**<br/>
+https://www.ibm.com/cloud/blog/8-kubernetes-tips-and-tricks
 
 ## DCA
 
