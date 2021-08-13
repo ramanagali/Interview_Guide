@@ -38,6 +38,7 @@ https://devopscube.com/packer-tutorial-for-beginners/<br/>
 https://www.whizlabs.com/blog/wp-content/uploads/2019/12/Ansible_vs_Terraform.png<br/>
 
 **Kubernetes K8S Interview Questions**<br/>
+https://medium.com/devops-mojo/kubernetes-architecture-overview-introduction-to-k8s-architecture-and-understanding-k8s-cluster-components-90e11eb34ccd<br/>
 https://www.guru99.com/kubernetes-interview-questions-answers.html<br/>
 
 **Kubernetes K8S Cheatsheet**<br/>
