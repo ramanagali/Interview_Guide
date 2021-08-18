@@ -166,8 +166,9 @@ https://miro.medium.com/max/2638/1*a1cClf7S4R_IevTVOa15Ww.png
 https://aws.amazon.com/blogs/devops/building-end-to-end-aws-devsecops-ci-cd-pipeline-with-open-source-sca-sast-and-dast-tools/
 
 **OWASP Top 10**<br/>
-https://owasp.org/www-project-top-ten/
-https://www.synopsys.com/glossary/what-is-owasp-top-10.html
+https://owasp.org/www-project-top-ten/<br/>
+https://www.synopsys.com/glossary/what-is-owasp-top-10.html<br/>
+https://apisecurity.io/encyclopedia/content/owasp-api-security-top-10-cheat-sheet-tabloid.pdf<br/>
 
 
 ## Behavrioural Interview Questions
