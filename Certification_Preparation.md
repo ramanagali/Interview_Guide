@@ -3,8 +3,14 @@
 
 ## AWS Certified Solutions Architect Associate: SAA-C02 
 
+https://www.youtube.com/watch?v=RQGOb80yS-M<br/>
+https://www.youtube.com/watch?v=lF63PW7oACo<br/>
+https://www.youtube.com/watch?v=Udokq9AzW18<br/>
+https://www.youtube.com/watch?v=3bzhRkVo7o4<br/>
+
+
 ## AWS DevOps Engineer Professional DOP-CO1
-https://dannys.cloud/aws-devops-engineer-professional-exam-guide
+https://dannys.cloud/aws-devops-engineer-professional-exam-guide<br/>
 
 ## Terraform Associate 
 https://jayendrapatil.com/terraform-cheat-sheet/<br/>
