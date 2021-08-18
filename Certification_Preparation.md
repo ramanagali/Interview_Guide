@@ -57,7 +57,7 @@ https://www.ibm.com/cloud/blog/8-kubernetes-tips-and-tricks
 
 https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce
 
-## AZ-303/AZ-303<br/>
+## AZ-300/AZ-303<br/>
 https://ravikirans.com/az-303-azure-exam-study-guide/<br/>
 https://k21academy.com/microsoft-azure/microsoft-azure-architect-technologies-step-by-step-hands-on-guides/<br/>
 https://www.examtopics.com/exams/microsoft/az-303/<br/>
