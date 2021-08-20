@@ -51,7 +51,8 @@ https://github.com/alijahnas/CKA-practice-exercises
 https://junior-developer.tistory.com/97<br/>
 
 **Kubernetes Tips and Tricks**<br/>
-https://www.ibm.com/cloud/blog/8-kubernetes-tips-and-tricks
+https://www.ibm.com/cloud/blog/8-kubernetes-tips-and-tricks<br/>
+https://hackernoon.com/tips-and-tricks-to-pass-certified-kubernetes-application-cka-exam-px13349o<br/>
 
 ## CKS
 https://github.com/walidshaari/Certified-Kubernetes-Security-Specialist<br/>
