@@ -70,4 +70,5 @@ https://www.examtopics.com/exams/microsoft/az-303/<br/>
 ## AZ-900
 
 ## GCP
-https://github.com/sathishvj/awesome-gcp-certifications
+https://github.com/sathishvj/awesome-gcp-certifications<br/>
+https://github.com/ddneves/awesome-gcp-certifications<br/>
