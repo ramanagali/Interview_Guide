@@ -13,6 +13,7 @@ https://nvie.com/posts/a-successful-git-branching-model/<br/>
 
 
 **Linux**<br/>
+https://www.freecodecamp.org/news/the-linux-commands-handbook/<br/>
 https://dev.to/ptuladhar3/linux-commands-for-developers-17j<br/>
 https://www.guru99.com/linux-commands-cheat-sheet.html<br/>
 http://linuxcommand.org/lc3_learning_the_shell.php<br/>
