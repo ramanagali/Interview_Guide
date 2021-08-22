@@ -68,3 +68,6 @@ https://www.examtopics.com/exams/microsoft/az-303/<br/>
 
 
 ## AZ-900
+
+## GCP
+https://github.com/sathishvj/awesome-gcp-certifications
