@@ -23,7 +23,13 @@ https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https:/
 
 
 ## CKAD
-https://medium.com/bb-tutorials-and-thoughts/practice-enough-with-these-questions-for-the-ckad-exam-2f42d1228552
+https://medium.com/bb-tutorials-and-thoughts/practice-enough-with-these-questions-for-the-ckad-exam-2f42d1228552<br/>
+
+https://jayendrapatil.com/certified-kubernetes-application-developer-ckad-learning-path/<br/>
+
+**CKAD Notes**<br/>
+https://github.com/saaguero/ckad-notes<br/>
+
 
 **Imperative Commands**<br/>
 https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c25535f7
