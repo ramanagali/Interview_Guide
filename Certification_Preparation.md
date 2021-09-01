@@ -80,6 +80,8 @@ https://github.com/priyankavergadia/google-cloud-4-words
 https://thecloudgirl.dev/
 
 ## GCP Professional Developer
+https://faun.pub/google-professional-cloud-developer-certification-preparation-strategy-272c8e9bd923
+
 https://github.com/priyankavergadia/GCPSketchnote/blob/main/README.md
 
 https://docs.google.com/document/d/1HIJNmNvDGdX9k7yTFhXTKQuD6czuUUkAkuHjPEAUHGk/edit#heading=h.28do4tz6ru8h
