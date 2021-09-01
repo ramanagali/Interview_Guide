@@ -73,6 +73,18 @@ https://www.examtopics.com/exams/microsoft/az-303/<br/>
 
 ## AZ-900
 
-## GCP
+# GCP
 https://github.com/sathishvj/awesome-gcp-certifications<br/>
 https://github.com/ddneves/awesome-gcp-certifications<br/>
+https://github.com/priyankavergadia/google-cloud-4-words
+https://thecloudgirl.dev/
+
+## GCP Professional Developer
+https://github.com/priyankavergadia/GCPSketchnote/blob/main/README.md
+
+https://docs.google.com/document/d/1HIJNmNvDGdX9k7yTFhXTKQuD6czuUUkAkuHjPEAUHGk/edit#heading=h.28do4tz6ru8h
+
+https://github.com/priyankavergadia/google-cloud-4-words
+
+## GCP Data Engineer
+https://github.com/anjijava16/GCP_Data_Enginner_Utils
