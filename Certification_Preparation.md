@@ -90,3 +90,6 @@ https://github.com/priyankavergadia/google-cloud-4-words
 
 ## GCP Data Engineer
 https://github.com/anjijava16/GCP_Data_Enginner_Utils
+
+## GCP Professional Architect
+https://www.samratpriyadarshi.com/post/passing-the-professional-cloud-architect-my-journey
