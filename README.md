@@ -94,6 +94,8 @@ https://pkg.go.dev/github.com/codesenberg/bombardier#readme-installation
 
 
 ## Cloud
+**Compare all Clouds
+https://comparecloud.in/
 
 **Networking Stateful vs Stateles**<br/>
 https://k2y3h8q6.stackpathcdn.com/wp-content/uploads/2019/01/SGNCL-latest.jpg
