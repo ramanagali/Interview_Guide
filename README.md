@@ -2,7 +2,11 @@
 
 ## DevOps 
 
-**Architecture**<br />https://github.com/donnemartin/system-design-primer
+**Architecture**<br />
+https://github.com/donnemartin/system-design-primer
+
+**DevOps Excercises**<br />
+https://github.com/bregman-arie/devops-exercises
 
 **DevOps Principle**<br />https://www.cmswire.com/information-management/7-key-principles-for-a-successful-devops-culture/
 
