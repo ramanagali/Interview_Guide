@@ -79,6 +79,9 @@ https://github.com/ddneves/awesome-gcp-certifications<br/>
 https://github.com/priyankavergadia/google-cloud-4-words
 https://thecloudgirl.dev/
 
+**CLI Cheat sheets**
+https://cloud.google.com/sdk/docs/cheatsheet
+
 ## GCP Professional Developer
 https://faun.pub/google-professional-cloud-developer-certification-preparation-strategy-272c8e9bd923
 
