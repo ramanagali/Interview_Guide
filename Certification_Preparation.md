@@ -79,6 +79,9 @@ https://github.com/ddneves/awesome-gcp-certifications<br/>
 https://github.com/priyankavergadia/google-cloud-4-words
 https://thecloudgirl.dev/
 
+**Qwiklabs Challenge Labs**
+https://github.com/elmoallistair/qwiklabs
+
 **CLI Cheat sheets**<br/>
 https://cloud.google.com/sdk/docs/cheatsheet<br/>
 https://gist.github.com/pydevops/cffbd3c694d599c6ca18342d3625af97<br/>
