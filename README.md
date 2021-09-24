@@ -91,8 +91,8 @@ https://thenewstack.io/deployment-strategies/
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
 
 **HTTP Load Testing***<br/>
-https://k6.io/docs/using-k6/http-requests/
-https://locust.io/
+https://k6.io/docs/using-k6/http-requests/<br/>
+https://locust.io/<br/>
 
 **Bechmarking**<br/>
 https://pkg.go.dev/github.com/codesenberg/bombardier#readme-installation
