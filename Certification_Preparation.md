@@ -102,3 +102,6 @@ https://github.com/anjijava16/GCP_Data_Enginner_Utils
 
 ## GCP Professional Architect
 https://www.samratpriyadarshi.com/post/passing-the-professional-cloud-architect-my-journey
+
+**GCP Building Blocks**<br/>
+https://docs.google.com/document/d/1-8vSS5rNOWmxVQWmTaWus7V5uZvgWZKY-Nl4bYMWDbk
