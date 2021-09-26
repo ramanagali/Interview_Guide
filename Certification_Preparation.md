@@ -88,20 +88,18 @@ https://github.com/elmoallistair/qwiklabs
 https://cloud.google.com/sdk/docs/cheatsheet<br/>
 https://gist.github.com/pydevops/cffbd3c694d599c6ca18342d3625af97<br/>
 
+## GCP Professional Architect
+https://www.youtube.com/playlist?list=PLPS8Ty7UpM1Wt3RDhNVOnNdmrJKyTa1Fs<br/>
+https://www.samratpriyadarshi.com/post/passing-the-professional-cloud-architect-my-journey<br/>
+
+**GCP Building Blocks**<br/>
+https://docs.google.com/document/d/1-8vSS5rNOWmxVQWmTaWus7V5uZvgWZKY-Nl4bYMWDbk
+
 ## GCP Professional Developer
-https://faun.pub/google-professional-cloud-developer-certification-preparation-strategy-272c8e9bd923
-
-https://github.com/priyankavergadia/GCPSketchnote/blob/main/README.md
-
-https://docs.google.com/document/d/1HIJNmNvDGdX9k7yTFhXTKQuD6czuUUkAkuHjPEAUHGk/edit#heading=h.28do4tz6ru8h
-
+https://faun.pub/google-professional-cloud-developer-certification-preparation-strategy-272c8e9bd923<br/>
+https://github.com/priyankavergadia/GCPSketchnote/blob/main/README.md<br/>
+https://docs.google.com/document/d/1HIJNmNvDGdX9k7yTFhXTKQuD6czuUUkAkuHjPEAUHGk/edit#heading=h.28do4tz6ru8h<br/>
 https://github.com/priyankavergadia/google-cloud-4-words
 
 ## GCP Data Engineer
 https://github.com/anjijava16/GCP_Data_Enginner_Utils
-
-## GCP Professional Architect
-https://www.samratpriyadarshi.com/post/passing-the-professional-cloud-architect-my-journey
-
-**GCP Building Blocks**<br/>
-https://docs.google.com/document/d/1-8vSS5rNOWmxVQWmTaWus7V5uZvgWZKY-Nl4bYMWDbk
