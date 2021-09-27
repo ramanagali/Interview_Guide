@@ -9,7 +9,11 @@ https://www.youtube.com/watch?v=Udokq9AzW18<br/>
 https://www.youtube.com/watch?v=3bzhRkVo7o4<br/>
 
 ## AWS Professional Architect SAP-CO1
-**Well Architected Framework** https://wa.aws.amazon.com/index.en.html
+**Well Architected Framework**<br/> 
+https://wa.aws.amazon.com/index.en.html
+
+https://www.youtube.com/playlist?list=PLeJgtCMvQjZd0kuK82-Et9IYcp6EiOeYa
+
 
 ## AWS DevOps Engineer Professional DOP-CO1
 https://dannys.cloud/aws-devops-engineer-professional-exam-guide<br/>
