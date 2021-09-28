@@ -12,6 +12,9 @@ https://www.youtube.com/watch?v=3bzhRkVo7o4<br/>
 **Well Architected Framework**<br/> 
 https://wa.aws.amazon.com/index.en.html
 
+**Architecture Certer**<br/> 
+https://aws.amazon.com/architecture/
+
 https://www.youtube.com/playlist?list=PLeJgtCMvQjZd0kuK82-Et9IYcp6EiOeYa
 
 
