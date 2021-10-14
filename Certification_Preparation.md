@@ -10,10 +10,11 @@ https://www.youtube.com/watch?v=3bzhRkVo7o4<br/>
 
 ## AWS Professional Architect SAP-CO1
 **Well Architected Framework**<br/> 
-https://wa.aws.amazon.com/index.en.html
+https://wa.aws.amazon.com/index.en.html<br/>
 
 **Architecture Certer**<br/> 
-https://aws.amazon.com/architecture/
+https://aws.amazon.com/quickstart<br/>
+https://aws.amazon.com/architecture/<br/>
 
 https://www.youtube.com/playlist?list=PLeJgtCMvQjZd0kuK82-Et9IYcp6EiOeYa
 
@@ -85,8 +86,8 @@ https://www.examtopics.com/exams/microsoft/az-303/<br/>
 # GCP
 https://github.com/sathishvj/awesome-gcp-certifications<br/>
 https://github.com/ddneves/awesome-gcp-certifications<br/>
-https://github.com/priyankavergadia/google-cloud-4-words
-https://thecloudgirl.dev/
+https://github.com/priyankavergadia/google-cloud-4-words<br/>
+https://thecloudgirl.dev/<br/>
 
 **Qwiklabs Challenge Labs**
 https://github.com/elmoallistair/qwiklabs
