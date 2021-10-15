@@ -104,8 +104,10 @@ https://gist.github.com/pydevops/cffbd3c694d599c6ca18342d3625af97<br/>
 https://www.cloudadvocate.net/p/associate-cloud-engineer-study-notes.html
 
 ## GCP Professional Architect
-https://www.startcloudnow.com/google%20cloud.html<br/>
+
 https://www.youtube.com/playlist?list=PLPS8Ty7UpM1Wt3RDhNVOnNdmrJKyTa1Fs<br/>
+https://www.youtube.com/playlist?list=PLPS8Ty7UpM1Wt3RDhNVOnNdmrJKyTa1Fs
+https://www.startcloudnow.com/google%20cloud.html<br/>
 https://www.samratpriyadarshi.com/post/passing-the-professional-cloud-architect-my-journey<br/>
 
 **GCP Building Blocks**<br/>
