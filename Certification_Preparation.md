@@ -111,6 +111,9 @@ https://www.youtube.com/playlist?list=PLxQzKf1gjjCNRkGtIqou7kWI6I2t0n_Bv<br/>
 https://www.startcloudnow.com/google%20cloud.html<br/>
 https://www.samratpriyadarshi.com/post/passing-the-professional-cloud-architect-my-journey<br/>
 
+**GCP Case Studies**<br/>
+https://www.youtube.com/playlist?list=PLzS78SLeHQWphBxEusyxksU7-FDBDhj0H
+
 **GCP Building Blocks**<br/>
 https://docs.google.com/document/d/1-8vSS5rNOWmxVQWmTaWus7V5uZvgWZKY-Nl4bYMWDbk
 
