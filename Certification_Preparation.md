@@ -89,6 +89,10 @@ https://github.com/ddneves/awesome-gcp-certifications<br/>
 https://github.com/priyankavergadia/google-cloud-4-words<br/>
 https://thecloudgirl.dev/<br/>
 
+
+**GCP Implementation examples**
+https://github.com/GoogleCloudPlatform/professional-services
+
 **Qwiklabs Challenge Labs**
 https://github.com/elmoallistair/qwiklabs
 
