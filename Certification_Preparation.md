@@ -110,6 +110,7 @@ https://www.youtube.com/playlist?list=PLPS8Ty7UpM1Wt3RDhNVOnNdmrJKyTa1Fs<br/>
 https://www.youtube.com/playlist?list=PLxQzKf1gjjCNRkGtIqou7kWI6I2t0n_Bv<br/>
 https://www.startcloudnow.com/google%20cloud.html<br/>
 https://www.samratpriyadarshi.com/post/passing-the-professional-cloud-architect-my-journey<br/>
+https://jek-bao-choo.medium.com/gcp-cloud-architect-1e7731b767ae<br/>
 
 **GCP Case Studies**<br/>
 https://www.youtube.com/playlist?list=PLzS78SLeHQWphBxEusyxksU7-FDBDhj0H
