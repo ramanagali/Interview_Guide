@@ -5,10 +5,14 @@
 **Architecture**<br />
 https://github.com/donnemartin/system-design-primer
 
+**12 Factor App**<br />
+https://www.redhat.com/architect/12-factor-app
+
 **DevOps Excercises**<br />
 https://github.com/bregman-arie/devops-exercises
 
-**DevOps Principle**<br />https://www.cmswire.com/information-management/7-key-principles-for-a-successful-devops-culture/
+**DevOps Principle**<br />
+https://www.cmswire.com/information-management/7-key-principles-for-a-successful-devops-culture/
 
 **GIT**<br/>
 https://www.atlassian.com/dam/jcr:e7e22f25-bba2-4ef1-a197-53f46b6df4a5/SWTM-2088_Atlassian-Git-Cheatsheet.pdf<br/>
