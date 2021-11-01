@@ -89,11 +89,13 @@ https://github.com/ddneves/awesome-gcp-certifications<br/>
 https://github.com/priyankavergadia/google-cloud-4-words<br/>
 https://thecloudgirl.dev/<br/>
 
+**Flow Charts**<br/>
+https://grumpygrace.dev/posts/gcp-flowcharts/<br/>
 
-**GCP Implementation examples**
+**GCP Implementation examples**<br/>
 https://github.com/GoogleCloudPlatform/professional-services
 
-**Qwiklabs Challenge Labs**
+**Qwiklabs Challenge Labs**<br/>
 https://github.com/elmoallistair/qwiklabs
 
 **CLI Cheat sheets**<br/>
