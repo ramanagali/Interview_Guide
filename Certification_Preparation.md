@@ -103,7 +103,8 @@ https://cloud.google.com/sdk/docs/cheatsheet<br/>
 https://gist.github.com/pydevops/cffbd3c694d599c6ca18342d3625af97<br/>
 
 ## Associate Cloud Engineer
-https://www.cloudadvocate.net/p/associate-cloud-engineer-study-notes.html
+https://www.cloudadvocate.net/p/associate-cloud-engineer-study-notes.html<br/>
+https://docs.google.com/document/d/1u6pXBiGMYj7ZLBN21x6jap11rG6gWk7n210hNnUzrkI/edit?usp=sharing<br/>
 
 ## GCP Professional Architect
 
