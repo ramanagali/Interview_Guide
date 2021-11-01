@@ -73,7 +73,8 @@ https://github.com/walidshaari/Certified-Kubernetes-Security-Specialist<br/>
 
 ## Docker Certified Associate - DCA 
 
-https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce
+https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce<br/>
+https://nitheeshp.dev/docker-certified-associate-exam-revision-guide-and-pointers<br/>
 
 ## AZ-300/AZ-303<br/>
 https://ravikirans.com/az-303-azure-exam-study-guide/<br/>
