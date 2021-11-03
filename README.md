@@ -26,6 +26,9 @@ https://dev.to/ptuladhar3/linux-commands-for-developers-17j<br/>
 https://www.guru99.com/linux-commands-cheat-sheet.html<br/>
 http://linuxcommand.org/lc3_learning_the_shell.php<br/>
 
+**Linux Shell Scripting Tutorial**<br/>
+https://bash.cyberciti.biz/guide/Main_Page<br/>
+
 **Vi Editor Cheatsheet**<br/>
 https://vim.rtorr.com/
 
