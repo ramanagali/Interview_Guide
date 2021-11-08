@@ -83,7 +83,7 @@ https://itnext.io/cks-exam-series-3-immutable-pods-3812cf76cff4<br/>
 https://itnext.io/cks-exam-series-4-crash-that-apiserver-5f4d3d503028<br/>
 https://itnext.io/cks-exam-series-5-imagepolicywebhook-8d09f1ceee70<br/>
 https://itnext.io/cks-exam-series-6-users-and-certificatesigningrequests-368a5b2c6a3f<br/>
-https://itnext.io/cks-exam-series-7-serviceaccount-tokens-1158c93612d4<br/><br/>
+https://itnext.io/cks-exam-series-7-serviceaccount-tokens-1158c93612d4<br/>
 https://itnext.io/cks-exam-series-8-rbac-db8a0984059e<br/>
 https://itnext.io/cks-exam-series-9-rbac-v2-23ee24dd77cd<br/>
 https://itnext.io/cks-exam-series-10-container-hardening-177588b8bbfe<br/><br/>
