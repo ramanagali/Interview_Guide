@@ -76,7 +76,7 @@ https://github.com/kodekloudhub/certified-kubernetes-security-specialist-cks-cou
 **Create CKS Cluster using Vagrant**<br/>
 https://github.com/pksheldon4/cks-cluster<br/>
 
-**CKS Awesome Series**
+**CKS Awesome Series**<br/>
 https://itnext.io/cks-exam-series-1-create-cluster-security-best-practices-50e35aaa67ae<br/>
 https://itnext.io/cks-exam-series-2-pods-and-secrets-3d92a6fba331<br/>
 https://itnext.io/cks-exam-series-3-immutable-pods-3812cf76cff4<br/>
