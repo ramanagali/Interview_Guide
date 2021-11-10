@@ -39,7 +39,7 @@ https://linuxhandbook.com/yaml-basics/?fbclid=IwAR1ulfdLuk8g545hDak0IGqqPSikkEpq
 https://www.whizlabs.com/blog/wp-content/uploads/2020/01/Ansible_Vs_Puppet_Vs_Chef.png
 
 **Terraform**<br/>
-https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2020/11/terraform-cheatsheet-from-ACG.pdf<br/>
+https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2020/11/terraform-cheatsheet-from-ACG.pdf<br/>
 https://jayendrapatil.com/terraform-cheat-sheet/<br/>
 https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-exam<br/>
 
