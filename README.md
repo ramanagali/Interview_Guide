@@ -71,6 +71,7 @@ https://github.com/nicolaka/netshoot
 **Kubernetes Backup Restore**<br/>
 https://katharharshal1.medium.com/backup-and-restore-eks-kubernetes-using-velero-32b11cb55b81<br/>
 https://blogs.halodoc.io/kubernetes-disaster-recovery-with-velero/<br/>
+https://rafay.co/the-kubernetes-current/kubernetes-cluster-backup-restore-with-velero-and-rafay/<br/>
 
 **Docker**<br/>
 https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
