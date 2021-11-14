@@ -56,17 +56,20 @@ https://www.guru99.com/kubernetes-interview-questions-answers.html<br/>
 **Kubernetes K8S Cheatsheet**<br/>
 https://gist.github.com/pydevops/0efd399befd960b5eb18d40adb68ef83<br/>
 
-**Kubernetes alias & Plugins**<br/>
-https://github.com/ahmetb/kubectl-aliases<br/>
-https://github.com/ishantanu/awesome-kubectl-plugins<br/>
-
 **Kubernetes K8S Commands**<br/>
 https://gist.github.com/edsiper/fac9a816898e16fc0036f5508320e8b4<br/>
 https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c25535f7<br/>
 https://faun.pub/kubectl-commands-cheatsheet-43ce8f13adfb<br/>
 
+**Kubernetes alias & Plugins**<br/>
+https://github.com/ahmetb/kubectl-aliases<br/>
+https://github.com/ishantanu/awesome-kubectl-plugins<br/>
+
 **Kubernetes Network Troubleshooting**<br/>
 https://github.com/nicolaka/netshoot
+
+**Kubernetes Backup Restore**<br/>
+https://katharharshal1.medium.com/backup-and-restore-eks-kubernetes-using-velero-32b11cb55b81
 
 **Docker**<br/>
 https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
