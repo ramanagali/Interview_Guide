@@ -23,7 +23,7 @@
 - Throughtput</br> 
 - Storage</br> 
 
-**3) Concrete and Quantitative Solutio**</br> 
+**3) Concrete and Quantitative Solution**</br> 
 - Reality and Laws of Physics</br> 
 - Cost of Operations such as...</br> 
   - Read from memory</br> 
