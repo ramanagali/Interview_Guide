@@ -49,6 +49,7 @@ Multiple solutions, commit to one and iterate on it</br>
 - Ways to improve</br> 
 
 ### Useful Links**
+* https://github.com/donnemartin/system-design-primer
 * https://github.com/ted-ly/system-design-interview 
 * https://gist.github.com/vasanthk/485d1c25737e8e72759f 
 * https://github.com/madd86/awesome-system-design
