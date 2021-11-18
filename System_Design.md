@@ -26,7 +26,7 @@
 **3) Concrete and Quantitative Solution**</br> 
 - Reality and Laws of Physics</br> 
 - Cost of Operations such as...</br> 
-  - Read from memory</br> 
+  - Read from HDD or SSD. Which is better?</br> 
   - LAN round trip</br> 
   - Cross-Continental Network</br> 
 During the interview: estimate the resources to run & Diagram</br> 
