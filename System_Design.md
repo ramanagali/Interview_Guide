@@ -12,9 +12,10 @@
 **2) Designing at Scale:**</br> 
 - Explain How the system is working</br> 
 - Any bottleneck in the design</br> 
-- How to components work together</br> 
+- If there are multiple components, what are the APIs and how do they work together?</br> 
 - How to provide great service to all</br> 
-- They are not expecting one & perfect solution 
+- They are not expecting one & perfect solution
+- Ask How many requests per second the system can handle
 - During the interview: Large dataset given for Sharding</br> 
 - During the interview: Identify fastest machine among it and discard rest</br> 
 
@@ -27,11 +28,11 @@
     - HDD
     - SSD  
   - Object Storage
-
 **3) Concrete and Quantitative Solution**</br> 
 - Reality and Laws of Physics</br> 
 - Cost of Operations such as...</br> 
-  - Read from HDD or SSD. Which is better?</br> 
+  - Read from Disk HDD or SSD. Which is better?</br> 
+  - Read from memory?</br>
   - LAN round trip</br> 
   - Cross-Continental Network</br> 
 During the interview: estimate the resources to run & Diagram</br> 
@@ -49,9 +50,9 @@ Multiple solutions, commit to one and iterate on it</br>
 
 **5) Best Practices**</br> 
 - Explain the thought process</br> 
-- How i solve problem</br> 
-- Ask for clarifications</br> 
-- Ways to improve</br> 
+- Clarify: Many questions will be deliberately open-ended to get an idea of how you solve technical problems
+- Improve: Think & Explain ways to improve</br>
+- Practice: Practice on white board
 
 ### Useful Links**
 * https://github.com/donnemartin/system-design-primer
