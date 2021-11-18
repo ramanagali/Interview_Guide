@@ -75,7 +75,7 @@
     - SSD
   - Object Storage
 
-### 3) Concrete and Quantitative Solution**
+### 3) Concrete and Quantitative Solution
 
 - Reality and Laws of Physics</br>
 - Cost of Operations such as...</br>
