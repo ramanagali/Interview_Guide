@@ -27,22 +27,37 @@
   - Block Storage
     - HDD
     - SSD  
-  - Object Storage
+  - Object Storage</br> 
+   
 **3) Concrete and Quantitative Solution**</br> 
 - Reality and Laws of Physics</br> 
 - Cost of Operations such as...</br> 
-  - Read from Disk HDD or SSD. Which is better?</br> 
-  - Read from memory?</br>
-  - LAN round trip</br> 
-  - Cross-Continental Network</br> 
+  - **Read from Disk** **HDD or SSD. Which is better?:** 
+    - storage is non-volatile, RAM is directly connected to the CPU on a wide and fast bus speed. 
+    - storage is much slower than memory, used for persistent </br> 
+  - **Read from memory?:** 
+    - RAM is  olatile when poweroff data will be lost. 
+    - Read and Write Speed is fast, used for Cache
+  - **Local Area Network (LAN) round-trip ?:**
+    -  Called as RTT duration in milliseconds (ms). 
+    -  Takes n/w request from Source => Destination => back to Source 
+    -  Reducing RTT is a primary goal of a CDN. latency can be measured in the reduction of RTT
+  - **Cross-Continental Network?:** 
+    - Internet exchange points(IXP) IXP physical location through which DNS and CDN. 
+    - Exists at Edge locations (works as transit)
+    - Edge locations reducing latency, improving round-trip time, and potentially reducing costs
 During the interview: estimate the resources to run & Diagram</br> 
 
 **Solution Patterns:**
-- Sharding Data</br> 
-- Replication Types</br> 
-- Write Ahead Logging</br> 
-- Seperating Data and Metadata satorage</br> 
-- Load Distribution
+- **Sharding Data**</br>
+  - distributes data across different DBS
+  - less R/RW traffic, less replication and more cache hits
+  - less Indexing space & faster queries
+  - common ways is based on User last name & geo location
+- **Replication Types**</br> 
+- **Write Ahead Logging**</br> 
+- **Separating Data and Metadata Storage**</br> 
+- **Load Distribution**</br> 
 
 **4) Tradeoffs and Compramises:**
 How system responses various failures</br> 
