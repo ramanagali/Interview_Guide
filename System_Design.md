@@ -21,7 +21,9 @@
 **System Properties**
 - Latency</br> 
 - Throughtput</br> 
-- Storage</br> 
+- Storage</br>
+  - HDD
+  - SSD
 
 **3) Concrete and Quantitative Solution**</br> 
 - Reality and Laws of Physics</br> 
