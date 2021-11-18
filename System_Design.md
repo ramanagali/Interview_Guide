@@ -20,18 +20,55 @@
 - Ask How many requests per second the system can handle
 - During the interview: Large dataset given for Sharding</br>
 - During the interview: Identify fastest machine among it and discard rest</br>
+- **Short Polling:** 
+  - client making requests to resources continuously short cycles (every 3 secs). Bad idea
+- **Long Polling:** - client request to resources, keeps conn open untill server responds. recomanded when low traffic
+- **WebSockets:** - ex: client to resources conn open & bidirectional comminication. ex: web chat application
 
 #### System Properties
 
-- **Latency**: 
-  -  time to perform packet transfer accross n/w
-  -  measured in ms/s/min/hours, calculated in average
-  
-- **Throughtput** 
+- **Latency**:
+  - time to perform packet transfer accross n/w
+  - measured in ms/s/min/hours, calculated in average
+  - use cache or Inmemory rather than heavy operation
+  - **What Causes Latency?** 
+    -  Physical distance
+    -  Complex computation - expensive operation
+    -  Congestion - too many requests
+    -  Too many nodes
+  - **How to Improve Latency?** 
+    -  Better paths - minimize request travel path
+    -  Caching - dramatically improves
+    -  Protocol choice - HTTP/2 or TCP with low congresion logic
+- **Throughtput**
   - mount of data that can be sent per unit
   - measured in TPS, calculated in average
   - use concurreny to achieve Throughtput
-- **Storage** - 
+  - **What Causes Low Throughtput?** 
+    -  Congestion
+    -  Protocol overhead
+    -  High Latency
+  - **How to Improve Throughtput?** 
+    -  Increasing bandwidth 
+    -  Improving latency
+    -  Protocol choice - use TCP congestion avoidance feature
+- **Availability**:
+  - amount of time that a system is available
+  - Uptime / (Uptime + Downtime)
+  - **What Causes Low Availability?** 
+    -  Hardware failure
+    -  Software bugs
+    -  Complex architectures
+    -  Dependent service outages
+    -  Request overload
+    -  Deployment issues
+  - **How to Improve Availability?** 
+    -  Failover systems
+    -  Clustering
+    -  Backups & replications
+    -  Geographic redundancy
+    -  Automatic testing, deployment, and rollbacks 
+- **Storage** -
   - File Storage
   - Block Storage
     - HDD
@@ -60,10 +97,10 @@
 #### Solution Patterns
 
 - **Sharding Data**</br>
-  - distributes data across different DBS
-  - less R/RW traffic, less replication and more cache hits
-  - less Indexing space & faster queries
-  - common ways is based on User last name & geo location
+  - distributes data across different db's
+  - benefit is... less R/RW traffic, less replication and more cache hits
+  - benefit is... less Indexing space & faster queries
+  - common ways is based on User last name & geo location etc
   - **downsides:** complex queries, joins, app logic to handle sharding, increase complexity and more hadware
 - **Replication Types**</br>
   - Ideally replication is Sync or Async
@@ -88,14 +125,23 @@
 
 - **Basic Kinds of Load Distribution**
   - distributing tasks over a set of computing nodes
-  - for performance and reliability 
-  - horizontal dynamic scaling, Abstraction, throughtput, availability and 
+  - for performance and reliability
+  - horizontal dynamic scaling, Abstraction, throughtput, availability and
+  - L4 & L7 Load Balancers
   - eliminate a single point of failure, SSL Termination and Sticky Session
-  - **Round robin**
-  - **Weighted Round robin**
-  - **Random**
-  - **Hashing**
-  - **Least Load** 
+  - **Round robin** 
+    - sequentially diverting traffic to servers
+  - **Weighted Round robin** 
+    - diverting traffic based on server characteristics
+  - **Random** 
+    - traffic to random servers, weighted or requests etc
+  - **User IP Hashing** 
+    - session stickiness based on user IP 
+  - **URL Hashing** - requested content to server
+  - **Least Load** - lowest load at the time of request
+  - **power of d** 
+    - mulitple LB's. LB in the pool sends a request to the least busy server
+    - nginx uses d=2
 
 ### 4) Tradeoffs and Compramises
 
