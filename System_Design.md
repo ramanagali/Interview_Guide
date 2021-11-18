@@ -23,9 +23,15 @@
 
 #### System Properties
 
-- Latency
-- Throughtput
-- Storage
+- **Latency**: 
+  -  time to perform packet transfer accross n/w
+  -  measured in ms/s/min/hours, calculated in average
+  
+- **Throughtput** 
+  - mount of data that can be sent per unit
+  - measured in TPS, calculated in average
+  - use concurreny to achieve Throughtput
+- **Storage** - 
   - File Storage
   - Block Storage
     - HDD
@@ -85,11 +91,11 @@
   - for performance and reliability 
   - horizontal dynamic scaling, Abstraction, throughtput, availability and 
   - eliminate a single point of failure, SSL Termination and Sticky Session
-  - Round robin
-  - weighted
-  - Random
-  - Hashing
-  - Least Load 
+  - **Round robin**
+  - **Weighted Round robin**
+  - **Random**
+  - **Hashing**
+  - **Least Load** 
 
 ### 4) Tradeoffs and Compramises
 
