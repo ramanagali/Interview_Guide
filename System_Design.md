@@ -22,8 +22,11 @@
 - Latency</br> 
 - Throughtput</br> 
 - Storage</br>
-  - HDD
-  - SSD
+  - File Storage
+  - Block Storage
+    - HDD
+    - SSD  
+  - Object Storage
 
 **3) Concrete and Quantitative Solution**</br> 
 - Reality and Laws of Physics</br> 
