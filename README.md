@@ -14,11 +14,15 @@ https://github.com/bregman-arie/devops-exercises
 **DevOps Principle**<br />
 https://www.cmswire.com/information-management/7-key-principles-for-a-successful-devops-culture/
 
-**GIT**<br/>
+**How to Use GIT**<br />
+https://www.digitalocean.com/community/cheatsheets/how-to-use-git-a-reference-guide
+
+**GIT Commands Cheatsheest**<br/>
 https://www.atlassian.com/dam/jcr:e7e22f25-bba2-4ef1-a197-53f46b6df4a5/SWTM-2088_Atlassian-Git-Cheatsheet.pdf<br/>
 https://blog.bhanuteja.dev/30-git-commands-that-i-frequently-use#git-clone<br/>
-https://nvie.com/posts/a-successful-git-branching-model/<br/>
 
+**GIT Branching Model**<br/>
+https://nvie.com/posts/a-successful-git-branching-model/<br/>
 
 **Linux**<br/>
 https://www.freecodecamp.org/news/the-linux-commands-handbook/<br/>
