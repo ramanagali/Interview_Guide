@@ -23,12 +23,20 @@ https://dannys.cloud/aws-devops-engineer-professional-exam-guide<br/>
 
 ## AWS Certified Security - Specialty
 - https://tutorialsdojo.com/aws-cheat-sheets-security-identity-services/
+- https://shunliz.gitbooks.io/aws-certificate-notes/content/withe-papers/aws-security-whitepaper.html
+- https://github.com/brianlam38/AWS-Certified-Security-Specialty
 - https://www.scalefactory.com/events/webinars/2020/07/30/architecture-for-security-on-aws/
 - https://www.testpreptraining.com/blog/aws-certified-security-specialty-exam-cheat-sheet/
 - https://jayendrapatil.com/aws-certification-security-identity-services-cheat-sheet/
+- https://jayendrapatil.com/aws-certification-exam-cheat-sheet/
 - https://www.whizlabs.com/blog/aws-cheat-sheet/
 - https://d1.awsstatic.com/whitepapers/Security/DDoS_White_Paper.pdf
 - https://wellarchitectedlabs.com/security/
+- **Videos:** 
+  - https://www.youtube.com/playlist?list=PLeLcvrwLe184Q24ljho5Md3Z38VY0keNt
+  - https://www.youtube.com/watch?v=_MWjRddT0-o
+  - https://www.youtube.com/playlist?list=PLNV-8I8TDG4S8L-f6h8TdVuKnSy-T5ia9
+  - https://www.youtube.com/playlist?list=PLWY0DzS7zQeMPwpQvke2j94sxgFI2o3NM
 
 ## Terraform Associate 
 https://jayendrapatil.com/terraform-cheat-sheet/<br/>
