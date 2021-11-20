@@ -102,7 +102,7 @@ https://itnext.io/cks-exam-series-6-users-and-certificatesigningrequests-368a5b2
 https://itnext.io/cks-exam-series-7-serviceaccount-tokens-1158c93612d4<br/>
 https://itnext.io/cks-exam-series-8-rbac-db8a0984059e<br/>
 https://itnext.io/cks-exam-series-9-rbac-v2-23ee24dd77cd<br/>
-https://itnext.io/cks-exam-series-10-container-hardening-177588b8bbfe<br/><br/>
+https://itnext.io/cks-exam-series-10-container-hardening-177588b8bbfe<br/>
 https://itnext.io/cks-exam-series-11-networkpolicies-default-deny-and-allowlist-b2ce4186551f<br/>
 
 ## Docker Certified Associate - DCA 
