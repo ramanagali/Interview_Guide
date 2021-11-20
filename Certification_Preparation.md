@@ -21,7 +21,7 @@ https://www.youtube.com/playlist?list=PLeJgtCMvQjZd0kuK82-Et9IYcp6EiOeYa
 ## AWS DevOps Engineer Professional DOP-CO1
 https://dannys.cloud/aws-devops-engineer-professional-exam-guide<br/>
 
-## AWS Security Professional 
+## AWS Certified Security - Specialty
 - https://tutorialsdojo.com/aws-cheat-sheets-security-identity-services/
 - https://www.scalefactory.com/events/webinars/2020/07/30/architecture-for-security-on-aws/
 - https://www.testpreptraining.com/blog/aws-certified-security-specialty-exam-cheat-sheet/
