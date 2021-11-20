@@ -18,9 +18,17 @@ https://aws.amazon.com/architecture/<br/>
 
 https://www.youtube.com/playlist?list=PLeJgtCMvQjZd0kuK82-Et9IYcp6EiOeYa
 
-
 ## AWS DevOps Engineer Professional DOP-CO1
 https://dannys.cloud/aws-devops-engineer-professional-exam-guide<br/>
+
+## AWS Security Professional 
+- https://tutorialsdojo.com/aws-cheat-sheets-security-identity-services/
+- https://www.scalefactory.com/events/webinars/2020/07/30/architecture-for-security-on-aws/
+- https://www.testpreptraining.com/blog/aws-certified-security-specialty-exam-cheat-sheet/
+- https://jayendrapatil.com/aws-certification-security-identity-services-cheat-sheet/
+- https://www.whizlabs.com/blog/aws-cheat-sheet/
+- https://d1.awsstatic.com/whitepapers/Security/DDoS_White_Paper.pdf
+- https://wellarchitectedlabs.com/security/
 
 ## Terraform Associate 
 https://jayendrapatil.com/terraform-cheat-sheet/<br/>
