@@ -1,4 +1,4 @@
-# KS Preparation Guide
+# CKS Preparation Guide
 
 ## 1. Cluster Setup - 10%
 
