@@ -190,6 +190,7 @@ Ref: <https://github.com/kubernetes/dashboard/blob/master/docs/user/access-contr
 - binaries like kubectl, kubeadm and kubelets
 - before using binaries compare checksum with its official sha512 hash (cryptographic hash)
 
+Example
 ```sh
 kubectl version --short --client
 
@@ -201,16 +202,61 @@ curl -LO "https://dl.k8s.io/v1.20.1/bin/linux/amd64/kubectl.sha256"
 echo "$(<kubectl.sha256) /usr/bin/kubectl" | sha256sum --check
 ```
 
-Ref: <https://github.com/kubernetes/kubernetes/releases>
+Ref: https://github.com/kubernetes/kubernetes/releases
+Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
 </details>
 <hr /> 
 ## 2. Cluster Hardening - 15%
+<details>
+<summary></summary>
+## 2.1  Restrict access to Kubernetes API
+
+### 2.2 Use Role-Based Access Controls to minimize exposure
+
+### 2.3 Exercise caution in using service accounts e.g. disable defaults, minimize permissions on newly created ones
+
+### 2.4 Update Kubernetes frequently
+
+</details>
 <hr /> 
 ## 3. System Hardening - 15%
+<details>
+<summary></summary>
+### 3.1 Minimize host OS footprint (reduce attack surface)
+### 3.2 Minimize IAM roles
+### 3.3. Minimize external access to the network
+### 3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp
+</details>
 <hr /> 
 ## 4. Minimize Microservice Vulnerabilities - 20%
+<details>
+<summary></summary>
+### 4.1 etup appropriate OS level security domains e.g. using PSP, OPA, security contexts
+### 4.2 Manage Kubernetes secrets
+### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
+### 4.4 Implement pod to pod encryption by use of mTLS
+
+</details>
 <hr /> 
 ## 5. Supply Chain Security - 20%
+<details>
+<summary></summary>
+### 5.1 Minimize base image footprint
+### 5.2 Secure your supply chain: whitelist allowed registries, sign and validate images
+### 5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)
+### 5.4 Scan images for known vulnerabilities
+
+</details>
 <hr /> 
-## 6. Monitoring, Logging and Runtime Security20%
+## 6. Monitoring, Logging and Runtime Security - 20%
+
+<details>
+<summary></summary>
+### 6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities
+### 6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads
+### 6.3 Detect all phases of attack regardless where it occurs and how it spreads
+### 6.4 Perform deep analytical investigation and identification of bad actors within environment
+### 6.5 Ensure immutability of containers at runtime
+### 6.6 Use Audit Logs to monitor access
+</details>
 <hr /> 
