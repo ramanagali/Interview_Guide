@@ -28,45 +28,67 @@ kubectl logs jobmaster-xxx
 kubectl logs job-node-xxx
 ```
 
-**binary download**
+**binary download & run**
 
 ```sh
 curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.4.0/kube-bench_0.4.0_linux_amd64.tar.gz -o kube-bench_0.4.0_linux_amd64.tar.gz
 tar -xvf kube-bench_0.4.0_linux_amd64.tar.gz
 cd kube-bench_0.4.0_linux_amd64
+
+kube-bench
+./kube-bench --config-dir `pwd`/cfg --config `pwd`/cfg/config.yaml 
+```
+
+**docker**
+
+```
+docker run --rm -v `pwd`:/host aquasec/kube-bench:latest install
+then ./kube-bench
 ```
 
 **How to Fix?:**
-* perform the the remidiations
-* kubelet config located at /var/lib/kubelet/config.yaml
-* sudo systemctl restart kubelet
+* Perform the the remidiations
+* Kubelet config located at /var/lib/kubelet/config.yaml
+* ```sudo systemctl restart kubelet```
+
+
+Ref: https://github.com/aquasecurity/kube-bench/blob/main/docs/installation.md
 
 ### 1.3 Ingress TLS termination
 - Secure an Ingress by specifying a Secret that contains a TLS private key and certificate
 - The Ingress resource only supports a single TLS port, 443, and assumes TLS termination at the ingress point
 
+Create TLS Certificate & key
+```sh
+openssl req -nodes -new -x509 -keyout tls-ingress.key -out tls-ingress.crt -subj "/CN=ingress.test
+```
+
+Apply this yaml
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: testsecret-tls
-  namespace: default
+  name: ingress-tls
+  namespace: ingresstest
 data:
-  tls.crt: base64 encoded cert
-  tls.key: base64 encoded key
+  tls.crt: |
+    $(base64-encoded cert data from tls-ingress.crt)
+  tls.key: |
+    $(base64-encoded key data from tls-ingress.key)
 type: kubernetes.io/tls
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: tls-example-ingress
+  namespace: ingresstest
 spec:
   tls:
   - hosts:
-      - https-example.foo.com
-    secretName: testsecret-tls
+      - ingress.test
+    secretName: ingress-tls
   rules:
-  - host: https-example.foo.com
+  - host: ingress.test
     http:
       paths:
       - path: /
@@ -81,7 +103,11 @@ Ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
 
 ### 1.4 Protect node metadata and endpoints with NetworkPolicy
 
-Using Kubernetes network policy to restrict pods access to cloud metadata
+* Restrict control plane ports (6443, 2379, 2380, 10250, 10251, 10252)
+* Restrict worker node ports(10250, 30000-32767)
+* for Cloud, Using Kubernetes network policy to restrict pods access to cloud metadata
+
+Example assumes AWS cloud, and metadata IP address is 169.254.169.254 should be blocked while all other external addresses are not.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -99,29 +125,69 @@ spec:
       except:
       - 169.254.169.254/32
 ```
-Ref: https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#restricting-cloud-metadata-api-access
+
+* https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#restricting-cloud-metadata-api-access
+
 
 ### 1.5 Minimize use of, and access to, GUI elements
 
-- Access to Kubernetes Dashboard
-- Creating a Service Account
+- Restrit Access to GUI like Kubernetes Dashboard
+
+**Solution1**
+- Creating a Service Account User
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+```
 - Create ClusterRoleBinding
-- Getting a Bearer Token
-- Ref: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+
+```
+- Retrieve Bearer Token & Use
+```
+kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+```
+
+**Solution2**
+- use `kubectl proxy` to access to the Dashboard http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.
+
+
+Ref: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui
+
+Ref: https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
 
 ### 1.6 Verify platform binaries before deploying
+
+* binaries like kubectl, kubeadm and kubelets
+* before using binaries compare checksum with its official sha512 hash (cryptographic hash)
 
 ```sh
 kubectl version --short --client
 
 #download checksum for kubectl
-curl -LO "https://dl.k8s.io/<kubectl client version>/bin/linux/amd64/kubectl.sha256"
+curl -LO "https://dl.k8s.io/v1.20.1/bin/linux/amd64/kubectl.sha256"
+
 
 #verify kubectl binary
 echo "$(<kubectl.sha256) /usr/bin/kubectl" | sha256sum --check
 ```
 
-Ref: 
+Ref: https://github.com/kubernetes/kubernetes/releases
 
 ## 2. Cluster Hardening - 15%
 
