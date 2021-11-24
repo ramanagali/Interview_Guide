@@ -224,6 +224,11 @@ Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
       *  set TLS certificate with `--tls-cert-file`
       *  set TLS certificate key with `--tls-private-key-file` flag
 
+Ref: https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips
+
+Ref: https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips
+
+
 ### 2.2 Use Role-Based Access Controls to minimize exposure
 
 Roles live in namespace, RoleBinding specific to ns
@@ -242,10 +247,38 @@ ServiceAccount should have only necessary RBAC permissions
 spec:
   serviceAccountName: deployment-viewer-sa
 ```
+Ref: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 ### 2.3 Exercise caution in using service accounts e.g. disable defaults, minimize permissions on newly created ones
 
+* Create ServiceAccount to automount to any pod `automountServiceAccountToken: false`
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: build-robot
+automountServiceAccountToken: false
+```
+* Create Pod with serviceAccountName: default, automountServiceAccountToken: false
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  serviceAccountName: build-robot
+  automountServiceAccountToken: false
+```
+Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server
+
 ### 2.4 Update Kubernetes frequently
+* Minor versions(bug fixes) must be patched regularly
+* Latest 3 Minor versions receive patch support
+* Minor versions receive patches for ~1year
+
+
+Ref: https://v1-21.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+
 
 </details>
 <hr /> 
@@ -256,14 +289,12 @@ spec:
 
 ### 3.1 Minimize host OS footprint (reduce attack surface)
 * Limit Node Access
-* SSH Hardening
-* User Privilege Escalation
-* Remove Unwanted Packages
-* Restrict Kernal Modules
-* Disable Open Ports
-* Minimum IAM Policies & Roles
-* Restrict Access to External Networks
-* 
+* Remove Obsolete Software
+* Limit Access
+* Remove Obsolete Services
+* Restrict Obsolete Kernal Modules
+* Identify and Fix Open Ports
+  
 ### 3.2 Minimize IAM roles
 
 ### 3.3. Minimize external access to the network
