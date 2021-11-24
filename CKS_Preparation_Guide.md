@@ -4,42 +4,48 @@
 
 ### 1.1 Network security policies
 
-- create default deny all NetPol
-- create ingress/egress NetPol - ns, pod, port matching rules
+- Create default deny all NetworkPolicy
+- Create ingress/egress NetPol - ns, pod, port matching rules
+- Ref: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 
 ### 1.2 Install & Fix using kube-bench
 
-**kube-bench:** tool to check the cluster of CIS Benchmarks
+**kube-bench:** Tool to check Kubernetes cluster CIS Kubernetes Benchmarks
 - Can Deploy as a Docker Container
 - Can Deploy as a POD in a Kubernetes cluster
 - Can Install kube-bench binaries
 - Can Compile
 
 **Download and Run yaml**
-```
+
+```sh
 kubectl create -f https://raw.githubusercontent.com/aquasecurity/kube-bench/main/jobmaster.yaml
 kubectl create -f https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-node.yaml
 ```
 
-- `kubectl logs jobmaster-xxx`
-- `kubectl logs job-node-xxx`
+```sh
+kubectl logs jobmaster-xxx
+kubectl logs job-node-xxx
+```
 
 **binary download**
 
-- `curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.4.0/kube-bench_0.4.0_linux_amd64.tar.gz -o kube-bench_0.4.0_linux_amd64.tar.gz`
-- `tar -xvf kube-bench_0.4.0_linux_amd64.tar.gz`
-- `cd kube-bench_0.4.0_linux_amd64`
+```sh
+curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.4.0/kube-bench_0.4.0_linux_amd64.tar.gz -o kube-bench_0.4.0_linux_amd64.tar.gz
+tar -xvf kube-bench_0.4.0_linux_amd64.tar.gz
+cd kube-bench_0.4.0_linux_amd64
+```
 
 **How to Fix?:**
-perform the the remidiations
-kubelet config is at /var/lib/kubelet/config.yaml
-sudo systemctl restart kubelet
+* perform the the remidiations
+* kubelet config located at /var/lib/kubelet/config.yaml
+* sudo systemctl restart kubelet
 
 ### 1.3 Ingress TLS termination
 - Secure an Ingress by specifying a Secret that contains a TLS private key and certificate
 - The Ingress resource only supports a single TLS port, 443, and assumes TLS termination at the ingress point
 
-```
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -71,13 +77,13 @@ spec:
             port:
               number: 80
 ```
-refer: https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
+Ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
 
-### 1.4 Protect node metadata and endpoints with NP
+### 1.4 Protect node metadata and endpoints with NetworkPolicy
 
 Using Kubernetes network policy to restrict pods access to cloud metadata
 
-```
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -93,6 +99,7 @@ spec:
       except:
       - 169.254.169.254/32
 ```
+Ref: https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#restricting-cloud-metadata-api-access
 
 ### 1.5 Minimize use of, and access to, GUI elements
 
@@ -100,10 +107,11 @@ spec:
 - Creating a Service Account
 - Create ClusterRoleBinding
 - Getting a Bearer Token
+- Ref: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui
 
 ### 1.6 Verify platform binaries before deploying
 
-```
+```sh
 kubectl version --short --client
 
 #download checksum for kubectl
@@ -112,6 +120,8 @@ curl -LO "https://dl.k8s.io/<kubectl client version>/bin/linux/amd64/kubectl.sha
 #verify kubectl binary
 echo "$(<kubectl.sha256) /usr/bin/kubectl" | sha256sum --check
 ```
+
+Ref: 
 
 ## 2. Cluster Hardening - 15%
 
