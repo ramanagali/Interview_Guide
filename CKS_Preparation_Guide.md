@@ -1,7 +1,5 @@
 # CKS Preparation Guide
 
-<hr /> 
-
 ## 1. Cluster Setup - 10%
 <details>
 <summary></summary>
@@ -211,9 +209,39 @@ Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
 ## 2. Cluster Hardening - 15%
 <details>
 <summary></summary>
-## 2.1  Restrict access to Kubernetes API
+
+### 2.1  Restrict access to Kubernetes API
+
+* Control anonymous requests to Kube-apiserver by using 
+```sh --anonymous-auth=false ```
+*  non secure access to the kube-apiserver
+  1. **localhost** 
+      *  port 8080
+      *  no TLS
+      *  default IP is localhost, change with `--insecure-bind-address`
+  2. **secure port**
+      *  default is 6443, change with `--secure-port`
+      *  set TLS certificate with `--tls-cert-file`
+      *  set TLS certificate key with `--tls-private-key-file` flag
 
 ### 2.2 Use Role-Based Access Controls to minimize exposure
+
+Roles live in namespace, RoleBinding specific to ns
+ClusterRoles live across all namespace, ClusterRoleBidning
+ServiceAccount should have only necessary RBAC permissions
+
+**Solution**
+* Create virutal users using ServiceAccount for specific namespace
+* Create Role in specific namespace 
+  * has resources (ex: deployment)
+  * has verbs (get, list, create, delete))
+* Create RoleBinding n specific namespace & link Role & ServiceAccount
+  * can be user, group or service account
+* specify service account in deployment/pod level
+```yaml
+spec:
+  serviceAccountName: deployment-viewer-sa
+```
 
 ### 2.3 Exercise caution in using service accounts e.g. disable defaults, minimize permissions on newly created ones
 
@@ -225,19 +253,36 @@ Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
 ## 3. System Hardening - 15%
 <details>
 <summary></summary>
+
 ### 3.1 Minimize host OS footprint (reduce attack surface)
+* Limit Node Access
+* SSH Hardening
+* User Privilege Escalation
+* Remove Unwanted Packages
+* Restrict Kernal Modules
+* Disable Open Ports
+* Minimum IAM Policies & Roles
+* Restrict Access to External Networks
+* 
 ### 3.2 Minimize IAM roles
+
 ### 3.3. Minimize external access to the network
+
 ### 3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp
+
 </details>
 <hr /> 
 
 ## 4. Minimize Microservice Vulnerabilities - 20%
 <details>
 <summary></summary>
+
 ### 4.1 etup appropriate OS level security domains e.g. using PSP, OPA, security contexts
+
 ### 4.2 Manage Kubernetes secrets
+
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
+
 ### 4.4 Implement pod to pod encryption by use of mTLS
 
 </details>
@@ -247,22 +292,29 @@ Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
 <details>
 <summary></summary>
 ### 5.1 Minimize base image footprint
+
 ### 5.2 Secure your supply chain: whitelist allowed registries, sign and validate images
+
 ### 5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)
+
 ### 5.4 Scan images for known vulnerabilities
 
 </details>
-<hr /> 
 
 ## 6. Monitoring, Logging and Runtime Security - 20%
 
 <details>
 <summary></summary>
+
 ### 6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities
+
 ### 6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads
 ### 6.3 Detect all phases of attack regardless where it occurs and how it spreads
+
 ### 6.4 Perform deep analytical investigation and identification of bad actors within environment
+
 ### 6.5 Ensure immutability of containers at runtime
+
 ### 6.6 Use Audit Logs to monitor access
+
 </details>
-<hr /> 
