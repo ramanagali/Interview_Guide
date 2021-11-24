@@ -294,7 +294,16 @@ Ref: https://v1-21.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kube
 * Remove Obsolete Services
 * Restrict Obsolete Kernal Modules
 * Identify and Fix Open Ports
-  
+
+* Create Pod with below when needed.
+```yaml
+spec: 
+  hostIPC: false
+  hostNetwork: false
+  hostPID: false
+```
+* dont use  containers[].securityContext.privileged = ture when needed
+ *  
 ### 3.2 Minimize IAM roles
 
 ### 3.3. Minimize external access to the network
