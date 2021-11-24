@@ -206,6 +206,7 @@ Ref: https://github.com/kubernetes/kubernetes/releases
 Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
 </details>
 <hr /> 
+
 ## 2. Cluster Hardening - 15%
 <details>
 <summary></summary>
@@ -219,6 +220,7 @@ Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
 
 </details>
 <hr /> 
+
 ## 3. System Hardening - 15%
 <details>
 <summary></summary>
@@ -228,6 +230,7 @@ Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
 ### 3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp
 </details>
 <hr /> 
+
 ## 4. Minimize Microservice Vulnerabilities - 20%
 <details>
 <summary></summary>
@@ -238,6 +241,7 @@ Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
 
 </details>
 <hr /> 
+
 ## 5. Supply Chain Security - 20%
 <details>
 <summary></summary>
@@ -248,6 +252,7 @@ Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
 
 </details>
 <hr /> 
+
 ## 6. Monitoring, Logging and Runtime Security - 20%
 
 <details>
