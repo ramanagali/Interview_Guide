@@ -384,15 +384,15 @@ shutdown –r now
 ```sh
 Identify Open Ports, Remove Packages 
 list all installed packages 			apt list --installed 
-list active services 					systemctl list-units --type service
-list the kernel modules 				lsmod
-search for service 						systemctl list-units --all | grep -i nginx
-stop remove nginx services				systemctl stop nginx
+list active services 				systemctl list-units --type service
+list the kernel modules 			lsmod
+search for service 				systemctl list-units --all | grep -i nginx
+stop remove nginx services			systemctl stop nginx
 remove nginx service packages			rm /lib/systemd/system/nginx.service
 remove packages from controlplane		apt remove nginx -y
 check service listing on 9090			netstat -atnlp | grep -i 9090 | grep -w -i listen
 check port to service mapping			cat /etc/services | grep -i ssh
-check port listing on 22				netstat -an | grep 22  | grep  -w -i  listen
+check port listing on 22			netstat -an | grep 22  | grep  -w -i  listen
 check lighthttpd service port			netstat -natulp | grep -i light
 ```
 ### 3.2 Minimize IAM roles
@@ -425,33 +425,33 @@ spec:
 
 - UFW
 ```
-Insall ufw					apt-get intall ufw
-							systemctl enable ufw
-							systemctl start ufw
+Insall ufw			apt-get intall ufw
+				systemctl enable ufw
+				systemctl start ufw
 
 check ufw firewall status 	ufw status/ufw status numbered
-							ufw default allow outgoing
-							ufw default deny incoming
+				ufw default allow outgoing
+				ufw default deny incoming
 
 Allow specific (80) 		ufw allow from 172.1.2.5 to any port 22 proto tcp
-							ufw allow 1000:2000/tcp
-							ufw allow from 172.1.3.0/25 to any port 80 proto tcp
-							ufw allow 22
-default deny 8080			ufw deny 80
+				ufw allow 1000:2000/tcp
+				ufw allow from 172.1.3.0/25 to any port 80 proto tcp
+				ufw allow 22
+default deny 8080		ufw deny 80
 activate ufw firewall		ufw enable
-							ufw delete deny 80
-							ufw delete 5
-reset ufw					ufw reset
+				ufw delete deny 80
+				ufw delete 5
+reset ufw			ufw reset
 activate ufw firewall		ufw disable
 ```
 - **SECCOMP PROFILES** - restricting the calls it is able to make from userspace into the kernel
 ```
-trace system calls			starce -c touch /tmp/test.log	
-check seccomp				grep -i seccomp /boot/config-$(uname -r)
+trace system calls		starce -c touch /tmp/test.log	
+check seccomp			grep -i seccomp /boot/config-$(uname -r)
 
-run seccomp	pod 			k run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
-default location 			/var/lib/kubelet/seccomp
-use in pod					localhostProfile: profiles/audit.json
+run seccomp	pod 		k run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
+default location 		/var/lib/kubelet/seccomp
+use in pod			localhostProfile: profiles/audit.json
 ```
 - **APPARMOR -** 	Kernal Security Module to granualr access control for programs on Host OS
   - **AppArmor Profile** - Set of Rules, to be enabled in nodes
@@ -459,19 +459,19 @@ use in pod					localhostProfile: profiles/audit.json
     - **Complain Mode** - Discover the program
     - **Enfore Mode** - prevent the program
 ```
-check status				systemctl status apparmor
+check status			systemctl status apparmor
 check enabled in nodes		cat /sys/module/apparmor/parameters/enabled
-check profiles				cat /sys/kernel/security/apparmor/profiles
+check profiles			cat /sys/kernel/security/apparmor/profiles
 
-installed					apt-get install apparmor-utils 
+installed			apt-get install apparmor-utils 
 create apparmor profile 	aa-genprof /root/add_data.sh
 apparmor module status		aa-status
 def Profile file directory 	/etc/apparmor.d/
-load profile file			apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
-load profile 				apparmor_parser /etc/apparmor.d/root.add_data.sh
-disable profile 			apparmor_parser -R /etc/apparmor.d/root.add_data.sh
-create 						apparmor-deny-write
-							apparmor-allow-write
+load profile file		apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
+load profile 			apparmor_parser /etc/apparmor.d/root.add_data.sh
+disable profile 		apparmor_parser -R /etc/apparmor.d/root.add_data.sh
+create 				apparmor-deny-write
+				apparmor-allow-write
 ```
 Ref: https://kubernetes.io/docs/tutorials/clusters/apparmor/
 Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp/
