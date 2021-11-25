@@ -1,6 +1,7 @@
 # CKS Preparation Guide
 
 ## 1. Cluster Setup - 10%
+
 <details>
 <summary></summary>
 
@@ -54,7 +55,7 @@ then ./kube-bench
 - Read the the remidiation for each finding
 - Kubelet config located at /var/lib/kubelet/config.yaml
 - ```sudo systemctl restart kubelet```
-- Control plane components a ``` /etc/kubernetes/manifests/```
+- Control plane components a ```/etc/kubernetes/manifests/```
 
 Ref: <https://github.com/aquasecurity/kube-bench/blob/main/docs/installation.md>
 
@@ -190,6 +191,7 @@ Ref: <https://github.com/kubernetes/dashboard/blob/master/docs/user/access-contr
 - before using binaries compare checksum with its official sha512 hash (cryptographic hash)
 
 Example
+
 ```sh
 kubectl version --short --client
 
@@ -201,33 +203,34 @@ curl -LO "https://dl.k8s.io/v1.20.1/bin/linux/amd64/kubectl.sha256"
 echo "$(<kubectl.sha256) /usr/bin/kubectl" | sha256sum --check
 ```
 
-Ref: https://github.com/kubernetes/kubernetes/releases
-Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
+Ref: <https://github.com/kubernetes/kubernetes/releases>
+Ref: <https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs>
 </details>
-<hr /> 
+<hr />
 
 ## 2. Cluster Hardening - 15%
+
 <details>
 <summary></summary>
 
 ### 2.1  Restrict access to Kubernetes API
 
-* Control anonymous requests to Kube-apiserver by using 
-```sh --anonymous-auth=false ```
-*  non secure access to the kube-apiserver
-  1. **localhost** 
-      *  port 8080
-      *  no TLS
-      *  default IP is localhost, change with `--insecure-bind-address`
+- Control anonymous requests to Kube-apiserver by using
+```sh --anonymous-auth=false```
+- non secure access to the kube-apiserver
+
+  1. **localhost**
+      - port 8080
+      - no TLS
+      - default IP is localhost, change with `--insecure-bind-address`
   2. **secure port**
-      *  default is 6443, change with `--secure-port`
-      *  set TLS certificate with `--tls-cert-file`
-      *  set TLS certificate key with `--tls-private-key-file` flag
+      - default is 6443, change with `--secure-port`
+      - set TLS certificate with `--tls-cert-file`
+      - set TLS certificate key with `--tls-private-key-file` flag
 
-Ref: https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips
+Ref: <https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips>
 
-Ref: https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips
-
+Ref: <https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips>
 
 ### 2.2 Use Role-Based Access Controls to minimize exposure
 
@@ -236,22 +239,26 @@ ClusterRoles live across all namespace, ClusterRoleBidning
 ServiceAccount should have only necessary RBAC permissions
 
 **Solution**
-* Create virutal users using ServiceAccount for specific namespace
-* Create Role in specific namespace 
-  * has resources (ex: deployment)
-  * has verbs (get, list, create, delete))
-* Create RoleBinding n specific namespace & link Role & ServiceAccount
-  * can be user, group or service account
-* specify service account in deployment/pod level
+
+- Create virutal users using ServiceAccount for specific namespace
+- Create Role in specific namespace
+  - has resources (ex: deployment)
+  - has verbs (get, list, create, delete))
+- Create RoleBinding n specific namespace & link Role & ServiceAccount
+  - can be user, group or service account
+- specify service account in deployment/pod level
+
 ```yaml
 spec:
   serviceAccountName: deployment-viewer-sa
 ```
-Ref: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+
+Ref: <https://kubernetes.io/docs/reference/access-authn-authz/rbac/>
 
 ### 2.3 Exercise caution in using service accounts e.g. disable defaults, minimize permissions on newly created ones
 
-* Create ServiceAccount to automount to any pod `automountServiceAccountToken: false`
+- Create ServiceAccount to automount to any pod `automountServiceAccountToken: false`
+
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -259,7 +266,9 @@ metadata:
   name: build-robot
 automountServiceAccountToken: false
 ```
-* Create Pod with serviceAccountName: default, automountServiceAccountToken: false
+
+- Create Pod with serviceAccountName: default, automountServiceAccountToken: false
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -269,51 +278,209 @@ spec:
   serviceAccountName: build-robot
   automountServiceAccountToken: false
 ```
-Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server
+
+Ref: <https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server>
 
 ### 2.4 Update Kubernetes frequently
-* Minor versions(bug fixes) must be patched regularly
-* Latest 3 Minor versions receive patch support
-* Minor versions receive patches for ~1year
 
+- Minor versions(bug fixes) must be patched regularly
 
-Ref: https://v1-21.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+- Latest 3 Minor versions receive patch support
+- Minor versions receive patches for ~1year
 
+Ref: <https://v1-21.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/>
 
 </details>
-<hr /> 
+<hr />
 
 ## 3. System Hardening - 15%
+
 <details>
 <summary></summary>
 
 ### 3.1 Minimize host OS footprint (reduce attack surface)
-* Limit Node Access
-* Remove Obsolete Software
-* Limit Access
-* Remove Obsolete Services
-* Restrict Obsolete Kernal Modules
-* Identify and Fix Open Ports
 
-* Create Pod with below when needed.
+- Containers will use host namespace(not k8s ns)
+
+1. **Create Pod to use host namespace only if necessary.**
+
 ```yaml
 spec: 
-  hostIPC: false
-  hostNetwork: false
-  hostPID: false
+  # container will use host IPC namespace (Default is false)
+  hostIPC: true  
+  # containers will use host network namespace (Default is false)
+  hostNetwork: true
+  # containers will use host pid namespace (Default is false)
+  hostPID: true
+  containers:
+  - name: nginx
+    image: nginx:latest
 ```
-* dont use  containers[].securityContext.privileged = ture when needed
- *  
+
+2. **Don't run containers in privileged mode (privileged = false)**
+
+```yaml
+spec: 
+  containers:
+  - name: nginx
+    image: nginx:latest
+  securityContext:
+    # container will ran as root (Default is false)
+    privileged = ture
+```
+
+- **Limit Node Access**
+```sh
+# delete user
+userdel user1
+# delete group
+groupdel group1
+#suspend user
+usermod -s /usr/sbin/nologin user2
+#create user sam, home dir is /opt/sam, uid 2328 & login shell bash 
+useradd -d /opt/sam -s /bin/bash -G admin -u 2328 sam
+```
+- **Remove Obsolete/unncessary Software**
+```sh
+# list all services
+systemctl list-units --type service
+# stop services
+systemctl stop squid
+# disable services
+systemctl disable squid
+# uninstall
+apt remove squid
+```
+- **SSH hardening**
+```sh
+#generate keys
+ssh-keygen –t rsa
+
+#view auth key
+cat /home/mark/.ssh/authorized_keys
+
+# harden ssh config /etc/ssh/sshd_config
+PermitRootLogin no
+PasswordAuthentication no
+
+systemctl restart sshd
+```
+- **Restrict Obsolete Kernal Modules**
+```sh
+# list all kernal modules
+lsmod
+# blocklist module sctp, dccp
+vi /etc/modprobe.d/blacklist.conf
+blacklist sctp
+blacklist dccp
+#reboot
+shutdown –r now
+```
+- **Restirct allowed hostpaths with PodSecurityPolicy**
+  - using PodSecurityPolicy can restrict AllowedHostPaths (used by hostPath volumes)
+  - Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#volumes-and-file-systems
+
+- **Identify and Fix Open Ports, Remove Packages**
+```sh
+Identify Open Ports, Remove Packages 
+list all installed packages 			apt list --installed 
+list active services 					systemctl list-units --type service
+list the kernel modules 				lsmod
+search for service 						systemctl list-units --all | grep -i nginx
+stop remove nginx services				systemctl stop nginx
+remove nginx service packages			rm /lib/systemd/system/nginx.service
+remove packages from controlplane		apt remove nginx -y
+check service listing on 9090			netstat -atnlp | grep -i 9090 | grep -w -i listen
+check port to service mapping			cat /etc/services | grep -i ssh
+check port listing on 22				netstat -an | grep 22  | grep  -w -i  listen
+check lighthttpd service port			netstat -natulp | grep -i light
+```
 ### 3.2 Minimize IAM roles
 
-### 3.3. Minimize external access to the network
+- **Least Privilege:** make sure IAM roles of EC2 permissions are limited, 
+- **Block Access:** If not IAM; block CIDR, Firewall or NetPol. Example block EC2 169.254.169.254 
+- Use AWS Trusted Advisor/GCP Security Command Center/Adviser
+Ref: https://kubernetes.io/docs/reference/access-authn-authz/authentication/
 
+### 3.3. Minimize external access to the network
+- by default anyone has access cluster n/w can comminicate all pods and services
+- by defualt limit access to cluster n/w from outside
+
+- All pods can talk to all pods in all namespaces
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-external-egress
+spec:
+  podSelector: {}
+  policyTypes:
+  - Egress
+  egress:
+    to:
+    - namespaceSelector: {}
+
+```
 ### 3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp
 
+- UFW
+```
+Insall ufw					apt-get intall ufw
+							systemctl enable ufw
+							systemctl start ufw
+
+check ufw firewall status 	ufw status/ufw status numbered
+							ufw default allow outgoing
+							ufw default deny incoming
+
+Allow specific (80) 		ufw allow from 172.1.2.5 to any port 22 proto tcp
+							ufw allow 1000:2000/tcp
+							ufw allow from 172.1.3.0/25 to any port 80 proto tcp
+							ufw allow 22
+default deny 8080			ufw deny 80
+activate ufw firewall		ufw enable
+							ufw delete deny 80
+							ufw delete 5
+reset ufw					ufw reset
+activate ufw firewall		ufw disable
+```
+- **SECCOMP PROFILES** - restricting the calls it is able to make from userspace into the kernel
+```
+trace system calls			starce -c touch /tmp/test.log	
+check seccomp				grep -i seccomp /boot/config-$(uname -r)
+
+run seccomp	pod 			k run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
+default location 			/var/lib/kubelet/seccomp
+use in pod					localhostProfile: profiles/audit.json
+```
+- **APPARMOR -** 	Kernal Security Module to granualr access control for programs on Host OS
+  - **AppArmor Profile** - Set of Rules, to be enabled in nodes
+  - AppArmor Profile loaded in 2 modes
+    - **Complain Mode** - Discover the program
+    - **Enfore Mode** - prevent the program
+```
+check status				systemctl status apparmor
+check enabled in nodes		cat /sys/module/apparmor/parameters/enabled
+check profiles				cat /sys/kernel/security/apparmor/profiles
+
+installed					apt-get install apparmor-utils 
+create apparmor profile 	aa-genprof /root/add_data.sh
+apparmor module status		aa-status
+def Profile file directory 	/etc/apparmor.d/
+load profile file			apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
+load profile 				apparmor_parser /etc/apparmor.d/root.add_data.sh
+disable profile 			apparmor_parser -R /etc/apparmor.d/root.add_data.sh
+create 						apparmor-deny-write
+							apparmor-allow-write
+```
+Ref: https://kubernetes.io/docs/tutorials/clusters/apparmor/
+Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp/
+
 </details>
-<hr /> 
+<hr />
 
 ## 4. Minimize Microservice Vulnerabilities - 20%
+
 <details>
 <summary></summary>
 
@@ -326,9 +493,10 @@ spec:
 ### 4.4 Implement pod to pod encryption by use of mTLS
 
 </details>
-<hr /> 
+<hr />
 
 ## 5. Supply Chain Security - 20%
+
 <details>
 <summary></summary>
 ### 5.1 Minimize base image footprint
@@ -349,6 +517,7 @@ spec:
 ### 6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities
 
 ### 6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads
+
 ### 6.3 Detect all phases of attack regardless where it occurs and how it spreads
 
 ### 6.4 Perform deep analytical investigation and identification of bad actors within environment

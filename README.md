@@ -18,17 +18,17 @@ https://www.cmswire.com/information-management/7-key-principles-for-a-successful
 https://www.digitalocean.com/community/cheatsheets/how-to-use-git-a-reference-guide
 
 **GIT Commands Cheatsheest**<br/>
-https://www.atlassian.com/dam/jcr:e7e22f25-bba2-4ef1-a197-53f46b6df4a5/SWTM-2088_Atlassian-Git-Cheatsheet.pdf<br/>
-https://blog.bhanuteja.dev/30-git-commands-that-i-frequently-use#git-clone<br/>
+* https://www.atlassian.com/dam/jcr:e7e22f25-bba2-4ef1-a197-53f46b6df4a5/SWTM-2088_Atlassian-Git-Cheatsheet.pdf<br/>
+* https://blog.bhanuteja.dev/30-git-commands-that-i-frequently-use#git-clone<br/>
 
 **GIT Branching Model**<br/>
 https://nvie.com/posts/a-successful-git-branching-model/<br/>
 
 **Linux**<br/>
-https://www.freecodecamp.org/news/the-linux-commands-handbook/<br/>
-https://dev.to/ptuladhar3/linux-commands-for-developers-17j<br/>
-https://www.guru99.com/linux-commands-cheat-sheet.html<br/>
-http://linuxcommand.org/lc3_learning_the_shell.php<br/>
+* https://www.freecodecamp.org/news/the-linux-commands-handbook/<br/>
+* https://dev.to/ptuladhar3/linux-commands-for-developers-17j<br/>
+* https://www.guru99.com/linux-commands-cheat-sheet.html<br/>
+* http://linuxcommand.org/lc3_learning_the_shell.php<br/>
 
 **Linux Shell Scripting Tutorial**<br/>
 https://bash.cyberciti.biz/guide/Main_Page<br/>
@@ -43,9 +43,10 @@ https://linuxhandbook.com/yaml-basics/?fbclid=IwAR1ulfdLuk8g545hDak0IGqqPSikkEpq
 https://www.whizlabs.com/blog/wp-content/uploads/2020/01/Ansible_Vs_Puppet_Vs_Chef.png
 
 **Terraform**<br/>
-https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2020/11/terraform-cheatsheet-from-ACG.pdf<br/>
-https://jayendrapatil.com/terraform-cheat-sheet/<br/>
-https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-exam<br/>
+* https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2020/11/terraform-cheatsheet-from-ACG.pdf<br/>
+* https://www.techbeatly.com/terraform-cheat-sheet/
+* https://jayendrapatil.com/terraform-cheat-sheet/<br/>
+* https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-exam<br/>
 
 **Packer**<br/>
 https://devopscube.com/packer-tutorial-for-beginners/<br/>
@@ -54,35 +55,35 @@ https://devopscube.com/packer-tutorial-for-beginners/<br/>
 https://www.whizlabs.com/blog/wp-content/uploads/2019/12/Ansible_vs_Terraform.png<br/>
 
 **Kubernetes K8S Interview Questions**<br/>
-https://medium.com/devops-mojo/kubernetes-architecture-overview-introduction-to-k8s-architecture-and-understanding-k8s-cluster-components-90e11eb34ccd<br/>
-https://www.guru99.com/kubernetes-interview-questions-answers.html<br/>
+* https://medium.com/devops-mojo/kubernetes-architecture-overview-introduction-to-k8s-architecture-and-understanding-k8s-cluster-components-90e11eb34ccd<br/>
+* https://www.guru99.com/kubernetes-interview-questions-answers.html<br/>
 
 **Kubernetes K8S Cheatsheet**<br/>
 https://gist.github.com/pydevops/0efd399befd960b5eb18d40adb68ef83<br/>
 
 **Kubernetes K8S Commands**<br/>
-https://gist.github.com/edsiper/fac9a816898e16fc0036f5508320e8b4<br/>
-https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c25535f7<br/>
-https://faun.pub/kubectl-commands-cheatsheet-43ce8f13adfb<br/>
+* https://gist.github.com/edsiper/fac9a816898e16fc0036f5508320e8b4<br/>
+* https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c25535f7<br/>
+* https://faun.pub/kubectl-commands-cheatsheet-43ce8f13adfb<br/>
 
 **Kubernetes alias & Plugins**<br/>
-https://github.com/ahmetb/kubectl-aliases<br/>
-https://github.com/ishantanu/awesome-kubectl-plugins<br/>
+* https://github.com/ahmetb/kubectl-aliases<br/>
+* https://github.com/ishantanu/awesome-kubectl-plugins<br/>
 
 **Kubernetes Network Troubleshooting**<br/>
 https://github.com/nicolaka/netshoot
 
 **Kubernetes Backup Restore**<br/>
-https://katharharshal1.medium.com/backup-and-restore-eks-kubernetes-using-velero-32b11cb55b81<br/>
-https://blogs.halodoc.io/kubernetes-disaster-recovery-with-velero/<br/>
-https://rafay.co/the-kubernetes-current/kubernetes-cluster-backup-restore-with-velero-and-rafay/<br/>
+* https://katharharshal1.medium.com/backup-and-restore-eks-kubernetes-using-velero-32b11cb55b81<br/>
+* https://blogs.halodoc.io/kubernetes-disaster-recovery-with-velero/<br/>
+* https://rafay.co/the-kubernetes-current/kubernetes-cluster-backup-restore-with-velero-and-rafay/<br/>
 
 
 **Docker**<br/>
-https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
-https://design.jboss.org/redhatdeveloper/marketing/docker_cheatsheet/cheatsheet/images/docker_cheatsheet_r3v2.pdf<br/>
-https://dzone.com/articles/top-docker-commands-itsyndicate<br/>
-https://www.bmc.com/blogs/docker-security-best-practices/#<br/>
+* https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
+* https://design.jboss.org/redhatdeveloper/marketing/docker_cheatsheet/cheatsheet/images/docker_cheatsheet_r3v2.pdf<br/>
+* https://dzone.com/articles/top-docker-commands-itsyndicate<br/>
+* https://www.bmc.com/blogs/docker-security-best-practices/#<br/>
 
 **Complete Docker Handbook**<br/>
 https://www.freecodecamp.org/news/the-docker-handbook/
@@ -197,9 +198,9 @@ https://miro.medium.com/max/2638/1*a1cClf7S4R_IevTVOa15Ww.png
 https://aws.amazon.com/blogs/devops/building-end-to-end-aws-devsecops-ci-cd-pipeline-with-open-source-sca-sast-and-dast-tools/
 
 **OWASP Top 10**<br/>
-https://owasp.org/www-project-top-ten/<br/>
-https://www.synopsys.com/glossary/what-is-owasp-top-10.html<br/>
-https://apisecurity.io/encyclopedia/content/owasp-api-security-top-10-cheat-sheet-tabloid.pdf<br/>
+* https://owasp.org/www-project-top-ten/<br/>
+* https://www.synopsys.com/glossary/what-is-owasp-top-10.html<br/>
+* https://apisecurity.io/encyclopedia/content/owasp-api-security-top-10-cheat-sheet-tabloid.pdf<br/>
 
 
 ## Behavrioural Interview Questions
