@@ -445,16 +445,78 @@ spec:
 ```
 ### 3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp
 
-- Restricting SYSCALLS with SECCOMP
-- **SECCOMP PROFILES** - restricting the calls it is able to make from userspace into the kernel
-```
-trace system calls		starce -c touch /tmp/test.log	
-check seccomp			grep -i seccomp /boot/config-$(uname -r)
+- **SECCOMP PROFILES** - restricting the system calls it is able to make from userspace into the kernel
+- SECCOMP can operate with 3 modes
+  - Mode **0 - disabled**
+  - Mode **1 - strict mode**
+  - Mode **2 - filtered mode**
+- SECCOMP profile default directory ./profiles
+- SECCOMP Profiles are 3 types
+  - Default Profile
+  - Audit - audit.json
+  - Violation- violation.json
+  - Custom - fine-grained.json
+- SECCOMP profile action can be
+  - "action": "SCMP_ACT_ALLOW"
+  - "action": "SCMP_ACT_ERRNO"
+- - Create POD with Specific Profile
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: audit-pod
+    labels:
+      app: audit-pod
+  spec:
+    securityContext:
+      seccompProfile:
+        # default seccomp
+        type: RuntimeDefault
+    containers:
+    - name: test-container
+      image: hashicorp/http-echo:0.2.3
+      args:
+      - "-text=just made some syscalls!"
+      securityContext:
+        allowPrivilegeEscalation: false
+  ```
+- Create POD with Specific Profile
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: audit-pod
+    labels:
+      app: audit-pod
+  spec:
+    securityContext:
+      seccompProfile:
+        type: Localhost
+        # specfy violation.json or fine-grained.json
+        localhostProfile: profiles/audit.json
+    containers:
+    - name: test-container
+      image: hashicorp/http-echo:0.2.3
+      args:
+      - "-text=just made some syscalls!"
+      securityContext:
+        allowPrivilegeEscalation: false
+    ```
+  ```
+  #trace system calls		
+  starce -c touch /tmp/test.log	
 
-run seccomp	pod 		k run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
-default location 		/var/lib/kubelet/seccomp
-use in pod			localhostProfile: profiles/audit.json
-```
+  # check SECCOMP is supported by kernal
+  grep -i seccomp /boot/config-$(uname -r)
+
+  #Run Kubbernetes POD (amicontained - open source inspection tool)
+  kubectl run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
+  kubectl logs amicontained
+  #default location 		
+  /var/lib/kubelet/seccomp
+  #use in pod			
+  localhostProfile: profiles/audit.json
+  ``` 
 - **APPARMOR -** 	Kernal Security Module to granualr access control for programs on Host OS
   - **AppArmor Profile** - Set of Rules, to be enabled in nodes
   - AppArmor Profile loaded in 2 modes
@@ -463,6 +525,7 @@ use in pod			localhostProfile: profiles/audit.json
   - **create AppArmor Profile**
   ```sh
   sudo vi /etc/apparmor.d/deny-write
+
   #include <tunables/global>
   profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
     #include <abstractions/base>
@@ -489,22 +552,22 @@ use in pod			localhostProfile: profiles/audit.json
       image: busybox
       command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
   ```
-- useful commands  
-```
-check status			systemctl status apparmor
-check enabled in nodes		cat /sys/module/apparmor/parameters/enabled
-check profiles			cat /sys/kernel/security/apparmor/profiles
+  - useful commands  
+  ```
+  check status			systemctl status apparmor
+  check enabled in nodes		cat /sys/module/apparmor/parameters/enabled
+  check profiles			cat /sys/kernel/security/apparmor/profiles
 
-installed			apt-get install apparmor-utils 
-create apparmor profile 	aa-genprof /root/add_data.sh
-apparmor module status		aa-status
-def Profile file directory 	/etc/apparmor.d/
-load profile file		apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
-load profile 			apparmor_parser /etc/apparmor.d/root.add_data.sh
-disable profile 		apparmor_parser -R /etc/apparmor.d/root.add_data.sh
-create 				apparmor-deny-write
-				apparmor-allow-write
-```
+  installed			apt-get install apparmor-utils 
+  create apparmor profile 	aa-genprof /root/add_data.sh
+  apparmor module status		aa-status
+  def Profile file directory 	/etc/apparmor.d/
+  load profile file		apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
+  load profile 			apparmor_parser /etc/apparmor.d/root.add_data.sh
+  disable profile 		apparmor_parser -R /etc/apparmor.d/root.add_data.sh
+  create 				apparmor-deny-write
+          apparmor-allow-write
+  ```
 - Ref: https://kubernetes.io/docs/tutorials/clusters/apparmor/
 - Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp/
 
@@ -531,6 +594,7 @@ create 				apparmor-deny-write
 
 <details>
 <summary></summary>
+
 ### 5.1 Minimize base image footprint
 
 ### 5.2 Secure your supply chain: whitelist allowed registries, sign and validate images
