@@ -461,8 +461,8 @@ use in pod			localhostProfile: profiles/audit.json
     - **Complain Mode** - Discover the program
     - **Enfore Mode** - prevent the program
   - **create AppArmor Profile**
-  `sudo vi /etc/apparmor.d/deny-write`
   ```sh
+  sudo vi /etc/apparmor.d/deny-write
   #include <tunables/global>
   profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
     #include <abstractions/base>
@@ -489,7 +489,7 @@ use in pod			localhostProfile: profiles/audit.json
       image: busybox
       command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
   ```
-  
+- useful commands  
 ```
 check status			systemctl status apparmor
 check enabled in nodes		cat /sys/module/apparmor/parameters/enabled
