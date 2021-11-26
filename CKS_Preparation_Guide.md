@@ -376,6 +376,28 @@ blacklist dccp
 #reboot
 shutdown –r now
 ```
+- **UFW**
+```
+Insall ufw			apt-get intall ufw
+				systemctl enable ufw
+				systemctl start ufw
+
+check ufw firewall status 	ufw status/ufw status numbered
+				ufw default allow outgoing
+				ufw default deny incoming
+
+Allow specific (80) 		ufw allow from 172.1.2.5 to any port 22 proto tcp
+				ufw allow 1000:2000/tcp
+				ufw allow from 172.1.3.0/25 to any port 80 proto tcp
+				ufw allow 22
+default deny 8080		ufw deny 80
+activate ufw firewall		ufw enable
+				ufw delete deny 80
+				ufw delete 5
+reset ufw			ufw reset
+activate ufw firewall		ufw disable
+```
+
 - **Restirct allowed hostpaths with PodSecurityPolicy**
   - using PodSecurityPolicy can restrict AllowedHostPaths (used by hostPath volumes)
   - Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#volumes-and-file-systems
@@ -423,27 +445,7 @@ spec:
 ```
 ### 3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp
 
-- UFW
-```
-Insall ufw			apt-get intall ufw
-				systemctl enable ufw
-				systemctl start ufw
-
-check ufw firewall status 	ufw status/ufw status numbered
-				ufw default allow outgoing
-				ufw default deny incoming
-
-Allow specific (80) 		ufw allow from 172.1.2.5 to any port 22 proto tcp
-				ufw allow 1000:2000/tcp
-				ufw allow from 172.1.3.0/25 to any port 80 proto tcp
-				ufw allow 22
-default deny 8080		ufw deny 80
-activate ufw firewall		ufw enable
-				ufw delete deny 80
-				ufw delete 5
-reset ufw			ufw reset
-activate ufw firewall		ufw disable
-```
+- Restricting SYSCALLS with SECCOMP
 - **SECCOMP PROFILES** - restricting the calls it is able to make from userspace into the kernel
 ```
 trace system calls		starce -c touch /tmp/test.log	
@@ -458,6 +460,36 @@ use in pod			localhostProfile: profiles/audit.json
   - AppArmor Profile loaded in 2 modes
     - **Complain Mode** - Discover the program
     - **Enfore Mode** - prevent the program
+  - **create AppArmor Profile**
+  `sudo vi /etc/apparmor.d/deny-write`
+  ```sh
+  #include <tunables/global>
+  profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
+    #include <abstractions/base>
+    file,
+    # Deny all file writes.
+    deny /** w,
+  }
+  ```
+  - load the profile on all our nodes default directory /etc/apparmor.d
+  `sudo apparmor_parser /etc/apparmor.d/deny-write`
+  - apply to pod
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: hello-apparmor
+    annotations:
+      # Tell Kubernetes to apply the AppArmor profile "k8s-apparmor-example-deny-write".
+      # Note that this is ignored if the Kubernetes node is not running version 1.4 or greater.
+      container.apparmor.security.beta.kubernetes.io/hello: localhost/k8s-apparmor-example-deny-write
+  spec:
+    containers:
+    - name: hello
+      image: busybox
+      command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
+  ```
+  
 ```
 check status			systemctl status apparmor
 check enabled in nodes		cat /sys/module/apparmor/parameters/enabled
@@ -473,8 +505,8 @@ disable profile 		apparmor_parser -R /etc/apparmor.d/root.add_data.sh
 create 				apparmor-deny-write
 				apparmor-allow-write
 ```
-Ref: https://kubernetes.io/docs/tutorials/clusters/apparmor/
-Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp/
+- Ref: https://kubernetes.io/docs/tutorials/clusters/apparmor/
+- Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp/
 
 </details>
 <hr />
