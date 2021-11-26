@@ -450,8 +450,7 @@ spec:
   - Mode **0 - disabled**
   - Mode **1 - strict mode**
   - Mode **2 - filtered mode**
-- SECCOMP profile default directory 
-  - /var/lib/kubelet/seccomp/profiles/
+- SECCOMP profile default directory `/var/lib/kubelet/seccomp/profiles`
 - SECCOMP Profiles are 3 types
   - Default Profile
   - Audit - audit.json
@@ -519,6 +518,7 @@ spec:
   #use in pod			
   localhostProfile: profiles/audit.json
   ``` 
+  - Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp/
 - **APPARMOR -** 	Kernal Security Module to granualr access control for programs on Host OS
   - **AppArmor Profile** - Set of Rules, to be enabled in nodes
   - AppArmor Profile loaded in 2 modes
@@ -571,7 +571,6 @@ spec:
           apparmor-allow-write
   ```
 - Ref: https://kubernetes.io/docs/tutorials/clusters/apparmor/
-- Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp/
 
 </details>
 <hr />
