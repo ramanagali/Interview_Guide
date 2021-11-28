@@ -814,15 +814,41 @@ spec:
     ```
 - Ref: https://kubernetes.io/docs/concepts/configuration/secret/
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
-- Creating a Container Runtime for additional layes of isolation 
-- Create RuntimeClass to define specilized container runtime config
-- Create Pod with spec.runtimeClassName: myclass
+- Sandboxing is isoloation of containers from Host 
 
 #### 4.3.1 gvisor
-- gvisor create runtime sandbox with in hostOS (OCI comapliant)
+- gVisor sits between container and Linux Kernal. Every container has their own gVisior
+- gVisor has 2 different componets
+  - Sentry: works as kernal for containers
+  - Gofer is file proxy to access system files. Middle man betwen container and OS
+- gVisor uses runsc to runtime sandbox with in hostOS (OCI comapliant)
 
 #### 4.3.4 kata containers
-- Kata lightweight containers in VM
+- Kata lightweight containers in VM, provisions own kernal for containers(like VM)
+- Kata containers provide hardware virtualization support 
+
+#### Container Runtime
+- Creating a Container Runtime for additional layes of isolation 
+- Create RuntimeClass to define specilized container runtime config
+  ```yaml
+  apiVersion: node.k8s.io/v1  # RuntimeClass is defined in the node.k8s.io API group
+  kind: RuntimeClass
+  metadata:
+    name: myclass  # The name the RuntimeClass will be referenced by
+    # RuntimeClass is a non-namespaced resource
+  handler: runsc/kata  # The name of the corresponding CRI configuration
+  ```
+- Create Pod with specific runtime class
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: mypod
+  spec:
+    runtimeClassName: myclass
+    containers:
+    # ...
+  ```
 
 ### 4.4 Implement pod to pod encryption by use of mTLS
 - Create CSR
