@@ -445,7 +445,8 @@ spec:
 ```
 ### 3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp
 
-- **SECCOMP PROFILES** - restricting the system calls it is able to make from userspace into the kernel
+#### 3.4.1 **SECCOMP PROFILES** 
+- restricting the system calls it is able to make from userspace into the kernel
 - SECCOMP can operate with 3 modes
   - Mode **0 - disabled**
   - Mode **1 - strict mode**
@@ -513,7 +514,7 @@ spec:
   #Run Kubbernetes POD (amicontained - open source inspection tool)
   kubectl run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
   kubectl logs amicontained
-  
+
   #default location 		
   /var/lib/kubelet/seccomp
 
@@ -521,7 +522,8 @@ spec:
   localhostProfile: profiles/audit.json
   ``` 
   - Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp/
-- **APPARMOR -** 	Kernal Security Module to granualr access control for programs on Host OS
+ #### 3.4.2 **APPARMOR** 	
+  - Kernal Security Module to granualr access control for programs on Host OS
   - **AppArmor Profile** - Set of Rules, to be enabled in nodes
   - AppArmor Profile loaded in 2 modes
     - **Complain Mode** - Discover the program
@@ -582,7 +584,90 @@ spec:
 <details>
 <summary></summary>
 
-### 4.1 etup appropriate OS level security domains e.g. using PSP, OPA, security contexts
+### 4.1 Setup appropriate OS level security domains e.g. using PSP, OPA, security contexts
+
+#### 4.1.1 **Pod Security Policies**
+
+#### 4.1.2 **Open Policy Agent**
+
+#### 4.1.3 **Security Contexts**
+- Defines privilege and access control settings for a Pod or Container
+- give Linux capabilities 
+- Set the security context for a Pod (applies to all containers)
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: security-context-demo
+  spec:
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 3000
+      fsGroup: 2000
+    volumes:
+    - name: sec-ctx-vol
+      emptyDir: {}
+    containers:
+    - name: sec-ctx-demo
+      image: busybox
+      command: [ "sh", "-c", "sleep 1h" ]
+      volumeMounts:
+      - name: sec-ctx-vol
+        mountPath: /data/demo
+      securityContext:
+        allowPrivilegeEscalation: false
+  ```
+  ```sh
+  kubectl exec -it security-context-demo -- sh
+  ps
+  cd demo
+  echo hello > testfile
+  ls -l
+  id
+  ```
+- Set the security context for a Container 
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: security-context-demo-2
+  spec:
+    securityContext:
+      runAsUser: 1000
+    containers:
+    - name: sec-ctx-demo-2
+      image: gcr.io/google-samples/node-hello:1.0
+      securityContext:
+        runAsUser: 2000
+        allowPrivilegeEscalation: false
+  ```
+  ```sh
+  kubectl exec -it security-context-demo-2 -- sh
+  ps aux
+  id
+  ```
+- Set additional(CAP_NET_ADMIN & CAP_SYS_TIME) capabilities for a Container 
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: security-context-demo-4
+  spec:
+    containers:
+    - name: sec-ctx-4
+      image: gcr.io/google-samples/node-hello:1.0
+      securityContext:
+        capabilities:
+          add: ["NET_ADMIN", "SYS_TIME"]
+  ```
+- Assign SELinux labels to a Container 
+  ```yaml
+  ...
+  securityContext:
+    seLinuxOptions:
+      level: "s0:c123,c456"
+  ```
+- Set Seccomp profile to Container [Refer 3.4.1](#341-seccomp-profiles)
 
 ### 4.2 Manage Kubernetes secrets
 
