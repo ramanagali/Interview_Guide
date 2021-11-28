@@ -810,18 +810,15 @@ spec:
     ```
 - Ref: https://kubernetes.io/docs/concepts/configuration/secret/
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
-- Creating a Container Runtime 
-
-1. Container runtime for additional layes of isolation 
-2. gvisor create runtime sandbox with in hostOS (OCI comapliant)
-3. Kata lightweight containers in VM
-4. use RunTimeClass to define specilized container runtime config
-
-- create RuntimeClass
-- create Pod with spec.runtimeClassName: myclass
+- Creating a Container Runtime for additional layes of isolation 
+- Create RuntimeClass to define specilized container runtime config
+- Create Pod with spec.runtimeClassName: myclass
 
 #### 4.3.1 gvisor
+- gvisor create runtime sandbox with in hostOS (OCI comapliant)
+
 #### 4.3.4 kata containers
+- Kata lightweight containers in VM
 
 ### 4.4 Implement pod to pod encryption by use of mTLS
 - Create CSR
