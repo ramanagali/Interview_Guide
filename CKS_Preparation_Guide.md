@@ -1,4 +1,4 @@
-# CKS Preparation Guide
+# Complete CKS Preparation Guide
 
 ## 1. Cluster Setup - 10%
 
@@ -586,13 +586,98 @@ spec:
 
 ### 4.1 Setup appropriate OS level security domains e.g. using PSP, OPA, security contexts
 
-#### 4.1.1 **Pod Security Policies**
+#### **Admission Controller**
+- Implment security measures to enforce. Triggers before creating a pod 
+- Enable a Controller in kubeadm cluster /etc/kubernetes/manifests/kube-apiserver.yaml
+  ```yaml
+  spec:
+  containers:
+  - command:
+  - kube-apiserver
+  ...
+  - --enable-admission-plugins=NameSpaceAutoProvision,PodSecurityPolicy
+  image: k8s.gcr.io/kube-apiserver-amd64:v1.11.3
+  name: kube-apiserver
+  ```
+- Ref: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
+  
+#### 4.1.1 **Pod Security Policies (PSP)**
+- Defines policies to controls security sensitive aspects of the pod specification
+- PodSecurityPolicy is one of the admission controller
+- enable at api-server using  `--enable-admission-plugins=NameSpaceAutoProvision,PodSecurityPolicy`
+- Create Pod using PSP
+  ```yaml
+  apiVersion: policy/v1beta1
+  kind: PodSecurityPolicy
+  metadata:
+    name: privileged
+    annotations:
+      seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
+  spec:
+    privileged: true
+    allowPrivilegeEscalation: true
+    allowedCapabilities:
+    - '*'
+    volumes:
+    - '*'
+    hostNetwork: true
+    hostPorts:
+    - min: 0
+      max: 65535
+    hostIPC: true
+    hostPID: true
+    runAsUser:
+      rule: 'RunAsAny'
+    seLinux:
+      rule: 'RunAsAny'
+    supplementalGroups:
+      rule: 'RunAsAny'
+    fsGroup:
+      rule: 'RunAsAny'
+  ```
+  - POD Access to PSP for authorization
+    - Create Service Account or use Default Service account
+    - Create Role with podsecuritypolicies, verbs as use
+    - Create RoleBinding to Service Account and Role
+- Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/
+#### 4.1.2 **Open Policy Agent (OPA)**
+- OPA for enforcing authorization policies for kubernetes
+  - All images must be from approved repositories
+  - All ingress hostnames must be globally unique
+  - All pods must have resource limits
+  - All namespaces must have a label that lists a point-of-contact
+- Deploy OPA Gatekeeper in cluster
+  ```sh
+  kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/release-3.7/deploy/gatekeeper.yaml
 
-#### 4.1.2 **Open Policy Agent**
+  helm repo add gatekeeper https://open-policy-agent.github.io/gatekeeper/charts --force-update
+  helm install gatekeeper/gatekeeper --name-template=gatekeeper --namespace gatekeeper-system --create-namespace
+  ```
+- Example constraint template to enforce to require all lables
+  ```sh
+  #create template
+  kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/demo/basic/templates/k8srequiredlabels_template.yaml
+  ```
 
+  ```yaml
+  apiVersion: constraints.gatekeeper.sh/v1beta1
+  kind: K8sRequiredLabels
+  metadata:
+    name: ns-must-have-hr
+  spec:
+    match:
+      kinds:
+        - apiGroups: [""]
+          kinds: ["Namespace"]
+    parameters:
+      labels: ["hr"]
+  ```
+  `kubectl get constraints`
+  
+- Ref: https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/
+- Ref: https://open-policy-agent.github.io/gatekeeper/website/docs/install/
 #### 4.1.3 **Security Contexts**
-- Defines privilege and access control settings for a Pod or Container
-- give Linux capabilities 
+- Defines privilege, access control, Linux capabilities settings for a Pod or Container
 - Set the security context for a Pod (applies to all containers)
   ```yaml
   apiVersion: v1
@@ -668,12 +753,81 @@ spec:
       level: "s0:c123,c456"
   ```
 - Set Seccomp profile to Container [Refer 3.4.1](#341-seccomp-profiles)
+- Ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
 ### 4.2 Manage Kubernetes secrets
-
+- Types of Secrets
+  - Opaque  arbitrary user-defined data
+- Secret as Data to a Container Using a Volume
+  ```
+  kubectl create secret generic mysecret --from-literal=username=devuser --from-literal=password='S!B\*d$zDsb='
+  ```
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: mypod
+  spec:
+    containers:
+    - name: mypod
+      image: redis
+      volumeMounts:
+      - name: secret-volume
+        mountPath: "/etc/secret-volume"
+        readOnly: true
+    volumes:
+    - name: secret-volume
+      secret:
+        secretName: mysecret
+  ```
+- Secret as Data to a Container Using Environment Variables
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: secret-env-pod
+  spec:
+    containers:
+    - name: mycontainer
+      image: redis
+      # refer all secret data 
+      envFrom:
+        - secretRef:
+          name: mysecret-2
+      # refer specific variable
+      env:
+        - name: SECRET_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: username
+        - name: SECRET_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: password
+    restartPolicy: Never
+    ```
+- Ref: https://kubernetes.io/docs/concepts/configuration/secret/
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
+- Creating a Container Runtime 
+
+1. Container runtime for additional layes of isolation 
+2. gvisor create runtime sandbox with in hostOS (OCI comapliant)
+3. Kata lightweight containers in VM
+4. use RunTimeClass to define specilized container runtime config
+
+- create RuntimeClass
+- create Pod with spec.runtimeClassName: myclass
+
+#### 4.3.1 gvisor
+#### 4.3.4 kata containers
 
 ### 4.4 Implement pod to pod encryption by use of mTLS
+- Create CSR
+- Get CSR approved
+- Once approved then retrive from status.certificate
+- Download and use it
 
 </details>
 <hr />
