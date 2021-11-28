@@ -513,8 +513,10 @@ spec:
   #Run Kubbernetes POD (amicontained - open source inspection tool)
   kubectl run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
   kubectl logs amicontained
+  
   #default location 		
   /var/lib/kubelet/seccomp
+
   #use in pod			
   localhostProfile: profiles/audit.json
   ``` 
