@@ -1,4 +1,4 @@
-# Complete CKS Preparation Guide
+# Complete Certified Kubernetes Security Specialist (CKS) Preparation Guide
 
 ## 1. Cluster Setup - 10%
 
