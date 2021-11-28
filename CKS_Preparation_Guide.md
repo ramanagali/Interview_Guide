@@ -1,5 +1,9 @@
 # Complete Certified Kubernetes Security Specialist (CKS) Preparation Guide
 
+Those who know about Kubernetes Admistriation, for next level 
+Certified Kubernetes Security Specialist (CKS) exam point of view, below finetuned version study material.
+
+
 ## 1. Cluster Setup - 10%
 
 <details>
