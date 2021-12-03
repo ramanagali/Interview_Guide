@@ -153,6 +153,7 @@ https://www.allthingsdistributed.com/articles.html
 ## Languagues
 **Python**<br/>
 https://github.com/joeyajames/Python
+https://www.kdnuggets.com/2021/11/25-github-repositories-python-developer.html
 
 **Go**<br/>
 https://www.tutorialspoint.com/go/go_error_handling.htm
