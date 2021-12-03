@@ -89,6 +89,7 @@ https://github.com/ramanagali/Interview_Guide/blob/main/CKS_Preparation_Guide.md
 https://dev.to/walidshaari/the-ultimate-curated-resources-for-certified-kubernetes-security-specialist-cks-410l<br/>
 https://github.com/walidshaari/Certified-Kubernetes-Security-Specialist<br/>
 https://github.com/kodekloudhub/certified-kubernetes-security-specialist-cks-course<br/>
+https://moabukar.medium.com/where-to-begin-with-the-cks-exam-5cf0dcc86f76
 
 **Create CKS Cluster using Vagrant**<br/>
 https://github.com/pksheldon4/cks-cluster<br/>
