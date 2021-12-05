@@ -137,8 +137,15 @@
     - traffic to random servers, weighted or requests etc
   - **User IP Hashing** 
     - session stickiness based on user IP 
+  - **Least Connection/Least Load**
+    - send traffic to least connections of the server
+  - **Fastest**
+    - send traffic to those servers that respond the quickly 
+  - **Observed** 
+    - current connections + the response time
+  - **Predictive**
+    - predict which server will perform well based on rank, more rank more traffic   
   - **URL Hashing** - requested content to server
-  - **Least Load** - lowest load at the time of request
   - **power of d** 
     - mulitple LB's. LB in the pool sends a request to the least busy server
     - nginx uses d=2
