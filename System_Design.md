@@ -123,7 +123,7 @@
   - tells the system how to render, cache, decompress, language
   - seperation of concerns, protect data and analytics
 
-- **Basic Kinds of Load Distribution**
+- **Basic Kinds of Load Distribution/Load Balancing Algorithms**
   - distributing tasks over a set of computing nodes
   - for performance and reliability
   - horizontal dynamic scaling, Abstraction, throughtput, availability and
