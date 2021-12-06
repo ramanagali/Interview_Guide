@@ -116,7 +116,7 @@ https://assertible.com/blog/7-http-methods-every-web-developer-should-know-and-h
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
 
 **HTTP Status Codes**<br/>
-https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
 **HTTP Load Testing***<br/>
 https://k6.io/docs/using-k6/http-requests/<br/>
