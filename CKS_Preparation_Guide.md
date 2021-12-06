@@ -985,11 +985,11 @@ spec:
   - Update kubeconfig with allowed registry and CA
   - create admin-config in `/etc/kubernetes/admission-config.yaml`
   - enable ImagePolicyWebhook, admission-control-config-file in kube api server config at `/etc/kubernetes/manifests/kube-apiserver.yaml`
-**Approach 2 - ConstraintTemplate**
-- Create ConstraintTemplate CRD to whitelist docker registries
-- Create a Resource Constraint with allowed docker registries 
-- Create a pod with valid registry and test
-- Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
+  - Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
+- **Approach 2 - ConstraintTemplate**
+  - Create ConstraintTemplate CRD to whitelist docker registries
+  - Create a Resource Constraint with allowed docker registries 
+  - Create a pod with valid registry and test
   
 ### 5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)
 
