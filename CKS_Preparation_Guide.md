@@ -882,7 +882,8 @@ spec:
     restartPolicy: Never
     ```
 
-- Ref: <https://kubernetes.io/docs/concepts/configuration/secret/>
+- Ref: https://kubernetes.io/docs/concepts/configuration/secret/
+- Ref: https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/
 
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
 
@@ -946,12 +947,18 @@ spec:
 - Ref: https://github.com/kubernetes/enhancements/blob/5dcf841b85f49aa8290529f1957ab8bc33f8b855/keps/sig-node/585-runtime-class/README.md#examples
 
 ### 4.4 Implement pod to pod encryption by use of mTLS
-
-- Create CSR
-- Get CSR approved
+- mTLS: Is secure communication between pods
+- With service mesh Istio & Linkerd mTLS is easier, managable
+  - mTLS can be Enforced or Strict 
+  
+**Steps for TLS certificate for a Kubernetes service accessed through DNS**
+- Download and install CFSSL
+- Generete private key using `cfssl genkey`
+- Create CertificateSigningRequest
+- Get CSR approved (by k8s Admin)
 - Once approved then retrive from status.certificate
 - Download and use it
-
+- Ref: https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/
 </details>
 <hr />
 
