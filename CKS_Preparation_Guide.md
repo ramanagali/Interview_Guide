@@ -898,26 +898,37 @@ spec:
   - Sentry: works as kernal for containers
   - Gofer is file proxy to access system files. Middle man betwen container and OS
 - gVisor uses runsc to runtime sandbox with in hostOS (OCI comapliant)
-
-#### 4.3.4 kata containers
-
-- Kata Install lightweight containers in VM, provisions own kernal for containers(like VM)
-- Kata containers provide hardware virtualization support (cannot run in Cloud, GCP supports)
-
-#### Container Runtime
-
-- Creating a Container Runtime for additional layes of isolation
-- Create RuntimeClass to define specilized container runtime config
-
   ```yaml
   apiVersion: node.k8s.io/v1  # RuntimeClass is defined in the node.k8s.io API group
   kind: RuntimeClass
   metadata:
     name: myclass  # The name the RuntimeClass will be referenced by
-    # RuntimeClass is a non-namespaced resource
-  handler: runsc/kata  # The name of the corresponding CRI configuration
+  handler: runsc  # non-namespaced, The name of the corresponding CRI configuration
   ```
 
+#### 4.3.4 kata containers
+
+- Kata Install lightweight containers in VM, provisions own kernal for containers(like VM)
+- Kata containers provide hardware virtualization support (cannot run in Cloud, GCP supports)
+- Kata containers use kata runtime
+  ```yaml
+  apiVersion: node.k8s.io/v1  # RuntimeClass is defined in the node.k8s.io API group
+  kind: RuntimeClass
+  metadata:
+    name: myclass  # The name the RuntimeClass will be referenced by
+  handler: kata  # non-namespaced, The name of the corresponding CRI configuration
+  ```
+
+#### Container Runtime
+
+- docker run => docker CLI => REST API => Docker Daemon => check locally => Registery => call containerd  => convert image to OCI container => containerd-shim => runC will start container 
+  - we can override runtime when running container
+  ```
+  docker run --runtime kata -d nginx
+  docker run --runtime runsc -d nginx
+  ```
+- Creating a Container Runtime for additional layes of isolation
+- Create RuntimeClass to define specilized container runtime config
 - Create Pod with specific runtime class
 
   ```yaml
@@ -928,8 +939,11 @@ spec:
   spec:
     runtimeClassName: myclass
     containers:
-    # ...
+    - image: nginx
+      name: nginx
   ```
+- Ref: https://kubernetes.io/docs/concepts/containers/runtime-class/
+- Ref: https://github.com/kubernetes/enhancements/blob/5dcf841b85f49aa8290529f1957ab8bc33f8b855/keps/sig-node/585-runtime-class/README.md#examples
 
 ### 4.4 Implement pod to pod encryption by use of mTLS
 
