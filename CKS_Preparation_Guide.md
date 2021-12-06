@@ -1,8 +1,7 @@
 # Complete Certified Kubernetes Security Specialist (CKS) Preparation Guide
 
-Those who know about Kubernetes Admistriation, for next level 
+Those who know about Kubernetes Admistriation, for next level
 Certified Kubernetes Security Specialist (CKS) exam point of view, below finetuned version study material.
-
 
 ## 1. Cluster Setup - 10%
 
@@ -334,6 +333,7 @@ spec:
 ```
 
 - **Limit Node Access**
+
 ```sh
 # delete user
 userdel user1
@@ -344,7 +344,9 @@ usermod -s /usr/sbin/nologin user2
 #create user sam, home dir is /opt/sam, uid 2328 & login shell bash 
 useradd -d /opt/sam -s /bin/bash -G admin -u 2328 sam
 ```
+
 - **Remove Obsolete/unncessary Software**
+
 ```sh
 # list all services
 systemctl list-units --type service
@@ -355,7 +357,9 @@ systemctl disable squid
 # uninstall
 apt remove squid
 ```
+
 - **SSH hardening**
+
 ```sh
 #generate keys
 ssh-keygen –t rsa
@@ -369,7 +373,9 @@ PasswordAuthentication no
 
 systemctl restart sshd
 ```
+
 - **Restrict Obsolete Kernal Modules**
+
 ```sh
 # list all kernal modules
 lsmod
@@ -380,59 +386,65 @@ blacklist dccp
 #reboot
 shutdown –r now
 ```
+
 - **UFW**
+
 ```
-Insall ufw			apt-get intall ufw
-				systemctl enable ufw
-				systemctl start ufw
+Insall ufw   apt-get intall ufw
+    systemctl enable ufw
+    systemctl start ufw
 
-check ufw firewall status 	ufw status/ufw status numbered
-				ufw default allow outgoing
-				ufw default deny incoming
+check ufw firewall status  ufw status/ufw status numbered
+    ufw default allow outgoing
+    ufw default deny incoming
 
-Allow specific (80) 		ufw allow from 172.1.2.5 to any port 22 proto tcp
-				ufw allow 1000:2000/tcp
-				ufw allow from 172.1.3.0/25 to any port 80 proto tcp
-				ufw allow 22
-default deny 8080		ufw deny 80
-activate ufw firewall		ufw enable
-				ufw delete deny 80
-				ufw delete 5
-reset ufw			ufw reset
-activate ufw firewall		ufw disable
+Allow specific (80)   ufw allow from 172.1.2.5 to any port 22 proto tcp
+    ufw allow 1000:2000/tcp
+    ufw allow from 172.1.3.0/25 to any port 80 proto tcp
+    ufw allow 22
+default deny 8080  ufw deny 80
+activate ufw firewall  ufw enable
+    ufw delete deny 80
+    ufw delete 5
+reset ufw   ufw reset
+activate ufw firewall  ufw disable
 ```
 
 - **Restirct allowed hostpaths with PodSecurityPolicy**
   - using PodSecurityPolicy can restrict AllowedHostPaths (used by hostPath volumes)
-  - Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#volumes-and-file-systems
+  - Ref: <https://kubernetes.io/docs/concepts/policy/pod-security-policy/#volumes-and-file-systems>
 
 - **Identify and Fix Open Ports, Remove Packages**
+
 ```sh
 Identify Open Ports, Remove Packages 
-list all installed packages 			apt list --installed 
-list active services 				systemctl list-units --type service
-list the kernel modules 			lsmod
-search for service 				systemctl list-units --all | grep -i nginx
-stop remove nginx services			systemctl stop nginx
-remove nginx service packages			rm /lib/systemd/system/nginx.service
-remove packages from controlplane		apt remove nginx -y
-check service listing on 9090			netstat -atnlp | grep -i 9090 | grep -w -i listen
-check port to service mapping			cat /etc/services | grep -i ssh
-check port listing on 22			netstat -an | grep 22  | grep  -w -i  listen
-check lighthttpd service port			netstat -natulp | grep -i light
+list all installed packages    apt list --installed 
+list active services     systemctl list-units --type service
+list the kernel modules    lsmod
+search for service     systemctl list-units --all | grep -i nginx
+stop remove nginx services   systemctl stop nginx
+remove nginx service packages   rm /lib/systemd/system/nginx.service
+remove packages from controlplane  apt remove nginx -y
+check service listing on 9090   netstat -atnlp | grep -i 9090 | grep -w -i listen
+check port to service mapping   cat /etc/services | grep -i ssh
+check port listing on 22   netstat -an | grep 22  | grep  -w -i  listen
+check lighthttpd service port   netstat -natulp | grep -i light
 ```
+
 ### 3.2 Minimize IAM roles
 
-- **Least Privilege:** make sure IAM roles of EC2 permissions are limited, 
-- **Block Access:** If not IAM; block CIDR, Firewall or NetPol. Example block EC2 169.254.169.254 
+- **Least Privilege:** make sure IAM roles of EC2 permissions are limited,
+- **Block Access:** If not IAM; block CIDR, Firewall or NetPol. Example block EC2 169.254.169.254
 - Use AWS Trusted Advisor/GCP Security Command Center/Adviser
-Ref: https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+Ref: <https://kubernetes.io/docs/reference/access-authn-authz/authentication/>
 
 ### 3.3. Minimize external access to the network
+
 - by default anyone has access cluster n/w can comminicate all pods and services
 - by defualt limit access to cluster n/w from outside
 
 - All pods can talk to all pods in all namespaces
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -447,9 +459,11 @@ spec:
     - namespaceSelector: {}
 
 ```
+
 ### 3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp
 
-#### 3.4.1 **SECCOMP PROFILES** 
+#### 3.4.1 **SECCOMP PROFILES**
+
 - restricting the system calls it is able to make from userspace into the kernel
 - SECCOMP can operate with 3 modes
   - Mode **0 - disabled**
@@ -465,7 +479,8 @@ spec:
   - "action": "SCMP_ACT_ALLOW"
   - "action": "SCMP_ACT_ERRNO"
   - "defaultAction": "SCMP_ACT_LOG"
-- - Create POD with Specific Profile
+    - - Create POD with Specific Profile
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -486,7 +501,9 @@ spec:
       securityContext:
         allowPrivilegeEscalation: false
   ```
+
 - Create POD with Specific Profile
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -508,9 +525,10 @@ spec:
       securityContext:
         allowPrivilegeEscalation: false
     ```
+
   ```
-  #trace system calls		
-  starce -c touch /tmp/test.log	
+  #trace system calls  
+  starce -c touch /tmp/test.log 
 
   # check SECCOMP is supported by kernal
   grep -i seccomp /boot/config-$(uname -r)
@@ -519,20 +537,24 @@ spec:
   kubectl run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
   kubectl logs amicontained
 
-  #default location 		
+  #default location   
   /var/lib/kubelet/seccomp
 
-  #use in pod			
+  #use in pod   
   localhostProfile: profiles/audit.json
-  ``` 
-  - Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp/
- #### 3.4.2 **APPARMOR** 	
-  - Kernal Security Module to granualr access control for programs on Host OS
-  - **AppArmor Profile** - Set of Rules, to be enabled in nodes
-  - AppArmor Profile loaded in 2 modes
-    - **Complain Mode** - Discover the program
-    - **Enfore Mode** - prevent the program
-  - **create AppArmor Profile**
+  ```
+
+  - Ref: <https://kubernetes.io/docs/tutorials/clusters/seccomp/>
+
+#### 3.4.2 **APPARMOR**  
+
+- Kernal Security Module to granualr access control for programs on Host OS
+- **AppArmor Profile** - Set of Rules, to be enabled in nodes
+- AppArmor Profile loaded in 2 modes
+  - **Complain Mode** - Discover the program
+  - **Enfore Mode** - prevent the program
+- **create AppArmor Profile**
+
   ```sh
   sudo vi /etc/apparmor.d/deny-write
 
@@ -544,9 +566,11 @@ spec:
     deny /** w,
   }
   ```
-  - load the profile on all our nodes default directory /etc/apparmor.d
+
+- load the profile on all our nodes default directory /etc/apparmor.d
   `sudo apparmor_parser /etc/apparmor.d/deny-write`
-  - apply to pod
+- apply to pod
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -562,23 +586,26 @@ spec:
       image: busybox
       command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
   ```
-  - useful commands  
-  ```
-  check status			systemctl status apparmor
-  check enabled in nodes		cat /sys/module/apparmor/parameters/enabled
-  check profiles			cat /sys/kernel/security/apparmor/profiles
 
-  installed			apt-get install apparmor-utils 
-  create apparmor profile 	aa-genprof /root/add_data.sh
-  apparmor module status		aa-status
-  def Profile file directory 	/etc/apparmor.d/
-  load profile file		apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
-  load profile 			apparmor_parser /etc/apparmor.d/root.add_data.sh
-  disable profile 		apparmor_parser -R /etc/apparmor.d/root.add_data.sh
-  create 				apparmor-deny-write
+- useful commands  
+
+  ```
+  check status   systemctl status apparmor
+  check enabled in nodes  cat /sys/module/apparmor/parameters/enabled
+  check profiles   cat /sys/kernel/security/apparmor/profiles
+
+  installed   apt-get install apparmor-utils 
+  create apparmor profile  aa-genprof /root/add_data.sh
+  apparmor module status  aa-status
+  def Profile file directory  /etc/apparmor.d/
+  load profile file  apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
+  load profile    apparmor_parser /etc/apparmor.d/root.add_data.sh
+  disable profile   apparmor_parser -R /etc/apparmor.d/root.add_data.sh
+  create     apparmor-deny-write
           apparmor-allow-write
   ```
-- Ref: https://kubernetes.io/docs/tutorials/clusters/apparmor/
+
+- Ref: <https://kubernetes.io/docs/tutorials/clusters/apparmor/>
 
 </details>
 <hr />
@@ -591,8 +618,10 @@ spec:
 ### 4.1 Setup appropriate OS level security domains e.g. using PSP, OPA, security contexts
 
 #### **Admission Controller**
-- Implment security measures to enforce. Triggers before creating a pod 
+
+- Implment security measures to enforce. Triggers before creating a pod
 - Enable a Controller in kubeadm cluster /etc/kubernetes/manifests/kube-apiserver.yaml
+
   ```yaml
   spec:
   containers:
@@ -603,13 +632,16 @@ spec:
   image: k8s.gcr.io/kube-apiserver-amd64:v1.11.3
   name: kube-apiserver
   ```
-- Ref: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
+
+- Ref: <https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/>
   
 #### 4.1.1 **Pod Security Policies (PSP)**
+
 - Defines policies to controls security sensitive aspects of the pod specification
 - PodSecurityPolicy is one of the admission controller
 - enable at api-server using  `--enable-admission-plugins=NameSpaceAutoProvision,PodSecurityPolicy`
 - Create Pod using PSP
+
   ```yaml
   apiVersion: policy/v1beta1
   kind: PodSecurityPolicy
@@ -639,25 +671,31 @@ spec:
     fsGroup:
       rule: 'RunAsAny'
   ```
+
   - POD Access to PSP for authorization
     - Create Service Account or use Default Service account
     - Create Role with podsecuritypolicies, verbs as use
     - Create RoleBinding to Service Account and Role
-- Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/
+- Ref: <https://kubernetes.io/docs/concepts/policy/pod-security-policy/>
+
 #### 4.1.2 **Open Policy Agent (OPA)**
+
 - OPA for enforcing authorization policies for kubernetes
   - All images must be from approved repositories
   - All ingress hostnames must be globally unique
   - All pods must have resource limits
   - All namespaces must have a label that lists a point-of-contact
 - Deploy OPA Gatekeeper in cluster
+
   ```sh
   kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/release-3.7/deploy/gatekeeper.yaml
 
   helm repo add gatekeeper https://open-policy-agent.github.io/gatekeeper/charts --force-update
   helm install gatekeeper/gatekeeper --name-template=gatekeeper --namespace gatekeeper-system --create-namespace
   ```
+
 - Example constraint template to enforce to require all lables
+
   ```sh
   #create template
   kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/demo/basic/templates/k8srequiredlabels_template.yaml
@@ -676,13 +714,17 @@ spec:
     parameters:
       labels: ["hr"]
   ```
+
   `kubectl get constraints`
   
-- Ref: https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/
-- Ref: https://open-policy-agent.github.io/gatekeeper/website/docs/install/
+- Ref: <https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/>
+- Ref: <https://open-policy-agent.github.io/gatekeeper/website/docs/install/>
+
 #### 4.1.3 **Security Contexts**
+
 - Defines privilege, access control, Linux capabilities settings for a Pod or Container
 - Set the security context for a Pod (applies to all containers)
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -706,6 +748,7 @@ spec:
       securityContext:
         allowPrivilegeEscalation: false
   ```
+
   ```sh
   kubectl exec -it security-context-demo -- sh
   ps
@@ -714,7 +757,9 @@ spec:
   ls -l
   id
   ```
-- Set the security context for a Container 
+
+- Set the security context for a Container
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -730,12 +775,15 @@ spec:
         runAsUser: 2000
         allowPrivilegeEscalation: false
   ```
+
   ```sh
   kubectl exec -it security-context-demo-2 -- sh
   ps aux
   id
   ```
-- Set additional(CAP_NET_ADMIN & CAP_SYS_TIME) capabilities for a Container 
+
+- Set additional(CAP_NET_ADMIN & CAP_SYS_TIME) capabilities for a Container
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -749,23 +797,42 @@ spec:
         capabilities:
           add: ["NET_ADMIN", "SYS_TIME"]
   ```
-- Assign SELinux labels to a Container 
+
+- Assign SELinux labels to a Container
+
   ```yaml
   ...
   securityContext:
     seLinuxOptions:
       level: "s0:c123,c456"
   ```
+
 - Set Seccomp profile to Container [Refer 3.4.1](#341-seccomp-profiles)
-- Ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+- Ref: <https://kubernetes.io/docs/tasks/configure-pod-container/security-context/>
 
 ### 4.2 Manage Kubernetes secrets
+
 - Types of Secrets
-  - Opaque  arbitrary user-defined data
+  - Opaque(Generic) secrets -
+  - Service account token Secrets
+  - Docker config Secrets -
+  - Basic authentication Secret -
+  - SSH authentication secrets -
+  - TLS secrets -
+  - Bootstrap token Secrets -  
+
 - Secret as Data to a Container Using a Volume
+
   ```
   kubectl create secret generic mysecret --from-literal=username=devuser --from-literal=password='S!B\*d$zDsb='
   ```
+
+  Decode Secret  
+
+  ```
+  kubectl get secrets/mysecret --template={{.data.password}} | base64 -D
+  ```
+  
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -784,7 +851,9 @@ spec:
       secret:
         secretName: mysecret
   ```
+
 - Secret as Data to a Container Using Environment Variables
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -812,11 +881,18 @@ spec:
               key: password
     restartPolicy: Never
     ```
-- Ref: https://kubernetes.io/docs/concepts/configuration/secret/
+
+- Ref: <https://kubernetes.io/docs/concepts/configuration/secret/>
+
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
-- Sandboxing is isoloation of containers from Host 
+
+- Sandboxing is concept of isoloation of containers from Host
+- docker uses default SecComp profiles restrict previleges. Whitlist or Blacklist
+- AppArmor finegrain control of that container can access. Whitlist or Blacklist
+- If large number of apps in containers, then SecComp/AppArmor is not the case
 
 #### 4.3.1 gvisor
+
 - gVisor sits between container and Linux Kernal. Every container has their own gVisior
 - gVisor has 2 different componets
   - Sentry: works as kernal for containers
@@ -824,12 +900,15 @@ spec:
 - gVisor uses runsc to runtime sandbox with in hostOS (OCI comapliant)
 
 #### 4.3.4 kata containers
-- Kata lightweight containers in VM, provisions own kernal for containers(like VM)
-- Kata containers provide hardware virtualization support 
+
+- Kata Install lightweight containers in VM, provisions own kernal for containers(like VM)
+- Kata containers provide hardware virtualization support (cannot run in Cloud, GCP supports)
 
 #### Container Runtime
-- Creating a Container Runtime for additional layes of isolation 
+
+- Creating a Container Runtime for additional layes of isolation
 - Create RuntimeClass to define specilized container runtime config
+
   ```yaml
   apiVersion: node.k8s.io/v1  # RuntimeClass is defined in the node.k8s.io API group
   kind: RuntimeClass
@@ -838,7 +917,9 @@ spec:
     # RuntimeClass is a non-namespaced resource
   handler: runsc/kata  # The name of the corresponding CRI configuration
   ```
+
 - Create Pod with specific runtime class
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -851,6 +932,7 @@ spec:
   ```
 
 ### 4.4 Implement pod to pod encryption by use of mTLS
+
 - Create CSR
 - Get CSR approved
 - Once approved then retrive from status.certificate
