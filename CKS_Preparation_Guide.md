@@ -968,9 +968,29 @@ spec:
 <summary></summary>
 
 ### 5.1 Minimize base image footprint
-
+- Use Slim/Minimal Images than base images
+- Use Docker multi stage builds for lean
+- **Use Distroless:** 
+  - Distroless Images will have only your app & runtime dependencies
+    - No package managers, shell, n/w tools, text editors etc
+  - Distroless images are very small
+- use trivy image scanner for container vulnerabilities, filesys, git etc
+- Ref: https://github.com/GoogleContainerTools/distroless
+- Ref: https://github.com/aquasecurity/trivy
+  
 ### 5.2 Secure your supply chain: whitelist allowed registries, sign and validate images
-
+- **Approach 1 - using ImagePolicyWebhook Admission Controller**
+  - Achieve using ImagePolicyWebhook  
+  - Create ImagePolicyWebhook AdmissionConfiguration
+  - Update kubeconfig with allowed registry and CA
+  - create admin-config in `/etc/kubernetes/admission-config.yaml`
+  - enable ImagePolicyWebhook, admission-control-config-file in kube api server config at `/etc/kubernetes/manifests/kube-apiserver.yaml`
+**Approach 2 - ConstraintTemplate**
+- Create ConstraintTemplate CRD to whitelist docker registries
+- Create a Resource Constraint with allowed docker registries 
+- Create a pod with valid registry and test
+- Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
+  
 ### 5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)
 
 ### 5.4 Scan images for known vulnerabilities
