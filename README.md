@@ -1,4 +1,4 @@
-# Cloud DevOps Interview Guide
+# Cloud DevOps Interview Preparation Guide
 
 ## DevOps 
 
@@ -111,8 +111,12 @@ https://www.katalon.com/resources-center/blog/devops-interview-questions/
 **DevOps Deployment Strategies**<br/>
 https://thenewstack.io/deployment-strategies/
 
-**API**<br/>
+**REST API Methods**<br/>
+https://assertible.com/blog/7-http-methods-every-web-developer-should-know-and-how-to-test-them
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+
+**HTTP Status Codes**<br/>
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 
 **HTTP Load Testing***<br/>
 https://k6.io/docs/using-k6/http-requests/<br/>
