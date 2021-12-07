@@ -1173,7 +1173,7 @@ spec:
       securityContext:
         allowPrivilegeEscalation: false
   ```
-- using PSP(Pod Security Policies)
+- using PSP(Pod Security Policies) - readOnlyRootFilesystem = true,  privileged=false; runAsUser=NonRoot
   ```yaml
   apiVersion: policy/v1beta1
   kind: PodSecurityPolicy
