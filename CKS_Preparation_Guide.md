@@ -479,7 +479,7 @@ spec:
   - "action": "SCMP_ACT_ALLOW"
   - "action": "SCMP_ACT_ERRNO"
   - "defaultAction": "SCMP_ACT_LOG"
-    - - Create POD with Specific Profile
+      - - Create POD with Specific Profile
 
   ```yaml
   apiVersion: v1
@@ -882,8 +882,8 @@ spec:
     restartPolicy: Never
     ```
 
-- Ref: https://kubernetes.io/docs/concepts/configuration/secret/
-- Ref: https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/
+- Ref: <https://kubernetes.io/docs/concepts/configuration/secret/>
+- Ref: <https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/>
 
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
 
@@ -899,6 +899,7 @@ spec:
   - Sentry: works as kernal for containers
   - Gofer is file proxy to access system files. Middle man betwen container and OS
 - gVisor uses runsc to runtime sandbox with in hostOS (OCI comapliant)
+
   ```yaml
   apiVersion: node.k8s.io/v1  # RuntimeClass is defined in the node.k8s.io API group
   kind: RuntimeClass
@@ -912,6 +913,7 @@ spec:
 - Kata Install lightweight containers in VM, provisions own kernal for containers(like VM)
 - Kata containers provide hardware virtualization support (cannot run in Cloud, GCP supports)
 - Kata containers use kata runtime
+
   ```yaml
   apiVersion: node.k8s.io/v1  # RuntimeClass is defined in the node.k8s.io API group
   kind: RuntimeClass
@@ -922,12 +924,14 @@ spec:
 
 #### Container Runtime
 
-- docker run => docker CLI => REST API => Docker Daemon => check locally => Registery => call containerd  => convert image to OCI container => containerd-shim => runC will start container 
+- docker run => docker CLI => REST API => Docker Daemon => check locally => Registery => call containerd  => convert image to OCI container => containerd-shim => runC will start container
   - we can override runtime when running container
+
   ```
   docker run --runtime kata -d nginx
   docker run --runtime runsc -d nginx
   ```
+
 - Creating a Container Runtime for additional layes of isolation
 - Create RuntimeClass to define specilized container runtime config
 - Create Pod with specific runtime class
@@ -943,22 +947,26 @@ spec:
     - image: nginx
       name: nginx
   ```
-- Ref: https://kubernetes.io/docs/concepts/containers/runtime-class/
-- Ref: https://github.com/kubernetes/enhancements/blob/5dcf841b85f49aa8290529f1957ab8bc33f8b855/keps/sig-node/585-runtime-class/README.md#examples
+
+- Ref: <https://kubernetes.io/docs/concepts/containers/runtime-class/>
+- Ref: <https://github.com/kubernetes/enhancements/blob/5dcf841b85f49aa8290529f1957ab8bc33f8b855/keps/sig-node/585-runtime-class/README.md#examples>
 
 ### 4.4 Implement pod to pod encryption by use of mTLS
+
 - mTLS: Is secure communication between pods
 - With service mesh Istio & Linkerd mTLS is easier, managable
-  - mTLS can be Enforced or Strict 
+  - mTLS can be Enforced or Strict
   
 **Steps for TLS certificate for a Kubernetes service accessed through DNS**
+
 - Download and install CFSSL
 - Generete private key using `cfssl genkey`
 - Create CertificateSigningRequest
 - Get CSR approved (by k8s Admin)
 - Once approved then retrive from status.certificate
 - Download and use it
-- Ref: https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/
+- Ref: <https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/>
+
 </details>
 <hr />
 
@@ -968,19 +976,22 @@ spec:
 <summary></summary>
 
 ### 5.1 Minimize base image footprint
+
 - Use Slim/Minimal Images than base images
 - Use Docker multi stage builds for lean
-- **Use Distroless:** 
+- **Use Distroless:**
   - Distroless Images will have only your app & runtime dependencies
     - No package managers, shell, n/w tools, text editors etc
   - Distroless images are very small
 - use trivy image scanner for container vulnerabilities, filesys, git etc
-- Ref: https://github.com/GoogleContainerTools/distroless
-- Ref: https://github.com/aquasecurity/trivy
+- Ref: <https://github.com/GoogleContainerTools/distroless>
+- Ref: <https://github.com/aquasecurity/trivy>
   
 ### 5.2 Secure your supply chain: whitelist allowed registries, sign and validate images
+
 - **Approach 1 - using ImagePolicyWebhook Admission Controller**
   - Using ImagePolicyWebhook Admission webhook server (deployment & service)
+
     ```yaml
     apiVersion: apps/v1
     kind: Deployment
@@ -1029,8 +1040,10 @@ spec:
       selector:
         app: image-bouncer-webhook
     ```
+
   - Create custom kubeconfig with above service, its client certificate
     - `/etc/kubernetes/pki/admission_kube_config.yaml`
+
     ```yaml
     apiVersion: v1
     kind: Config
@@ -1052,8 +1065,10 @@ spec:
         client-certificate: /etc/kubernetes/pki/apiserver.crt
         client-key:  /etc/kubernetes/pki/apiserver.key
     ```
-  - Create ImagePolicyWebhook AdmissionConfiguration file, update custom kubeconfig file at 
+
+  - Create ImagePolicyWebhook AdmissionConfiguration file, update custom kubeconfig file at
     - `/etc/kubernetes/pki/admission_configuration`
+
     ```yaml
     apiVersion: apiserver.config.k8s.io/v1
     kind: AdmissionConfiguration
@@ -1067,24 +1082,29 @@ spec:
           retryBackoff: 500
           defaultAllow: false
     ```
-  - Enable ImagePolicyWebhook in enable-admission-plugins in kubeapi server config at 
+
+  - Enable ImagePolicyWebhook in enable-admission-plugins in kubeapi server config at
   - Update admin-config file in kube api server admission-control-config-file
     - `/etc/kubernetes/manifests/kube-apiserver.yaml`
+
     ```yaml
     - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
     - --admission-control-config-file=/etc/kubernetes/pki/admission_configuration.yaml
     ```
-  - Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
+
+  - Ref: <https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook>
   
 - **Approach 2 - ConstraintTemplate**
   - Create ConstraintTemplate CRD to whitelist docker registries
-  - Create a Resource Constraint with allowed docker registries 
+  - Create a Resource Constraint with allowed docker registries
   - Create a pod with valid registry and test
   
 ### 5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)
+
 - Static YAML analysis using poular tool Kubesec
 - Kubesec scans and gives the risk score ``
 - Run Kubesec locally using ``
+
   ```sh
   # run scan using kubesec
   kubesec scan pod.yaml
@@ -1093,10 +1113,12 @@ spec:
   #kubesec API invoke and scan
   curl -sSX POST --data-binary @”pod.yaml" https://v2.kubesec.io/scan
   ```
-- Ref: https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#7-statically-analyse-yaml
-- Ref: https://kubesec.io/
+
+- Ref: <https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#7-statically-analyse-yaml>
+- Ref: <https://kubesec.io/>
 
 ### 5.4 Scan images for known vulnerabilities
+
 - Vulnerability scanning tools are Trivy(*) & Anchore
 - Install Trivy (by Aquasec) on your control plane node
 - Scan an image using trivy
@@ -1104,9 +1126,10 @@ spec:
 - It results Low, Medium, High, Critical & VolnarabilityID
   - `trivy image-- severity CRITICAL,HIGH busybox:1.33.1`
 
-- Ref: https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids
-- Ref: https://github.com/aquasecurity/trivy
-- Ref: https://github.com/anchore/anchore-cli#command-line-examples
+- Ref: <https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids>
+- Ref: <https://github.com/aquasecurity/trivy>
+- Ref: <https://github.com/anchore/anchore-cli#command-line-examples>
+
 </details>
 
 ## 6. Monitoring, Logging and Runtime Security - 20%
@@ -1115,18 +1138,22 @@ spec:
 <summary></summary>
 
 ### 6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities
+
 - Falco can detect and alerts on any behavior that involves making Linux system calls
 - **Falco** operates at the user space and kernel space
   - Policy Engine
   - Libraries
   - Falco Rules
 - Helm Install Falco as DaemonSet
+
   ```sh
   helm repo add falcosecurity https://falcosecurity.github.io/charts
   helm repo update
   helm install falco falcosecurity/falco
   ```
+
 - **Falco Rules** Filters for engine events, in YAML format Example Rule  
+
   ```yaml
   - rule: Write below etc
     desc: an attempt to write to any file below /etc
@@ -1135,22 +1162,48 @@ spec:
     priority: ERROR
     tags: [filesystem, mitre_persistence]
   ```
+
 - **Falco Configuration** for Falco daemon, YAML file and in  key: value/list  
   - config file located at `/etc/falco/falco.yaml`
-- Ref: https://falco.org/docs/getting-started/
-- Ref: https://github.com/falcosecurity/charts
-- Ref: https://falco.org/blog/detect-cve-2020-8557/
+- Ref: <https://falco.org/docs/getting-started/>
+- Ref: <https://github.com/falcosecurity/charts>
+- Ref: <https://falco.org/blog/detect-cve-2020-8557/>
   
 ### 6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads
-- dsfsdf
 
 ### 6.3 Detect all phases of attack regardless where it occurs and how it spreads
-
+- Kubernetes attack matrix (9 Tactics, 40 techniques)
+  -  Initial access
+  -  Execution
+  -  Persistence
+  -  Privilege escalation
+  -  Defense evasion
+  -  Credential access
+  -  Discovery
+  -  Lateral movement
+  -  Impact
+- Use MITRE & ATT&CK framework of tacticques and techniques
+- **Best Practices protection: apply native Kubernetes controls**
+  1. Configure & Monitor RBAC - Least privilege, avoid overlaping role
+  2. Configure Network Policies - Use default-deny-all & explicitly allow
+  3. Harden pod configurations - security context for pod/container, use pod serviceaccount
+  4. Detect Inscure Pods
+- Ref: https://www.cncf.io/online-programs/mitigating-kubernetes-attacks/
+- Ref: https://www.microsoft.com/security/blog/2020/04/02/attack-matrix-kubernetes/
+- Ref: https://sysdig.com/blog/mitre-attck-framework-for-container-runtime-security-with-sysdig-falco/
 ### 6.4 Perform deep analytical investigation and identification of bad actors within environment
+- Monitor using sysdig k8s cluster, ns, svc, rc and labels
+- sysdig capture system calls and other OS events
+- Exploring a Kubernetes Cluster with csysdig 
+  `csysdig -k http://127.0.0.1:8080`
+- Monitoring/Visualize Kubernetes with Sysdig Cloud 
+- Ref: https://kubernetes.io/blog/2015/11/monitoring-kubernetes-with-sysdig/
+- Ref: https://docs.sysdig.com/
 
 ### 6.5 Ensure immutability of containers at runtime
 - immutable = cannot modify original state
 - POD level using securityContext; readOnlyRootFilesystem = true,  privileged=false
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -1159,8 +1212,8 @@ spec:
   spec:
     securityContext:
       readOnlyRootFilesystem: true
-      privileged: false
-    volumes:
+        privileged: false
+      volumes:
     - name: sec-ctx-vol
       emptyDir: {}
     containers:
@@ -1173,7 +1226,9 @@ spec:
       securityContext:
         allowPrivilegeEscalation: false
   ```
-- using PSP(Pod Security Policies) - readOnlyRootFilesystem = true,  privileged=false; runAsUser=NonRoot
+
+- Enforce using PSP(Pod Security Policies) - readOnlyRootFilesystem = true,  privileged=false; runAsUser=NonRoot
+
   ```yaml
   apiVersion: policy/v1beta1
   kind: PodSecurityPolicy
@@ -1193,9 +1248,43 @@ spec:
     fsGroup:
       rule: RunAsAny
   ```
-- Ref: https://kubernetes.io/blog/2018/03/principles-of-container-app-design/
+
+- Ref: <https://kubernetes.io/blog/2018/03/principles-of-container-app-design/>
 
 ### 6.6 Use Audit Logs to monitor access
-- dsfsdf
-
+- The cluster audits the activities 
+  - generated by users, 
+  - by applications that use the Kubernetes API
+  - control plane aswell
+- When API Server performs action, it creates stages
+  - **RequestRecived** - The stage for events generated as soon as the audit handler receives the request
+  - **ResponseStarted** - response headers are sent & response body is sent. only for long running (Ex: watch) 
+  - **ResponseComplete** - response body has been completed
+  - **Panic** - Events generated when a panic occurred
+- Create Policy Object configuration for Audit
+  ```yaml
+  apiVersion: audit.k8s.io/v1 # This is required.
+  kind: Policy
+  # Don't generate audit events for all requests in RequestReceived stage.
+  omitStages:
+    - "RequestReceived"
+  rules:
+    - namespace: ["prod-namespace"]
+      verb: ["delete"]
+      resources:
+      - groups: " "
+        resources: ["pods"]
+        resourceNames: ["webapp-pod"]
+      #None/Metadata/Request/RequestResponse
+      level: RequestResponse 
+  ```
+- Enble AuditLog in KubeAPI server level
+  ```yaml
+  - --audit-log-path=/var/log/k8-audit.log
+  - --audit-policy-file=/etc/kubernetes/audit-policy.yaml
+  - --audit-log-maxage=10
+  - --audit-log-maxbackup=5
+  - --audit-log-maxsize=100
+  ```
+- Ref: https://kubernetes.io/docs/tasks/debug-application-cluster/audit/
 </details>
