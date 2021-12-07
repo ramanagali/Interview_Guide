@@ -1082,9 +1082,30 @@ spec:
   - Create a pod with valid registry and test
   
 ### 5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)
+- Static YAML analysis using poular tool Kubesec
+- Kubesec scans and gives the risk score ``
+- Run Kubesec locally using ``
+  ```sh
+  # run scan using kubesec
+  kubesec scan pod.yaml
+  # run kubesec locally on 8080 port
+  kubesec http 8080 &
+  #kubesec API invoke and scan
+  curl -sSX POST --data-binary @”pod.yaml" https://v2.kubesec.io/scan
+  ```
+- Ref: https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#7-statically-analyse-yaml
+- Ref: https://kubesec.io/
 
 ### 5.4 Scan images for known vulnerabilities
+- Vulnerability scanning is done by Trivy is a command-line
+- Install Trivy (by Aquasec) on your control plane node
+- Scan an image using trivy
+  - `trivy image busybox:1.33.1`
+- It results Low, Medium, High, Critical & VolnarabilityID
+  - `trivy image-- severity CRITICAL,HIGH busybox:1.33.1`
 
+- Ref: https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids
+- Ref: https://github.com/aquasecurity/trivy
 </details>
 
 ## 6. Monitoring, Logging and Runtime Security - 20%
