@@ -980,12 +980,102 @@ spec:
   
 ### 5.2 Secure your supply chain: whitelist allowed registries, sign and validate images
 - **Approach 1 - using ImagePolicyWebhook Admission Controller**
-  - Achieve using ImagePolicyWebhook  
-  - Create ImagePolicyWebhook AdmissionConfiguration
-  - Update kubeconfig with allowed registry and CA
-  - create admin-config in `/etc/kubernetes/admission-config.yaml`
-  - enable ImagePolicyWebhook, admission-control-config-file in kube api server config at `/etc/kubernetes/manifests/kube-apiserver.yaml`
+  - Using ImagePolicyWebhook Admission webhook server (deployment & service)
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: image-bouncer-webhook
+    spec:
+      selector:
+        matchLabels:
+          app: image-bouncer-webhook
+      template:
+        metadata:
+          labels:
+            app: image-bouncer-webhook
+        spec:
+          containers:
+            - name: image-bouncer-webhook
+              imagePullPolicy: Always
+              image: "kainlite/kube-image-bouncer:latest"
+              args:
+                - "--cert=/etc/admission-controller/tls/tls.crt"
+                - "--key=/etc/admission-controller/tls/tls.key"
+                - "--debug"
+                - "--registry-whitelist=docker.io,k8s.gcr.io"
+              volumeMounts:
+                - name: tls
+                  mountPath: /etc/admission-controller/tls
+          volumes:
+            - name: tls
+              secret:
+                secretName: tls-image-bouncer-webhook
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        app: image-bouncer-webhook
+      name: image-bouncer-webhook
+    spec:
+      type: NodePort
+      ports:
+        - name: https
+          port: 443
+          targetPort: 1323
+          protocol: "TCP"
+          nodePort: 30080
+      selector:
+        app: image-bouncer-webhook
+    ```
+  - Create custom kubeconfig with above service, its client certificate
+    - `/etc/kubernetes/pki/admission_kube_config.yaml`
+    ```yaml
+    apiVersion: v1
+    kind: Config
+    clusters:
+    - cluster:
+        certificate-authority: /etc/kubernetes/pki/server.crt
+        server: https://image-bouncer-webhook:30080/image_policy
+      name: bouncer_webhook
+    contexts:
+    - context:
+        cluster: bouncer_webhook
+        user: api-server
+      name: bouncer_validator
+    current-context: bouncer_validator
+    preferences: {}
+    users:
+    - name: api-server
+      user:
+        client-certificate: /etc/kubernetes/pki/apiserver.crt
+        client-key:  /etc/kubernetes/pki/apiserver.key
+    ```
+  - Create ImagePolicyWebhook AdmissionConfiguration file, update custom kubeconfig file at 
+    - `/etc/kubernetes/pki/admission_configuration`
+    ```yaml
+    apiVersion: apiserver.config.k8s.io/v1
+    kind: AdmissionConfiguration
+    plugins:
+    - name: ImagePolicyWebhook
+      configuration:
+        imagePolicy:
+          kubeConfigFile: /etc/kubernetes/pki/admission_kube_config.yaml
+          allowTTL: 50
+          denyTTL: 50
+          retryBackoff: 500
+          defaultAllow: false
+    ```
+  - Enable ImagePolicyWebhook in enable-admission-plugins in kubeapi server config at 
+  - Update admin-config file in kube api server admission-control-config-file
+    - `/etc/kubernetes/manifests/kube-apiserver.yaml`
+    ```yaml
+    - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
+    - --admission-control-config-file=/etc/kubernetes/pki/admission_configuration.yaml
+    ```
   - Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
+  
 - **Approach 2 - ConstraintTemplate**
   - Create ConstraintTemplate CRD to whitelist docker registries
   - Create a Resource Constraint with allowed docker registries 
