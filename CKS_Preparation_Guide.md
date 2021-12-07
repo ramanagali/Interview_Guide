@@ -1097,7 +1097,7 @@ spec:
 - Ref: https://kubesec.io/
 
 ### 5.4 Scan images for known vulnerabilities
-- Vulnerability scanning is done by Trivy is a command-line
+- Vulnerability scanning tools are Trivy(*) & Anchore
 - Install Trivy (by Aquasec) on your control plane node
 - Scan an image using trivy
   - `trivy image busybox:1.33.1`
@@ -1106,6 +1106,7 @@ spec:
 
 - Ref: https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids
 - Ref: https://github.com/aquasecurity/trivy
+- Ref: https://github.com/anchore/anchore-cli#command-line-examples
 </details>
 
 ## 6. Monitoring, Logging and Runtime Security - 20%
@@ -1114,15 +1115,43 @@ spec:
 <summary></summary>
 
 ### 6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities
-
+- Falco can detect and alerts on any behavior that involves making Linux system calls
+- **Falco** operates at the user space and kernel space
+  - Policy Engine
+  - Libraries
+  - Falco Rules
+- Helm Install Falco as DaemonSet
+  ```sh
+  helm repo add falcosecurity https://falcosecurity.github.io/charts
+  helm repo update
+  helm install falco falcosecurity/falco
+  ```
+- **Falco Rules** Filters for engine events, in YAML format Example Rule  
+  ```yaml
+  - rule: File Open by Privileged Container
+    desc: Any open by a privileged container. Exceptions are made for known trusted images.
+    condition: (open_read or open_write) and container and container.privileged=true and not trusted_containers
+    output: File opened for read/write by privileged container (user=%user.name command=%proc.cmdline %container.info file=%fd.name)
+    priority: WARNING
+    tags: [container, cis]
+  ```
+- **Falco Configuration** for Falco daemon, YAML file and in  key: value/list  
+  - config file located at `/etc/falco/falco.yaml`
+- Ref: https://falco.org/docs/getting-started/
+  
 ### 6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads
+- dsfsdf
 
 ### 6.3 Detect all phases of attack regardless where it occurs and how it spreads
+- dsfsdf
 
 ### 6.4 Perform deep analytical investigation and identification of bad actors within environment
+- dsfsdf
 
 ### 6.5 Ensure immutability of containers at runtime
+- dsfsdf
 
 ### 6.6 Use Audit Logs to monitor access
+- dsfsdf
 
 </details>
