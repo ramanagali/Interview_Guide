@@ -1128,28 +1128,72 @@ spec:
   ```
 - **Falco Rules** Filters for engine events, in YAML format Example Rule  
   ```yaml
-  - rule: File Open by Privileged Container
-    desc: Any open by a privileged container. Exceptions are made for known trusted images.
-    condition: (open_read or open_write) and container and container.privileged=true and not trusted_containers
-    output: File opened for read/write by privileged container (user=%user.name command=%proc.cmdline %container.info file=%fd.name)
-    priority: WARNING
-    tags: [container, cis]
+  - rule: Write below etc
+    desc: an attempt to write to any file below /etc
+    condition: write_etc_common
+    output: "File below /etc opened for writing (user=%user.name command=%proc.cmdline parent=%proc.pname pcmdline=%proc.pcmdline file=%fd.name program=%proc.name gparent=%proc.aname[2] ggparent=%proc.aname[3] gggparent=%proc.aname[4] container_id=%container.id image=%container.image.repository)"
+    priority: ERROR
+    tags: [filesystem, mitre_persistence]
   ```
 - **Falco Configuration** for Falco daemon, YAML file and in  key: value/list  
   - config file located at `/etc/falco/falco.yaml`
 - Ref: https://falco.org/docs/getting-started/
+- Ref: https://github.com/falcosecurity/charts
+- Ref: https://falco.org/blog/detect-cve-2020-8557/
   
 ### 6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads
 - dsfsdf
 
 ### 6.3 Detect all phases of attack regardless where it occurs and how it spreads
-- dsfsdf
 
 ### 6.4 Perform deep analytical investigation and identification of bad actors within environment
-- dsfsdf
 
 ### 6.5 Ensure immutability of containers at runtime
-- dsfsdf
+- immutable = cannot modify original state
+- POD level using securityContext; readOnlyRootFilesystem = true,  privileged=false
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: security-context-demo
+  spec:
+    securityContext:
+      readOnlyRootFilesystem: true
+      privileged: false
+    volumes:
+    - name: sec-ctx-vol
+      emptyDir: {}
+    containers:
+    - name: sec-ctx-demo
+      image: busybox
+      command: [ "sh", "-c", "sleep 1h" ]
+      volumeMounts:
+      - name: sec-ctx-vol
+        mountPath: /data/demo
+      securityContext:
+        allowPrivilegeEscalation: false
+  ```
+- using PSP(Pod Security Policies)
+  ```yaml
+  apiVersion: policy/v1beta1
+  kind: PodSecurityPolicy
+  metadata:
+    name: example
+  spec:
+    privileged: false
+    readOnlyRootFilesystem: true
+    runAsUser:
+      rule: RunAsNonRoot
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    runAsUser:
+      rule: RunAsNonRoot
+    fsGroup:
+      rule: RunAsAny
+  ```
+- Ref: https://kubernetes.io/blog/2018/03/principles-of-container-app-design/
 
 ### 6.6 Use Audit Logs to monitor access
 - dsfsdf
