@@ -1143,10 +1143,11 @@ spec:
 ### 6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities
 
 - Falco can detect and alerts on any behavior that involves making Linux system calls
-- **Falco** operates at the user space and kernel space
+- **Falco** operates at the user space and kernel space, major components...
   - Policy Engine
   - Libraries
   - Falco Rules
+- Falco install 
 - Helm Install Falco as DaemonSet
 
   ```sh
@@ -1166,7 +1167,7 @@ spec:
     tags: [filesystem, mitre_persistence]
   ```
 
-- **Falco Configuration** for Falco daemon, YAML file and in  key: value/list  
+- **Falco Configuration** for Falco daemon, YAML file and it has key: value or list  
   - config file located at `/etc/falco/falco.yaml`
 - Ref: <https://falco.org/docs/getting-started/>
 - Ref: <https://github.com/falcosecurity/charts>
@@ -1206,7 +1207,7 @@ spec:
 
 ### 6.5 Ensure immutability of containers at runtime
 - immutable = cannot modify original state
-- POD level using securityContext; readOnlyRootFilesystem = true,  privileged=false
+- POD level using securityContext; key logic `readOnlyRootFilesystem = true,  privileged=false`
 
   ```yaml
   apiVersion: v1
@@ -1231,7 +1232,7 @@ spec:
           allowPrivilegeEscalation: false
   ```
 
-- Enforce using PSP(Pod Security Policies) - readOnlyRootFilesystem = true,  privileged=false; runAsUser=NonRoot
+- Enforce using PSP(Pod Security Policies) - key logic `readOnlyRootFilesystem = true,  privileged=false; runAsUser=NonRoot`
 
   ```yaml
   apiVersion: policy/v1beta1
