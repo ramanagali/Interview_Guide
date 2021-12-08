@@ -162,6 +162,7 @@ https://www.kdnuggets.com/2021/11/25-github-repositories-python-developer.html<b
 https://www.pythoncheatsheet.org/#Flow-Control<br/>\
 https://cheatography.com/davechild/cheat-sheets/python/<br/>
 https://github.com/joeyajames/Python<br/>
+https://awesome-python.com/
 
 
 **Python, AL, ML Cheatsheets**<br/>
