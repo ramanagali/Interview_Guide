@@ -1291,3 +1291,6 @@ spec:
 - Ref: https://kubernetes.io/docs/tasks/debug-application-cluster/audit/
 </details>
  <hr />
+
+- [Refer Certification Preparation Material
+](#https://github.com/ramanagali/Interview_Guide/blob/main/Certification_Preparation.md#cks)
