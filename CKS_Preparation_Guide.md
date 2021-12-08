@@ -3,7 +3,6 @@
 Those who know about Kubernetes Admistriation, for the next level
 Certified Kubernetes Security Specialist (CKS) exam point of view, below complete one pager, shortened/finetuned study material to revise
 
-Sources: Taken from various sources and based on my understatnading. Pull Requests are welcome
 <hr />
 
 ## 1. Cluster Setup - 10%
@@ -1294,5 +1293,4 @@ spec:
 </details>
  <hr />
 
-- [Refer Certification Preparation Material
-](#https://github.com/ramanagali/Interview_Guide/blob/main/Certification_Preparation.md#cks)
+- [Refer Certification Preparation Material](https://github.com/ramanagali/Interview_Guide/blob/main/Certification_Preparation.md#cks)
