@@ -1294,4 +1294,4 @@ spec:
 </details>
  <hr />
 
-- [Refer Certification Preparation Material](https://github.com/ramanagali/Interview_Guide/blob/main/Certification_Preparation.md#cks)
+- [Refer Certification Preparation Material my github page](https://github.com/ramanagali/Interview_Guide/blob/main/Certification_Preparation.md#cks)
