@@ -221,8 +221,8 @@ Ref: <https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs>
 ### 2.1  Restrict access to Kubernetes API
 
 - Control anonymous requests to Kube-apiserver by using
-```sh --anonymous-auth=false```
-- non secure access to the kube-apiserver
+`--anonymous-auth=false`
+- Non secure access to the kube-apiserver
 
   1. **localhost**
       - port 8080
