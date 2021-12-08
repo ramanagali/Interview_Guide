@@ -1,7 +1,8 @@
 # Certified Kubernetes Security Specialist (CKS) Preparation Notes
 
-Those who know about Kubernetes Admistriation, for next level
-Certified Kubernetes Security Specialist (CKS) exam point of view, below finetuned version study material.
+Those who know about Kubernetes Admistriation, for the next level
+Certified Kubernetes Security Specialist (CKS) exam point of view, below fine tuned version study material to revise
+<hr />
 
 ## 1. Cluster Setup - 10%
 
@@ -1131,6 +1132,7 @@ spec:
 - Ref: <https://github.com/anchore/anchore-cli#command-line-examples>
 
 </details>
+   <hr />
 
 ## 6. Monitoring, Logging and Runtime Security - 20%
 
@@ -1288,3 +1290,4 @@ spec:
   ```
 - Ref: https://kubernetes.io/docs/tasks/debug-application-cluster/audit/
 </details>
+ <hr />
