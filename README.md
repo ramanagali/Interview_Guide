@@ -157,11 +157,15 @@ https://www.allthingsdistributed.com/articles.html
 
 ## Languagues
 **Python**<br/>
-https://github.com/joeyajames/Python
-https://www.kdnuggets.com/2021/11/25-github-repositories-python-developer.html
+https://media-exp1.licdn.com/dms/document/C4D1FAQEBKj9E4v-w0Q/feedshare-document-pdf-analyzed/0/1638906430008?e=1639033200&v=beta&t=5izROzPJic86_GNiPSIyE5n4Juc7F-rn5h1pLd4lC-s<br/>
+https://www.kdnuggets.com/2021/11/25-github-repositories-python-developer.html<br/>
+https://www.pythoncheatsheet.org/#Flow-Control<br/>\
+https://cheatography.com/davechild/cheat-sheets/python/<br/>
+https://github.com/joeyajames/Python<br/>
+
 
 **Python, AL, ML Cheatsheets**<br/>
-https://medium.com/@anushkhabajpai/top-data-science-cheat-sheets-ml-dl-python-r-sql-maths-statistics-5239d4568225
+https://medium.com/@anushkhabajpai/top-data-science-cheat-sheets-ml-dl-python-r-sql-maths-statistics-5239d4568225<br/>
 
 **Go**<br/>
 https://www.tutorialspoint.com/go/go_error_handling.htm
