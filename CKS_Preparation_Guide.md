@@ -1194,6 +1194,7 @@ spec:
 - Ref: https://www.cncf.io/online-programs/mitigating-kubernetes-attacks/
 - Ref: https://www.microsoft.com/security/blog/2020/04/02/attack-matrix-kubernetes/
 - Ref: https://sysdig.com/blog/mitre-attck-framework-for-container-runtime-security-with-sysdig-falco/
+
 ### 6.4 Perform deep analytical investigation and identification of bad actors within environment
 - Monitor using sysdig k8s cluster, ns, svc, rc and labels
 - sysdig capture system calls and other OS events
@@ -1215,19 +1216,19 @@ spec:
   spec:
     securityContext:
       readOnlyRootFilesystem: true
-        privileged: false
+      privileged: false
       volumes:
-    - name: sec-ctx-vol
-      emptyDir: {}
-    containers:
-    - name: sec-ctx-demo
-      image: busybox
-      command: [ "sh", "-c", "sleep 1h" ]
-      volumeMounts:
       - name: sec-ctx-vol
-        mountPath: /data/demo
-      securityContext:
-        allowPrivilegeEscalation: false
+        emptyDir: {}
+      containers:
+      - name: sec-ctx-demo
+        image: busybox
+        command: [ "sh", "-c", "sleep 1h" ]
+        volumeMounts:
+        - name: sec-ctx-vol
+          mountPath: /data/demo
+        securityContext:
+          allowPrivilegeEscalation: false
   ```
 
 - Enforce using PSP(Pod Security Policies) - readOnlyRootFilesystem = true,  privileged=false; runAsUser=NonRoot
