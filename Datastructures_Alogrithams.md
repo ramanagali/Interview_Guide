@@ -118,3 +118,6 @@ log16=4 16 	256 65536
 * IF Theta can't find, go for BigO or Omega
 
 <hr />
+
+## Data Structures
+Data Structures are way storing and organizing data in a computer for efficient access and modification
