@@ -157,7 +157,7 @@ https://www.allthingsdistributed.com/articles.html
 
 ## Languagues
 **Python**<br/>
-https://media-exp1.licdn.com/dms/document/C4D1FAQEBKj9E4v-w0Q/feedshare-document-pdf-analyzed/0/1638906430008?e=1639033200&v=beta&t=5izROzPJic86_GNiPSIyE5n4Juc7F-rn5h1pLd4lC-s<br/>
+https://www.tutorialspoint.com/python/index.htm<br/>
 https://www.kdnuggets.com/2021/11/25-github-repositories-python-developer.html<br/>
 https://www.pythoncheatsheet.org/#Flow-Control<br/>\
 https://cheatography.com/davechild/cheat-sheets/python/<br/>
