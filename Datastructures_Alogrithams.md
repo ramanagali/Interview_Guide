@@ -121,3 +121,103 @@ log16=4 16 	256 65536
 
 ## Data Structures
 Data Structures are way storing and organizing data in a computer for efficient access and modification
+
+### Array
+* Linear Data type; in Python using List
+* Similar data types - Stores  data as contiguous memory locations
+
+### Linked List
+* Linear Data type, in Python using List
+* Stores as individual nodes and has pointers to next node
+ * **Singly-linked list**: 
+   * linked list in which each node points to the next node  
+   * the last node points to null
+ * **Doubly-linked list**: 
+   * linked list in which each node has two pointers, p and n, such that p points to the previous node and n points to the next node;
+   * the last node's n pointer points to null
+ * **Circular-linked list**: 
+   * linked list in which each node points to the next node  
+   * the last node points back to the first node
+ * **Time Complexity**:
+    * Access: O(n)
+    * Search: O(n)
+    * Insert: O(1)
+    * Remove: O(1)
+* **Diff**
+  - For LL No need to allocate momory
+  - LL Insertion is easy
+  - LL Memory is higher (p & n)
+  - Insertion/Delete at begining = O(1)
+  - Insert/Delete at end = O(n)
+
+### Stack
+* Last In First Out operation; 
+  * push - Insert at end
+  * pop - remove at end
+* In python using List/collections.deque/queue.LifoQueue
+* Time Complexity
+  * Push: Insert - O(1)
+  * Pop: Delete	- O(1)
+  * Search 		- O(n)
+
+### Queue
+* First In First Out operation; 
+  * push - Insert at end
+  * pop - remove at start
+* In python using List/collections.deque/queue.LifoQueue
+* Time Complexity
+  * Push: Insert - O(1)
+  * Pop: Delete	- O(1)
+  * Search 		- O(n)
+  
+### Hashmap/Hashtable
+* **Hashing** 
+  * assigning an object into a unique index called as  key. 
+  * Object is identified using a key-value pair 
+  * Dictionary - collection of objects
+* **Hash table** storing elements as key-value pairs, identify using key
+* Hash table memory efficient
+* Lookp/Insertion/Deletion Complexity is using key always O(1)
+* **Collision:** if hash function generetes same function the conflict called Collision.
+  * **Chaining** - one key, store values as List in dictionary
+  * **Open Addressing** - Linear/Quadratic Probing and Double Hashing
+    * **Linear Probing** - collision is resolved by checking the next slot
+    * **Quadratic Probing**- similar to linear probing but the spacing between the slots is increased
+    * **Double hashing** - applying a hash function & nother hash function
+* Time Complexity:
+  * Lookp/Insertion/Deletion is using key always O(1)
+* ### Tree
+  * A Tree is nonlinear hierarchical, undirected, connected, acyclic graph
+    * Root - top most node of a tree.
+    * Node - data and pointers to another node
+    * Edge - link between nodes
+    * leaf nodes(L1, L2, L3)
+  * **Binary Tree**
+    * parent node can have at most two children
+    * Left node has lesser numbers
+    * Right node has greater numbers
+    * **Full Tree** - a tree in which every node has either 0 or 2 children
+    * **Perfect Binary Tree** - binary tree with exactly 2 child nodes at all level
+    * **Complete Tree** -  every level must be filled, leaf nodes lean towards left
+    * **Pathological Tree** - tree having a single child either left or right
+    * **Skewed Binary Tree** - tree is either dominated by the left Pathological nodes or the right Pathological nodes
+    * **Balanced Binary Tree** - difference between the height of the left and the right is either 0 or 1
+  * **Binary Search Tree**
+    * Left subtree has lesser numbers,
+    * Right subtree has greater numbers
+    * BST every node has max 2 nodes  
+    * Every Iteration we reduce space by half(1/2))
+    * if n=8  & 3 iterations, log 8 = 3 => O(log(n))
+    * Access, Insert, Search adn Delete  = Θ(log(n))
+    * **Breadth first search**
+      * level1, level2(left to right), leve3(left to right)
+    * **Depth first search**
+      * In order traversal (left, root, right)
+      * Pre order traversal (root, left and right)
+      * Post order traversal (left, right and root)
+    * **Deleting a node**
+      * delete a node with no child
+      * delete a node with one child
+      * delete a node with multiple childs
+
+### Graph
