@@ -107,8 +107,9 @@ https://mindmajix.com/atlassian-bamboo-interview-questions
 
 **Jenkins Groovy**<br/>
 http://www.cheat-sheets.org/saved-copy/rc015-groovy_online.pdf<br/>
-https://onecompiler.com/cheatsheets/groovy
-https://geek.starbean.net/archive/techinfo/groovy-cheatsheet/
+https://onecompiler.com/cheatsheets/groovy<br/>
+https://geek.starbean.net/archive/techinfo/groovy-cheatsheet/<br/>
+https://www.guru99.com/groovy-tutorial.html<br/>
 
 **DevOps Interview Questions**<br/>
 https://www.katalon.com/resources-center/blog/devops-interview-questions/
