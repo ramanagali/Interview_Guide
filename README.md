@@ -105,6 +105,11 @@ https://snyk.io/wp-content/uploads/10-best-practices-to-containerize-Node.js-web
 https://www.opsmx.com/blog/what-is-a-ci-cd-pipeline/
 https://mindmajix.com/atlassian-bamboo-interview-questions
 
+**Jenkins Groovy**<br/>
+http://www.cheat-sheets.org/saved-copy/rc015-groovy_online.pdf<br/>
+https://onecompiler.com/cheatsheets/groovy
+https://geek.starbean.net/archive/techinfo/groovy-cheatsheet/
+
 **DevOps Interview Questions**<br/>
 https://www.katalon.com/resources-center/blog/devops-interview-questions/
 
