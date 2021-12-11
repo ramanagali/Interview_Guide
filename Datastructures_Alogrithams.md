@@ -234,14 +234,11 @@ Data Structures are way storing and organizing data in a computer for efficient 
       - delete node with children 1, delete parent, move child to up (child will replace parent)
       - delete node with children 2, replace largest value from left subnodes or smallest value from right subnodes
     - **Breadth first search**
-      - level1, level2(left to right), leve3(left to right)
+      - level0, level1, level2(left to right), leve3(left to right)
     - **Depth first search**
-      - In order traversal (left, root, right)
-      - Pre order traversal (root, left and right)
-      - Post order traversal (left, right and root)
-    - **Deleting a node**
-      - delete a node with no child
-      - delete a node with one child
-      - delete a node with multiple childs
-
+      - **In order traversal** - left subtree, root, right subtree at each level)
+      - **Pre order traversal** - root, left subtree and right subtree at each level
+      - **Post order traversal** - left subtree, right subtree and root at each level
+    - smallest value - left most 
+    - highest value - right most 
 ### Graph
