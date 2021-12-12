@@ -13,7 +13,7 @@ pull requests are welcome
 
 ### 1.1 Network security policies
 
-- Create default deny all NetworkPolicy
+- Create default deny all NetworkPolicy & allow required traffic
 - Create ingress/egress NetPol - ns, pod, port matching rules
 - Ref: <https://kubernetes.io/docs/concepts/services-networking/network-policies/>
 
