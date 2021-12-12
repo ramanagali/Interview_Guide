@@ -967,9 +967,29 @@ spec:
 - Download and install CFSSL
 - Generete private key using `cfssl genkey`
 - Create CertificateSigningRequest
+  ```
+  cat <<EOF | kubectl apply -f -
+  apiVersion: certificates.k8s.io/v1
+  kind: CertificateSigningRequest
+  metadata:
+    name: my-svc.my-namespace
+  spec:
+    request: $(cat server.csr | base64 | tr -d '\n')
+    signerName: kubernetes.io/kubelet-serving
+    usages:
+    - digital signature
+    - key encipherment
+    - server auth
+  EOF
+  ```
 - Get CSR approved (by k8s Admin)
+  - `kubectl certificate approve my-svc.my-namespace`
 - Once approved then retrive from status.certificate
+  - `kubectl get csr my-svc.my-namespace -o jsonpath='{.status.certificate}' | base64 --decode > server.crt`
 - Download and use it
+  ```
+  kubectl get csr
+  ```
 - Ref: <https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/>
 
 </details>
