@@ -1002,13 +1002,13 @@ spec:
 
 ### 5.1 Minimize base image footprint
 
-- Use Slim/Minimal Images than base images
-- Use Docker multi stage builds for lean
+- Use **Slim/Minimal** Images than base images
+- Use Docker **multi stage builds** for lean
 - **Use Distroless:**
   - Distroless Images will have only your app & runtime dependencies
     - No package managers, shell, n/w tools, text editors etc
   - Distroless images are very small
-- use trivy image scanner for container vulnerabilities, filesys, git etc
+- use `trivy` image scanner for container vulnerabilities, filesys, git etc
 - Ref: <https://github.com/GoogleContainerTools/distroless>
 - Ref: <https://github.com/aquasecurity/trivy>
   
