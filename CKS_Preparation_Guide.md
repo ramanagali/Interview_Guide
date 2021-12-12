@@ -420,18 +420,18 @@ activate ufw firewall  ufw disable
 - **Identify and Fix Open Ports, Remove Packages**
 
 ```sh
-Identify Open Ports, Remove Packages 
-list all installed packages    apt list --installed 
-list active services     systemctl list-units --type service
-list the kernel modules    lsmod
-search for service     systemctl list-units --all | grep -i nginx
-stop remove nginx services   systemctl stop nginx
-remove nginx service packages   rm /lib/systemd/system/nginx.service
-remove packages from controlplane  apt remove nginx -y
-check service listing on 9090   netstat -atnlp | grep -i 9090 | grep -w -i listen
-check port to service mapping   cat /etc/services | grep -i ssh
-check port listing on 22   netstat -an | grep 22  | grep  -w -i  listen
-check lighthttpd service port   netstat -natulp | grep -i light
+#Identify Open Ports, Remove Packages 
+list all installed packages         apt list --installed 
+list active services                systemctl list-units --type service
+list the kernel modules             lsmod
+search for service                  systemctl list-units --all | grep -i nginx
+stop remove nginx services          systemctl stop nginx
+remove nginx service packages       rm /lib/systemd/system/nginx.service
+remove packages from controlplane   apt remove nginx -y
+check service listing on 9090       netstat -atnlp | grep -i 9090 | grep -w -i listen
+check port to service mapping       cat /etc/services | grep -i ssh
+check port listing on 22            netstat -an | grep 22  | grep  -w -i  listen
+check lighthttpd service port       netstat -natulp | grep -i light
 ```
 
 ### 3.2 Minimize IAM roles
