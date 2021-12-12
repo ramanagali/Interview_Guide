@@ -474,15 +474,15 @@ spec:
   - Mode **2 - filtered mode**
 - SECCOMP profile default directory `/var/lib/kubelet/seccomp/profiles`
 - SECCOMP Profiles are 3 types
-  - Default Profile
-  - Audit - audit.json
-  - Violation- violation.json
-  - Custom - fine-grained.json
+  - **Default Profile**
+  - **Audit** - audit.json
+  - **Violation**- violation.json
+  - **Custom** - fine-grained.json
 - SECCOMP profile action can be
-  - "action": "SCMP_ACT_ALLOW"
-  - "action": "SCMP_ACT_ERRNO"
-  - "defaultAction": "SCMP_ACT_LOG"
-      - - Create POD with Specific Profile
+  - `"action": "SCMP_ACT_ALLOW"`
+  - `"action": "SCMP_ACT_ERRNO"`
+  - `"defaultAction": "SCMP_ACT_LOG"`
+  - Create POD with Specific Profile
 
   ```yaml
   apiVersion: v1
