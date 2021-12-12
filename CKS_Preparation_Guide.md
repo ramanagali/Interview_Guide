@@ -761,7 +761,7 @@ spec:
   id
   ```
 
-- Set the security context for a Container
+- Set the security context for a Container (container level user is different)
 
   ```yaml
   apiVersion: v1
@@ -818,10 +818,12 @@ spec:
 - Types of Secrets
   - Opaque(Generic) secrets -
   - Service account token Secrets
-  - Docker config Secrets -
+  - Docker config Secrets 
+    - `kubectl create secret docker-registry my-secret --docker-server=DOCKER_REGISTRY_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL`
   - Basic authentication Secret -
   - SSH authentication secrets -
   - TLS secrets -
+    - `kubectl create secret tls tls-secret --cert=path/to/tls.cert --key=path/to/tls.key`
   - Bootstrap token Secrets -  
 
 - Secret as Data to a Container Using a Volume
