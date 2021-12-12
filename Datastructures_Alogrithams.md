@@ -97,7 +97,7 @@ Every statement/line is 1 unit of time
 **Compare Class of Functions**
 
 ```
-1 < log n < /n < n < n log n < n2 < n3 ... 2n < 3n < Nn < O(1) < O(logN) < O(N) < O(NlogN) < O(N^2) < O(2^N)< O(N!)
+1 < log n < √n < n < n log n < n2 < n3 ... 2n < 3n < Nn < O(1) < O(logN) < O(N) < O(NlogN) < O(N^2) < O(2^N)< O(N!)
 ```
 
 **Log Values**
@@ -131,13 +131,12 @@ Data Structures are way storing and organizing data in a computer for efficient 
 
 ### Array
 
-- Linear Data type; in Python using List
-
+- Linear DS; in Python using List
 - Similar data types - Stores  data as contiguous memory locations
 
 ### Linked List
 
-- Linear Data type, in Python using List
+- Linear DS, in Python using List
 
 - Stores as individual nodes and has pointers to next node
 - **Singly-linked list**:
@@ -163,7 +162,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
 
 ### Stack
 
-- Last In First Out operation;
+- Linear DS, Last In First Out operation;
   - push - Insert at end
   - pop - remove at end
 
@@ -175,7 +174,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
 
 ### Queue
 
-- First In First Out operation;
+- Linear DS, First In First Out operation;
   - push - Insert at end
   - pop - remove at start
 
@@ -206,7 +205,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
 
 - ### Tree
 
-  - A Tree is nonlinear hierarchical, undirected, connected, acyclic graph
+  - A Tree is Non Linear DS, hierarchical, undirected, connected, acyclic graph
     - Root - top most node of a tree.
     - Node - data and pointers to another node
     - Edge - link between nodes
@@ -217,7 +216,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
     - Right node has greater numbers
     - **Full Tree** - a tree in which every node has either 0 or 2 children
     - **Perfect Binary Tree** - binary tree with exactly 2 child nodes at all level
-    - **Complete Tree** -  every level must be filled, leaf nodes lean towards left
+    - **Complete Tree** -  every level must be filled L & R, leaf node only lean towards left
     - **Pathological Tree** - tree having a single child either left or right
     - **Skewed Binary Tree** - tree is either dominated by the left Pathological nodes or the right Pathological nodes
     - **Balanced Binary Tree** - difference between the height of the left and the right is either 0 or 1
@@ -229,9 +228,9 @@ Data Structures are way storing and organizing data in a computer for efficient 
     - if n=8  & 3 iterations, log 8 = 3 => O(log(n))
     - Access, Insert, Search adn Delete  = Θ(log(n))
     - delete process
-      - if bst not empty => search for node => check node children 
-      - delete node with children 0, search L&R for node and delete
-      - delete node with children 1, delete parent, move child to up (child will replace parent)
+      - if bst not empty => search for node => check node children
+      - delete node with children 0; simpley delete it
+      - delete node with children 1, replace with its child value then delete child
       - delete node with children 2, replace largest value from left subnodes or smallest value from right subnodes
     - **Breadth first search**
       - level0, level1, level2(left to right), leve3(left to right)
@@ -239,6 +238,85 @@ Data Structures are way storing and organizing data in a computer for efficient 
       - **In order traversal** - left subtree, root, right subtree at each level)
       - **Pre order traversal** - root, left subtree and right subtree at each level
       - **Post order traversal** - left subtree, right subtree and root at each level
-    - smallest value - left most 
-    - highest value - right most 
+    - smallest value - left most
+    - highest value - right most
+
+### Heap
+
+- Non Linear DS, must Complete binary tree (every level must be filled L & R, leaf node only lean towards left) and should satisfy heap
+- **Binary heap**
+  - **Min heap** -  every level root node is lesser than childs
+  - **Max Heap** - every level root node is greater than childs
+- **Binomial heap**
+- **Fibonaci heap**
+- Time Complexity:
+  - Access Max / Min: O(1)
+  - Insert: O(log(n))
+  - Remove Max / Min: O(log(n))
+  
 ### Graph
+
+- A graph is Non Linear DS, a ordered pair of sets (V,E) vertices & edges
+- Tree has root node but graph no root node
+- Tree is only root to child. in graph any node to anynode possible
+- Ex: google maps, GPS, facebook, LinkedIn, e-commerce web sites
+- **Graphs Direction Types**
+  - **Undirected Graph** - edges are bidirectional (adjacency relation is symmetric)
+  - **Directed Graph** - edge are uni directional (adjacency relation is not symmetric)
+  - **Complete Graph** - all nodes should have path
+- **Graph Weight Types**
+  - **Weighted Graph**: a graph some value/cost 
+  - **Unweighted Graph**: a graph with no value/cost
+- **Graph Cycle Types**
+  - **Cyclic Graph** - a graph has cycle 
+  - **Acylic Graph** - a graph which does have any cycle. tree is acyclic graph
+- **Adjacent Nodes** - if edge exists then called adjacent nodes
+- **Graph Path** - sequence of vertices connected by edges
+  - **Simple path** - if all of its vertices are distinct
+  - **closed path** - first and last node is same
+  - **Cycle** - cycle is path, first & last node is same and all nodes to be distinct
+- **Graph Connectivity**
+  - **strongly connected** - Directed & every node to node should have path
+  - **weekly connected** - connected but Undirected
+- **Degree of Node** = number of edges its connected to it
+  - **InDegree**  - Incoming number of edges
+  - **OutDegree** - outgoing number of edges
+- **Adjaceny Matrix** - matrix (0 or 1) representation b/n the nodes
+- **Adjacency List** - array of linked lists representation of a nodes
+- In Python use dictionaries
+
+## Search Algorithams
+
+- **Linear Search Algorithm**
+  - Traverse array using for loop, if not march then -1
+  - Time Complexity is O(n)
+- **Binary Search Algoritham**
+  - array to be sorted
+  - find middle index & check the middle number,
+  - if middle+1 <  actual number, again middle index, etc  
+  - Searching is based on n/2 iterations; 
+    - Iterative method
+    - Recursive method
+  - Ex: 10,14,19,26,27,31,33,35, 42, 44, 50
+  - Time Complexity is O(log n)
+- **Jump/block Search Algoritham**
+  - Like Linear Algorithms but 
+  - Typical time complexity O(√n).
+  - Time Complexity is b/n (O(n)) and (O(log n))
+  
+## Sort Algorithams
+
+- Bubble Sort Algorithm
+- Quick Sort Algorithm
+- Insertion Sort Algorithm
+- Merge Sort Algorithm
+- Shell Sort Algorithm
+- Selection Sort Algorithm
+  
+## Problem Solviong Algorithms
+
+- Divide And Conquer
+- Backtracking Algorithm/Brute force approach
+- Greedy algorithm
+- Dynamic Programming
+- Branching and bound Algorithms
