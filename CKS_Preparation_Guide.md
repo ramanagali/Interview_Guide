@@ -623,7 +623,7 @@ spec:
 #### **Admission Controller**
 
 - Implment security measures to enforce. Triggers before creating a pod
-- Enable a Controller in kubeadm cluster /etc/kubernetes/manifests/kube-apiserver.yaml
+- Enable a Controller in kubeadm cluster `/etc/kubernetes/manifests/kube-apiserver.yaml`
 
   ```yaml
   spec:
