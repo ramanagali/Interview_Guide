@@ -901,8 +901,8 @@ spec:
 
 - gVisor sits between container and Linux Kernal. Every container has their own gVisior
 - gVisor has 2 different componets
-  - Sentry: works as kernal for containers
-  - Gofer is file proxy to access system files. Middle man betwen container and OS
+  - **Sentry**: works as kernal for containers
+  - **Gofer**: is file proxy to access system files. Middle man betwen container and OS
 - gVisor uses runsc to runtime sandbox with in hostOS (OCI comapliant)
 
   ```yaml
