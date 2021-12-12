@@ -1,7 +1,7 @@
 # Certified Kubernetes Security Specialist (CKS) Simplified Preparation Guide
 
 Those who know about Kubernetes Admistriation, for the next level
-Certified Kubernetes Security Specialist (CKS) exam point of view, below complete one pager, shortened/finetuned study material 
+Certified Kubernetes Security Specialist (CKS) exam point of view, below complete one pager, simplified/shortened/finetuned study material 
 
 pull requests are welcome
 <hr />
