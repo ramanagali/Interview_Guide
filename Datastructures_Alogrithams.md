@@ -358,6 +358,9 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - Time complexity is O(n2) best is O(n)
   <img src="https://www.w3resource.com/w3r_images/insertion-sort.png" alt="Python: Insertion sort" style="max-width:100%;display:block;height=auto">
 - **Merge Sort Algorithm**
+  - sdfsdaf
+  - sdfsdaf
+  - sdfsdaf
 - **Shell Sort Algorithm**
 
 ## Problem Solviong Algorithms
