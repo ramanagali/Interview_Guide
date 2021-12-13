@@ -356,7 +356,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - move it to next, compare with left sorted array
   - repeat
   - Time complexity is O(n2) best is O(n)
-  <img src="https://www.w3resource.com/w3r_images/insertion-sort.png" alt="Python: Insertion sort" style="max-width:100%;display:block;height=auto">
+  <img height="400" src="https://www.w3resource.com/w3r_images/insertion-sort.png" alt="Python: Insertion sort" width="300">
 - **Merge Sort Algorithm**
   - based on Divide and Conquer Algorithm
   - divide array into 2 sub arrays untill single element
