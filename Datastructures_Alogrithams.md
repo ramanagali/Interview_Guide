@@ -374,8 +374,38 @@ Data Structures are way storing and organizing data in a computer for efficient 
   <img src="https://www.tutorialspoint.com/data_structures_algorithms/images/shell_sort_gap_4.jpg" alt="Shell Sort">
 ## Problem Solviong Algorithms
 
-- Divide And Conquer
-- Backtracking Algorithm/Brute force approach
-- Greedy algorithm
-- Dynamic Programming
-- Branching and bound Algorithms
+- **Divide And Conquer**
+  - Problem will be divded in to sub problems
+  - find solution for sub problem
+  - combine all solutions to one soluiton
+  - reucrisively solve
+    - binary search
+    - find min and max
+    - merge sort
+    - quick sort
+    - strassens matrix multiplication
+- **Backtracking Algorithm/Brute force approach**
+  - Tries all the possibilities, chooses the desired/best solutions
+  - Good Practice to come up with solution to all possible 
+  - least efficient but guaranteed a solution
+
+  - Backtracking aproach
+  	- find all the possible ways
+  - State space tree
+  	- define level by level
+  
+- **Greedy algorithm**
+  - top-down approach
+  1. Greedy Choice Property
+  	- choosing the best choice at each step
+  	- most obvious and immediate benefit
+  2. Optimal Substructure
+  	- solution to its subproblems so that problem can be solved
+-------------------------------------------------------
+- **Dynamic Programming**
+- technique to efficiently solve a class of problems that have overlapping subproblems
+- problem can be divided into smaller subproblems
+- if overlapping among subproblems, solution will be saved for future reference
+Ex: 0,1,1,2,3,5,8,13,21,34,55...(n-1 + n-2)
+
+- **Branching and bound Algorithms**
