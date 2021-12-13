@@ -177,7 +177,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - Push: Insert - O(1)
   - Pop: Delete - O(1)
   - Search   - O(n)
-<img alt="represent the LIFO principle by using push and pop operation" height="282" src="https://cdn.programiz.com/sites/tutorial2program/files/stack.png" title="Stack operations" width="414">
+  <img alt="represent the LIFO principle by using push and pop operation" height="282" src="https://cdn.programiz.com/sites/tutorial2program/files/stack.png" title="Stack operations" width="414">
 
 ### Queue
 
@@ -190,8 +190,8 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - Push: Insert - O(1)
   - Pop: Delete - O(1)
   - Search   - O(n)
-<img alt="Representation of Queue in first in first out principle" height="147" src="https://cdn.programiz.com/sites/tutorial2program/files/queue.png" title="Queue" width="946">
-### Hashmap/Hashtable
+  <img alt="Representation of Queue in first in first out principle" height="147" src="https://cdn.programiz.com/sites/tutorial2program/files/queue.png" title="Queue" width="946">
+  ### Hashmap/Hashtable
 
 - **Hashing**
   - assigning an object into a unique index called as  key.
@@ -224,17 +224,17 @@ Data Structures are way storing and organizing data in a computer for efficient 
     - Left node has lesser numbers
     - Right node has greater numbers
     - **Full Binary Tree** - a tree in which every node has either 0 or 2 children
-    <img alt="Full binary tree" height="280" src="https://cdn.programiz.com/sites/tutorial2program/files/full-binary-tree_0.png" title="Full binary tree" width="208">
+      <img alt="Full binary tree" height="280" src="https://cdn.programiz.com/sites/tutorial2program/files/full-binary-tree_0.png" title="Full binary tree" width="208">
     - **Perfect Binary Tree** - binary tree with exactly 2 child nodes at all level
-    <img alt="Perfect binary tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/perfect-binary-tree_0.png" title="Perfect binary tree" width="288">
+      <img alt="Perfect binary tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/perfect-binary-tree_0.png" title="Perfect binary tree" width="288">
     - **Complete Binary Tree** -  every level must be filled L & R, leaf node only lean towards left
-    <img alt="Complete Binary Tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/complete-binary-tree_0.png" title="Complete Binary Tree" width="228">
+      <img alt="Complete Binary Tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/complete-binary-tree_0.png" title="Complete Binary Tree" width="228">
     - **Pathological Binary Tree** - tree having a single child either left or right
-    <img alt="Degenerate Binary Tree" height="280" src="https://cdn.programiz.com/sites/tutorial2program/files/degenerate-binary-tree_0.png" title="Degenerate Binary Tree" width="168">
+      <img alt="Degenerate Binary Tree" height="280" src="https://cdn.programiz.com/sites/tutorial2program/files/degenerate-binary-tree_0.png" title="Degenerate Binary Tree" width="168">
     - **Skewed Binary Tree** - tree is either dominated by the left Pathological nodes or the right Pathological nodes
-    <img alt="Skewed Binary Tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/skewed-binary-tree_0.png" title="Skewed Binary Tree" width="328">
+      <img alt="Skewed Binary Tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/skewed-binary-tree_0.png" title="Skewed Binary Tree" width="328">
     - **Balanced Binary Tree** - difference between the height of the left and the right is either 0 or 1
-    <img alt="Balanced Binary Tree" height="241" src="https://cdn.programiz.com/sites/tutorial2program/files/height-balanced_1.png" title="Balanced Binary Tree" width="336">
+      <img alt="Balanced Binary Tree" height="241" src="https://cdn.programiz.com/sites/tutorial2program/files/height-balanced_1.png" title="Balanced Binary Tree" width="336">
   - **Binary Search Tree**
     - Left subtree has lesser numbers,
     - Right subtree has greater numbers
