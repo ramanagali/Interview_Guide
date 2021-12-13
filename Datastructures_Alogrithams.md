@@ -396,16 +396,16 @@ Data Structures are way storing and organizing data in a computer for efficient 
   
 - **Greedy algorithm**
   - top-down approach
-  1. Greedy Choice Property
-  	- choosing the best choice at each step
-  	- most obvious and immediate benefit
-  2. Optimal Substructure
-  	- solution to its subproblems so that problem can be solved
--------------------------------------------------------
+    1. Greedy Choice Property
+    	- choosing the best choice at each step
+    	- most obvious and immediate benefit
+    2. Optimal Substructure
+    	- solution to its subproblems so that problem can be solved
+  
 - **Dynamic Programming**
-- technique to efficiently solve a class of problems that have overlapping subproblems
-- problem can be divided into smaller subproblems
-- if overlapping among subproblems, solution will be saved for future reference
-Ex: 0,1,1,2,3,5,8,13,21,34,55...(n-1 + n-2)
+  - technique to efficiently solve a class of problems that have overlapping subproblems
+  - problem can be divided into smaller subproblems
+  - if overlapping among subproblems, solution will be saved for future reference
+  Ex: 0,1,1,2,3,5,8,13,21,34,55...(n-1 + n-2)
 
 - **Branching and bound Algorithms**
