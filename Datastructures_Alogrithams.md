@@ -247,7 +247,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
       - delete node with children 0; simpley delete it
       - delete node with children 1, replace with its child value then delete child
       - delete node with children 2, replace largest value from left subnodes or smallest value from right subnodes
-    <img alt="A tree having a right subtree with one value smaller than the root is shown to demonstrate that it is not a valid binary search tree" height="448" src="https://cdn.programiz.com/sites/tutorial2program/files/bst-vs-not-bst.png" title="Binary Search Tree" width="730">
+    <img alt="A tree having a right subtree with one value smaller than the root is shown to demonstrate that it is not a valid binary search tree" height="448" src="https://cdn.programiz.com/sites/tutorial2program/files/bst-vs-not-bst.png" title="Binary Search Tree" width="730"></br>
     - **Breadth first search**
       - level0, level1, level2(left to right), leve3(left to right)
     - **Depth first search**
