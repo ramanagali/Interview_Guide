@@ -203,7 +203,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - Lookp/Insertion/Deletion Complexity is using key always O(1)
 - **Collision:** if hash function generetes same function the conflict called Collision.
   - **Chaining** - one key, store values as List in dictionary
-  <img alt="chaining method used to resolve collision in hash table" height="425" src="https://cdn.programiz.com/sites/tutorial2program/files/Hash-3_1.png" title="Collision resolution by doubly linked list." width="800">
+  <img alt="chaining method used to resolve collision in hash table" height="225" src="https://cdn.programiz.com/sites/tutorial2program/files/Hash-3_1.png" title="Collision resolution by doubly linked list." width="400">
   - **Open Addressing** - Linear/Quadratic Probing and Double Hashing
     - **Linear Probing** - collision is resolved by checking the next slot
     - **Quadratic Probing**- similar to linear probing but the spacing between the slots is increased
@@ -262,9 +262,9 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - Non Linear DS, must Complete binary tree (every level must be filled L & R, leaf node only lean towards left) and should satisfy heap
 - **Binary heap**
   - **Min heap** -  every level root node is lesser than childs</br>
-    <img alt="Min-heap" height="432" src="https://cdn.programiz.com/cdn/farfuture/tVzREVaraXbOKPPJtMbcQ10N2QkxiAJcNOIfxPYlVR0/mtime:1582112622/sites/tutorial2program/files/minheap_0.png" title="Min-heap" width="496">
+    <img alt="Min-heap" height="232" src="https://cdn.programiz.com/cdn/farfuture/tVzREVaraXbOKPPJtMbcQ10N2QkxiAJcNOIfxPYlVR0/mtime:1582112622/sites/tutorial2program/files/minheap_0.png" title="Min-heap" width="272">
   - **Max Heap** - every level root node is greater than childs</br>
-    <img alt="Max-heap" height="432" src="https://cdn.programiz.com/cdn/farfuture/OTLuUbQZmYPjHkXgmCfzHr8nNCkoi2Je9y9ZzIl1vuI/mtime:1582112622/sites/tutorial2program/files/maxheap_1.png" title="Max-heap" width="524">
+    <img alt="Max-heap" height="232" src="https://cdn.programiz.com/cdn/farfuture/OTLuUbQZmYPjHkXgmCfzHr8nNCkoi2Je9y9ZzIl1vuI/mtime:1582112622/sites/tutorial2program/files/maxheap_1.png" title="Max-heap" width="272">
 - **Binomial heap**
 - **Fibonaci heap**</br>
     <img alt="Fibonacci Heap" height="274" src="https://cdn.programiz.com/cdn/farfuture/WgeXgB_o4_0qX5Iv2msbC1zcYn1s3Ay7ypgfac4CmMo/mtime:1585306008/sites/tutorial2program/files/fibonacci-heap.png" title="Fibonacci Heap" width="524">
