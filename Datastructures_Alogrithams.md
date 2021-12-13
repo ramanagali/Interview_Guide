@@ -177,7 +177,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - Push: Insert - O(1)
   - Pop: Delete - O(1)
   - Search   - O(n)
-<img src="https://cdn.programiz.com/sites/tutorial2program/files/stack.png" title="Stack operations">
+<img alt="represent the LIFO principle by using push and pop operation" height="282" src="https://cdn.programiz.com/sites/tutorial2program/files/stack.png" title="Stack operations" width="414">
 
 ### Queue
 
