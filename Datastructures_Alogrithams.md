@@ -261,13 +261,13 @@ Data Structures are way storing and organizing data in a computer for efficient 
 
 - Non Linear DS, must Complete binary tree (every level must be filled L & R, leaf node only lean towards left) and should satisfy heap
 - **Binary heap**
-  - **Min heap** -  every level root node is lesser than childs
-  <img alt="Min-heap" height="432" src="https://cdn.programiz.com/cdn/farfuture/tVzREVaraXbOKPPJtMbcQ10N2QkxiAJcNOIfxPYlVR0/mtime:1582112622/sites/tutorial2program/files/minheap_0.png" title="Min-heap" width="496">
-  - **Max Heap** - every level root node is greater than childs
-  <img alt="Max-heap" height="432" src="https://cdn.programiz.com/cdn/farfuture/OTLuUbQZmYPjHkXgmCfzHr8nNCkoi2Je9y9ZzIl1vuI/mtime:1582112622/sites/tutorial2program/files/maxheap_1.png" title="Max-heap" width="524">
+  - **Min heap** -  every level root node is lesser than childs</br>
+    <img alt="Min-heap" height="432" src="https://cdn.programiz.com/cdn/farfuture/tVzREVaraXbOKPPJtMbcQ10N2QkxiAJcNOIfxPYlVR0/mtime:1582112622/sites/tutorial2program/files/minheap_0.png" title="Min-heap" width="496">
+  - **Max Heap** - every level root node is greater than childs</br>
+    <img alt="Max-heap" height="432" src="https://cdn.programiz.com/cdn/farfuture/OTLuUbQZmYPjHkXgmCfzHr8nNCkoi2Je9y9ZzIl1vuI/mtime:1582112622/sites/tutorial2program/files/maxheap_1.png" title="Max-heap" width="524">
 - **Binomial heap**
-- **Fibonaci heap**
-  <img alt="Fibonacci Heap" height="274" src="https://cdn.programiz.com/cdn/farfuture/WgeXgB_o4_0qX5Iv2msbC1zcYn1s3Ay7ypgfac4CmMo/mtime:1585306008/sites/tutorial2program/files/fibonacci-heap.png" title="Fibonacci Heap" width="524">
+- **Fibonaci heap**</br>
+    <img alt="Fibonacci Heap" height="274" src="https://cdn.programiz.com/cdn/farfuture/WgeXgB_o4_0qX5Iv2msbC1zcYn1s3Ay7ypgfac4CmMo/mtime:1585306008/sites/tutorial2program/files/fibonacci-heap.png" title="Fibonacci Heap" width="524">
 - Time Complexity:
   - Access Max / Min: O(1)
   - Insert: O(log(n))
