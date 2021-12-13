@@ -142,12 +142,15 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - **Singly-linked list**:
   - linked list in which each node points to the next node  
   - the last node points to null
+  <img src="//cdn.programiz.com/sites/tutorial2program/files/linked-list-with-data.png" title="Linked list Representation">
 - **Doubly-linked list**:
   - linked list in which each node has two pointers, p and n, such that p points to the previous node and n points to the next node;
   - the last node's n pointer points to null
+  <img src="//cdn.programiz.com/sites/tutorial2program/files/doubly-linked-list-concept.png" title="Doubly linked list">
 - **Circular-linked list**:
   - linked list in which each node points to the next node  
   - the last node points back to the first node
+  <img src="//cdn.programiz.com/sites/tutorial2program/files/circular-linked-list.png" title="Circular linked list">
 - **Time Complexity**:
   - Access: O(n)
   - Search: O(n)
@@ -165,12 +168,16 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - Linear DS, Last In First Out operation;
   - push - Insert at end
   - pop - remove at end
+  - isEmpty - check stack empty
+  - isFull - check if stack is full
+  - peek - get the vale of top element (without remove)
 
 - In python using List/collections.deque/queue.LifoQueue
 - Time Complexity
   - Push: Insert - O(1)
   - Pop: Delete - O(1)
   - Search   - O(n)
+<img src="//cdn.programiz.com/sites/tutorial2program/files/stack.png" title="Stack operations">
 
 ### Queue
 
@@ -183,7 +190,8 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - Push: Insert - O(1)
   - Pop: Delete - O(1)
   - Search   - O(n)
-  
+<img src="//cdn.programiz.com/sites/tutorial2program/files/queue.png" title="Queue">
+
 ### Hashmap/Hashtable
 
 - **Hashing**
@@ -196,10 +204,11 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - Lookp/Insertion/Deletion Complexity is using key always O(1)
 - **Collision:** if hash function generetes same function the conflict called Collision.
   - **Chaining** - one key, store values as List in dictionary
+  <img src="//cdn.programiz.com/sites/tutorial2program/files/Hash-3_1.png" title="Collision resolution by doubly linked list.">
   - **Open Addressing** - Linear/Quadratic Probing and Double Hashing
     - **Linear Probing** - collision is resolved by checking the next slot
     - **Quadratic Probing**- similar to linear probing but the spacing between the slots is increased
-    - **Double hashing** - applying a hash function & nother hash function
+    - **Double hashing** - applying a hash function & another hash function
 - Time Complexity:
   - Lookp/Insertion/Deletion is using key always O(1)
 
@@ -210,16 +219,23 @@ Data Structures are way storing and organizing data in a computer for efficient 
     - Node - data and pointers to another node
     - Edge - link between nodes
     - leaf nodes(L1, L2, L3)
+    <img alt="Nodes and edges of a tree" height="216" src="//cdn.programiz.com/sites/tutorial2program/files/nodes-edges_0.png" title="Nodes and edges of a tree" width="307">
   - **Binary Tree**
     - parent node can have at most two children
     - Left node has lesser numbers
     - Right node has greater numbers
-    - **Full Tree** - a tree in which every node has either 0 or 2 children
+    - **Full Binary Tree** - a tree in which every node has either 0 or 2 children
+    <img src="//cdn.programiz.com/sites/tutorial2program/files/full-binary-tree_0.png" title="Full binary tree">
     - **Perfect Binary Tree** - binary tree with exactly 2 child nodes at all level
-    - **Complete Tree** -  every level must be filled L & R, leaf node only lean towards left
-    - **Pathological Tree** - tree having a single child either left or right
+    <img src="//cdn.programiz.com/sites/tutorial2program/files/perfect-binary-tree_0.png" title="Perfect binary tree">
+    - **Complete Binary Tree** -  every level must be filled L & R, leaf node only lean towards left
+    <img src="//cdn.programiz.com/sites/tutorial2program/files/complete-binary-tree_0.png" title="Complete Binary Tree">
+    - **Pathological Binary Tree** - tree having a single child either left or right
+    <img src="//cdn.programiz.com/sites/tutorial2program/files/degenerate-binary-tree_0.png" title="Degenerate Binary Tree">
     - **Skewed Binary Tree** - tree is either dominated by the left Pathological nodes or the right Pathological nodes
+    <img src="//cdn.programiz.com/sites/tutorial2program/files/skewed-binary-tree_0.png" title="Skewed Binary Tree" >
     - **Balanced Binary Tree** - difference between the height of the left and the right is either 0 or 1
+    <img src="//cdn.programiz.com/sites/tutorial2program/files/height-balanced_1.png" title="Balanced Binary Tree" >
   - **Binary Search Tree**
     - Left subtree has lesser numbers,
     - Right subtree has greater numbers
@@ -232,6 +248,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
       - delete node with children 0; simpley delete it
       - delete node with children 1, replace with its child value then delete child
       - delete node with children 2, replace largest value from left subnodes or smallest value from right subnodes
+    <img src="//cdn.programiz.com/sites/tutorial2program/files/bst-vs-not-bst.png" title="Binary Search Tree" >
     - **Breadth first search**
       - level0, level1, level2(left to right), leve3(left to right)
     - **Depth first search**
@@ -246,9 +263,12 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - Non Linear DS, must Complete binary tree (every level must be filled L & R, leaf node only lean towards left) and should satisfy heap
 - **Binary heap**
   - **Min heap** -  every level root node is lesser than childs
+  <img src="//cdn.programiz.com/cdn/farfuture/tVzREVaraXbOKPPJtMbcQ10N2QkxiAJcNOIfxPYlVR0/mtime:1582112622/sites/tutorial2program/files/minheap_0.png" title="Min-heap" >
   - **Max Heap** - every level root node is greater than childs
+  <img src="//cdn.programiz.com/cdn/farfuture/OTLuUbQZmYPjHkXgmCfzHr8nNCkoi2Je9y9ZzIl1vuI/mtime:1582112622/sites/tutorial2program/files/maxheap_1.png" title="Max-heap">
 - **Binomial heap**
 - **Fibonaci heap**
+  <img src="//cdn.programiz.com/cdn/farfuture/WgeXgB_o4_0qX5Iv2msbC1zcYn1s3Ay7ypgfac4CmMo/mtime:1585306008/sites/tutorial2program/files/fibonacci-heap.png" title="Fibonacci Heap" >
 - Time Complexity:
   - Access Max / Min: O(1)
   - Insert: O(log(n))
@@ -282,7 +302,9 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - **InDegree**  - Incoming number of edges
   - **OutDegree** - outgoing number of edges
 - **Adjaceny Matrix** - matrix (0 or 1) representation b/n the nodes
+  <img src="//cdn.programiz.com/sites/tutorial2program/files/adjacency-matrix_1.png" title="Graph adjacency matrix" >
 - **Adjacency List** - array of linked lists representation of a nodes
+  <img src="//cdn.programiz.com/sites/tutorial2program/files/adjacency-list.png" title="Adjacency list representation">
 - In Python use dictionaries
 
 ## Search Algorithams
@@ -290,10 +312,12 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - **Linear Search Algorithm**
   - Traverse array using for loop, if not march then -1
   - Time Complexity is O(n)
+  <img src="//cdn.programiz.com/sites/tutorial2program/files/linear-search-initial-array.png">
 - **Binary Search Algoritham**
-  - array to be sorted
-  - find middle index & check the middle number,
+  - Array to be sorted
+  - Find middle index & check the middle number,
   - if middle+1 <  actual number, again middle index, etc  
+  <img src="https://sp-ao.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_1031,h_536/https://simplesnippets.tech/wp-content/uploads/2019/06/binary-search-algorithm-diagram.png" title="Binary Search Algoritham">
   - Searching is based on n/2 iterations; 
     - Iterative method
     - Recursive method
@@ -303,7 +327,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - Like Linear Algorithms but 
   - Typical time complexity O(√n).
   - Time Complexity is b/n (O(n)) and (O(log n))
-  
+  <img src="https://static.studytonight.com/data-structures/images/Jump Search technique.PNG" title="Jump Search Algoritham">
 ## Sort Algorithams
 
 - Bubble Sort Algorithm
