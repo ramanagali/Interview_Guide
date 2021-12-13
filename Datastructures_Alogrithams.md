@@ -142,15 +142,15 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - **Singly-linked list**:
   - linked list in which each node points to the next node  
   - the last node points to null
-  <img alt="representing linked list by connecting each node with next node using address of next node" height="98" src="//cdn.programiz.com/sites/tutorial2program/files/linked-list-with-data.png" title="Linked list Representation" width="630">
+  <img alt="representing linked list by connecting each node with next node using address of next node" height="98" src="https://cdn.programiz.com/sites/tutorial2program/files/linked-list-with-data.png" title="Linked list Representation" width="630">
 - **Doubly-linked list**:
   - linked list in which each node has two pointers, p and n, such that p points to the previous node and n points to the next node;
   - the last node's n pointer points to null
-  <img alt="doubly linked list" height="98" src="//cdn.programiz.com/sites/tutorial2program/files/doubly-linked-list-concept.png" title="Doubly linked list" width="807">
+  <img alt="doubly linked list" height="98" src="https://cdn.programiz.com/sites/tutorial2program/files/doubly-linked-list-concept.png" title="Doubly linked list" width="807">
 - **Circular-linked list**:
   - linked list in which each node points to the next node  
   - the last node points back to the first node
-  <img alt="circular linked list" height="122" src="//cdn.programiz.com/sites/tutorial2program/files/circular-linked-list.png" title="Circular linked list" width="578">
+  <img alt="circular linked list" height="122" src="https://cdn.programiz.com/sites/tutorial2program/files/circular-linked-list.png" title="Circular linked list" width="578">
 - **Time Complexity**:
   - Access: O(n)
   - Search: O(n)
@@ -177,7 +177,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - Push: Insert - O(1)
   - Pop: Delete - O(1)
   - Search   - O(n)
-<img alt="represent the LIFO principle by using push and pop operation" height="482" src="//cdn.programiz.com/sites/tutorial2program/files/stack.png" title="Stack operations" width="814">
+<img alt="represent the LIFO principle by using push and pop operation" height="482" src="https://cdn.programiz.com/sites/tutorial2program/files/stack.png" title="Stack operations" width="814">
 
 ### Queue
 
@@ -190,7 +190,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - Push: Insert - O(1)
   - Pop: Delete - O(1)
   - Search   - O(n)
-<img alt="Representation of Queue in first in first out principle" height="147" src="//cdn.programiz.com/sites/tutorial2program/files/queue.png" title="Queue" width="946">
+<img alt="Representation of Queue in first in first out principle" height="147" src="https://cdn.programiz.com/sites/tutorial2program/files/queue.png" title="Queue" width="946">
 ### Hashmap/Hashtable
 
 - **Hashing**
@@ -203,7 +203,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - Lookp/Insertion/Deletion Complexity is using key always O(1)
 - **Collision:** if hash function generetes same function the conflict called Collision.
   - **Chaining** - one key, store values as List in dictionary
-  <img alt="chaining method used to resolve collision in hash table" height="425" src="//cdn.programiz.com/sites/tutorial2program/files/Hash-3_1.png" title="Collision resolution by doubly linked list." width="800">
+  <img alt="chaining method used to resolve collision in hash table" height="425" src="https://cdn.programiz.com/sites/tutorial2program/files/Hash-3_1.png" title="Collision resolution by doubly linked list." width="800">
   - **Open Addressing** - Linear/Quadratic Probing and Double Hashing
     - **Linear Probing** - collision is resolved by checking the next slot
     - **Quadratic Probing**- similar to linear probing but the spacing between the slots is increased
@@ -218,23 +218,23 @@ Data Structures are way storing and organizing data in a computer for efficient 
     - Node - data and pointers to another node
     - Edge - link between nodes
     - leaf nodes(L1, L2, L3)
-    <img alt="Nodes and edges of a tree" height="216" src="//cdn.programiz.com/sites/tutorial2program/files/nodes-edges_0.png" title="Nodes and edges of a tree" width="307">
+    <img alt="Nodes and edges of a tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/nodes-edges_0.png" title="Nodes and edges of a tree" width="307">
   - **Binary Tree**
     - parent node can have at most two children
     - Left node has lesser numbers
     - Right node has greater numbers
     - **Full Binary Tree** - a tree in which every node has either 0 or 2 children
-    <img alt="Full binary tree" height="280" src="//cdn.programiz.com/sites/tutorial2program/files/full-binary-tree_0.png" title="Full binary tree" width="208">
+    <img alt="Full binary tree" height="280" src="https://cdn.programiz.com/sites/tutorial2program/files/full-binary-tree_0.png" title="Full binary tree" width="208">
     - **Perfect Binary Tree** - binary tree with exactly 2 child nodes at all level
-    <img alt="Perfect binary tree" height="216" src="//cdn.programiz.com/sites/tutorial2program/files/perfect-binary-tree_0.png" title="Perfect binary tree" width="288">
+    <img alt="Perfect binary tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/perfect-binary-tree_0.png" title="Perfect binary tree" width="288">
     - **Complete Binary Tree** -  every level must be filled L & R, leaf node only lean towards left
-    <img alt="Complete Binary Tree" height="216" src="//cdn.programiz.com/sites/tutorial2program/files/complete-binary-tree_0.png" title="Complete Binary Tree" width="228">
+    <img alt="Complete Binary Tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/complete-binary-tree_0.png" title="Complete Binary Tree" width="228">
     - **Pathological Binary Tree** - tree having a single child either left or right
-    <img alt="Degenerate Binary Tree" height="280" src="//cdn.programiz.com/sites/tutorial2program/files/degenerate-binary-tree_0.png" title="Degenerate Binary Tree" width="168">
+    <img alt="Degenerate Binary Tree" height="280" src="https://cdn.programiz.com/sites/tutorial2program/files/degenerate-binary-tree_0.png" title="Degenerate Binary Tree" width="168">
     - **Skewed Binary Tree** - tree is either dominated by the left Pathological nodes or the right Pathological nodes
-    <img alt="Skewed Binary Tree" height="216" src="//cdn.programiz.com/sites/tutorial2program/files/skewed-binary-tree_0.png" title="Skewed Binary Tree" width="328">
+    <img alt="Skewed Binary Tree" height="216" src="https://cdn.programiz.com/sites/tutorial2program/files/skewed-binary-tree_0.png" title="Skewed Binary Tree" width="328">
     - **Balanced Binary Tree** - difference between the height of the left and the right is either 0 or 1
-    <img alt="Balanced Binary Tree" height="241" src="//cdn.programiz.com/sites/tutorial2program/files/height-balanced_1.png" title="Balanced Binary Tree" width="336">
+    <img alt="Balanced Binary Tree" height="241" src="https://cdn.programiz.com/sites/tutorial2program/files/height-balanced_1.png" title="Balanced Binary Tree" width="336">
   - **Binary Search Tree**
     - Left subtree has lesser numbers,
     - Right subtree has greater numbers
@@ -247,7 +247,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
       - delete node with children 0; simpley delete it
       - delete node with children 1, replace with its child value then delete child
       - delete node with children 2, replace largest value from left subnodes or smallest value from right subnodes
-    <img alt="A tree having a right subtree with one value smaller than the root is shown to demonstrate that it is not a valid binary search tree" height="448" src="//cdn.programiz.com/sites/tutorial2program/files/bst-vs-not-bst.png" title="Binary Search Tree" width="730">
+    <img alt="A tree having a right subtree with one value smaller than the root is shown to demonstrate that it is not a valid binary search tree" height="448" src="https://cdn.programiz.com/sites/tutorial2program/files/bst-vs-not-bst.png" title="Binary Search Tree" width="730">
     - **Breadth first search**
       - level0, level1, level2(left to right), leve3(left to right)
     - **Depth first search**
@@ -262,12 +262,12 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - Non Linear DS, must Complete binary tree (every level must be filled L & R, leaf node only lean towards left) and should satisfy heap
 - **Binary heap**
   - **Min heap** -  every level root node is lesser than childs
-  <img alt="Min-heap" height="432" src="//cdn.programiz.com/cdn/farfuture/tVzREVaraXbOKPPJtMbcQ10N2QkxiAJcNOIfxPYlVR0/mtime:1582112622/sites/tutorial2program/files/minheap_0.png" title="Min-heap" width="496">
+  <img alt="Min-heap" height="432" src="https://cdn.programiz.com/cdn/farfuture/tVzREVaraXbOKPPJtMbcQ10N2QkxiAJcNOIfxPYlVR0/mtime:1582112622/sites/tutorial2program/files/minheap_0.png" title="Min-heap" width="496">
   - **Max Heap** - every level root node is greater than childs
-  <img alt="Max-heap" height="432" src="//cdn.programiz.com/cdn/farfuture/OTLuUbQZmYPjHkXgmCfzHr8nNCkoi2Je9y9ZzIl1vuI/mtime:1582112622/sites/tutorial2program/files/maxheap_1.png" title="Max-heap" width="524">
+  <img alt="Max-heap" height="432" src="https://cdn.programiz.com/cdn/farfuture/OTLuUbQZmYPjHkXgmCfzHr8nNCkoi2Je9y9ZzIl1vuI/mtime:1582112622/sites/tutorial2program/files/maxheap_1.png" title="Max-heap" width="524">
 - **Binomial heap**
 - **Fibonaci heap**
-  <img alt="Fibonacci Heap" height="274" src="//cdn.programiz.com/cdn/farfuture/WgeXgB_o4_0qX5Iv2msbC1zcYn1s3Ay7ypgfac4CmMo/mtime:1585306008/sites/tutorial2program/files/fibonacci-heap.png" title="Fibonacci Heap" width="524">
+  <img alt="Fibonacci Heap" height="274" src="https://cdn.programiz.com/cdn/farfuture/WgeXgB_o4_0qX5Iv2msbC1zcYn1s3Ay7ypgfac4CmMo/mtime:1585306008/sites/tutorial2program/files/fibonacci-heap.png" title="Fibonacci Heap" width="524">
 - Time Complexity:
   - Access Max / Min: O(1)
   - Insert: O(log(n))
@@ -301,9 +301,9 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - **InDegree**  - Incoming number of edges
   - **OutDegree** - outgoing number of edges
 - **Adjaceny Matrix** - matrix (0 or 1) representation b/n the nodes
-  <img alt="graph adjacency matrix for sample graph shows that the value of matrix element is 1 for the row and column that have an edge and 0 for row and column that don't have an edge" height="302" src="//cdn.programiz.com/sites/tutorial2program/files/adjacency-matrix_1.png" title="Graph adjacency matrix" width="730">
+  <img alt="graph adjacency matrix for sample graph shows that the value of matrix element is 1 for the row and column that have an edge and 0 for row and column that don't have an edge" height="302" src="https://cdn.programiz.com/sites/tutorial2program/files/adjacency-matrix_1.png" title="Graph adjacency matrix" width="730">
 - **Adjacency List** - array of linked lists representation of a nodes
-  <img alt="adjacency list representation represents graph as array of linked lists where index represents the vertex and each element in linked list represents the edges connected to that vertex" height="304" src="//cdn.programiz.com/sites/tutorial2program/files/adjacency-list.png" title="Adjacency list representation" width="730">
+  <img alt="adjacency list representation represents graph as array of linked lists where index represents the vertex and each element in linked list represents the edges connected to that vertex" height="304" src="https://cdn.programiz.com/sites/tutorial2program/files/adjacency-list.png" title="Adjacency list representation" width="730">
 - In Python use dictionaries
 
 ## Search Algorithams
@@ -311,7 +311,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - **Linear Search Algorithm**
   - Traverse array using for loop, if not march then -1
   - Time Complexity is O(n)
-  <img alt="Initial array" height="98" src="//cdn.programiz.com/sites/tutorial2program/files/linear-search-initial-array.png" title="Linear Search Array" width="377">
+  <img src="https://sp-ao.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_781,h_181/https://simplesnippets.tech/wp-content/uploads/2019/06/linear-search-diagram.png" >
 - **Binary Search Algoritham**
   - Array to be sorted
   - Find middle index & check the middle number,
