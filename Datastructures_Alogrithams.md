@@ -310,13 +310,13 @@ Data Structures are way storing and organizing data in a computer for efficient 
 
 - **Linear Search Algorithm**
   - Traverse array using for loop, if not march then -1
-  - Time Complexity is O(n)
-  <img src="https://sp-ao.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_781,h_181/https://simplesnippets.tech/wp-content/uploads/2019/06/linear-search-diagram.png" >
+  - Time Complexity is O(n)</br>
+  <img height="100" src="https://sp-ao.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_781,h_181/https://simplesnippets.tech/wp-content/uploads/2019/06/linear-search-diagram.png" width="350">
 - **Binary Search Algoritham**
   - Array to be sorted
   - Find middle index & check the middle number,
-  - if middle+1 <  actual number, again middle index, etc  
-  <img src="https://sp-ao.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_1031,h_536/https://simplesnippets.tech/wp-content/uploads/2019/06/binary-search-algorithm-diagram.png">
+  - if middle+1 <  actual number, again middle index, etc</br>  
+  <img height="250" src="https://sp-ao.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_1031,h_536/https://simplesnippets.tech/wp-content/uploads/2019/06/binary-search-algorithm-diagram.png" width="445">
   - Searching is based on n/2 iterations; 
     - Iterative method
     - Recursive method
@@ -325,17 +325,41 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - **Jump/block Search Algoritham**
   - Like Linear Algorithms but 
   - Typical time complexity O(√n).
-  - Time Complexity is b/n (O(n)) and (O(log n))
+  - Time Complexity is b/n (O(n)) and (O(log n))</br>
   <img class="blur-up lazyloaded" data-src="https://static.studytonight.com/data-structures/images/Jump Search technique.PNG" alt="Jump Search technique" src="https://static.studytonight.com/data-structures/images/Jump Search technique.PNG">
 ## Sort Algorithams
 
-- Bubble Sort Algorithm
-- Quick Sort Algorithm
-- Insertion Sort Algorithm
-- Merge Sort Algorithm
-- Shell Sort Algorithm
-- Selection Sort Algorithm
-  
+- **Bubble Sort Algorithm**
+  - Comparing adjacent items and swaps them untill intended order
+  - The loop untill all are sorted
+  - - Time Complexity is O(n2)</br>
+  <img height="400" src="https://cdn.programiz.com/cdn/farfuture/kn1zM7ZGIj60jcTe3mv8gAtbrvFHqxgqfQ7F9MdjPuA/mtime:1582112622/sites/tutorial2program/files/Bubble-sort-0.png" title="Bubble Sort step 0" width="300">
+- **Quick Sort Algorithm**
+  - based on divide and conquer approach
+  - choose pivot as last element 
+  - compare element with pivot, if greater than pivot, 
+  - swap small elements left => pivot element <= larger elements right
+  - repeat the same untill single element
+  - Time Complexity O(n2), best is O(n log n)
+  <img src="https://www.techiedelight.com/wp-content/uploads/Quicksort.png" alt="Quicksort Algorithm">
+- **Selection Sort Algorithm**
+  * Step 1 − Set MIN to location 0
+  * Step 2 − Search the minimum element in the list
+  * Step 3 − Swap with value at location MIN
+  * Step 4 − Increment MIN to point to next element
+  * Step 5 − Repeat until list is sorted
+  - Time complexity is O(n2)
+  <img src="https://www.w3resource.com/w3r_images/selection-short.png" alt="Python: Selection Sort" style="max-width:100%;display:block;height=auto">
+- **Insertion Sort Algorithm**
+  - works like cards game sorting
+  - take 2nd element as key, sort it with first
+  - move it to next, compare with left sorted array
+  - repeat
+  - Time complexity is O(n2) best is O(n)
+  <img src="https://www.w3resource.com/w3r_images/insertion-sort.png" alt="Python: Insertion sort" style="max-width:100%;display:block;height=auto">
+- **Merge Sort Algorithm**
+- **Shell Sort Algorithm**
+
 ## Problem Solviong Algorithms
 
 - Divide And Conquer
