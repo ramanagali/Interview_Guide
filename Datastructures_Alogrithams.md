@@ -203,7 +203,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - Lookp/Insertion/Deletion Complexity is using key always O(1)
 - **Collision:** if hash function generetes same function the conflict called Collision.
   - **Chaining** - one key, store values as List in dictionary
-  <img alt="chaining method used to resolve collision in hash table" height="225" src="https://cdn.programiz.com/sites/tutorial2program/files/Hash-3_1.png" title="Collision resolution by doubly linked list." width="400">
+  <img alt="chaining method used to resolve collision in hash table" height="225" src="https://cdn.programiz.com/sites/tutorial2program/files/Hash-3_1.png" title="Collision resolution by doubly linked list." width="400"></br>
   - **Open Addressing** - Linear/Quadratic Probing and Double Hashing
     - **Linear Probing** - collision is resolved by checking the next slot
     - **Quadratic Probing**- similar to linear probing but the spacing between the slots is increased
