@@ -29,9 +29,11 @@ https://nvie.com/posts/a-successful-git-branching-model/<br/>
 * https://dev.to/ptuladhar3/linux-commands-for-developers-17j<br/>
 * https://www.guru99.com/linux-commands-cheat-sheet.html<br/>
 * http://linuxcommand.org/lc3_learning_the_shell.php<br/>
+* https://github.com/RehanSaeed/Bash-Cheat-Sheet<br/>
 
 **Linux Shell Scripting Tutorial**<br/>
-https://bash.cyberciti.biz/guide/Main_Page<br/>
+* https://bash.cyberciti.biz/guide/Main_Page<br/>
+* https://github.com/Catherine22/Shell-Script-Cheat-Sheet<br/>
 
 **Vi Editor Cheatsheet**<br/>
 https://vim.rtorr.com/
@@ -165,14 +167,23 @@ https://www.allthingsdistributed.com/articles.html
 **Python**<br/>
 https://www.tutorialspoint.com/python/index.htm<br/>
 https://www.kdnuggets.com/2021/11/25-github-repositories-python-developer.html<br/>
-https://www.pythoncheatsheet.org/#Flow-Control<br/>\
+https://www.pythoncheatsheet.org/#Flow-Control<br/>
 https://cheatography.com/davechild/cheat-sheets/python/<br/>
 https://github.com/joeyajames/Python<br/>
-https://awesome-python.com/
-
+https://awesome-python.com/<br/>
+https://github.com/ramanagali/awesome-cheatsheets/blob/master/languages/python.md<br/>
 
 **Python, AL, ML Cheatsheets**<br/>
 https://medium.com/@anushkhabajpai/top-data-science-cheat-sheets-ml-dl-python-r-sql-maths-statistics-5239d4568225<br/>
+
+**Python Data Structures and Algorithms**
+* https://github.com/ramanagali/Interview_Guide/blob/main/Datastructures_Alogrithams.md
+* https://www.tutorialspoint.com/data_structures_algorithms/data_structures_basics.htm
+* https://www.w3schools.com/python/python_lists.asp
+* https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
+* https://github.com/TSiege/Tech-Interview-Cheat-Sheet
+* https://techinterviewhandbook.org/algorithms/tree/
+* https://www.programiz.com/python-programming/examples
 
 **Go**<br/>
 https://www.tutorialspoint.com/go/go_error_handling.htm
