@@ -316,7 +316,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - Array to be sorted
   - Find middle index & check the middle number,
   - if middle+1 <  actual number, again middle index, etc</br>  
-  <img height="250" src="https://sp-ao.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_1031,h_536/https://simplesnippets.tech/wp-content/uploads/2019/06/binary-search-algorithm-diagram.png" width="445">
+  <img height="250" src="https://sp-ao.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_1031,h_536/https://simplesnippets.tech/wp-content/uploads/2019/06/binary-search-algorithm-diagram.png" width="445"></br>
   - Searching is based on n/2 iterations; 
     - Iterative method
     - Recursive method
