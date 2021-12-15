@@ -1,12 +1,96 @@
 # Cloud DevOps Engineer Architect Interview Questions
 
+### Web Technologies
+What happens when type google.com in browser and enter ?
+<details>
+<summary></summary>
+
+* **type g**		
+	* Browser Auto Complete function kicks in 
+* **press enter**	
+	* char converted to int 13, signal will be sent
+* **parse URL**			
+    * it has http or /(slash)|
+* **URL or Search**		
+  - uses default search engine if its search term
+* **Convert non-ASCII** 
+  * convert URL to a-z,A-Z,0-9,-,. to ASCII
+* **HSTS Check**			
+  * browser checks preloded HTTP Strict Trasnport Security policy
+  * HTTP from the list
+* **DNS Lookup**
+  - verify DNS from browser cache
+  - check local machine hostfile mapping for DNS lookup
+  - if not local router or DNS server
+  - Address Resolution(ARP) process for default Gateway
+* **Address Resolution Protocol**
+  - Check local ARP Cache for target IP
+  - if not, any subnets target IP in the local route table
+  - if not use default gateway subnet
+  - grab local MAC address, look for target MAC Address
+  - sends L2 (Data link)	
+  - broadcast the ARP request to all other ports and wait for reploy
+  - if any switch, the re-broadcast the ARP request to all other ports
+  - ARP reply is received, now we know DNS server IP
+  - DNS client(source port 1023) establish socket UDP port 53 on DNS Server 
+* **Opening of Socket**
+  - Once target IP of destination server is received
+  - https(443) or http(80 default)
+  - request L4 TCP socket stream to target IP
+    - destination port 
+    - source port added to header
+  - request sent to L3(Network layer), 
+    - adds targetIP & current IP in header
+  - request will be sent to L2 (DataLink)
+    - add MAC address of gateway
+  - Physical layers converts to binary
+  - vi ISP hits target server - TPC Conn FLOW
+    - Client choose ISN & sends SYN packet to server 
+    - Server adds ISN+1, ACK sends to Client
+    - Client sends ACK,ISN+1, receiver ack number
+    - Data Transfers, sends ACK
+    - closer sends FIN packet
+* **TLS Handshake**
+  - Client sends TLS ClientHello, cipher algo & compression method
+  - Server sends TLS ServerHello + public CA
+    - client verifies against trusted CA,
+    - generates pseudo random bytes for symmetric key
+  - encrypt with public key 
+  - Server decrypt using private key & makes own copy of symmetric master key
+  - Client sends Finished message with symetric key
+  - Server generetes hash, decrypts with client sent hash(symmetric key)
+  - TLS session transmits with symmetric key
+* **HTTP Protocol**
+  - http reqeust will be sent
+  - from server 200 ok response headers
+  - sent payload of html
+  - browser parses(image, css etc)
+* **HTTP Server Request Handle**
+  - HTTPD break downs GET, POST, HEAD,PUT, PAtH, DELETE, CONNECT, OPTIONS
+  - rewrite modules
+  - headers handlers etc
+* **Browser**
+  - HTML Parsinig
+  - CSS interpretation
+  - Page Rendering
+  - GPU Rendering
+  - Browser add-ons
+</details>
+
+
 ### DevOps
-* DevOps rollback strategy
-* How you perform Hot deployment
-* Biggest issue in PROD
-* Scale prod
+* DevOps Deployment strategies?
+  * **Recreate**: Version A is terminated then version B is rolled out.
+  * **Rolling-update/incremental**: Version B is slowly rolled out and replacing version A.
+  * **Blue/Green**: Version B is released alongside version A, then the traffic is switched to version B.
+  * **Canary**: Version B is released to a subset of users, then proceed to a full rollout.
+  * **A/B testing**: Version B is released to a subset of users under specific condition.
+  * **Shadow**: Version B receives real-world traffic alongside version A and doesn’t impact the response.
+* How you perform Hot deployment in Cloud?
+  * using Canary 
+* Explain Biggest issue in PROD ?
+* How you scale prod ?
 * DevOps vs Agile
-* What you monitor in Sonarqube
 
 ### Git
 * Diff between git pull and git clone
@@ -41,10 +125,13 @@
 ### Docker
 * What is default docker network applies when creating containers
 	- default bridge network are usually used when your apps run in standalone containers that need to communicate
-* How docker resolves the container names
-* What is docker compose
-* Diff between docker CMD and ENTRYPOINT
-* How can we make docker image lightweight
+* How docker resolves the container names ?
+* What is docker compose ?
+  * dsfsdf
+* Diff between docker CMD and ENTRYPOINT ?
+  * sdfsdaf
+* How can we make docker image lightweight ?
+  * using multi stage builds
 
 ### CI CD
 * What is the Branching Strategy to you use
@@ -72,7 +159,6 @@
 * Ansible how you avoid prompt
 * ansible copy
 * Ansible vs chef vs puppet
-
 
 ### Terraform
 * How do you store secrets in terraform
@@ -160,12 +246,12 @@
 	- http 80, https 443, nfs 2049, ICMP 7
 
 ### Kubernetes
-* Explain kubernetes architecture
-* If i give 3 servers, how you setup kubernetes
-* kubernetes diff components
+* Explain kubernetes architecture ?
+* If i give 3 servers, how you setup kubernetes ?
+* kubernetes diff components ?
   - master, controller, scheduler, ETCD, flannel & caliko
   - node, container run time, kubelet, kubeproxy
-* What are the taints & tolerations
+* What are the taints & tolerations ?
 	- Taint will be applied to nodes as key value paid, will allow to force set of pods
 	- Tolerations will be applied to pods, allow the pods to schedule onto nodes with matching taints.
 * Assigning Pods to Nodes - Node Affinity
@@ -254,7 +340,14 @@
 * How Https works
 * Diff between SecGroup vs NACL
 * Explain stateful vs stateless firewall
-* 
+* What are the Network Topology Types ?
+  * Point to Point
+  * Bus
+  * Ring
+  * Star
+  * Tree
+  * Mesh
+  * Hybrid
 
 ### Bamboo
 
@@ -265,6 +358,7 @@
 ### AWS
 * Where to Host DB if DB has to be in the region where AWS/AZURE not avail
 * Scaling in PRD
+* 
 
 
 ### GCP
@@ -276,9 +370,20 @@
 ### SRE
 
 ### DevSecOps
-* What is the benefit of Fortify
+* What is the complete workflow in DevSecOps process?
+* What is SAST ?
+* What is DAST?
 * What you monitor in Sonarqube
-* How you deal Cross site scripting
+* What is the benefit of Fortify ?
+* What you monitor in Sonarqube ?
+* How you deal Cross site scripting ?
+* What is SQL Injection?
+* How do you secure git repo ?
+* How do you secure pipeline?
+* How do you check docker image for volunarables?
+* Network level security?
+* Load Testing?
+* Stress Testing?
 
 ### Python
 
