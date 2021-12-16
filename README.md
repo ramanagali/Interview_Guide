@@ -103,6 +103,10 @@ https://dockerlabs.collabnix.com/docker/cheatsheet/
 **Docker Best Practices**<br/>
 https://snyk.io/wp-content/uploads/10-best-practices-to-containerize-Node.js-web-applications-with-Docker.pdf
 
+**Dockerize ASP.NET 4.X**<br/>
+https://blog.sixeyed.com/understanding-microsofts-docker-images-for-net-apps/<br/>
+https://github.com/sixeyed/docker4.net/tree/master/docker<br/>
+
 **CICD Bamboo**<br/>
 https://www.opsmx.com/blog/what-is-a-ci-cd-pipeline/
 https://mindmajix.com/atlassian-bamboo-interview-questions
