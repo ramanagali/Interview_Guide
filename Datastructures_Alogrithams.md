@@ -41,36 +41,36 @@ Every statement/line is 1 unit of time
 **Time Complexity Examples**
 
 ```
-- for(i=0;i<n;i++)           => O(n)
-- for(i=n;i>0;i--)           => O(n)
-- for(i=0;i<n;i=i+2)  n/2 => O(n)
+- for(i=0;i<n;i++)          => O(n)
+- for(i=n;i>0;i--)          => O(n)
+- for(i=0;i<n;i=i+2)    n/2 => O(n)
 - for(i=0;i<n;i++) 
-    for(j=0;j<i;j++)         => O(n^2)
+    for(j=0;j<i;j++)        => O(n^2)
 - for(i=1;i<n; i=i++) 
-  for(j=0;j<n;j++)             =>O(n^2)
+  for(j=0;j<n;j++)          =>O(n^2)
 - p=0
-  for(i=0;p<=n;i++)       =>O(root N)
+  for(i=0;p<=n;i++)         =>O(root N)
 
-- for(i=1;i<n; i=i*2)         => O(log n base 2)
-- for(i=1;i<n; i=i*3)           => O(log n base 3)
-- for(i=n;i>1; i=i/2)           => O(log n base 2 )
+- for(i=1;i<n; i=i*2)       => O(log n base 2)
+- for(i=1;i<n; i=i*3)       => O(log n base 3)
+- for(i=n;i>1; i=i/2)       => O(log n base 2 )
 
-- for(i=0;i*i<n;i++)          => O(root n)
+- for(i=0;i*i<n;i++)        => O(root n)
 
-- for(i=0;i<n;i++)  
+- for(i=0;i<n;i++)          => O(n)
     stmt
   for(j=0;j<i;j++) 
-    stmt                        => O(n)
+    stmt                    
 - p=0
-  for(i=0;i<n;i*2)  
+  for(i=0;i<n;i*2)          => O(log log n)
     stmt
   for(j=0;j<p;j*2) 
- stmt                        => O(log log n)
+ stmt                       
 
-- for(i=0;i<n;i++)  
+- for(i=0;i<n;i++)          =>O(nlogn)
     stmt
   for(j=0;j<i;j=n*2) 
- stmt                        =>O(nlogn)
+ stmt                       
 ```
 
 **Big O noation is for...**
@@ -106,11 +106,13 @@ Every statement/line is 1 unit of time
 - logn 1 = 0
 
 ```  
-log1=0  1 1 2
-log2=1 2  4 4
-log4=2  4  16  16
-log8=3  8  64  256
-log16=4 16  256 65536
+=> log(1) = 0  
+=> log(2) = 1 
+4 => 2 power 2                => log2(4)  =2
+8 => 2 power 3                => log2(8)  =3  
+16 => 2 power 4               => log2(16) =4
+1024 => 2 power 10            => log2(1024)=10
+4,294,967,296 => 2 power 10   => log2(~4B)=32
 ```
 
 **Asymptotic Notations - Big Oh**
