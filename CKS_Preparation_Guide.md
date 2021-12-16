@@ -14,7 +14,53 @@ pull requests are welcome
 ### 1.1 Network security policies
 
 - Create default deny all NetworkPolicy & allow required traffic
-- Create ingress/egress NetPol - ns, pod, port matching rules
+  ```yaml
+  apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    name: default-deny-ingress
+  spec:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+    ```
+- Create ingress/egress NetPol - for ns, pod, port matching rules
+  ```yaml
+  apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    name: test-network-policy
+    namespace: default  #target namespace
+  spec:
+    podSelector:  #target pod
+      matchLabels:
+        role: db
+    policyTypes:
+    - Ingress
+    - Egress
+    ingress:
+    - from:
+      - ipBlock:
+          cidr: 172.17.0.0/16
+          except:
+          - 172.17.1.0/24
+      - namespaceSelector:
+          matchLabels:
+            project: myproject
+      - podSelector:
+          matchLabels:
+            role: frontend
+      ports:
+      - protocol: TCP
+        port: 6379
+    egress:
+    - to:
+      - ipBlock:
+          cidr: 10.0.0.0/24
+      ports:
+      - protocol: TCP
+        port: 5978
+  ```
 - Ref: <https://kubernetes.io/docs/concepts/services-networking/network-policies/>
 
 ### 1.2 Install & Fix using kube-bench
@@ -482,7 +528,7 @@ spec:
   - `"action": "SCMP_ACT_ALLOW"`
   - `"action": "SCMP_ACT_ERRNO"`
   - `"defaultAction": "SCMP_ACT_LOG"`
-  - Create POD with Specific Profile
+  - Create POD with Default Profile
 
   ```yaml
   apiVersion: v1
