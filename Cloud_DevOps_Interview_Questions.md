@@ -1,4 +1,4 @@
-# Cloud DevOps Engineer Architect Interview Questions
+# Cloud DevOps Engineer/Architect Interview Questions for Experienced Professionals
 
 ### Web Technologies
 What happens when type google.com in browser and enter ?
@@ -320,7 +320,7 @@ What happens when type google.com in browser and enter ?
 * k8s control loop mechanism
   - default mechanism... observe and take action on 
 
-* Helm Helm3 
+*  Helm3 
   - no tiller, 3-way-verification, schema verification, release namespace.
 
 * use of networking solutions calico/flannel
@@ -337,7 +337,24 @@ What happens when type google.com in browser and enter ?
 * What is the link between pod and service?
 
 ### Network
-* How Https works
+* Explain 3 Way Handshake?
+  * First step is 3-way handshake must be established
+  * **1st Step**: 
+    * Client sends SYN segment to the server 
+    * ISN(InitialSeqNum)=7001, ACK=0, SYN=1)  
+    * source port: client ephemeral port
+    * destination port: 443
+  * **2nd Step2**: 
+    * Server replies SYN + ACK to client & ask for Open
+    * SYN=1, ACK=1, ACK Number=7002, Server Seq #3001  
+    * source port: 443
+    * destination port: client ephemeral port
+  * **3rd Step**: 
+    * SYN-0, ACK=1, ACK number=3002, Initial Seq=7002
+    * source port: client ephemeral port
+    * destination port: 443
+  	<img src="https://lh6.googleusercontent.com/-L9GyKGal2kX0x1uhEr_WcIPJNjaXt56MwI4dppR9LKS0SKciZ4ehop6uYdAM7RFm9PYoPcK445rVYeqzjAWSOaHNXd6wvgoWbVUVQnwLZe-M2iav6FZVIfTlE15ULPrWuEYi4Mw" alt="" width="602" height="376" loading="lazy" class="">
+* How Https works?
 * Diff between SecGroup vs NACL
 * Explain stateful vs stateless firewall
 * What are the Network Topology Types ?

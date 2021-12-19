@@ -173,3 +173,11 @@ Multiple solutions, commit to one and iterate on it</br>
 - <https://github.com/shashank88/system_design>
 - <https://github.com/checkcheckzz/system-design-interview>
 - <https://github.com/puncsky/system-design-and-architecture>
+- https://salmaeng71.medium.com/big-o-notation-cheat-sheet-4a7e5632c93e
+- 	https://static.packt-cdn.com/downloads/4874OS_Appendix_Big_O_Cheat_Sheet.pdf
+
+* https://craigndave.org/wp-content/uploads/2020/09/big-o-notation-cheat-sheet.pdf
+
+* https://gist.github.com/vasanthk/485d1c25737e8e72759f
+* https://medium.com/the-legend/system-design-trd-cheatsheet-aff03e823afc
+* https://www.naniz.co/posts/2020/12/system-design-algorithm-and-interview-cheat-sheet/

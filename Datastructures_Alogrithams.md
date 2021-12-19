@@ -397,13 +397,14 @@ Data Structures are way storing and organizing data in a computer for efficient 
   	- define level by level
   
 - **Greedy algorithm**
-  - top-down approach
-    1. Greedy Choice Property
+  - **top-down approach**
+    1. **Greedy Choice Property**
     	- choosing the best choice at each step
     	- most obvious and immediate benefit
-    2. Optimal Substructure
+    	- <img alt="top-down approach for fibonacci series in dynamic programming" src="https://www.codesdope.com/staticroot/images/algorithm/dynamic4.png" style="max-width:50%;height:auto;">
+    2. **Optimal Substructure**
     	- solution to its subproblems so that problem can be solved
-  
+    	- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Shortest_path_optimal_substructure.svg/1200px-Shortest_path_optimal_substructure.svg.png" alt="Optimal substructure - Wikipedia" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 435px; height: 233.088px; margin: 27.3062px 0px;">
 - **Dynamic Programming**
   - technique to efficiently solve a class of problems that have overlapping subproblems
   - problem can be divided into smaller subproblems
