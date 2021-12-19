@@ -244,6 +244,59 @@ What happens when type google.com in browser and enter ?
 	- TCP is reliable as it guarantees delivery of data to the destination router.	The delivery of data to the destination can't be guaranteed in UDP.
 * port for http, https, nfs, ICMP
 	- http 80, https 443, nfs 2049, ICMP 7
+* Linux Performance Monitoring?
+  - vmstat (virtual memory statistic tool)
+    ```sh
+	sudo apt install sysstat         [On Debian, Ubuntu and Mint]
+	sudo yum install sysstat         [On RHEL/CentOS/Fedora and Rocky Linux/AlmaLinux]
+	sudo emerge -a app-admin/sysstat [On Gentoo Linux]
+	sudo pacman -S sysstat           [On Arch Linux]
+	sudo zypper install sysstat      [On OpenSUSE] 
+	
+	# List Active and Inactive memory 
+	vmstat -a
+	vmstat 2 6		# vmstat executes every 2 sec & 6 times
+	vmstat -t 1 	# shows timestamps
+	vmstat -s		# stats of various coutners
+	vmstat -d		# disk stats
+	vmstat -S M 1 5	# stats in megabytes
+
+	iostat		#CPU and I/O statistics
+	iostat -c 	# CPU Statistics
+	iostat -d 	# # disk I/O stats
+	iostat -p sda # I/O Statistics of Specific Device
+	iostat -N # LVM stats
+	```
+* Linux Configuration &  Troubleshooting commands ?
+	```sh
+	ifconfig # assign ip,enable,disable interface
+
+	# set IP
+	ifconfig eth0 192.168.50.5 netmask 255.255.255.0	
+	ifup eth0	# enable eth0
+	ifdown eth0	# disable eth0
+	ifconfig eth0 mtu XXXX	# set mtu
+
+	ping -c 5 www.google.com # test connectivity 
+	traceroute 4.2.2.2	# number of hops b/n destinations
+	netstat -r 			# connection info, routing table information
+	dig www.google.com	#query DNS related information (A,CNAME,MX)
+	nslookup www.google.com	#find DNS related queries, shows A record
+	route -n 	#shows default routing
+	route add -net 10.10.10.0/24 gw 192.168.0.1 
+	route del -net 10.10.10.0/24 gw 192.168.0.1
+	route add default gw 192.168.0.1
+	host www.google.com 	# find name to IP 
+	arp -e		#Address Resolution Protocol default table
+	ethtool eth0 	# view & set Network Interface Card NIC
+	iwconfig [interface]	#configure a wireless network interface
+	hostname	# to identify network
+	nmcli	#manage network settings
+	nmtui	#manage network devices
+	```
+	
+
+  
 
 ### Kubernetes
 * Explain kubernetes architecture ?
@@ -355,8 +408,19 @@ What happens when type google.com in browser and enter ?
     * destination port: 443
   	<img src="https://lh6.googleusercontent.com/-L9GyKGal2kX0x1uhEr_WcIPJNjaXt56MwI4dppR9LKS0SKciZ4ehop6uYdAM7RFm9PYoPcK445rVYeqzjAWSOaHNXd6wvgoWbVUVQnwLZe-M2iav6FZVIfTlE15ULPrWuEYi4Mw" alt="" width="602" height="376" loading="lazy" class="">
 * How Https works?
-* Diff between SecGroup vs NACL
-* Explain stateful vs stateless firewall
+* TCP vs UDP
+  	| TCP  | UDP |
+	| ------------- | ------------- |
+	| Requires an established connection |Connectionless protocol|
+	| Data sequencing| No Data sequencing|
+	| Guaranteed delivery |Cannot guarantee delivery |
+	| if data lost, Retransmission is possible| No retransmission|
+	| error checking & ACK, SYN,SYN-ACK handshakes |error checking using checksum|
+	| data read as byte, msgs in segments | UDP packets with defined boundaries|
+	|Slower than UDP |Faster than TCP |
+	| does not support Broadcasting| support Broadcasting| 
+	| Used by HTTPS, HTTP, SMTP, POP, FTP, etc|Video conferencing, streaming, DNS, DHCP, TFTP, SNMP, RIP, and VoIP.|
+	
 * What are the Network Topology Types ?
   * Point to Point
   * Bus
@@ -373,8 +437,8 @@ What happens when type google.com in browser and enter ?
 ### Packer
 
 ### AWS
-* Where to Host DB if DB has to be in the region where AWS/AZURE not avail
-* Scaling in PRD
+* How you Host DB if DB has to be in the region where AWS/AZURE not avail
+* Diff between Stateful and Stateless firewalls ?
 * 
 
 
