@@ -1,4 +1,4 @@
-# System Design Interview Preparation Doc
+# System Design Interview Preparation Notes
 
 ## Below are the main categories for the System Design Interview
 

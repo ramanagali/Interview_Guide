@@ -39,13 +39,24 @@ https://dannys.cloud/aws-devops-engineer-professional-exam-guide<br/>
   - https://www.youtube.com/playlist?list=PLWY0DzS7zQeMPwpQvke2j94sxgFI2o3NM
 
 ## Terraform Associate 
-https://jayendrapatil.com/terraform-cheat-sheet/<br/>
+Key areas to focus
+1. Understand infrastructure as code (IaC) concepts: 100%
+2. Understand Terraform’s purpose (vs other IaC): 100%
+3. Understand Terraform basics: 71%
+4. Use the Terraform CLI (outside of core workflow): 83%
+5. Interact with Terraform modules: 50%
+6. Navigate Terraform workflow: 91%
+7. Implement and maintain state: 75%
+8. Read, generate and modify configuration: 90%
+9. Understand Terraform Cloud and Enterprise capabilities: 100%
+* https://learn.hashicorp.com/tutorials/terraform/associate-study
+* https://jayendrapatil.com/terraform-cheat-sheet/<br/>
 
-https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-terraform-associate-certification-7a3ccebe6a1a<br/>
+* https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-terraform-associate-certification-7a3ccebe6a1a<br/>
 
-https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-exam<br/>
+* https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-exam<br/>
 
-https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2020/11/terraform-cheatsheet-from-ACG.pdf<br/>
+* https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2020/11/terraform-cheatsheet-from-ACG.pdf<br/>
 
 
 ## CKAD
