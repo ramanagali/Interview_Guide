@@ -1,9 +1,10 @@
-# Cloud DevOps Engineer/Architect Interview Questions for Experienced Professionals
+# Cloud DevOps Engineer/Architect Interview Questions
 
 ### Web Technologies
 What happens when type google.com in browser and enter ?
 <details>
 <summary></summary>
+
   * **type g**		
   	* Browser Auto Complete function kicks in 
   * **press enter**	
@@ -77,7 +78,7 @@ What happens when type google.com in browser and enter ?
 </details>
 
 ### Network
-* Explain 3 Way Handshake?
+* **Explain 3 Way Handshake?**
   * First step is 3-way handshake must be established
   * **1st Step**: 
     * Client sends SYN segment to the server 
@@ -94,8 +95,11 @@ What happens when type google.com in browser and enter ?
     * source port: client ephemeral port
     * destination port: 443
   	<img src="https://lh6.googleusercontent.com/-L9GyKGal2kX0x1uhEr_WcIPJNjaXt56MwI4dppR9LKS0SKciZ4ehop6uYdAM7RFm9PYoPcK445rVYeqzjAWSOaHNXd6wvgoWbVUVQnwLZe-M2iav6FZVIfTlE15ULPrWuEYi4Mw" alt="" width="602" height="376" loading="lazy" class="">
-* How Https works?
-* TCP vs UDP
+* **Explain TLS?**
+  * Client & Server will have 3 way handshake
+* **How Https works?**
+  * 
+* **TCP vs UDP**
   	| TCP  | UDP |
 	| ------------- | ------------- |
 	| Requires an established connection |Connectionless protocol|
@@ -108,7 +112,7 @@ What happens when type google.com in browser and enter ?
 	| does not support Broadcasting| support Broadcasting| 
 	| Used by HTTPS, HTTP, SMTP, POP, FTP, etc|Video conferencing, streaming, DNS, DHCP, TFTP, SNMP, RIP, and VoIP.|
 	
-* What are the Network Topology Types ?
+* **What are the Network Topology Types** ?
   * Point to Point
   * Bus
   * Ring
@@ -118,7 +122,7 @@ What happens when type google.com in browser and enter ?
   * Hybrid
 
 ### Linux
-* How ssh works
+* **How ssh works**
 	- server configured with public key & sshd service running
 	- client will verify server in network ~/.ssh/known_hosts
 	- negotiate with shared session key
@@ -129,21 +133,21 @@ What happens when type google.com in browser and enter ?
 	- client combine random num + session key sends MD5 hash
 	- server uses same shared session key
 	
-* explain private & public key role in ssh 
+* **explain private & public key role in ssh** 
 	- private key stores at client
 	- public key will be at server
-* Linux command to check the logs
+* **Linux command to check the logs**
 	- tail -f /var/log/mail.log
 	
-* how to find system slow, EFS slow
+* **how to find system slow, EFS slow**
 	- nfsstat -s (server)
 	- nfsstat -c (cient)
 	- nfsiostat (check its performance)
-* how to run shell script in background
+* **how to run shell script in background**
 	- nohup script.sh &
 	- nohup /path/to/your/script.sh > /dev/null 2>&1 & 
 	- script.sh & disown &
-* How to check server is slow?
+* **How to check server is slow?**
 	- cat /proc/cpuinfo 
 	- lscpu
 	- service --status-all
@@ -165,9 +169,9 @@ What happens when type google.com in browser and enter ?
 		- means real" IO wait 
 		- use iotop
 	- Step 7: Check memory usage
-* port for http, https, nfs, ICMP
+* **port for http, https, nfs, ICMP**
 	- http 80, https 443, nfs 2049, ICMP 7
-* Linux Performance Monitoring?
+* **Linux Performance Monitoring?**
   - vmstat (virtual memory statistic tool)
     ```sh
 	sudo apt install sysstat         [On Debian, Ubuntu and Mint]
@@ -219,7 +223,7 @@ What happens when type google.com in browser and enter ?
 	```
 
 ### DevOps
-* DevOps Deployment strategies?
+* **DevOps Deployment strategies?**
   * **Recreate**: Version A is terminated then version B is rolled out.
   * **Rolling-update/incremental**: Version B is slowly rolled out and replacing version A.
   * **Blue/Green**: Version B is released alongside version A, then the traffic is switched to version B.
