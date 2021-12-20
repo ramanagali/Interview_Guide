@@ -1,5 +1,43 @@
 # Data Structures and Algorithams
 
+**Table of Contents** 
+- [Data Structures and Algorithams](#data-structures-and-algorithams)
+  - [Algorithams](#algorithams)
+    - [Time Complexity Examples](#time-complexity-examples)
+    - [Big O noation is for...](#big-o-noation-is-for)
+    - [Types of Time Complexities (Classes of Funcitons)](#types-of-time-complexities-classes-of-funcitons)
+    - [How to calculate Time Complexities](#how-to-calculate-time-complexities)
+    - [Compare Class of Functions](#compare-class-of-functions)
+    - [Log Values](#log-values)
+    - [Asymptotic Notations - Big Oh](#asymptotic-notations---big-oh)
+  - [Data Structures](#data-structures)
+    - [Array](#array)
+    - [Linked List](#linked-list)
+    - [Stack](#stack)
+    - [Queue](#queue)
+    - [Heap](#heap)
+    - [Graph](#graph)
+  - [Search Algorithams](#search-algorithams)
+    - [Linear Search Algorithm](#linear-search-algorithm)
+    - [Binary Search Algoritham](#binary-search-algoritham)
+    - [Jump/block Search Algoritham](#jumpblock-search-algoritham)
+  - [Sort Algorithams](#sort-algorithams)
+    - [Bubble Sort Algorithm](#bubble-sort-algorithm)
+    - [Quick Sort Algorithm](#quick-sort-algorithm)
+    - [Selection Sort Algorithm](#selection-sort-algorithm)
+    - [Insertion Sort Algorithm](#insertion-sort-algorithm)
+    - [Merge Sort Algorithm](#merge-sort-algorithm)
+    - [Shell Sort Algorithm](#shell-sort-algorithm)
+  - [Problem Solviong Algorithms](#problem-solviong-algorithms)
+    - [Divide And Conquer](#divide-and-conquer)
+    - [Backtracking Algorithm/Brute force approach](#backtracking-algorithmbrute-force-approach)
+    - [Greedy algorithm](#greedy-algorithm)
+    - [Branching and bound Algorithms](#branching-and-bound-algorithms)
+    - [Dijkstra's Algorithm](#dijkstras-algorithm)
+    - [Dynamic Programming](#dynamic-programming)
+    - [Backtracking Algorithm](#backtracking-algorithm)
+  - [Links](#links)
+
 ## Algorithams
 
 **An algorithm** -  Is a set of well-defined instructions to solve a particular problem.
@@ -38,7 +76,7 @@ Every statement/line is 1 unit of time
   - multiply(a,b,n) => s(n) = 3n2 +4     => O(n2)
   ```
 
-**Time Complexity Examples**
+### Time Complexity Examples
 
 ```
 - for(i=0;i<n;i++)          => O(n)
@@ -73,12 +111,12 @@ Every statement/line is 1 unit of time
  stmt                       
 ```
 
-**Big O noation is for...**
+### Big O noation is for...
 
 - Time Complexity (how much runtime it will take)
 - Space Complexity (how much memory it will take)
 
-**Types of Time Complexities (Classes of Funcitons)**
+### Types of Time Complexities (Classes of Funcitons)
 
 - Constant Time Complexity   -  O(1)
 - Linear Time Complexity   -  O(n)
@@ -87,20 +125,20 @@ Every statement/line is 1 unit of time
 - Cubic Time Complexity   - O(n ** 3)
 - Exponential Complexity  - O(2 power n)
 
-**How to calculate Time Complexities**
+### How to calculate Time Complexities
 
 - Mathematical way
 - Programatic or Practical way
   1. Find the Fast increasing term
   2. Remove the cofficient in that term
 
-**Compare Class of Functions**
+### Compare Class of Functions
 
 ```
 1 < log n < √n < n < n log n < n2 < n3 ... 2n < 3n < Nn < O(1) < O(logN) < O(N) < O(NlogN) < O(N^2) < O(2^N)< O(N!)
 ```
 
-**Log Values**
+### Log Values
 
 - Logn n = 1
 - logn 1 = 0
@@ -115,7 +153,7 @@ Every statement/line is 1 unit of time
 4,294,967,296 => 2 power 10   => log2(~4B)=32
 ```
 
-**Asymptotic Notations - Big Oh**
+### Asymptotic Notations - Big Oh
 
 1. BigO   Upper bound  (f(n) <= BigO(n) )
 2. Omega   Lower bound  (f(n) >= Omega(g(n) )
@@ -310,11 +348,11 @@ Data Structures are way storing and organizing data in a computer for efficient 
 
 ## Search Algorithams
 
-- **Linear Search Algorithm**
+### Linear Search Algorithm
   - Traverse array using for loop, if not march then -1
   - Time Complexity is O(n)</br>
   <img height="100" src="https://sp-ao.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_781,h_181/https://simplesnippets.tech/wp-content/uploads/2019/06/linear-search-diagram.png" width="350">
-- **Binary Search Algoritham**
+### Binary Search Algoritham
   - Array to be sorted
   - Find middle index & check the middle number,
   - if middle+1 <  actual number, again middle index, etc</br>  
@@ -324,19 +362,19 @@ Data Structures are way storing and organizing data in a computer for efficient 
     - Recursive method
   - Ex: 10,14,19,26,27,31,33,35, 42, 44, 50
   - Time Complexity is O(log n)
-- **Jump/block Search Algoritham**
+### Jump/block Search Algoritham
   - Like Linear Algorithms but 
   - Typical time complexity O(√n).
   - Time Complexity is b/n (O(n)) and (O(log n))</br>
   <img class="blur-up lazyloaded" data-src="https://static.studytonight.com/data-structures/images/Jump Search technique.PNG" alt="Jump Search technique" src="https://static.studytonight.com/data-structures/images/Jump Search technique.PNG">
 ## Sort Algorithams
 
-- **Bubble Sort Algorithm**
+### Bubble Sort Algorithm
   - Comparing adjacent items and swaps them untill intended order
   - The loop untill all are sorted
   - - Time Complexity is O(n2)</br>
   <img height="400" src="https://cdn.programiz.com/cdn/farfuture/kn1zM7ZGIj60jcTe3mv8gAtbrvFHqxgqfQ7F9MdjPuA/mtime:1582112622/sites/tutorial2program/files/Bubble-sort-0.png" title="Bubble Sort step 0" width="300">
-- **Quick Sort Algorithm**
+### Quick Sort Algorithm
   - based on divide and conquer approach
   - choose pivot as last element 
   - compare element with pivot, if greater than pivot, 
@@ -344,7 +382,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - repeat the same untill single element
   - Time Complexity O(n2), best is O(n log n)
   <img src="https://www.techiedelight.com/wp-content/uploads/Quicksort.png" alt="Quicksort Algorithm">
-- **Selection Sort Algorithm**
+### Selection Sort Algorithm
   * Step 1 − Set MIN to location 0
   * Step 2 − Search the minimum element in the list
   * Step 3 − Swap with value at location MIN
@@ -352,21 +390,21 @@ Data Structures are way storing and organizing data in a computer for efficient 
   * Step 5 − Repeat until list is sorted
   - Time complexity is O(n2)
   <img src="https://www.w3resource.com/w3r_images/selection-short.png" alt="Python: Selection Sort" style="max-width:100%;display:block;height=auto">
-- **Insertion Sort Algorithm**
+### Insertion Sort Algorithm
   - works like cards game sorting
   - take 2nd element as key, sort it with first
   - move it to next, compare with left sorted array
   - repeat
   - Time complexity is O(n2) best is O(n)
   <img src="https://www.w3resource.com/w3r_images/insertion-sort.png" alt="Python: Insertion sort" style="max-width:100%;display:block;height=auto">
-- **Merge Sort Algorithm**
+### Merge Sort Algorithm
   - based on Divide and Conquer Algorithm
   - divide array into 2 sub arrays untill single element
   - sort the left and right arrays
   - merge the smaller arrays into new array
   - Time complexity is O(n log n)
   <img alt="Merge Sort" src="https://www.alphacodingskills.com/python/img/merge-sort.PNG">
-- **Shell Sort Algorithm**
+### Shell Sort Algorithm
   - solve the problems of Insertion Sort Algorithm
   - split as sub array with perticular gap, sort sub arrays
   - move gap to diff position 
@@ -376,7 +414,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   <img src="https://www.tutorialspoint.com/data_structures_algorithms/images/shell_sort_gap_4.jpg" alt="Shell Sort">
 ## Problem Solviong Algorithms
 
-- **Divide And Conquer**
+### Divide And Conquer
   - Problem will be divded in to sub problems
   - find solution for sub problem
   - combine all solutions to one soluiton
@@ -386,7 +424,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
     - merge sort
     - quick sort
     - strassens matrix multiplication
-- **Backtracking Algorithm/Brute force approach**
+### Backtracking Algorithm/Brute force approach
   - Tries all the possibilities, chooses the desired/best solutions
   - Good Practice to come up with solution to all possible 
   - least efficient but guaranteed a solution
@@ -396,7 +434,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
   - State space tree
   	- define level by level
   
-- **Greedy algorithm**
+### Greedy algorithm
   - **top-down approach**
     * **Greedy Choice Property**
     	- choosing the best choice at each step
@@ -405,13 +443,18 @@ Data Structures are way storing and organizing data in a computer for efficient 
     * **Optimal Substructure**
     	- solution to its subproblems so that problem can be solved
     	- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Shortest_path_optimal_substructure.svg/1200px-Shortest_path_optimal_substructure.svg.png" alt="Optimal substructure - Wikipedia" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 435px; height: 233.088px; margin: 27.3062px 0px;">
-- **Dynamic Programming**
+
+### Branching and bound Algorithms
+
+### Dijkstra's Algorithm
+
+### Dynamic Programming
   - technique to efficiently solve a class of problems that have overlapping subproblems
   - problem can be divided into smaller subproblems
   - if overlapping among subproblems, solution will be saved for future reference
   Ex: 0,1,1,2,3,5,8,13,21,34,55...(n-1 + n-2)
 
-- **Branching and bound Algorithms**
+### Backtracking Algorithm
 
 ## Links
 * https://www.bigocheatsheet.com/
