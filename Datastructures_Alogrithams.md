@@ -401,7 +401,7 @@ Data Structures are way storing and organizing data in a computer for efficient 
     * **Greedy Choice Property**
     	- choosing the best choice at each step
     	- most obvious and immediate benefit</br>
-      <img alt="top-down approach for fibonacci series in dynamic programming" src="https://www.codesdope.com/staticroot/images/algorithm/dynamic4.png" style="width: 435px; height: 250px">
+      <img alt="top-down approach for fibonacci series in dynamic programming" src="https://www.codesdope.com/staticroot/images/algorithm/dynamic4.png" style="width: 550px; height: 350px">
     * **Optimal Substructure**
     	- solution to its subproblems so that problem can be solved
     	- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Shortest_path_optimal_substructure.svg/1200px-Shortest_path_optimal_substructure.svg.png" alt="Optimal substructure - Wikipedia" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 435px; height: 233.088px; margin: 27.3062px 0px;">
