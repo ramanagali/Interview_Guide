@@ -14,8 +14,8 @@ Below are the main categories for the System Design Interview
     - [3) Concrete and Quantitative Solution](#3-concrete-and-quantitative-solution)
     - [Solution Patterns](#solution-patterns)
       - [Sharding Data](#sharding-data)
-      - [Replication Types</br>](#replication-typesbr)
-      - [Write Ahead Logging (WAL)</br>](#write-ahead-logging-walbr)
+      - [Replication Types</br>](#replication-types)
+      - [Write Ahead Logging (WAL)](#write-ahead-logging-wal)
       - [Separating Data and Metadata Storage](#separating-data-and-metadata-storage)
       - [Basic Kinds of Load Distribution/Load Balancing Algorithms](#basic-kinds-of-load-distributionload-balancing-algorithms)
     - [4) Tradeoffs and Compramises](#4-tradeoffs-and-compramises)
@@ -122,7 +122,7 @@ Below are the main categories for the System Design Interview
   - benefit is... less Indexing space & faster queries
   - common ways is based on User last name & geo location etc
   - **downsides:** complex queries, joins, app logic to handle sharding, increase complexity and more hadware
-#### Replication Types</br>
+#### Replication Types
   - Ideally replication is Sync or Async
   - **Snapshot Replication:** copies a "snapshot" of the database. Useful when data doesnot change.
   - **Transactional Replication:** full copy of the database, data copied realtime, incremental and order
@@ -130,7 +130,7 @@ Below are the main categories for the System Design Interview
   - **Peer to Peer Replication:** based on Transactional but near real-time between multiple servers. useful for web applications
   - **Bi-directional Replication:** transactional replication topology. server publishes data and then subscribes to a publication with the same data from the other server
 
-#### Write Ahead Logging (WAL)</br>
+#### Write Ahead Logging (WAL)
   - method for ensuring data integrity, quickly identify risky data loss (for DBAs)
   - write transaction log ahead of data files will be written
   - when modification occurs 1st change will be made in memory, then written to transaction log
@@ -143,7 +143,7 @@ Below are the main categories for the System Design Interview
   - tells the system how to render, cache, decompress, language
   - seperation of concerns, protect data and analytics
 
-#### Basic Kinds of Load Distribution/Load Balancing Algorithms
+#### Types of Load Distribution/Load Balancing Algorithms
   - distributing tasks over a set of computing nodes
   - for performance and reliability
   - horizontal dynamic scaling, Abstraction, throughtput, availability and
