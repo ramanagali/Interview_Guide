@@ -163,11 +163,11 @@ What happens when type google.com in browser and enter ?
 
 ### Linux
 * **How SSH Configuration**
-	- server configured with public key & sshd service running
-	- client will verify server in network ~/.ssh/known_hosts
+	- server configured with public key & `sshd service` running
+	- client will verify server in network `~/.ssh/known_hosts`
 	- negotiate with shared session key
 	- client sends ID of the key pair
-	- server checks the authorized_keys file
+	- server checks the `authorized_keys` file
 	- server generate random num with public key and sends msgs
 	- client decrypt msg get random num
 	- client combine random num + session key sends MD5 hash
@@ -183,9 +183,12 @@ What happens when type google.com in browser and enter ?
 	- tail -f /var/log/mail.log
 	
 * **how to find system slow, EFS slow**
-	- nfsstat -s (server)
-	- nfsstat -c (cient)
-	- nfsiostat (check its performance)
+   	```sh
+	yum install -y nfs-utils
+	nfsstat -s	#at NFS server, check badcalls >0
+	nfsstat -c	#at NFS client
+	nfsiostat 	#at NFS client check its performance avg RTT(ms) and retrans
+	```
 * **how to run shell script in background**
 	- nohup script.sh &
 	- nohup /path/to/your/script.sh > /dev/null 2>&1 & 
