@@ -102,6 +102,7 @@ What happens when type google.com in browser and enter ?
   * TLS 1.3 is preferred cryptographic protocol on the web 
 <img src="https://sectigostore.com/page/wp-content/uploads/2020/05/image.png" alt="How Does HTTPS Work to Improve Website Security? - SectigoStore" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 587px; height: 380.06px; margin: 0px;"></br>
 <img src="https://www.researchgate.net/profile/Wazen-Shbair/publication/321580115/figure/fig2/AS:614330361970700@1523479180738/The-TLS-handshake-protocol-messages-sequence.png" alt="4: The TLS handshake protocol messages sequence&nbsp;" itemprop="contentUrl" class="figure-details-image__main-image"></br>
+
 * **TLS 1.2 vs TLS 1.3 ?**</br>
   <img src="https://www.ssl2buy.com/wiki/wp-content/uploads/2018/08/ssl2buy-tls12-13.jpg" alt="TLS 1.3 Protocol Released – Move Ahead to Advanced Security and Privacy" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 527px; height: 343.643px; margin: 0px;">  
 
@@ -109,6 +110,9 @@ What happens when type google.com in browser and enter ?
   * Secure Socket Layer (SSL) Certificate	
   * A file that digitally ties a cryptographic key to an organizations details. 
   * This is not the same as a SSL or TLS certificate, but it is interchangeable all the time.
+
+
+
 
 * **How Https works?**</br>
   * Browser sends www.youtube.com
@@ -120,6 +124,21 @@ What happens when type google.com in browser and enter ?
   <img alt="" class="w hv hw" src="https://miro.medium.com/max/1400/1*Xzck0n8vxjWstsOtHDnw-g.png" width="700" height="728" role="presentation"></br>
   <img src="https://perezbox.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-28-at-9.57.00-AM-1140x832.png" alt="How HTTPS Works - Let&amp;#39;s Establish a Secure Connection - PerezBox" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1"></br>
   <img src="https://www.researchgate.net/profile/Kanchana-Thilakarathna/publication/306187575/figure/fig1/AS:395752913293314@1471366255623/HTTPS-message-sequence-diagram-with-detailed-TLS-handshaking-steps.png" alt="HTTPS message sequence diagram with detailed TLS handshaking steps. &nbsp;" itemprop="contentUrl" class="figure-details-image__main-image">
+
+* **What is CA Certificate? How www.youtube.com gets Certificate?**
+  * Issuer: Google CA has its own Public key & Private key
+  * Youtube Web Server: Has own Public key & Private key
+  * youtbue will send Certificate Signing request (with key pair) & ask Google CA to sign in
+  * Google CA will signs with their private key
+  * when browsers connects youtube.com, its verifies youtube's public key and rue and trusted
+* **What is Self Signed Certificate?**
+  * App1 create one pair (Public key & Private key)
+  * create key pair for our own CA
+  * send CSR
+  * Approve & Sign
+  * If App2 try to connect App1, it wont trust
+  * Configure App2 to trust own CA
+
 * **TCP vs UDP**
   	| TCP  | UDP |
 	| ------------- | ------------- |
@@ -143,18 +162,21 @@ What happens when type google.com in browser and enter ?
   * Hybrid
 
 ### Linux
-* **How ssh works**
+* **How SSH Configuration**
 	- server configured with public key & sshd service running
 	- client will verify server in network ~/.ssh/known_hosts
 	- negotiate with shared session key
 	- client sends ID of the key pair
-	- sserver checks the authorized_keys file
+	- server checks the authorized_keys file
 	- server generate random num with public key and sends msgs
 	- client decrypt msg get random num
 	- client combine random num + session key sends MD5 hash
 	- server uses same shared session key
-	
-* **explain private & public key role in ssh** 
+	<img src="https://i.stack.imgur.com/pC0Qn.png" alt="enter image description here">
+* **How SSH Works ?**</br>
+  <img src="https://www.manageengine.com/key-manager/images/ssh-key-based-authentication.png" title="SSH authentication process flow" alt="ssh key authentication work flow"></br>
+  <img src="https://i.stack.imgur.com/4cZbh.png" alt="enter image description here">
+* **Explain private & public key role in ssh** 
 	- private key stores at client
 	- public key will be at server
 * **Linux command to check the logs**
