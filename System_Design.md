@@ -1,6 +1,26 @@
 # System Design Interview Preparation Notes
 
-## Below are the main categories for the System Design Interview
+Below are the main categories for the System Design Interview
+
+**Table of Contents** 
+- [System Design Interview Preparation Notes](#system-design-interview-preparation-notes)
+    - [1) Communication](#1-communication)
+    - [2) Designing at Scale](#2-designing-at-scale)
+    - [System Properties](#system-properties)
+      - [Latency:](#latency)
+      - [Throughtput](#throughtput)
+      - [Availability](#availability)
+      - [Storage](#storage)
+    - [3) Concrete and Quantitative Solution](#3-concrete-and-quantitative-solution)
+    - [Solution Patterns](#solution-patterns)
+      - [Sharding Data](#sharding-data)
+      - [Replication Types</br>](#replication-typesbr)
+      - [Write Ahead Logging (WAL)</br>](#write-ahead-logging-walbr)
+      - [Separating Data and Metadata Storage](#separating-data-and-metadata-storage)
+      - [Basic Kinds of Load Distribution/Load Balancing Algorithms](#basic-kinds-of-load-distributionload-balancing-algorithms)
+    - [4) Tradeoffs and Compramises](#4-tradeoffs-and-compramises)
+    - [5) Best Practices](#5-best-practices)
+    - [6) Useful Links\*\*](#6-useful-links%5C%5C)
 
 ### 1) Communication
 
@@ -25,9 +45,9 @@
 - **Long Polling:** - client request to resources, keeps conn open untill server responds. recomanded when low traffic
 - **WebSockets:** - ex: client to resources conn open & bidirectional comminication. ex: web chat application
 
-#### System Properties
+### System Properties
 
-- **Latency**:
+#### Latency:
   - time to perform packet transfer accross n/w
   - measured in ms/s/min/hours, calculated in average
   - use cache or Inmemory rather than heavy operation
@@ -40,7 +60,7 @@
     -  Better paths - minimize request travel path
     -  Caching - dramatically improves
     -  Protocol choice - HTTP/2 or TCP with low congresion logic
-- **Throughtput**
+#### Throughtput
   - mount of data that can be sent per unit
   - measured in TPS, calculated in average
   - use concurreny to achieve Throughtput
@@ -52,7 +72,7 @@
     -  Increasing bandwidth 
     -  Improving latency
     -  Protocol choice - use TCP congestion avoidance feature
-- **Availability**:
+#### Availability
   - amount of time that a system is available
   - Uptime / (Uptime + Downtime)
   - **What Causes Low Availability?** 
@@ -68,7 +88,7 @@
     -  Backups & replications
     -  Geographic redundancy
     -  Automatic testing, deployment, and rollbacks 
-- **Storage** -
+#### Storage
   - File Storage
   - Block Storage
     - HDD
@@ -94,15 +114,15 @@
     - Exists at Edge locations (works as transit) - Edge locations reducing latency, improving round-trip time, and potentially reducing costs
 - During the interview: estimate the resources to run & Diagram
 
-#### Solution Patterns
+### Solution Patterns
 
-- **Sharding Data**</br>
+#### Sharding Data
   - distributes data across different db's
   - benefit is... less R/RW traffic, less replication and more cache hits
   - benefit is... less Indexing space & faster queries
   - common ways is based on User last name & geo location etc
   - **downsides:** complex queries, joins, app logic to handle sharding, increase complexity and more hadware
-- **Replication Types**</br>
+#### Replication Types</br>
   - Ideally replication is Sync or Async
   - **Snapshot Replication:** copies a "snapshot" of the database. Useful when data doesnot change.
   - **Transactional Replication:** full copy of the database, data copied realtime, incremental and order
@@ -110,20 +130,20 @@
   - **Peer to Peer Replication:** based on Transactional but near real-time between multiple servers. useful for web applications
   - **Bi-directional Replication:** transactional replication topology. server publishes data and then subscribes to a publication with the same data from the other server
 
-- **Write Ahead Logging (WAL)**</br>
+#### Write Ahead Logging (WAL)</br>
   - method for ensuring data integrity, quickly identify risky data loss (for DBAs)
   - write transaction log ahead of data files will be written
   - when modification occurs 1st change will be made in memory, then written to transaction log
   - If write to the transaction Log success then data will be written.
   - used for recovery model to identify how much info & how long data will remain
   
-- **Separating Data and Metadata Storage**
+#### Separating Data and Metadata Storage
   - for robustness, scalability and efficiency
   - metadata describes the structure of the data
   - tells the system how to render, cache, decompress, language
   - seperation of concerns, protect data and analytics
 
-- **Basic Kinds of Load Distribution/Load Balancing Algorithms**
+#### Basic Kinds of Load Distribution/Load Balancing Algorithms
   - distributing tasks over a set of computing nodes
   - for performance and reliability
   - horizontal dynamic scaling, Abstraction, throughtput, availability and
