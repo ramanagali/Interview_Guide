@@ -414,12 +414,12 @@ Data Structures are way storing and organizing data in a computer for efficient 
 - **Branching and bound Algorithms**
 
 ## Links
-- https://www.bigocheatsheet.com/
-- https://www.programiz.com/dsa/algorithm
-- https://www.educative.io/blog/algorithms-an-interview-refresher#steps
-- https://www.educative.io/blog/python-dynamic-programming-tutorial#dp
-- https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
-- https://github.com/kdn251/interviews#youtube
+* https://www.bigocheatsheet.com/
+* https://www.programiz.com/dsa/algorithm
+* https://www.educative.io/blog/algorithms-an-interview-refresher#steps
+* https://www.educative.io/blog/python-dynamic-programming-tutorial#dp
+* https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
+* https://github.com/kdn251/interviews#youtube
 * https://github.com/TheAlgorithms/Python/blob/master/DIRECTORY.md
 * https://github.com/prabhupant/python-ds
 * https://www.geeksforgeeks.org/data-structures/?ref=shm
