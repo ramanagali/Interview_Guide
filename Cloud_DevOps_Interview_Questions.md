@@ -180,7 +180,9 @@ What happens when type google.com in browser and enter ?
 	- private key stores at client
 	- public key will be at server
 * **Linux command to check the logs**
-	- tail -f /var/log/mail.log
+  	```sh
+	tail -f /var/log/mail.log
+	```
 	
 * **how to find system slow, EFS slow**
    	```sh
@@ -190,42 +192,46 @@ What happens when type google.com in browser and enter ?
 	nfsiostat 	#at NFS client check its performance avg RTT(ms) and retrans
 	```
 * **how to run shell script in background**
-	- nohup script.sh &
-	- nohup /path/to/your/script.sh > /dev/null 2>&1 & 
-	- script.sh & disown &
+  	```sh
+	nohup script.sh &
+  	nohup /path/to/your/script.sh > /dev/null 2>&1 & 
+  	script.sh & disown &
+	```
 * **How to check server is slow?**
-	- cat /proc/cpuinfo 
-	- lscpu
-	- service --status-all
-	- chkconfig --list
-	- uptime
-	- Step 1: Check I/O wait and CPU Idletime using top 
-		- "wa" (I/O wait) 
-		- "id" (CPU idletime)
+  	```sh
+	cat /proc/cpuinfo 
+  	lscpu
+  	service --status-all
+  	chkconfig --list
+  	uptime
+	```
+	- Step 1: Check I/O wait and CPU Idletime using `top`
+		- `wa (I/O wait)`
+		- `id (CPU idletime)`
 	- Step 2: IO Wait is low and idle time is low: check CPU user time
-		- %us
+		- `%us`
 	- Step 3: IO wait is low and idle time is high
 		- slowness isn't due to CPU or IO problems, it's likely an app-specific issue
-		- starce or lsof
+		- `starce or lsof`
 	- Step 4: IO Wait is high: check your swap usage
-		- top or free -m
+		- `top or free -m`
 	- Step 5: swap usage is high 
 		- means out of RAM
 	- Step 6: swap usage is low
-		- means real" IO wait 
-		- use iotop
+		- means real IO wait 
+		- use `iotop`
 	- Step 7: Check memory usage
 * **port for http, https, nfs, ICMP**
 	- http 80, https 443, nfs 2049, ICMP 7
 * **Linux Performance Monitoring?**
-  - vmstat (virtual memory statistic tool)
-    ```sh
+    - vmstat (virtual memory statistic tool)
+	```sh
 	sudo apt install sysstat         [On Debian, Ubuntu and Mint]
 	sudo yum install sysstat         [On RHEL/CentOS/Fedora and Rocky Linux/AlmaLinux]
 	sudo emerge -a app-admin/sysstat [On Gentoo Linux]
 	sudo pacman -S sysstat           [On Arch Linux]
 	sudo zypper install sysstat      [On OpenSUSE] 
-	
+
 	# List Active and Inactive memory 
 	vmstat -a
 	vmstat 2 6		# vmstat executes every 2 sec & 6 times
