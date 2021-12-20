@@ -78,7 +78,7 @@ What happens when type google.com in browser and enter ?
 </details>
 
 ### Network
-* **Explain 3 Way Handshake?**
+* **Explain 3 Way TCP Handshake?**
   * First step is 3-way handshake must be established
   * **1st Step**: 
     * Client sends SYN segment to the server 
@@ -95,10 +95,31 @@ What happens when type google.com in browser and enter ?
     * source port: client ephemeral port
     * destination port: 443
   	<img src="https://lh6.googleusercontent.com/-L9GyKGal2kX0x1uhEr_WcIPJNjaXt56MwI4dppR9LKS0SKciZ4ehop6uYdAM7RFm9PYoPcK445rVYeqzjAWSOaHNXd6wvgoWbVUVQnwLZe-M2iav6FZVIfTlE15ULPrWuEYi4Mw" alt="" width="602" height="376" loading="lazy" class="">
-* **Explain TLS?**
-  * Client & Server will have 3 way handshake
-* **How Https works?**
-  * 
+
+* **Explain TLS Handshake?**
+  * Transport Layer Security (TLS)
+  * A cryptographic protocol used to establish a secure communication channel between two systems. 
+  * TLS 1.3 is preferred cryptographic protocol on the web 
+<img src="https://sectigostore.com/page/wp-content/uploads/2020/05/image.png" alt="How Does HTTPS Work to Improve Website Security? - SectigoStore" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 587px; height: 380.06px; margin: 0px;"></br>
+<img src="https://www.researchgate.net/profile/Wazen-Shbair/publication/321580115/figure/fig2/AS:614330361970700@1523479180738/The-TLS-handshake-protocol-messages-sequence.png" alt="4: The TLS handshake protocol messages sequence&nbsp;" itemprop="contentUrl" class="figure-details-image__main-image"></br>
+* **TLS 1.2 vs TLS 1.3 ?**</br>
+  <img src="https://www.ssl2buy.com/wiki/wp-content/uploads/2018/08/ssl2buy-tls12-13.jpg" alt="TLS 1.3 Protocol Released – Move Ahead to Advanced Security and Privacy" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 527px; height: 343.643px; margin: 0px;">  
+
+* **What is SSL Certificate?**
+  * Secure Socket Layer (SSL) Certificate	
+  * A file that digitally ties a cryptographic key to an organizations details. 
+  * This is not the same as a SSL or TLS certificate, but it is interchangeable all the time.
+
+* **How Https works?**</br>
+  * Browser sends www.youtube.com
+  * Server sends public key (signed by google CA)
+  * Browser Trust & verifies google CA public key
+  * Browser sends new secret, encrypt with google public key 
+  * Server can decrypt with server's private key. now all set
+  * Now both server & client encrypt and communicate each other [ref](https://www.researchgate.net/figure/HTTPS-message-sequence-diagram-with-detailed-TLS-handshaking-steps_fig1_306187575)</br>
+  <img alt="" class="w hv hw" src="https://miro.medium.com/max/1400/1*Xzck0n8vxjWstsOtHDnw-g.png" width="700" height="728" role="presentation"></br>
+  <img src="https://perezbox.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-28-at-9.57.00-AM-1140x832.png" alt="How HTTPS Works - Let&amp;#39;s Establish a Secure Connection - PerezBox" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1"></br>
+  <img src="https://www.researchgate.net/profile/Kanchana-Thilakarathna/publication/306187575/figure/fig1/AS:395752913293314@1471366255623/HTTPS-message-sequence-diagram-with-detailed-TLS-handshaking-steps.png" alt="HTTPS message sequence diagram with detailed TLS handshaking steps. &nbsp;" itemprop="contentUrl" class="figure-details-image__main-image">
 * **TCP vs UDP**
   	| TCP  | UDP |
 	| ------------- | ------------- |
