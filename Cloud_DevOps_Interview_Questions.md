@@ -4,79 +4,219 @@
 What happens when type google.com in browser and enter ?
 <details>
 <summary></summary>
-
-* **type g**		
-	* Browser Auto Complete function kicks in 
-* **press enter**	
-	* char converted to int 13, signal will be sent
-* **parse URL**			
-    * it has http or /(slash)|
-* **URL or Search**		
-  - uses default search engine if its search term
-* **Convert non-ASCII** 
-  * convert URL to a-z,A-Z,0-9,-,. to ASCII
-* **HSTS Check**			
-  * browser checks preloded HTTP Strict Trasnport Security policy
-  * HTTP from the list
-* **DNS Lookup**
-  - verify DNS from browser cache
-  - check local machine hostfile mapping for DNS lookup
-  - if not local router or DNS server
-  - Address Resolution(ARP) process for default Gateway
-* **Address Resolution Protocol**
-  - Check local ARP Cache for target IP
-  - if not, any subnets target IP in the local route table
-  - if not use default gateway subnet
-  - grab local MAC address, look for target MAC Address
-  - sends L2 (Data link)	
-  - broadcast the ARP request to all other ports and wait for reploy
-  - if any switch, the re-broadcast the ARP request to all other ports
-  - ARP reply is received, now we know DNS server IP
-  - DNS client(source port 1023) establish socket UDP port 53 on DNS Server 
-* **Opening of Socket**
-  - Once target IP of destination server is received
-  - https(443) or http(80 default)
-  - request L4 TCP socket stream to target IP
-    - destination port 
-    - source port added to header
-  - request sent to L3(Network layer), 
-    - adds targetIP & current IP in header
-  - request will be sent to L2 (DataLink)
-    - add MAC address of gateway
-  - Physical layers converts to binary
-  - vi ISP hits target server - TPC Conn FLOW
-    - Client choose ISN & sends SYN packet to server 
-    - Server adds ISN+1, ACK sends to Client
-    - Client sends ACK,ISN+1, receiver ack number
-    - Data Transfers, sends ACK
-    - closer sends FIN packet
-* **TLS Handshake**
-  - Client sends TLS ClientHello, cipher algo & compression method
-  - Server sends TLS ServerHello + public CA
-    - client verifies against trusted CA,
-    - generates pseudo random bytes for symmetric key
-  - encrypt with public key 
-  - Server decrypt using private key & makes own copy of symmetric master key
-  - Client sends Finished message with symetric key
-  - Server generetes hash, decrypts with client sent hash(symmetric key)
-  - TLS session transmits with symmetric key
-* **HTTP Protocol**
-  - http reqeust will be sent
-  - from server 200 ok response headers
-  - sent payload of html
-  - browser parses(image, css etc)
-* **HTTP Server Request Handle**
-  - HTTPD break downs GET, POST, HEAD,PUT, PAtH, DELETE, CONNECT, OPTIONS
-  - rewrite modules
-  - headers handlers etc
-* **Browser**
-  - HTML Parsinig
-  - CSS interpretation
-  - Page Rendering
-  - GPU Rendering
-  - Browser add-ons
+  * **type g**		
+  	* Browser Auto Complete function kicks in 
+  * **press enter**	
+  	* char converted to int 13, signal will be sent
+  * **parse URL**			
+      * it has http or /(slash)|
+  * **URL or Search**		
+    - uses default search engine if its search term
+  * **Convert non-ASCII** 
+    * convert URL to a-z,A-Z,0-9,-,. to ASCII
+  * **HSTS Check**			
+    * browser checks preloded HTTP Strict Trasnport Security policy
+    * HTTP from the list
+  * **DNS Lookup**
+    - verify DNS from browser cache
+    - check local machine hostfile mapping for DNS lookup
+    - if not local router or DNS server
+    - Address Resolution(ARP) process for default Gateway
+  * **Address Resolution Protocol**
+    - Check local ARP Cache for target IP
+    - if not, any subnets target IP in the local route table
+    - if not use default gateway subnet
+    - grab local MAC address, look for target MAC Address
+    - sends L2 (Data link)	
+    - broadcast the ARP request to all other ports and wait for reploy
+    - if any switch, the re-broadcast the ARP request to all other ports
+    - ARP reply is received, now we know DNS server IP
+    - DNS client(source port 1023) establish socket UDP port 53 on DNS Server 
+  * **Opening of Socket**
+    - Once target IP of destination server is received
+    - https(443) or http(80 default)
+    - request L4 TCP socket stream to target IP
+      - destination port 
+      - source port added to header
+    - request sent to L3(Network layer), 
+      - adds targetIP & current IP in header
+    - request will be sent to L2 (DataLink)
+      - add MAC address of gateway
+    - Physical layers converts to binary
+    - vi ISP hits target server - TPC Conn FLOW
+      - Client choose ISN & sends SYN packet to server 
+      - Server adds ISN+1, ACK sends to Client
+      - Client sends ACK,ISN+1, receiver ack number
+      - Data Transfers, sends ACK
+      - closer sends FIN packet
+  * **TLS Handshake**
+    - Client sends TLS ClientHello, cipher algo & compression method
+    - Server sends TLS ServerHello + public CA
+      - client verifies against trusted CA,
+      - generates pseudo random bytes for symmetric key
+    - encrypt with public key 
+    - Server decrypt using private key & makes own copy of symmetric master key
+    - Client sends Finished message with symetric key
+    - Server generetes hash, decrypts with client sent hash(symmetric key)
+    - TLS session transmits with symmetric key
+  * **HTTP Protocol**
+    - http reqeust will be sent
+    - from server 200 ok response headers
+    - sent payload of html
+    - browser parses(image, css etc)
+  * **HTTP Server Request Handle**
+    - HTTPD break downs GET, POST, HEAD,PUT, PAtH, DELETE, CONNECT, OPTIONS
+    - rewrite modules
+    - headers handlers etc
+  * **Browser**
+    - HTML Parsinig
+    - CSS interpretation
+    - Page Rendering
+    - GPU Rendering
+    - Browser add-ons
 </details>
 
+### Network
+* Explain 3 Way Handshake?
+  * First step is 3-way handshake must be established
+  * **1st Step**: 
+    * Client sends SYN segment to the server 
+    * ISN(InitialSeqNum)=7001, ACK=0, SYN=1)  
+    * source port: client ephemeral port
+    * destination port: 443
+  * **2nd Step2**: 
+    * Server replies SYN + ACK to client & ask for Open
+    * SYN=1, ACK=1, ACK Number=7002, Server Seq #3001  
+    * source port: 443
+    * destination port: client ephemeral port
+  * **3rd Step**: 
+    * SYN-0, ACK=1, ACK number=3002, Initial Seq=7002
+    * source port: client ephemeral port
+    * destination port: 443
+  	<img src="https://lh6.googleusercontent.com/-L9GyKGal2kX0x1uhEr_WcIPJNjaXt56MwI4dppR9LKS0SKciZ4ehop6uYdAM7RFm9PYoPcK445rVYeqzjAWSOaHNXd6wvgoWbVUVQnwLZe-M2iav6FZVIfTlE15ULPrWuEYi4Mw" alt="" width="602" height="376" loading="lazy" class="">
+* How Https works?
+* TCP vs UDP
+  	| TCP  | UDP |
+	| ------------- | ------------- |
+	| Requires an established connection |Connectionless protocol|
+	| Data sequencing| No Data sequencing|
+	| Guaranteed delivery |Cannot guarantee delivery |
+	| if data lost, Retransmission is possible| No retransmission|
+	| error checking & ACK, SYN,SYN-ACK handshakes |error checking using checksum|
+	| data read as byte, msgs in segments | UDP packets with defined boundaries|
+	|Slower than UDP |Faster than TCP |
+	| does not support Broadcasting| support Broadcasting| 
+	| Used by HTTPS, HTTP, SMTP, POP, FTP, etc|Video conferencing, streaming, DNS, DHCP, TFTP, SNMP, RIP, and VoIP.|
+	
+* What are the Network Topology Types ?
+  * Point to Point
+  * Bus
+  * Ring
+  * Star
+  * Tree
+  * Mesh
+  * Hybrid
+
+### Linux
+* How ssh works
+	- server configured with public key & sshd service running
+	- client will verify server in network ~/.ssh/known_hosts
+	- negotiate with shared session key
+	- client sends ID of the key pair
+	- sserver checks the authorized_keys file
+	- server generate random num with public key and sends msgs
+	- client decrypt msg get random num
+	- client combine random num + session key sends MD5 hash
+	- server uses same shared session key
+	
+* explain private & public key role in ssh 
+	- private key stores at client
+	- public key will be at server
+* Linux command to check the logs
+	- tail -f /var/log/mail.log
+	
+* how to find system slow, EFS slow
+	- nfsstat -s (server)
+	- nfsstat -c (cient)
+	- nfsiostat (check its performance)
+* how to run shell script in background
+	- nohup script.sh &
+	- nohup /path/to/your/script.sh > /dev/null 2>&1 & 
+	- script.sh & disown &
+* How to check server is slow?
+	- cat /proc/cpuinfo 
+	- lscpu
+	- service --status-all
+	- chkconfig --list
+	- uptime
+	- Step 1: Check I/O wait and CPU Idletime using top 
+		- "wa" (I/O wait) 
+		- "id" (CPU idletime)
+	- Step 2: IO Wait is low and idle time is low: check CPU user time
+		- %us
+	- Step 3: IO wait is low and idle time is high
+		- slowness isn't due to CPU or IO problems, it's likely an app-specific issue
+		- starce or lsof
+	- Step 4: IO Wait is high: check your swap usage
+		- top or free -m
+	- Step 5: swap usage is high 
+		- means out of RAM
+	- Step 6: swap usage is low
+		- means real" IO wait 
+		- use iotop
+	- Step 7: Check memory usage
+* port for http, https, nfs, ICMP
+	- http 80, https 443, nfs 2049, ICMP 7
+* Linux Performance Monitoring?
+  - vmstat (virtual memory statistic tool)
+    ```sh
+	sudo apt install sysstat         [On Debian, Ubuntu and Mint]
+	sudo yum install sysstat         [On RHEL/CentOS/Fedora and Rocky Linux/AlmaLinux]
+	sudo emerge -a app-admin/sysstat [On Gentoo Linux]
+	sudo pacman -S sysstat           [On Arch Linux]
+	sudo zypper install sysstat      [On OpenSUSE] 
+	
+	# List Active and Inactive memory 
+	vmstat -a
+	vmstat 2 6		# vmstat executes every 2 sec & 6 times
+	vmstat -t 1 	# shows timestamps
+	vmstat -s		# stats of various coutners
+	vmstat -d		# disk stats
+	vmstat -S M 1 5	# stats in megabytes
+
+	iostat		#CPU and I/O statistics
+	iostat -c 	# CPU Statistics
+	iostat -d 	# # disk I/O stats
+	iostat -p sda # I/O Statistics of Specific Device
+	iostat -N # LVM stats
+	```
+* Linux Configuration &  Troubleshooting commands ?
+	```sh
+	ifconfig # assign ip,enable,disable interface
+
+	# set IP
+	ifconfig eth0 192.168.50.5 netmask 255.255.255.0	
+	ifup eth0	# enable eth0
+	ifdown eth0	# disable eth0
+	ifconfig eth0 mtu XXXX	# set mtu
+
+	ping -c 5 www.google.com # test connectivity 
+	traceroute 4.2.2.2	# number of hops b/n destinations
+	netstat -r 			# connection info, routing table information
+	dig www.google.com	#query DNS related information (A,CNAME,MX)
+	nslookup www.google.com	#find DNS related queries, shows A record
+	route -n 	#shows default routing
+	route add -net 10.10.10.0/24 gw 192.168.0.1 
+	route del -net 10.10.10.0/24 gw 192.168.0.1
+	route add default gw 192.168.0.1
+	host www.google.com 	# find name to IP 
+	arp -e		#Address Resolution Protocol default table
+	ethtool eth0 	# view & set Network Interface Card NIC
+	iwconfig [interface]	#configure a wireless network interface
+	hostname	# to identify network
+	nmcli	#manage network settings
+	nmtui	#manage network devices
+	```
 
 ### DevOps
 * DevOps Deployment strategies?
@@ -176,124 +316,7 @@ What happens when type google.com in browser and enter ?
 	- TF_LOG_PATH for persistent log path
 		- $ export TF_LOG_PATH="terraform.txt"
 	
-## Linux
-* How ssh works
-	- server configured with public key & sshd service running
-	- client will verify server in network ~/.ssh/known_hosts
-	- negotiate with shared session key
-	- client sends ID of the key pair
-	- sserver checks the authorized_keys file
-	- server generate random num with public key and sends msgs
-	- client decrypt msg get random num
-	- client combine random num + session key sends MD5 hash
-	- server uses same shared session key
-	
-* explain private & public key role in ssh 
-	- private key stores at client
-	- public key will be at server
-* Linux command to check the logs
-	- tail -f /var/log/mail.log
-	
-* how to find system slow, EFS slow
-	- nfsstat -s (server)
-	- nfsstat -c (cient)
-	- nfsiostat (check its performance)
-* how to run shell script in background
-	- nohup script.sh &
-	- nohup /path/to/your/script.sh > /dev/null 2>&1 & 
-	- script.sh & disown &
-* How to check server is slow?
-	- cat /proc/cpuinfo 
-	- lscpu
-	- service --status-all
-	- chkconfig --list
-	- uptime
-	- Step 1: Check I/O wait and CPU Idletime using top 
-		- "wa" (I/O wait) 
-		- "id" (CPU idletime)
-	- Step 2: IO Wait is low and idle time is low: check CPU user time
-		- %us
-	- Step 3: IO wait is low and idle time is high
-		- slowness isn't due to CPU or IO problems, it's likely an app-specific issue
-		- starce or lsof
-	- Step 4: IO Wait is high: check your swap usage
-		- top or free -m
-	- Step 5: swap usage is high 
-		- means out of RAM
-	- Step 6: swap usage is low
-		- means real" IO wait 
-		- use iotop
-	- Step 7: Check memory usage
-* TCP vs UDP
-	- TCP is a connection-oriented protocol, whereas UDP is a connectionless protocol.
-	- The speed for TCP is slower while the speed of UDP is faster
-	- TCP uses handshake protocol like SYN, SYN-ACK, ACK while UDP uses no handshake protocols
-	- TCP does error checking and also makes error recovery, on the other hand, UDP performs error checking, but it discards erroneous packets.
-	- TCP has acknowledgment segments, but UDP does not have any acknowledgment segment.
-	- TCP is heavy-weight, and UDP is lightweight.
-	- It is a connection-oriented protocol.	It is a connectionless protocol.
-	- TCP reads data as streams of bytes, and the message is transmitted to segment boundaries.	UDP messages contain packets that were sent one by one. It also checks for integrity at the arrival time.
-	- TCP messages make their way across the internet from one computer to another.	It is not connection-based, so one program can send lots of packets to another.
-	- TCP rearranges data packets in the specific order.	UDP protocol has no fixed order because all packets are independent of each other.
-	The speed for TCP is slower.	UDP is faster as error recovery is not attempted.
-	Header size is 20 bytes	Header size is 8 bytes.
-	- TCP is heavy-weight. TCP needs three packets to set up a socket connection before any user data can be sent.	UDP is lightweight. There are no tracking connections, ordering of messages, etc.
-	- TCP does error checking and also makes error recovery.	UDP performs error checking, but it discards erroneous packets.
-	Acknowledgment segments	No Acknowledgment segments
-	Using handshake protocol like SYN, SYN-ACK, ACK	No handshake (so connectionless protocol)
-	- TCP is reliable as it guarantees delivery of data to the destination router.	The delivery of data to the destination can't be guaranteed in UDP.
-* port for http, https, nfs, ICMP
-	- http 80, https 443, nfs 2049, ICMP 7
-* Linux Performance Monitoring?
-  - vmstat (virtual memory statistic tool)
-    ```sh
-	sudo apt install sysstat         [On Debian, Ubuntu and Mint]
-	sudo yum install sysstat         [On RHEL/CentOS/Fedora and Rocky Linux/AlmaLinux]
-	sudo emerge -a app-admin/sysstat [On Gentoo Linux]
-	sudo pacman -S sysstat           [On Arch Linux]
-	sudo zypper install sysstat      [On OpenSUSE] 
-	
-	# List Active and Inactive memory 
-	vmstat -a
-	vmstat 2 6		# vmstat executes every 2 sec & 6 times
-	vmstat -t 1 	# shows timestamps
-	vmstat -s		# stats of various coutners
-	vmstat -d		# disk stats
-	vmstat -S M 1 5	# stats in megabytes
 
-	iostat		#CPU and I/O statistics
-	iostat -c 	# CPU Statistics
-	iostat -d 	# # disk I/O stats
-	iostat -p sda # I/O Statistics of Specific Device
-	iostat -N # LVM stats
-	```
-* Linux Configuration &  Troubleshooting commands ?
-	```sh
-	ifconfig # assign ip,enable,disable interface
-
-	# set IP
-	ifconfig eth0 192.168.50.5 netmask 255.255.255.0	
-	ifup eth0	# enable eth0
-	ifdown eth0	# disable eth0
-	ifconfig eth0 mtu XXXX	# set mtu
-
-	ping -c 5 www.google.com # test connectivity 
-	traceroute 4.2.2.2	# number of hops b/n destinations
-	netstat -r 			# connection info, routing table information
-	dig www.google.com	#query DNS related information (A,CNAME,MX)
-	nslookup www.google.com	#find DNS related queries, shows A record
-	route -n 	#shows default routing
-	route add -net 10.10.10.0/24 gw 192.168.0.1 
-	route del -net 10.10.10.0/24 gw 192.168.0.1
-	route add default gw 192.168.0.1
-	host www.google.com 	# find name to IP 
-	arp -e		#Address Resolution Protocol default table
-	ethtool eth0 	# view & set Network Interface Card NIC
-	iwconfig [interface]	#configure a wireless network interface
-	hostname	# to identify network
-	nmcli	#manage network settings
-	nmtui	#manage network devices
-	```
 	
 
   
@@ -389,46 +412,7 @@ What happens when type google.com in browser and enter ?
 * what are the types of services present in kubernetes?
 * What is the link between pod and service?
 
-### Network
-* Explain 3 Way Handshake?
-  * First step is 3-way handshake must be established
-  * **1st Step**: 
-    * Client sends SYN segment to the server 
-    * ISN(InitialSeqNum)=7001, ACK=0, SYN=1)  
-    * source port: client ephemeral port
-    * destination port: 443
-  * **2nd Step2**: 
-    * Server replies SYN + ACK to client & ask for Open
-    * SYN=1, ACK=1, ACK Number=7002, Server Seq #3001  
-    * source port: 443
-    * destination port: client ephemeral port
-  * **3rd Step**: 
-    * SYN-0, ACK=1, ACK number=3002, Initial Seq=7002
-    * source port: client ephemeral port
-    * destination port: 443
-  	<img src="https://lh6.googleusercontent.com/-L9GyKGal2kX0x1uhEr_WcIPJNjaXt56MwI4dppR9LKS0SKciZ4ehop6uYdAM7RFm9PYoPcK445rVYeqzjAWSOaHNXd6wvgoWbVUVQnwLZe-M2iav6FZVIfTlE15ULPrWuEYi4Mw" alt="" width="602" height="376" loading="lazy" class="">
-* How Https works?
-* TCP vs UDP
-  	| TCP  | UDP |
-	| ------------- | ------------- |
-	| Requires an established connection |Connectionless protocol|
-	| Data sequencing| No Data sequencing|
-	| Guaranteed delivery |Cannot guarantee delivery |
-	| if data lost, Retransmission is possible| No retransmission|
-	| error checking & ACK, SYN,SYN-ACK handshakes |error checking using checksum|
-	| data read as byte, msgs in segments | UDP packets with defined boundaries|
-	|Slower than UDP |Faster than TCP |
-	| does not support Broadcasting| support Broadcasting| 
-	| Used by HTTPS, HTTP, SMTP, POP, FTP, etc|Video conferencing, streaming, DNS, DHCP, TFTP, SNMP, RIP, and VoIP.|
-	
-* What are the Network Topology Types ?
-  * Point to Point
-  * Bus
-  * Ring
-  * Star
-  * Tree
-  * Mesh
-  * Hybrid
+
 
 ### Bamboo
 
@@ -439,8 +423,6 @@ What happens when type google.com in browser and enter ?
 ### AWS
 * How you Host DB if DB has to be in the region where AWS/AZURE not avail
 * Diff between Stateful and Stateless firewalls ?
-* 
-
 
 ### GCP
 
