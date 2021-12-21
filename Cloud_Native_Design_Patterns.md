@@ -42,7 +42,16 @@
   * use when app uses services & need overloading
   * example is SQS
 ### Asynchronous Request-Reply Pattern
+  * client makes sync call to API, 
+  * API responds quickly(202)
+  * then API callback another service and returns 302(found) & then URI
+  * use in browser applications and async reply
+  * example SQS
 ### Bulkhead Pattern
+  * if single app expose multiple services and excessive load
+  * partiion the service instance to multiple groups
+  * isolate critical consumers
+  * can use with retry and circuit breaker
 ### Retry Pattern
 ### Static-Content Hosting Pattern
 ### Claim-Check Pattern
