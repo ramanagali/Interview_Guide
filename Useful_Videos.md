@@ -44,3 +44,7 @@ https://www.youtube.com/watch?v=pGxubb3eif4
 
 **PCI DSS**
 https://www.youtube.com/watch?v=szVmMxWORBc
+
+
+**Cloud Native Design Patters (Azure)**
+https://www.youtube.com/watch?v=cxYHugyNTP0
