@@ -7,20 +7,20 @@ Below are the main categories for the System Design Interview
     - [1) Communication](#1-communication)
     - [2) Designing at Scale](#2-designing-at-scale)
     - [System Properties](#system-properties)
-      - [Latency:](#latency)
+      - [Latency(T):](#latencyt)
       - [Throughtput](#throughtput)
       - [Availability](#availability)
       - [Storage](#storage)
     - [3) Concrete and Quantitative Solution](#3-concrete-and-quantitative-solution)
     - [Solution Patterns](#solution-patterns)
       - [Sharding Data](#sharding-data)
-      - [Replication Types</br>](#replication-types)
+      - [Replication Types](#replication-types)
       - [Write Ahead Logging (WAL)](#write-ahead-logging-wal)
       - [Separating Data and Metadata Storage](#separating-data-and-metadata-storage)
-      - [Basic Kinds of Load Distribution/Load Balancing Algorithms](#basic-kinds-of-load-distributionload-balancing-algorithms)
+      - [Types of Load Distribution/Load Balancing Algorithms](#types-of-load-distributionload-balancing-algorithms)
     - [4) Tradeoffs and Compramises](#4-tradeoffs-and-compramises)
     - [5) Best Practices](#5-best-practices)
-    - [6) Useful Links\*\*](#6-useful-links%5C%5C)
+    - [6) Useful Links\*\*](#6-useful-links)
 
 ### 1) Communication
 
@@ -47,10 +47,11 @@ Below are the main categories for the System Design Interview
 
 ### System Properties
 
-#### Latency:
+#### Latency(T):
   - time to perform packet transfer accross n/w
   - measured in ms/s/min/hours, calculated in average
-  - use cache or Inmemory rather than heavy operation
+  - use cache or In-memory rather than heavy operation
+  - 1/T = f (Frequency)
   - **What Causes Latency?** 
     -  Physical distance
     -  Complex computation - expensive operation

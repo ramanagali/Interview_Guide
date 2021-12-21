@@ -77,7 +77,7 @@ What happens when type google.com in browser and enter ?
     - Browser add-ons
 </details>
 
-### Network
+### Networking
 * **Explain 3 Way TCP Handshake?**
   * First step is 3-way handshake must be established
   * **1st Step**: 
@@ -110,9 +110,6 @@ What happens when type google.com in browser and enter ?
   * Secure Socket Layer (SSL) Certificate	
   * A file that digitally ties a cryptographic key to an organizations details. 
   * This is not the same as a SSL or TLS certificate, but it is interchangeable all the time.
-
-
-
 
 * **How Https works?**</br>
   * Browser sends www.youtube.com
@@ -160,7 +157,13 @@ What happens when type google.com in browser and enter ?
   * Tree
   * Mesh
   * Hybrid
+* **Explain Network delivery steams**?
+  * **Unitcast**: One to one communication where there is one sender and one receiver.
 
+  * **Broadcast**: Sending a message to everyone in the network. The address ff:ff:ff:ff:ff:ff is used for broadcasting. Two common protocols which use broadcast are ARP and DHCP.
+
+  * **Multicast**: Sending a message to a group of subscribers. It can be one-to-many or many-to-many.
+ 
 ### Linux
 * **How SSH Configuration**
 	- server configured with public key & `sshd service` running
@@ -273,6 +276,47 @@ What happens when type google.com in browser and enter ?
 	nmcli	#manage network settings
 	nmtui	#manage network devices
 	```
+* Linux Common Commands
+  	```sh
+	uptime 	# to checck howlong system running
+	w		# currently logged in users
+	users 	#currently logged-in users
+	who 	#user name, date, time, and host information
+	whoami	# currently logged in username
+	ls -l	# list as human readable
+	crontab -l		# list schedule jobs
+	less xyz.log	# quickly view the file
+	more xyz.log 	# allows quickly view file & show percentage
+	cp -r fold1 fold2
+	mv -i file1 file2	
+	cat file1
+	pwd
+	sort
+	ssh -i key user@server
+	ftp 1.2.3.4
+	systemctl start httpd.service
+	free	#shows free, total, and swap memory
+	top 	#
+	tar 	# compress
+	grep tecmint /etc/passwd
+	find / -name tecmint	#search files, strings, and directories
+	lsof 	# list of open files
+	last 	#watch the user’s activity in the system
+	ps -ef | grep init	#displays processes running in the system
+	kill 9 7508		#terminate the process
+	rm filename		# delete 
+	mkdir 
+  	```
+* **linux more vs less**?
+  * more: forward navigation and limited backward navigation
+  * less: both forward and backbackward naviation and search options. 
+  * with less, can go start and end of file 
+  * less is better for large input files it starts up faster than text editors like vi.  
+* **Why Internet Control Message Protocol (ICMP) Protocol is used**?
+  * ICMP used to communicate problems in network
+communicate problems with data transmission
+  * eco request and eco reply
+  * Firewall rules for ICMP (TCP/UDP port 7)
 
 ### DevOps
 * **DevOps Deployment strategies?**

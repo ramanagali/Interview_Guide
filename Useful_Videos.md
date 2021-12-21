@@ -31,6 +31,9 @@ https://www.youtube.com/playlist?list=PLiH9_MU-6RjI9gdFqmvUfKRfw_zRxIb6o
 **Networking**<br/>
 https://www.youtube.com/playlist?list=PLhqPDa2HoaAYYXjiIdRsf5-tKmJUlZx4o
 
+**Golang**
+https://www.youtube.com/watch?v=yyUHQIec83I
+
 
 ## Cloud Security
 **Data Loss prevention**
