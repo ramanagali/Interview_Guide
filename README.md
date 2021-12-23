@@ -51,6 +51,9 @@ https://www.whizlabs.com/blog/wp-content/uploads/2020/01/Ansible_Vs_Puppet_Vs_Ch
 * https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-exam<br/>
 * https://medium.com/@shandredreyer/terraform-cheatsheet-e2c7287cfa3c<br/>
 
+**EKS with Terraform and Ansible**<br/>
+* https://medium.com/geekculture/how-to-deploy-the-kubernetes-application-to-aws-eks-using-terraform-and-ansible-7679a3a207a8<br/>
+
 **Packer**<br/>
 https://devopscube.com/packer-tutorial-for-beginners/<br/>
 
@@ -69,6 +72,9 @@ https://gist.github.com/pydevops/0efd399befd960b5eb18d40adb68ef83<br/>
 * https://talktopoorni.medium.com/imperative-commands-in-kubernetes-a-primer-9565c25535f7<br/>
 * https://faun.pub/kubectl-commands-cheatsheet-43ce8f13adfb<br/>
 
+**Prometheus monitoring with Elastic Stack in Kubernetes**
+* https://medium.com/avmconsulting-blog/prometheus-monitoring-with-elastic-stack-in-kubernetes-5cf0aaa7ce04
+
 **Kubernetes alias & Plugins**<br/>
 * https://github.com/ahmetb/kubectl-aliases<br/>
 * https://github.com/ishantanu/awesome-kubectl-plugins<br/>
@@ -80,7 +86,6 @@ https://github.com/nicolaka/netshoot
 * https://katharharshal1.medium.com/backup-and-restore-eks-kubernetes-using-velero-32b11cb55b81<br/>
 * https://blogs.halodoc.io/kubernetes-disaster-recovery-with-velero/<br/>
 * https://rafay.co/the-kubernetes-current/kubernetes-cluster-backup-restore-with-velero-and-rafay/<br/>
-
 
 **Docker**<br/>
 * https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
