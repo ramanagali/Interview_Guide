@@ -5,9 +5,11 @@
 
 **HashiCrop Terraform**<br/>
 https://www.youtube.com/watch?v=SLB_c_ayRMo
+https://www.youtube.com/playlist?list=PLI8rNSktL2DR9yk5lMxpFcnOHI29-W6N3
 
 **HashiCrop Packer**<br/>
 https://www.youtube.com/playlist?list=PL8VzFQ8k4U1Jp6eWgHSXHiiRWRvPyCKRj
+https://www.youtube.com/playlist?list=PLI8rNSktL2DSOM8dfvYnkhPLeTRLu8zrf
 
 **Python for Beginers**<br/>
 https://www.youtube.com/playlist?list=PLhqPDa2HoaAZN9pG0cUugTmgAddRtF3zK
