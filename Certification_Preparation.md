@@ -97,6 +97,7 @@ https://hackernoon.com/tips-and-tricks-to-pass-certified-kubernetes-application-
 
 ## CKS
 https://github.com/ramanagali/Interview_Guide/blob/main/CKS_Preparation_Guide.md<br/>
+https://github.com/ggnanasekaran77/cks-exam-tips<br/>
 https://dev.to/walidshaari/the-ultimate-curated-resources-for-certified-kubernetes-security-specialist-cks-410l<br/>
 https://github.com/walidshaari/Certified-Kubernetes-Security-Specialist<br/>
 https://github.com/kodekloudhub/certified-kubernetes-security-specialist-cks-course<br/>
