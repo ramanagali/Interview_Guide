@@ -75,7 +75,7 @@ pull requests are welcome
 **Download and Run yaml**
 
 ```sh
-kubectl create -f https://raw.githubusercontent.com/aquasecurity/kube-bench/main/jobmaster.yaml
+kubectl create -f https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-master.yaml
 kubectl create -f https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-node.yaml
 ```
 
