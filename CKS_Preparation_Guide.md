@@ -120,10 +120,15 @@ Ref: <https://github.com/aquasecurity/kube-bench/blob/main/docs/installation.md>
 Create TLS Certificate & key
 
 ```sh
-openssl req -nodes -new -x509 -keyout tls-ingress.key -out tls-ingress.crt -subj "/CN=ingress.test
+openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout tls.key -out tls.crt -subj "/CN=learnwithgvr.com" -days 365
+openssl req -nodes -new -x509 -keyout tls-ingress.key -out tls-ingress.crt -subj "/CN=learnwithgvr.com -days 365
+```
+Create a Secret 
+```sh
+kubectl create secret tls learnwithgvr-sec --cert=tls.crt --key=tls
 ```
 
-Apply this yaml
+Alternatively Apply this yaml
 
 ```yaml
 apiVersion: v1
@@ -146,10 +151,10 @@ metadata:
 spec:
   tls:
   - hosts:
-      - ingress.test
-    secretName: ingress-tls
+      - learnwithgvr.com
+    secretName: learnwithgvr-sec
   rules:
-  - host: ingress.test
+  - host: learnwithgvr.com
     http:
       paths:
       - path: /
@@ -159,6 +164,10 @@ spec:
             name: service1
             port:
               number: 80
+```
+```sh
+# minikube on mac - add to hosts 
+echo $(minkube ip) ingress.test > | sudo teee -a /etc/hosts
 ```
 
 Ref: <https://kubernetes.io/docs/concepts/services-networking/ingress/#tls>
