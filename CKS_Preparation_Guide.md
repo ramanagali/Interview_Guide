@@ -68,6 +68,7 @@ pull requests are welcome
 **kube-bench:** Tool to check Kubernetes cluster CIS Kubernetes Benchmarks
 
 - Can Deploy as a Docker Container
+  - `docker run --rm -v `pwd`:/host aquasec/kube-bench:latest install`
 - Can Deploy as a POD in a Kubernetes cluster
 - Can Install kube-bench binaries
 - Can Compile
@@ -87,12 +88,12 @@ kubectl logs job-node-xxx
 **binary download & run**
 
 ```sh
-curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.4.0/kube-bench_0.4.0_linux_amd64.tar.gz -o kube-bench_0.4.0_linux_amd64.tar.gz
-tar -xvf kube-bench_0.4.0_linux_amd64.tar.gz
-cd kube-bench_0.4.0_linux_amd64
+curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.6.5/kube-bench_0.6.5_linux_amd64.tar.gz -o kube-bench_0.6.5_linux_amd64.tar.gz
+tar -xvf kube-bench_0.6.5_linux_amd64.tar.gz
+./kube-bench
 
-kube-bench
-./kube-bench --config-dir `pwd`/cfg --config `pwd`/cfg/config.yaml 
+./kube-bench --config-dir `pwd`/cfg --config `pwd`/cfg/config.yaml master
+./kube-bench --config-dir `pwd`/cfg --config `pwd`/cfg/config.yaml node
 ```
 
 **docker**
