@@ -167,7 +167,7 @@ spec:
 ```
 ```sh
 # minikube on mac - add to hosts 
-echo $(minkube ip) ingress.test > | sudo teee -a /etc/hosts
+echo $(minkube ip) learnwithgvr.com > | sudo teee -a /etc/hosts
 ```
 
 Ref: <https://kubernetes.io/docs/concepts/services-networking/ingress/#tls>
