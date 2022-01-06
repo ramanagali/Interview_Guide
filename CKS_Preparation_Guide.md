@@ -60,6 +60,7 @@ pull requests are welcome
       ports:
       - protocol: TCP
         port: 5978
+        endPort: 6000
   ```
 - Ref: <https://kubernetes.io/docs/concepts/services-networking/network-policies/>
 
