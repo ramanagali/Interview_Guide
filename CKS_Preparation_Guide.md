@@ -1,7 +1,7 @@
 # Certified Kubernetes Security Specialist (CKS) Simplified Preparation Guide
 
-Those who know about Kubernetes Admistriation, for the next level
-Certified Kubernetes Security Specialist (CKS) exam point of view, below complete one pager, simplified/shortened/finetuned study material 
+Those who know about Kubernetes Administration, for the next level
+Certified Kubernetes Security Specialist (CKS) exam point of view, below complete one pager, simplified/shortened/finetuned study material
 
 pull requests are welcome
 <hr />
@@ -123,7 +123,7 @@ Create TLS Certificate & key
 openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout tls.key -out tls.crt -subj "/CN=learnwithgvr.com" -days 365
 openssl req -nodes -new -x509 -keyout tls-ingress.key -out tls-ingress.crt -subj "/CN=learnwithgvr.com -days 365
 ```
-Create a Secret 
+Create a Secret
 ```sh
 kubectl create secret tls learnwithgvr-sec --cert=tls.crt --key=tls
 ```
@@ -166,7 +166,7 @@ spec:
               number: 80
 ```
 ```sh
-# minikube on mac - add to hosts 
+# minikube on mac - add to hosts
 echo $(minkube ip) learnwithgvr.com > | sudo teee -a /etc/hosts
 ```
 
@@ -201,7 +201,7 @@ spec:
 
 ### 1.5 Minimize use of, and access to, GUI elements
 
-- Restrit Access to GUI like Kubernetes Dashboard
+- Restrict Access to GUI like Kubernetes Dashboard
 
 **Solution1**
 
@@ -235,7 +235,7 @@ subjects:
 
 - Retrieve Bearer Token & Use
 
-```
+```sh
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
 ```
 
@@ -302,11 +302,11 @@ ServiceAccount should have only necessary RBAC permissions
 
 **Solution**
 
-- Create virutal users using ServiceAccount for specific namespace
+- Create virtual users using ServiceAccount for specific namespace
 - Create Role in specific namespace
   - has resources (ex: deployment)
   - has verbs (get, list, create, delete))
-- Create RoleBinding n specific namespace & link Role & ServiceAccount
+- Create RoleBinding in specific namespace & link Role & ServiceAccount
   - can be user, group or service account
 - specify service account in deployment/pod level
 
@@ -367,9 +367,9 @@ Ref: <https://v1-21.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kub
 1. **Create Pod to use host namespace only if necessary.**
 
 ```yaml
-spec: 
+spec:
   # container will use host IPC namespace (Default is false)
-  hostIPC: true  
+  hostIPC: true
   # containers will use host network namespace (Default is false)
   hostNetwork: true
   # containers will use host pid namespace (Default is false)
@@ -382,13 +382,13 @@ spec:
 2. **Don't run containers in privileged mode (privileged = false)**
 
 ```yaml
-spec: 
+spec:
   containers:
   - name: nginx
     image: nginx:latest
   securityContext:
     # container will ran as root (Default is false)
-    privileged = ture
+    privileged: true
 ```
 
 - **Limit Node Access**
@@ -400,11 +400,11 @@ userdel user1
 groupdel group1
 #suspend user
 usermod -s /usr/sbin/nologin user2
-#create user sam, home dir is /opt/sam, uid 2328 & login shell bash 
+#create user sam, home dir is /opt/sam, uid 2328 & login shell bash
 useradd -d /opt/sam -s /bin/bash -G admin -u 2328 sam
 ```
 
-- **Remove Obsolete/unncessary Software**
+- **Remove Obsolete/unnecessary Software**
 
 ```sh
 # list all services
@@ -433,10 +433,10 @@ PasswordAuthentication no
 systemctl restart sshd
 ```
 
-- **Restrict Obsolete Kernal Modules**
+- **Restrict Obsolete Kernel Modules**
 
 ```sh
-# list all kernal modules
+# list all kernel modules
 lsmod
 # blocklist module sctp, dccp
 vi /etc/modprobe.d/blacklist.conf
@@ -449,7 +449,7 @@ shutdown –r now
 - **UFW**
 
 ```
-Insall ufw   apt-get intall ufw
+Install ufw   apt-get intall ufw
     systemctl enable ufw
     systemctl start ufw
 
@@ -469,15 +469,15 @@ reset ufw   ufw reset
 activate ufw firewall  ufw disable
 ```
 
-- **Restirct allowed hostpaths with PodSecurityPolicy**
+- **Restrict allowed hostpaths with PodSecurityPolicy**
   - using PodSecurityPolicy can restrict AllowedHostPaths (used by hostPath volumes)
   - Ref: <https://kubernetes.io/docs/concepts/policy/pod-security-policy/#volumes-and-file-systems>
 
 - **Identify and Fix Open Ports, Remove Packages**
 
 ```sh
-#Identify Open Ports, Remove Packages 
-list all installed packages         apt list --installed 
+#Identify Open Ports, Remove Packages
+list all installed packages         apt list --installed
 list active services                systemctl list-units --type service
 list the kernel modules             lsmod
 search for service                  systemctl list-units --all | grep -i nginx
@@ -486,7 +486,7 @@ remove nginx service packages       rm /lib/systemd/system/nginx.service
 remove packages from controlplane   apt remove nginx -y
 check service listing on 9090       netstat -atnlp | grep -i 9090 | grep -w -i listen
 check port to service mapping       cat /etc/services | grep -i ssh
-check port listing on 22            netstat -an | grep 22  | grep  -w -i  listen
+check port listing on 22            netstat -an | grep 22  | grep -w -i listen
 check lighthttpd service port       netstat -natulp | grep -i light
 ```
 
@@ -586,28 +586,28 @@ spec:
     ```
 
   ```
-  #trace system calls  
-  starce -c touch /tmp/test.log 
+  #trace system calls
+  strace -c touch /tmp/test.log
 
-  # check SECCOMP is supported by kernal
+  # check SECCOMP is supported by kernel
   grep -i seccomp /boot/config-$(uname -r)
 
   #Run Kubbernetes POD (amicontained - open source inspection tool)
   kubectl run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
   kubectl logs amicontained
 
-  #default location   
+  #default location
   /var/lib/kubelet/seccomp
 
-  #use in pod   
+  #use in pod
   localhostProfile: profiles/audit.json
   ```
 
   - Ref: <https://kubernetes.io/docs/tutorials/clusters/seccomp/>
 
-#### 3.4.2 **APPARMOR**  
+#### 3.4.2 **APPARMOR**
 
-- Kernal Security Module to granualr access control for programs on Host OS
+- Kernel Security Module to granular access control for programs on Host OS
 - **AppArmor Profile** - Set of Rules, to be enabled in nodes
 - AppArmor Profile loaded in 2 modes
   - **Complain Mode** - Discover the program
@@ -646,14 +646,14 @@ spec:
       command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
   ```
 
-- useful commands  
+- useful commands
 
   ```
   check status   systemctl status apparmor
   check enabled in nodes  cat /sys/module/apparmor/parameters/enabled
   check profiles   cat /sys/kernel/security/apparmor/profiles
 
-  installed   apt-get install apparmor-utils 
+  installed   apt-get install apparmor-utils
   create apparmor profile  aa-genprof /root/add_data.sh
   apparmor module status  aa-status
   def Profile file directory  /etc/apparmor.d/
@@ -678,7 +678,7 @@ spec:
 
 #### **Admission Controller**
 
-- Implment security measures to enforce. Triggers before creating a pod
+- Implement security measures to enforce. Triggers before creating a pod
 - Enable a Controller in kubeadm cluster `/etc/kubernetes/manifests/kube-apiserver.yaml`
 
   ```yaml
@@ -693,7 +693,7 @@ spec:
   ```
 
 - Ref: <https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/>
-  
+
 #### 4.1.1 **Pod Security Policies (PSP)**
 
 - Defines policies to controls security sensitive aspects of the pod specification
@@ -775,7 +775,7 @@ spec:
   ```
 
   `kubectl get constraints`
-  
+
 - Ref: <https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/>
 - Ref: <https://open-policy-agent.github.io/gatekeeper/website/docs/install/>
 
@@ -874,13 +874,13 @@ spec:
 - Types of Secrets
   - Opaque(Generic) secrets -
   - Service account token Secrets
-  - Docker config Secrets 
+  - Docker config Secrets
     - `kubectl create secret docker-registry my-secret --docker-server=DOCKER_REGISTRY_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL`
   - Basic authentication Secret -
   - SSH authentication secrets -
   - TLS secrets -
     - `kubectl create secret tls tls-secret --cert=path/to/tls.cert --key=path/to/tls.key`
-  - Bootstrap token Secrets -  
+  - Bootstrap token Secrets -
 
 - Secret as Data to a Container Using a Volume
 
@@ -888,12 +888,12 @@ spec:
   kubectl create secret generic mysecret --from-literal=username=devuser --from-literal=password='S!B\*d$zDsb='
   ```
 
-  Decode Secret  
+  Decode Secret
 
   ```
   kubectl get secrets/mysecret --template={{.data.password}} | base64 -D
   ```
-  
+
   ```yaml
   apiVersion: v1
   kind: Pod
@@ -924,7 +924,7 @@ spec:
     containers:
     - name: mycontainer
       image: redis
-      # refer all secret data 
+      # refer all secret data
       envFrom:
         - secretRef:
           name: mysecret-2
@@ -955,9 +955,9 @@ spec:
 
 #### 4.3.1 gvisor
 
-- gVisor sits between container and Linux Kernal. Every container has their own gVisior
-- gVisor has 2 different componets
-  - **Sentry**: works as kernal for containers
+- gVisor sits between container and Linux Kernel. Every container has their own gVisior
+- gVisor has 2 different components
+  - **Sentry**: works as kernel for containers
   - **Gofer**: is file proxy to access system files. Middle man betwen container and OS
 - gVisor uses runsc to runtime sandbox with in hostOS (OCI comapliant)
 
@@ -993,7 +993,7 @@ spec:
   docker run --runtime runsc -d nginx
   ```
 
-- Creating a Container Runtime for additional layes of isolation
+- Creating a Container Runtime for additional layers of isolation
 - Create RuntimeClass to define specilized container runtime config
 - Create Pod with specific runtime class
 
@@ -1017,7 +1017,7 @@ spec:
 - mTLS: Is secure communication between pods
 - With service mesh Istio & Linkerd mTLS is easier, managable
   - mTLS can be Enforced or Strict
-  
+
 **Steps for TLS certificate for a Kubernetes service accessed through DNS**
 
 - Download and install CFSSL
@@ -1067,7 +1067,7 @@ spec:
 - use `trivy` image scanner for container vulnerabilities, filesys, git etc
 - Ref: <https://github.com/GoogleContainerTools/distroless>
 - Ref: <https://github.com/aquasecurity/trivy>
-  
+
 ### 5.2 Secure your supply chain: whitelist allowed registries, sign and validate images
 
 - **Approach 1 - using ImagePolicyWebhook Admission Controller**
@@ -1174,7 +1174,7 @@ spec:
     ```
 
   - Ref: <https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook>
-  
+
 - **Approach 2 - ConstraintTemplate**
   - Create ConstraintTemplate CRD to whitelist docker registries
     ```yaml
@@ -1201,7 +1201,7 @@ spec:
           package k8sallowedrepos
           violation[{"msg": msg}] {
             container := input.review.object.spec.containers[_]
-            satisfied := [good | repo = input.parameters.repos[_] ; good = startswith(container.image,repo)] 
+            satisfied := [good | repo = input.parameters.repos[_] ; good = startswith(container.image,repo)]
             not any(satisfied)
             msg := sprintf("container <%v> has an invalid image repo <%v>, allowed repos are %v",[container.name, container.image, input.parameters.repos])
           }
@@ -1241,7 +1241,7 @@ spec:
         image: docker.io/library/busybox
         command: ['sh', '-c', 'sleep 3600']
     ```
-  
+
 ### 5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)
 
 - Static YAML analysis using poular tool Kubesec
@@ -1266,7 +1266,7 @@ spec:
 - Install Trivy (by Aquasec) on your control plane node
 - Scan an image using trivy
   - `trivy image busybox:1.33.1`
-- It results Low, Medium, High, Critical & VolnarabilityID
+- It results Low, Medium, High, Critical & VulnarabilityID
   - `trivy image-- severity CRITICAL,HIGH busybox:1.33.1`
 
 - Ref: <https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids>
@@ -1288,7 +1288,7 @@ spec:
   - Policy Engine
   - Libraries
   - Falco Rules
-- Falco install 
+- Falco install
 - Helm Install Falco as DaemonSet
 
   ```sh
@@ -1297,7 +1297,7 @@ spec:
   helm install falco falcosecurity/falco
   ```
 
-- **Falco Rules** Filters for engine events, in YAML format Example Rule  
+- **Falco Rules** Filters for engine events, in YAML format Example Rule
 
   ```yaml
   - rule: Write below etc
@@ -1308,12 +1308,12 @@ spec:
     tags: [filesystem, mitre_persistence]
   ```
 
-- **Falco Configuration** for Falco daemon, YAML file and it has key: value or list  
+- **Falco Configuration** for Falco daemon, YAML file and it has key: value or list
   - config file located at `/etc/falco/falco.yaml`
 - Ref: <https://falco.org/docs/getting-started/>
 - Ref: <https://github.com/falcosecurity/charts>
 - Ref: <https://falco.org/blog/detect-cve-2020-8557/>
-  
+
 ### 6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads
 
 ### 6.3 Detect all phases of attack regardless where it occurs and how it spreads
@@ -1340,9 +1340,9 @@ spec:
 ### 6.4 Perform deep analytical investigation and identification of bad actors within environment
 - Monitor using sysdig k8s cluster, ns, svc, rc and labels
 - sysdig capture system calls and other OS events
-- Exploring a Kubernetes Cluster with csysdig 
+- Exploring a Kubernetes Cluster with csysdig
   `csysdig -k http://127.0.0.1:8080`
-- Monitoring/Visualize Kubernetes with Sysdig Cloud 
+- Monitoring/Visualize Kubernetes with Sysdig Cloud
 - Ref: https://kubernetes.io/blog/2015/11/monitoring-kubernetes-with-sysdig/
 - Ref: https://docs.sysdig.com/
 
@@ -1398,13 +1398,13 @@ spec:
 - Ref: <https://kubernetes.io/blog/2018/03/principles-of-container-app-design/>
 
 ### 6.6 Use Audit Logs to monitor access
-- The cluster audits the activities 
-  - generated by users, 
+- The cluster audits the activities
+  - generated by users,
   - by applications that use the Kubernetes API
   - control plane aswell
 - When API Server performs action, it creates stages
-  - **RequestRecived** - The stage for events generated as soon as the audit handler receives the request
-  - **ResponseStarted** - response headers are sent & response body is sent. only for long running (Ex: watch) 
+  - **RequestReceived** - The stage for events generated as soon as the audit handler receives the request
+  - **ResponseStarted** - response headers are sent & response body is sent. Only for long running (Ex: watch)
   - **ResponseComplete** - response body has been completed
   - **Panic** - Events generated when a panic occurred
 - Create Policy Object configuration for Audit
@@ -1422,9 +1422,9 @@ spec:
         resources: ["pods"]
         resourceNames: ["webapp-pod"]
       #None/Metadata/Request/RequestResponse
-      level: RequestResponse 
+      level: RequestResponse
   ```
-- Enble AuditLog in KubeAPI server level
+- Enable AuditLog in KubeAPI server level
   ```yaml
   - --audit-log-path=/var/log/k8-audit.log
   - --audit-policy-file=/etc/kubernetes/audit-policy.yaml
