@@ -258,16 +258,29 @@ Example
 ```sh
 kubectl version --short --client
 
-#download checksum for kubectl
-curl -LO "https://dl.k8s.io/v1.20.1/bin/linux/amd64/kubectl.sha256"
+#download checksum for kubectl for linux - (change version)
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+
+#old version
+curl -LO "https://dl.k8s.io/v1.22.1/bin/linux/amd64/kubectl.sha256"
 
 
-#verify kubectl binary
+#download checksum for kubectl for mac - (change version)
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl.sha256"
+
+#insall coreutils (for mac)
+brew install coreutils
+
+#verify kubectl binary 
+echo "$(<kubectl.sha256)  kubectl" | shasum -a 256 --check
 echo "$(<kubectl.sha256) /usr/bin/kubectl" | sha256sum --check
+#verify kubectl binary (for mac)
+echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
 ```
 
-Ref: <https://github.com/kubernetes/kubernetes/releases>
-Ref: <https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs>
+* Ref: https://github.com/kubernetes/kubernetes/releases
+* Ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG#changelogs
+* Ref: https://kubernetes.io/docs/tasks/tools/
 </details>
 <hr />
 
