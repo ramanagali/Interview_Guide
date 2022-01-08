@@ -19,6 +19,7 @@ pull requests are welcome
   kind: NetworkPolicy
   metadata:
     name: default-deny-ingress
+    namespace: default
   spec:
     podSelector: {}
     policyTypes:
@@ -1282,6 +1283,7 @@ spec:
   - `trivy image busybox:1.33.1`
 - It results Low, Medium, High, Critical & VulnarabilityID
   - `trivy image-- severity CRITICAL,HIGH busybox:1.33.1`
+  - `kubectl get pods -A -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n' | sort -u`
 
 - Ref: <https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids>
 - Ref: <https://github.com/aquasecurity/trivy>
