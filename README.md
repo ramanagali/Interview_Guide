@@ -172,6 +172,8 @@ https://cloud.netapp.com/blog/aws-connect-on-premises-to-cloud
 
 https://www.allthingsdistributed.com/articles.html
 
+**Hybrid and MultiCloud  Patterns**
+https://hybridandmulticloud.com/
 
 ## Languagues
 **Python**<br/>
