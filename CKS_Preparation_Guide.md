@@ -241,7 +241,22 @@ subjects:
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
 ```
 
-**Solution2**
+```sh
+#steps to create serviceaccount & use
+kubectl create serviceaccount simple-user -n kube-system
+kubectl create clusterrole simple-reader --verb=get,list,watch --resource=pods --resource=pods,deployments,services,configmaps
+kubectl create clusterrolebinding cluster-simple-reader --clusterrole=simple-reader --serviceaccount=kube-system:simple-user
+
+SEC_NAME=$(kubectl get serviceAccount simple-user -o jsonpath='{.secrets[0].name}')
+USER_TOKEN=$(kubectl get secret simple-user-token-vz5ww -o json | jq -r '.data["token"]' | base64 -d)
+
+cluster_name=$(kubectl config get-contexts $(kubectl config current-context) | awk '{print $3}' | tail -n 1)
+kubectl config set-credentials simple-user --token="${USER_TOKEN}"
+kubectl config set-context simple-reader --cluster=kubernetes --user simple-user
+kubectl config set-context simple-reader
+```
+
+**How to Access Dashboard?**
 
 - use `kubectl proxy` to access to the Dashboard <http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/>.
 
@@ -272,8 +287,7 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 #insall coreutils (for mac)
 brew install coreutils
 
-#verify kubectl binary 
-echo "$(<kubectl.sha256)  kubectl" | shasum -a 256 --check
+#verify kubectl binary (for linux)
 echo "$(<kubectl.sha256) /usr/bin/kubectl" | sha256sum --check
 #verify kubectl binary (for mac)
 echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
