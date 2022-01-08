@@ -248,11 +248,11 @@ kubectl create clusterrole simple-reader --verb=get,list,watch --resource=pods -
 kubectl create clusterrolebinding cluster-simple-reader --clusterrole=simple-reader --serviceaccount=kube-system:simple-user
 
 SEC_NAME=$(kubectl get serviceAccount simple-user -o jsonpath='{.secrets[0].name}')
-USER_TOKEN=$(kubectl get secret simple-user-token-vz5ww -o json | jq -r '.data["token"]' | base64 -d)
+USER_TOKEN=$(kubectl get secret $SEC_NAME -o json | jq -r '.data["token"]' | base64 -d)
 
 cluster_name=$(kubectl config get-contexts $(kubectl config current-context) | awk '{print $3}' | tail -n 1)
 kubectl config set-credentials simple-user --token="${USER_TOKEN}"
-kubectl config set-context simple-reader --cluster=kubernetes --user simple-user
+kubectl config set-context simple-reader --cluster=$cluster_name --user simple-user
 kubectl config set-context simple-reader
 ```
 
