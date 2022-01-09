@@ -267,7 +267,7 @@ Ref: <https://github.com/kubernetes/dashboard/blob/master/docs/user/access-contr
 ### 1.6 Verify platform binaries before deploying
 
 - binaries like kubectl, kubeadm and kubelets
-- before using binaries compare checksum with its official sha512 hash (cryptographic hash)
+- before using binaries compare checksum with its official sha256/sha512 cryptographic hash value
 
 Example
 
