@@ -269,7 +269,17 @@ Ref: <https://github.com/kubernetes/dashboard/blob/master/docs/user/access-contr
 - binaries like kubectl, kubeadm and kubelets
 - before using binaries compare checksum with its official sha256/sha512 cryptographic hash value
 
-Example
+Example 1
+```sh
+curl -LO https://dl.k8s.io/v1.23.1/kubernetes-client-darwin-arm64.tar.gz -o kubernetes-client-darwin-arm64.tar.gz
+
+# Print SHA Checksums - mac
+shasum -a 512 kubernetes-client-darwin-arm64.tar.gz
+# Print SHA Checksums - linux
+sha512sum kubernetes-client-darwin-arm64.tar.gz
+```
+
+Example 2
 
 ```sh
 kubectl version --short --client
@@ -277,9 +287,8 @@ kubectl version --short --client
 #download checksum for kubectl for linux - (change version)
 curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 
-#old version
+#download old version
 curl -LO "https://dl.k8s.io/v1.22.1/bin/linux/amd64/kubectl.sha256"
-
 
 #download checksum for kubectl for mac - (change version)
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl.sha256"
