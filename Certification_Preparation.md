@@ -97,11 +97,16 @@ https://hackernoon.com/tips-and-tricks-to-pass-certified-kubernetes-application-
 
 ## CKS
 https://github.com/ramanagali/Interview_Guide/blob/main/CKS_Preparation_Guide.md<br/>
-https://github.com/ggnanasekaran77/cks-exam-tips<br/>
 https://dev.to/walidshaari/the-ultimate-curated-resources-for-certified-kubernetes-security-specialist-cks-410l<br/>
 https://github.com/walidshaari/Certified-Kubernetes-Security-Specialist<br/>
 https://github.com/kodekloudhub/certified-kubernetes-security-specialist-cks-course<br/>
-https://moabukar.medium.com/where-to-begin-with-the-cks-exam-5cf0dcc86f76
+https://moabukar.medium.com/where-to-begin-with-the-cks-exam-5cf0dcc86f76<br/>
+https://jayendrapatil.com/certified-kubernetes-security-specialist-cks-learning-path/<br/>
+https://github.com/ggnanasekaran77/cks-exam-tips<br/>
+https://suraj.io/post/2021/09/cks-tips/<br/>
+https://devopscube.com/cks-exam-guide-tips/<br/>
+https://www.101daysofdevops.com/my-road-to-certified-kubernetes-security-specialist-cks/<br/>
+https://sandeepbaldawa.medium.com/my-journey-towards-certified-kubernetes-security-specialist-cks-6a1b8f474824<br/>
 
 **Create CKS Cluster using Vagrant**<br/>
 https://github.com/pksheldon4/cks-cluster<br/>

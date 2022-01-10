@@ -330,8 +330,6 @@ echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
 
 Ref: <https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips>
 
-Ref: <https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips>
-
 ### 2.2 Use Role-Based Access Controls to minimize exposure
 
 Roles live in namespace, RoleBinding specific to ns
