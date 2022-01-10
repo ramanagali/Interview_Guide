@@ -362,10 +362,10 @@ echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
     kubectl auth can-i --list
     ```
 
-Ref: https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips
-Ref: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#anonymous-requests
-Ref: https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/#without-kubectl-proxy
-Ref: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-authentication-authorization/#kubelet-authentication
+* Ref: https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips
+* Ref: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#anonymous-requests
+* Ref: https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/#without-kubectl-proxy
+* Ref: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-authentication-authorization/#kubelet-authentication
 
 ### 2.2 Use Role-Based Access Controls to minimize exposure
 
