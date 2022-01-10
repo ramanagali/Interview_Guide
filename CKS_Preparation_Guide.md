@@ -356,8 +356,10 @@ echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
       namespace: default
     ```
     ```sh
-    #test using 
+    #check using anonymous
     kubectl auth can-i --list --as=system:anonymous -n default
+    #check using yourown account
+    kubectl auth can-i --list
     ```
 
 Ref: https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips
