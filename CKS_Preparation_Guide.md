@@ -315,9 +315,7 @@ echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
 
 ### 2.1  Restrict access to Kubernetes API
 
-- Control anonymous requests to Kube-apiserver by using
-`--anonymous-auth=false`
-- Non secure access to the kube-apiserver
+- secure access to the kube-apiserver
 
   1. **localhost**
       - port 8080
@@ -327,6 +325,40 @@ echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
       - default is 6443, change with `--secure-port`
       - set TLS certificate with `--tls-cert-file`
       - set TLS certificate key with `--tls-private-key-file` flag
+
+- Control anonymous requests to Kube-apiserver by using `--anonymous-auth=false`
+  - example for adding anonymous access
+    ```yaml
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: anonymous-review-access
+    rules:
+    - apiGroups:
+      - authorization.k8s.io
+      resources:
+      - selfsubjectaccessreviews
+      - selfsubjectrulesreviews
+      verbs:
+      - create
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: anonymous-review-access
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: anonymous-review-access
+    subjects:
+    - kind: User
+      name: system:anonymous
+      namespace: default
+    ```
+    ```sh
+    #test using 
+    kubectl auth can-i --list --as=system:anonymous -n default
+    ```
 
 Ref: https://kubernetes.io/docs/concepts/security/controlling-access/#api-server-ports-and-ips
 Ref: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#anonymous-requests
