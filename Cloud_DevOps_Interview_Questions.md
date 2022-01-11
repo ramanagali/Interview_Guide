@@ -177,7 +177,7 @@ What happens when type google.com in browser and enter ?
 	- server uses same shared session key
 	<img src="https://i.stack.imgur.com/pC0Qn.png" alt="enter image description here">
 * **How SSH Works ?**</br>
-  <img src="https://www.manageengine.com/key-manager/images/ssh-key-based-authentication.png" title="SSH authentication process flow" alt="ssh key authentication work flow" style="max-width: 75%"></br>
+  <img src="https://www.manageengine.com/key-manager/images/ssh-key-based-authentication.png" title="SSH authentication process flow" alt="ssh key authentication work flow" style="max-width: 50%"></br>
   <img src="https://i.stack.imgur.com/4cZbh.png" alt="enter image description here">
 * **Explain private & public key role in ssh** 
 	- private key stores at client
