@@ -392,27 +392,35 @@ Ref: <https://kubernetes.io/docs/reference/access-authn-authz/rbac/>
 
 ### 2.3 Exercise caution in using service accounts e.g. disable defaults, minimize permissions on newly created ones
 
-- Create ServiceAccount to automount to any pod `automountServiceAccountToken: false`
+- Create ServiceAccount to not to automount secret to any pod `automountServiceAccountToken: false`
 
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: build-robot
-automountServiceAccountToken: false
-```
-
-- Create Pod with serviceAccountName: default, automountServiceAccountToken: false
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: my-pod
-spec:
-  serviceAccountName: build-robot
+  ```yaml
+  apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    name: test-svc
+    namespace: dev
   automountServiceAccountToken: false
-```
+  ```
+- Create Role for service account 
+  `kubectl create role test-role -n dev --verb=get,list,watch,create --resource=pods --resource=pods,deployments,services,configmaps`
+- Create RoleBinding for role & service account
+  `kubectl create rolebinding cluster-test-binding -n dev --clusterrole=test-role --serviceaccount=dev:test-svc`
+- Create Pod with serviceAccountName: test-svc. (note: pod level can be overridden to automountServiceAccountToken: true)
+
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: web
+    namespace: dev
+  spec:
+    containers:
+    - image: web
+      name: web
+    serviceAccountName: test-svc
+    automountServiceAccountToken: false
+  ```
 
 Ref: <https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server>
 
