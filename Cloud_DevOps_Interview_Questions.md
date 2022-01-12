@@ -366,12 +366,24 @@ communicate problems with data transmission
 * What is default docker network applies when creating containers
 	- default bridge network are usually used when your apps run in standalone containers that need to communicate
 * How docker resolves the container names ?
+  * docker has builtin dns server help containers to resolve IP using its name
+  * docker creates network namespaces to isloate
 * What is docker compose ?
-  * dsfsdf
+  * utility to define multiple containers as YAML in declarative way
 * Diff between docker CMD and ENTRYPOINT ?
-  * sdfsdaf
+  * CMD defines default commands and/or parameters for a container
+  * ENTRYPOINT is preferred when you want to define a container with a specific executable
+  * Combine ENTRYPOINT with CMD if you need a container with a specified executable and a default parameter that can be modified easily
 * How can we make docker image lightweight ?
   * using multi stage builds
+* How docker builds images?
+  * using layers, layers 1 base image, layer 2 run app packages, layer 3 copy files...
+  * docker re-use layers from cache
+* How many types of docker volume mounts?
+  * volume mounting - mount from volume location 
+    * docker run --mount type=volume, source=/var/lib/mysql,target=/var/lib/mysql mysql
+  * bind mounting - mount from any location - /data/mysql:/var/lib/mysql 
+    * docker run --mount type=bind, source=/data/mysql,target=/var/lib/mysql mysql
 
 ### CI CD
 * What is the Branching Strategy to you use
