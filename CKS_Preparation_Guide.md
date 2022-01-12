@@ -405,7 +405,7 @@ Ref: <https://kubernetes.io/docs/reference/access-authn-authz/rbac/>
 - Create Role for service account 
   `kubectl create role test-role -n dev --verb=get,list,watch,create --resource=pods --resource=pods,deployments,services,configmaps`
 - Create RoleBinding for role & service account
-  `kubectl create rolebinding cluster-test-binding -n dev --clusterrole=test-role --serviceaccount=dev:test-svc`
+  `kubectl create rolebinding cluster-test-binding -n dev --role=test-role --serviceaccount=dev:test-svc`
 - Create Pod with serviceAccountName: test-svc. (note: pod level can be overridden to automountServiceAccountToken: true)
 
   ```yaml
