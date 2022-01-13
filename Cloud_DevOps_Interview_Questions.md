@@ -363,10 +363,24 @@ communicate problems with data transmission
 	- git log --oneline
 
 ### Docker
-* What is default docker network applies when creating containers
-	- default bridge network are usually used when your apps run in standalone containers that need to communicate
-* How docker resolves the container names ?
-  * docker has builtin dns server help containers to resolve IP using its name
+* **What is default docker network applies when creating containers**
+	- default bridge network are usually used when your apps run in standalone containers that need to communicate]
+* **Explain Container Network Model?**
+  * Network Controller - Provides the entry point into libnetwork
+  * Driver - Provides actual implementation that makes n/w work
+  * Network - Is an implementation of CNM: Network
+  * End Point - Provides the connectivity for services exposed by container in n/w
+  * Sandbox - represent container's n/w configuration (IPaddr,MacAddr,routes,dns etc)
+* **Docker Network Drivers** ?
+  * **Bridge** - default n/w driver to communicate sandalone containers
+  * **Host** - uses host networking directly, cannot run same containers on same port
+  * **None** - disables n/w for containers
+  * **Overlay** - connects multiple docker daemons together and enable docker daemons to communicate each other
+  * **Mcvlan** - allows to assign MacAddress so that it will appear as physical device. useful for legacy apps 
+  * **IPvlan** - total control over both IPv4 and IPv6, network integration of IPvlan L2 & L3
+  * **none** - 
+* **How docker resolves the container names ?**
+  * docker has builtin dns server in Sandbox which help containers to resolve IP using its name
   * docker creates network namespaces to isloate
 * What is docker compose ?
   * utility to define multiple containers as YAML in declarative way
@@ -427,11 +441,6 @@ communicate problems with data transmission
 		- $ export TF_LOG="TRACE"
 	- TF_LOG_PATH for persistent log path
 		- $ export TF_LOG_PATH="terraform.txt"
-	
-
-	
-
-  
 
 ### Kubernetes
 * Explain kubernetes architecture ?
@@ -561,5 +570,3 @@ communicate problems with data transmission
 * Stress Testing?
 
 ### Python
-
-
