@@ -570,3 +570,15 @@ communicate problems with data transmission
 * Stress Testing?
 
 ### Python
+* List comprehension
+* Decorators/Iterator/Generators
+* OOPS
+* Slicing concept
+* List vs Tuple
+* How list are implemented in python? 
+* Hashing[Collision]
+* self and new method difference in python
+* Lambda function in python
+* Deep and shallow copy
+* pop() and remove() difference
+* Global and local variable and nonlocal in python

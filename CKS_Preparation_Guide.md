@@ -464,12 +464,24 @@ spec:
 
 ```yaml
 spec:
-  containers:
-  - name: nginx
-    image: nginx:latest
   securityContext:
-    # container will ran as root (Default is false)
-    privileged: true
+    runAsUser: RunAsAny
+    runAsGroup: RunAsAny
+    fsGroup: RunAsAny
+  # container will use host IPC namespace (Default is false)
+  hostIPC: true
+  # containers will use host network namespace (Default is false)
+  hostNetwork: true
+  # containers will use host pid namespace (Default is false)
+  hostPID: true
+  containers:
+    - image: nginx:latsts
+      name: web
+      resources: {}
+      securityContext:
+        # container will ran as root (Default is false)
+        privileged: true
+
 ```
 
 - **Limit Node Access**
