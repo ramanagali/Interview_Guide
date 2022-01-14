@@ -742,19 +742,19 @@ spec:
 - useful commands
 
   ```
-  check status   systemctl status apparmor
+  check status            systemctl status apparmor
   check enabled in nodes  cat /sys/module/apparmor/parameters/enabled
-  check profiles   cat /sys/kernel/security/apparmor/profiles
+  check profiles          cat /sys/kernel/security/apparmor/profiles
 
-  installed   apt-get install apparmor-utils
-  create apparmor profile  aa-genprof /root/add_data.sh
-  apparmor module status  aa-status
+  installed                 apt-get install apparmor-utils
+  create apparmor profile   aa-genprof /root/add_data.sh
+  apparmor module status    aa-status
   def Profile file directory  /etc/apparmor.d/
-  load profile file  apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
-  load profile    apparmor_parser /etc/apparmor.d/root.add_data.sh
-  disable profile   apparmor_parser -R /etc/apparmor.d/root.add_data.sh
-  create     apparmor-deny-write
-          apparmor-allow-write
+  load profile file           apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
+  load profile                apparmor_parser /etc/apparmor.d/root.add_data.sh
+  disable profile             apparmor_parser -R /etc/apparmor.d/root.add_data.sh
+  create to deny              apparmor-deny-write
+  create to allow             apparmor-allow-write
   ```
 
 - Ref: <https://kubernetes.io/docs/tutorials/clusters/apparmor/>
