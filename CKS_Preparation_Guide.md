@@ -704,7 +704,7 @@ spec:
 - **AppArmor Profile** - Set of Rules, to be enabled in nodes
 - AppArmor Profile loaded in 2 modes
   - **Complain Mode** - Discover the program
-  - **Enfore Mode** - prevent the program
+  - **Enforce Mode** - prevent the program
 - **create AppArmor Profile**
 
   ```sh
@@ -729,8 +729,6 @@ spec:
   metadata:
     name: hello-apparmor
     annotations:
-      # Tell Kubernetes to apply the AppArmor profile "k8s-apparmor-example-deny-write".
-      # Note that this is ignored if the Kubernetes node is not running version 1.4 or greater.
       container.apparmor.security.beta.kubernetes.io/hello: localhost/k8s-apparmor-example-deny-write
   spec:
     containers:
@@ -742,22 +740,40 @@ spec:
 - useful commands
 
   ```
-  check status            systemctl status apparmor
-  check enabled in nodes  cat /sys/module/apparmor/parameters/enabled
-  check profiles          cat /sys/kernel/security/apparmor/profiles
+  #check status            
+  systemctl status apparmor
 
-  installed                 apt-get install apparmor-utils
-  create apparmor profile   aa-genprof /root/add_data.sh
-  apparmor module status    aa-status
-  def Profile file directory  /etc/apparmor.d/
-  load profile file           apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
-  load profile                apparmor_parser /etc/apparmor.d/root.add_data.sh
-  disable profile             apparmor_parser -R /etc/apparmor.d/root.add_data.sh
-  create to deny              apparmor-deny-write
-  create to allow             apparmor-allow-write
+  #check enabled in nodes  
+  cat /sys/module/apparmor/parameters/enabled
+  
+  #check profiles          
+  cat /sys/kernel/security/apparmor/profiles
+
+  #install                 
+  apt-get install apparmor-utils
+  
+  #default Profile file directory  is /etc/apparmor.d/
+
+  #create apparmor profile   
+  aa-genprof /root/add_data.sh
+  
+  #apparmor module status    
+  aa-status
+  
+  #load profile file           
+  apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx
+
+  #load profile                
+  apparmor_parser /etc/apparmor.d/root.add_data.sh
+  aa-complain /etc/apparmor.d/profile1
+  aa-enforce  /etc/apparmor.d/profile2
+
+  #disable profile             
+  apparmor_parser -R /etc/apparmor.d/root.add_data.sh
   ```
 
-- Ref: <https://kubernetes.io/docs/tutorials/clusters/apparmor/>
+- Ref: https://kubernetes.io/docs/tutorials/clusters/apparmor
+- Ref: https://gitlab.com/apparmor/apparmor/-/wikis/Documentation
 
 </details>
 <hr />
