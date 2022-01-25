@@ -1081,8 +1081,9 @@ spec:
     restartPolicy: Never
     ```
 
-- Ref: <https://kubernetes.io/docs/concepts/configuration/secret/>
-- Ref: <https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/>
+- Ref: https://kubernetes.io/docs/concepts/configuration/secret
+- Ref: https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data
+- Ref: https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/
 
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
 
