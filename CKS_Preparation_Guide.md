@@ -689,8 +689,8 @@ spec:
   kubectl run amicontained --image r.j3ss.co/amicontained amicontained -- amicontained
   kubectl logs amicontained
 
-  #default location
-  /var/lib/kubelet/seccomp
+  #create dir in default location /var/lib/kubelet/seccomp
+  mkdir -p /var/lib/kubelet/seccomp/profiles
 
   #use in pod
   localhostProfile: profiles/audit.json
@@ -808,13 +808,14 @@ spec:
 - Defines policies to controls security sensitive aspects of the pod specification
 - PodSecurityPolicy is one of the admission controller
 - enable at api-server using  `--enable-admission-plugins=NameSpaceAutoProvision,PodSecurityPolicy`
+- Create Service Account
+  `kubectl create sa psp-test-sa -n dev`
 - Create Pod using PSP
-
   ```yaml
   apiVersion: policy/v1beta1
   kind: PodSecurityPolicy
   metadata:
-    name: privileged
+    name: psp-test
     annotations:
       seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
   spec:
@@ -839,7 +840,35 @@ spec:
     fsGroup:
       rule: 'RunAsAny'
   ```
-
+  - Create ClusterRole
+    ```yaml
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: psp-pod
+    rules:
+    - apiGroups: ['policy']
+      resources: ['podsecuritypolicies']
+      verbs:     ['use']
+      resourceNames:
+      - psp-test
+    ```
+  - Create ClusterRoleBinding
+    ```yaml
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: psp-mount
+      namespace: dev
+    roleRef:
+      kind: ClusterRole
+      name: psp-pod
+      apiGroup: rbac.authorization.k8s.io
+    subjects:
+    - kind: ServiceAccount
+      name: psp-test-sa
+      namespace: dev
+    ```
   - POD Access to PSP for authorization
     - Create Service Account or use Default Service account
     - Create Role with podsecuritypolicies, verbs as use

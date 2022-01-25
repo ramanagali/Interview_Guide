@@ -137,17 +137,17 @@ What happens when type google.com in browser and enter ?
   * Configure App2 to trust own CA
 
 * **TCP vs UDP**
-  	| TCP  | UDP |
-	| ------------- | ------------- |
-	| Requires an established connection |Connectionless protocol|
-	| Data sequencing| No Data sequencing|
-	| Guaranteed delivery |Cannot guarantee delivery |
-	| if data lost, Retransmission is possible| No retransmission|
-	| error checking & ACK, SYN,SYN-ACK handshakes |error checking using checksum|
-	| data read as byte, msgs in segments | UDP packets with defined boundaries|
-	|Slower than UDP |Faster than TCP |
-	| does not support Broadcasting| support Broadcasting| 
-	| Used by HTTPS, HTTP, SMTP, POP, FTP, etc|Video conferencing, streaming, DNS, DHCP, TFTP, SNMP, RIP, and VoIP.|
+   | TCP                                          | UDP                                                                  |
+   | -------------------------------------------- | -------------------------------------------------------------------- |
+   | Requires an established connection           | Connectionless protocol                                              |
+   | Data sequencing                              | No Data sequencing                                                   |
+   | Guaranteed delivery                          | Cannot guarantee delivery                                            |
+   | if data lost, Retransmission is possible     | No retransmission                                                    |
+   | error checking & ACK, SYN,SYN-ACK handshakes | error checking using checksum                                        |
+   | data read as byte, msgs in segments          | UDP packets with defined boundaries                                  |
+   | Slower than UDP                              | Faster than TCP                                                      |
+   | does not support Broadcasting                | support Broadcasting                                                 |
+   | Used by HTTPS, HTTP, SMTP, POP, FTP, etc     | Video conferencing, streaming, DNS, DHCP, TFTP, SNMP, RIP, and VoIP. |
 	
 * **What are the Network Topology Types** ?
   * Point to Point
@@ -331,6 +331,8 @@ communicate problems with data transmission
 * Explain Biggest issue in PROD ?
 * How you scale prod ?
 * DevOps vs Agile
+* Rollback Strategy for Canary?
+
 
 ### Git
 * Diff between git pull and git clone
@@ -441,7 +443,8 @@ communicate problems with data transmission
 		- $ export TF_LOG="TRACE"
 	- TF_LOG_PATH for persistent log path
 		- $ export TF_LOG_PATH="terraform.txt"
-
+* How to rollback terraform if error occurs?
+  
 ### Kubernetes
 * Explain kubernetes architecture ?
 * If i give 3 servers, how you setup kubernetes ?
@@ -541,11 +544,17 @@ communicate problems with data transmission
 
 ### Packer
 
-### AWS
+### AWS Architect
 * How you Host DB if DB has to be in the region where AWS/AZURE not avail
 * Diff between Stateful and Stateless firewalls ?
+* Cloud Formation circular dependency issue
+* How to monitor a website in AWS
+* How to maintain AutoScalingGroup old instance logs
+* Explain DNS resolution in Route53?
+* Data security point of view what are options you will choose in AWS
 
-### GCP
+### GCP 
+* Authentication mechanism in GCP ?
 
 ### Azure
 
@@ -570,6 +579,7 @@ communicate problems with data transmission
 * Stress Testing?
 
 ### Python
+* What libraries you have used in python
 * List comprehension
 * Decorators/Iterator/Generators
 * OOPS
@@ -582,3 +592,4 @@ communicate problems with data transmission
 * Deep and shallow copy
 * pop() and remove() difference
 * Global and local variable and nonlocal in python
+* 

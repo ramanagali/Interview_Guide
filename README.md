@@ -24,6 +24,9 @@ https://www.digitalocean.com/community/cheatsheets/how-to-use-git-a-reference-gu
 **GIT Branching Model**<br/>
 https://nvie.com/posts/a-successful-git-branching-model/<br/>
 
+**Configuration & Secret management**
+* https://res.cloudinary.com/da8kiytlc/image/upload/v1592031041/Cheatsheets/secrets_cheatsheet_bedizg.pdf
+
 **Linux**<br/>
 * https://www.freecodecamp.org/news/the-linux-commands-handbook/<br/>
 * https://dev.to/ptuladhar3/linux-commands-for-developers-17j<br/>
@@ -143,7 +146,7 @@ https://locust.io/<br/>
 **Bechmarking**<br/>
 https://pkg.go.dev/github.com/codesenberg/bombardier#readme-installation
 
-
+**
 
 ## Cloud
 **Compare all Clouds**<br/>
