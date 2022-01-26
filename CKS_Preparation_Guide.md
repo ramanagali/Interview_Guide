@@ -1029,7 +1029,7 @@ spec:
   Decode Secret
 
   ```
-  kubectl get secrets/mysecret --template={{.data.password}} | base64 -D
+  kubectl get secrets/mysecret --template={{.data.password}} | base64 -d
   ```
 
   ```yaml
@@ -1122,6 +1122,41 @@ spec:
   handler: kata  # non-namespaced, The name of the corresponding CRI configuration
   ```
 
+#### Install gVisor
+- ```sh
+  curl -fsSL https://gvisor.dev/archive.key | sudo gpg --dearmor -o /usr/share/keyrings/gvisor-archive-keyring.gpg
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/gvisor-archive-keyring.gpg] https://storage.googleapis.com/gvisor/releases release main" | sudo tee /etc/apt/sources.list.d/gvisor.list > /dev/null
+
+  sudo add-apt-repository "deb [arch=amd64,arm64] https://storage.googleapis.com/gvisor/releases release main"
+
+  sudo apt-get update && sudo apt-get install -y runsc
+
+  cat <<EOF | sudo tee /etc/containerd/config.toml
+  version = 2
+  [plugins."io.containerd.runtime.v1.linux"]
+    shim_debug = true
+  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+    runtime_type = "io.containerd.runc.v2"
+  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runsc]
+    runtime_type = "io.containerd.runsc.v1"
+  EOF
+
+  sudo systemctl restart containerd
+
+  echo 0 > /proc/sys/kernel/dmesg_restrict
+  echo "kernel.dmesg_restrict=0" >> /etc/sysctl.conf
+
+  {
+  wget https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.13.0/crictl-v1.13.0-linux-amd64.tar.gz
+  tar xf crictl-v1.13.0-linux-amd64.tar.gz
+  sudo mv crictl /usr/local/bin
+  }
+
+  cat <<EOF | sudo tee /etc/crictl.yaml
+  runtime-endpoint: unix:///run/containerd/containerd.sock
+  EOF
+  ```
+
 #### Container Runtime
 
 - docker run => docker CLI => REST API => Docker Daemon => check locally => Registery => call containerd  => convert image to OCI container => containerd-shim => runC will start container
@@ -1144,11 +1179,15 @@ spec:
   spec:
     runtimeClassName: myclass
     containers:
-    - image: nginx
-      name: nginx
+    - image: busybox
+      name: busybox
+      command: ['sh', '-c', 'while true; do echo "Running..."; sleep 1h; done']
   ```
+  `kubectl exec mypod -- dmesg`
 
-- Ref: <https://kubernetes.io/docs/concepts/containers/runtime-class/>
+- Ref: https://gvisor.dev/docs/user_guide/install/
+- https://sbulav.github.io/certifications/cks-gvisor/
+- Ref: https://kubernetes.io/docs/concepts/containers/runtime-class
 - Ref: <https://github.com/kubernetes/enhancements/blob/5dcf841b85f49aa8290529f1957ab8bc33f8b855/keps/sig-node/585-runtime-class/README.md#examples>
 
 ### 4.4 Implement pod to pod encryption by use of mTLS
