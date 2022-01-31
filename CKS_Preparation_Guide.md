@@ -1195,6 +1195,9 @@ spec:
 - mTLS: Is secure communication between pods
 - With service mesh Istio & Linkerd mTLS is easier, managable
   - mTLS can be Enforced or Strict
+- Istio: https://istio.io/latest/docs/tasks/security/authentication/mtls-migration/
+- Linkerd: https://linkerd.io/2.11/features/automatic-mtls/
+- Article: https://itnext.io/how-to-secure-kubernetes-in-cluster-communication-5a9927be415b
 
 **Steps for TLS certificate for a Kubernetes service accessed through DNS**
 

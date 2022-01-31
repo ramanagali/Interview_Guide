@@ -76,6 +76,7 @@ https://gist.github.com/pydevops/0efd399befd960b5eb18d40adb68ef83<br/>
 * https://faun.pub/kubectl-commands-cheatsheet-43ce8f13adfb<br/>
 
 **Prometheus monitoring with Elastic Stack in Kubernetes**
+* https://promlabs.com/promql-cheat-sheet/
 * https://medium.com/avmconsulting-blog/prometheus-monitoring-with-elastic-stack-in-kubernetes-5cf0aaa7ce04
 * https://iceburn.medium.com/prometheus-exporters-which-can-be-useful-in-everyday-work-c07d0e8cef6c
 
