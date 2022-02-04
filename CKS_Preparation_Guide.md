@@ -1332,7 +1332,7 @@ spec:
                 - "--cert=/etc/admission-controller/tls/tls.crt"
                 - "--key=/etc/admission-controller/tls/tls.key"
                 - "--debug"
-                - "--registry-whitelist=docker.io,k8s.gcr.io"
+                - "--registry-whitelist=docker.io,gcr.io"
               volumeMounts:
                 - name: tls
                   mountPath: /etc/admission-controller/tls
@@ -1358,7 +1358,7 @@ spec:
       selector:
         app: image-bouncer-webhook
     ```
-
+  - Add this to resolve service `echo "127.0.0.1 image-bouncer-webhook.default.svc" >> /etc/hosts`
   - Create custom kubeconfig with above service, its client certificate
     - `/etc/kubernetes/pki/admission_kube_config.yaml`
 
@@ -1385,22 +1385,19 @@ spec:
       ```
 
   - Create ImagePolicyWebhook AdmissionConfiguration file, update custom kubeconfig file at
-    - `/etc/kubernetes/pki/admission_configuration`
+    - `/etc/kubernetes/pki/webhook/admission_kube_config.json`
 
-    - ```yaml
-      apiVersion: apiserver.config.k8s.io/v1
-      kind: AdmissionConfiguration
-      plugins:
-      - name: ImagePolicyWebhook
-        configuration:
-          imagePolicy:
-            kubeConfigFile: /etc/kubernetes/pki/admission_kube_config.yaml
-            allowTTL: 50
-            denyTTL: 50
-            retryBackoff: 500
-            defaultAllow: false
+    - ```json
+      {
+        "imagePolicy": {
+          "kubeConfigFile": "/etc/kubernetes/pki/webhook/admission_kube_config.yaml",
+          "allowTTL": 50,
+          "denyTTL": 50,
+          "retryBackoff": 500,
+          "defaultAllow": false
+        }
+      }
       ```
-
   - Enable ImagePolicyWebhook in enable-admission-plugins in kubeapi server config at
   - Update admin-config file in kube api server admission-control-config-file
     - `/etc/kubernetes/manifests/kube-apiserver.yaml`
@@ -1408,6 +1405,19 @@ spec:
     ```yaml
     - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
     - --admission-control-config-file=/etc/kubernetes/pki/admission_configuration.yaml
+    ```
+  - Test
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: dh-busybox
+  spec:
+    restartPolicy: Never
+    containers:
+    - name: busybox
+      image: docker.io/library/busybox
+      command: ['sh', '-c', 'sleep 3600']
     ```
   - Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
   - Ref: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
