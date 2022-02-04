@@ -1252,64 +1252,64 @@ spec:
 ### 5.2 Secure your supply chain: whitelist allowed registries, sign and validate images
 
 - **Approach 1 - using ImagePolicyWebhook Admission Controller**
-  - Using ImagePolicyWebhook Admission webhook server (deployment & service)
+  - Prerequisites - ImagePolicyWebhook Admission webhook server (deployment & service)
     ```sh
     #cfssl
     sudo apt update
     sudo apt install golang-cfssl
     ```
-```sh
-#create CSR to send to KubeAPI
-cat <<EOF | cfssl genkey - | cfssljson -bare server
-{
-  "hosts": [
-    "image-bouncer-webhook.default.svc",
-    "image-bouncer-webhook.default.svc.cluster.local",
-    "image-bouncer-webhook.default.pod.cluster.local",
-    "192.168.56.10",
-    "10.96.0.0"
-  ],
-  "CN": "system:node:image-bouncer-webhook.default.pod.cluster.local",
-  "key": {
-    "algo": "ecdsa",
-    "size": 256
-  },
-  "names": [
+    ```sh
+    #create CSR to send to KubeAPI
+    cat <<EOF | cfssl genkey - | cfssljson -bare server
     {
-      "O": "system:nodes"
+      "hosts": [
+        "image-bouncer-webhook.default.svc",
+        "image-bouncer-webhook.default.svc.cluster.local",
+        "image-bouncer-webhook.default.pod.cluster.local",
+        "192.168.56.10",
+        "10.96.0.0"
+      ],
+      "CN": "system:node:image-bouncer-webhook.default.pod.cluster.local",
+      "key": {
+        "algo": "ecdsa",
+        "size": 256
+      },
+      "names": [
+        {
+          "O": "system:nodes"
+        }
+      ]
     }
-  ]
-}
-EOF
+    EOF
 
-#create csr request
-cat <<EOF | kubectl apply -f -
-apiVersion: certificates.k8s.io/v1
-kind: CertificateSigningRequest
-metadata:
-  name: image-bouncer-webhook.default
-spec:
-  request: $(cat server.csr | base64 | tr -d '\n')
-  signerName: kubernetes.io/kubelet-serving
-  usages:
-  - digital signature
-  - key encipherment
-  - server auth
-EOF
+    #create csr request
+    cat <<EOF | kubectl apply -f -
+    apiVersion: certificates.k8s.io/v1
+    kind: CertificateSigningRequest
+    metadata:
+      name: image-bouncer-webhook.default
+    spec:
+      request: $(cat server.csr | base64 | tr -d '\n')
+      signerName: kubernetes.io/kubelet-serving
+      usages:
+      - digital signature
+      - key encipherment
+      - server auth
+    EOF
 
-#approver cert
-kubectl certificate approve image-bouncer-webhook.default
+    #approver cert
+    kubectl certificate approve image-bouncer-webhook.default
 
-# download signed server.crt
-kubectl get csr image-bouncer-webhook.default -o jsonpath='{.status.certificate}' | base64 --decode > server.crt
-mkdir -p /etc/kubernetes/pki/webhook/
-#copy to /etc/kubernetes/pki
-cp server.crt /etc/kubernetes/pki/webhook/server.crt
+    # download signed server.crt
+    kubectl get csr image-bouncer-webhook.default -o jsonpath='{.status.certificate}' | base64 --decode > server.crt
+    mkdir -p /etc/kubernetes/pki/webhook/
+    #copy to /etc/kubernetes/pki
+    cp server.crt /etc/kubernetes/pki/webhook/server.crt
 
-# create secret with signed server.crt
-kubectl create secret tls tls-image-bouncer-webhook --key server-key.pem --cert server.crt
-```
-
+    # create secret with signed server.crt
+    kubectl create secret tls tls-image-bouncer-webhook --key server-key.pem --cert server.crt
+    ```
+    - Using ImagePolicyWebhook Admission webhook server (deployment & service)
     ```yaml
     apiVersion: apps/v1
     kind: Deployment
