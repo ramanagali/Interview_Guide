@@ -1253,6 +1253,53 @@ spec:
 
 - **Approach 1 - using ImagePolicyWebhook Admission Controller**
   - Using ImagePolicyWebhook Admission webhook server (deployment & service)
+    ```sh
+    #cfssl
+    sudo apt update
+    sudo apt install golang-cfssl
+    ```
+```sh
+    #create CSR to send to KubeAPI
+    cat <<EOF | cfssl genkey - | cfssljson -bare server
+{
+  "hosts": [
+    "image-bouncer-webhook.default.svc",
+    "image-bouncer-webhook.default.svc.cluster.local",
+    "image-bouncer-webhook.default.pod.cluster.local",
+    "192.168.56.10",
+    "10.96.0.0"
+  ],
+  "CN": "system:node:image-bouncer-webhook.default.pod.cluster.local",
+  "key": {
+    "algo": "ecdsa",
+    "size": 256
+  },
+  "names": [
+    {
+      "O": "system:nodes"
+    }
+  ]
+}
+EOF
+
+    cat <<EOF | kubectl apply -f -
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: image-bouncer-webhook.default
+spec:
+  request: $(cat server.csr | base64 | tr -d '\n')
+  signerName: kubernetes.io/kubelet-serving
+  usages:
+  - digital signature
+  - key encipherment
+  - server auth
+EOF
+
+kubectl get csr|grep 'Pending'| awk 'NR>0{print $1}' |xargs kubectl certificate approve
+
+kubectl create secret tls tls-image-bouncer-webhook --key server-key.pem --cert server.crt
+```
 
     ```yaml
     apiVersion: apps/v1
@@ -1354,8 +1401,9 @@ spec:
     - --admission-control-config-file=/etc/kubernetes/pki/admission_configuration.yaml
     ```
 
-  - Ref: <https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook>
-
+  - Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
+  - Ref: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
+  - Ref: https://stackoverflow.com/questions/54463125/how-to-reject-docker-registries-in-kubernetes
 - **Approach 2 - ConstraintTemplate**
   - Create ConstraintTemplate CRD to whitelist docker registries
     ```yaml

@@ -108,6 +108,7 @@ https://devopscube.com/cks-exam-guide-tips/<br/>
 https://www.101daysofdevops.com/my-road-to-certified-kubernetes-security-specialist-cks/<br/>
 https://sandeepbaldawa.medium.com/my-journey-towards-certified-kubernetes-security-specialist-cks-6a1b8f474824<br/>
 https://medium.com/@apurvbhandari/certified-kubernetes-security-specialist-cks-with-v1-22-ea5c0f95d945<br/>
+https://nahuelhernandez.com/blog/kubernetes_security_specialist_certification_notes/
 
 **Create CKS Cluster using Vagrant**<br/>
 https://github.com/pksheldon4/cks-cluster<br/>
