@@ -1409,10 +1409,12 @@ kubectl create secret tls tls-image-bouncer-webhook --key server-key.pem --cert 
     - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
     - --admission-control-config-file=/etc/kubernetes/pki/admission_configuration.yaml
     ```
-
   - Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
   - Ref: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
+  - Ref: https://computingforgeeks.com/how-to-install-cloudflare-cfssl-on-linux-macos/
   - Ref: https://stackoverflow.com/questions/54463125/how-to-reject-docker-registries-in-kubernetes
+  - Ref: https://techsquad.rocks/blog/kubernetes_image_policy_webhook_explained/
+  
 - **Approach 2 - ConstraintTemplate**
   - Create ConstraintTemplate CRD to whitelist docker registries
     ```yaml
