@@ -1360,7 +1360,7 @@ spec:
     ```
   - Add this to resolve service `echo "127.0.0.1 image-bouncer-webhook.default.svc" >> /etc/hosts`
   - Create custom kubeconfig with above service, its client certificate
-    - `/etc/kubernetes/pki/admission_kube_config.yaml`
+    - `/etc/kubernetes/pki/webhook/admission_kube_config.yaml`
 
     - ```yaml
       apiVersion: v1
@@ -1385,7 +1385,7 @@ spec:
       ```
 
   - Create ImagePolicyWebhook AdmissionConfiguration file, update custom kubeconfig file at
-    - `/etc/kubernetes/pki/webhook/admission_kube_config.json`
+    - `/etc/kubernetes/pki/admission_configuration.json`
 
     - ```json
       {
@@ -1404,7 +1404,7 @@ spec:
 
     ```yaml
     - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
-    - --admission-control-config-file=/etc/kubernetes/pki/admission_configuration.yaml
+    - --admission-control-config-file=/etc/kubernetes/pki/admission_configuration.json
     ```
   - Test
   ```yaml
@@ -1417,6 +1417,7 @@ spec:
     containers:
     - name: busybox
       image: docker.io/library/busybox
+      #image: gcr.io/google-containers/busybox:1.27
       command: ['sh', '-c', 'sleep 3600']
     ```
   - Ref: https://stackoverflow.com/questions/54463125/how-to-reject-docker-registries-in-kubernetes
