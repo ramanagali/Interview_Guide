@@ -1368,7 +1368,7 @@ spec:
       clusters:
       - cluster:
           certificate-authority: /etc/kubernetes/pki/webhook/server.crt
-          server: https://image-bouncer-webhook:30080/image_policy
+          server: https://image-bouncer-webhook.default.svc:30080/image_policy
         name: bouncer_webhook
       contexts:
       - context:
@@ -1419,13 +1419,15 @@ spec:
       image: docker.io/library/busybox
       command: ['sh', '-c', 'sleep 3600']
     ```
+  - Ref: https://stackoverflow.com/questions/54463125/how-to-reject-docker-registries-in-kubernetes
+  - Ref: https://github.com/containerd/cri/blob/master/docs/registry.md
   - Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
   - Ref: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
   - Ref: https://computingforgeeks.com/how-to-install-cloudflare-cfssl-on-linux-macos/
-  - Ref: https://stackoverflow.com/questions/54463125/how-to-reject-docker-registries-in-kubernetes
   - Ref: https://techsquad.rocks/blog/kubernetes_image_policy_webhook_explained/
   - Ref: https://dzone.com/articles/kubernetes-image-policy-webhook-explained
   - Ref: https://morioh.com/p/111dcd5c259b
+  - https://www.fatalerrors.org/a/19100z4.html
   
 - **Approach 2 - ConstraintTemplate**
   - Create ConstraintTemplate CRD to whitelist docker registries
