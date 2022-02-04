@@ -1259,8 +1259,8 @@ spec:
     sudo apt install golang-cfssl
     ```
 ```sh
-    #create CSR to send to KubeAPI
-    cat <<EOF | cfssl genkey - | cfssljson -bare server
+#create CSR to send to KubeAPI
+cat <<EOF | cfssl genkey - | cfssljson -bare server
 {
   "hosts": [
     "image-bouncer-webhook.default.svc",
@@ -1282,7 +1282,8 @@ spec:
 }
 EOF
 
-    cat <<EOF | kubectl apply -f -
+#create csr request
+cat <<EOF | kubectl apply -f -
 apiVersion: certificates.k8s.io/v1
 kind: CertificateSigningRequest
 metadata:
@@ -1296,8 +1297,13 @@ spec:
   - server auth
 EOF
 
-kubectl get csr|grep 'Pending'| awk 'NR>0{print $1}' |xargs kubectl certificate approve
+#approver cert
+kubectl certificate approve image-bouncer-webhook.default
 
+# download signed server.crt
+kubectl get csr image-bouncer-webhook.default -o jsonpath='{.status.certificate}' | base64 --decode > server.crt
+
+# create secret with signed server.crt
 kubectl create secret tls tls-image-bouncer-webhook --key server-key.pem --cert server.crt
 ```
 
