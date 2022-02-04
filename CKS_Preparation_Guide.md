@@ -1302,6 +1302,9 @@ kubectl certificate approve image-bouncer-webhook.default
 
 # download signed server.crt
 kubectl get csr image-bouncer-webhook.default -o jsonpath='{.status.certificate}' | base64 --decode > server.crt
+mkdir -p /etc/kubernetes/pki/webhook/
+#copy to /etc/kubernetes/pki
+cp server.crt /etc/kubernetes/pki/webhook/server.crt
 
 # create secret with signed server.crt
 kubectl create secret tls tls-image-bouncer-webhook --key server-key.pem --cert server.crt
@@ -1364,7 +1367,7 @@ kubectl create secret tls tls-image-bouncer-webhook --key server-key.pem --cert 
       kind: Config
       clusters:
       - cluster:
-          certificate-authority: /etc/kubernetes/pki/server.crt
+          certificate-authority: /etc/kubernetes/pki/webhook/server.crt
           server: https://image-bouncer-webhook:30080/image_policy
         name: bouncer_webhook
       contexts:
