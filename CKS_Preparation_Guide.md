@@ -1424,6 +1424,8 @@ spec:
   - Ref: https://computingforgeeks.com/how-to-install-cloudflare-cfssl-on-linux-macos/
   - Ref: https://stackoverflow.com/questions/54463125/how-to-reject-docker-registries-in-kubernetes
   - Ref: https://techsquad.rocks/blog/kubernetes_image_policy_webhook_explained/
+  - Ref: https://dzone.com/articles/kubernetes-image-policy-webhook-explained
+  - Ref: https://morioh.com/p/111dcd5c259b
   
 - **Approach 2 - ConstraintTemplate**
   - Create ConstraintTemplate CRD to whitelist docker registries
