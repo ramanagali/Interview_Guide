@@ -1425,10 +1425,6 @@ spec:
   - Ref: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
   - Ref: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
   - Ref: https://computingforgeeks.com/how-to-install-cloudflare-cfssl-on-linux-macos/
-  - Ref: https://techsquad.rocks/blog/kubernetes_image_policy_webhook_explained/
-  - Ref: https://dzone.com/articles/kubernetes-image-policy-webhook-explained
-  - Ref: https://morioh.com/p/111dcd5c259b
-  - https://www.fatalerrors.org/a/19100z4.html
   
 - **Approach 2 - ConstraintTemplate**
   - Create ConstraintTemplate CRD to whitelist docker registries
