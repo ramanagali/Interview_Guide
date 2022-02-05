@@ -1263,9 +1263,9 @@ spec:
     cat <<EOF | cfssl genkey - | cfssljson -bare server
     {
       "hosts": [
+        "image-bouncer-webhook",
         "image-bouncer-webhook.default.svc",
         "image-bouncer-webhook.default.svc.cluster.local",
-        "image-bouncer-webhook.default.pod.cluster.local",
         "192.168.56.10",
         "10.96.0.0"
       ],
@@ -1302,8 +1302,10 @@ spec:
 
     # download signed server.crt
     kubectl get csr image-bouncer-webhook.default -o jsonpath='{.status.certificate}' | base64 --decode > server.crt
+
     mkdir -p /etc/kubernetes/pki/webhook/
-    #copy to /etc/kubernetes/pki
+    
+    #copy to /etc/kubernetes/pki/webhook
     cp server.crt /etc/kubernetes/pki/webhook/server.crt
 
     # create secret with signed server.crt
@@ -1354,13 +1356,14 @@ spec:
           port: 443
           targetPort: 1323
           protocol: "TCP"
-          nodePort: 30080
+          nodePort: 30020
       selector:
         app: image-bouncer-webhook
     ```
-  - Add this to resolve service `echo "127.0.0.1 image-bouncer-webhook.default.svc" >> /etc/hosts`
+  - Add this to resolve service `echo "127.0.0.1 image-bouncer-webhook" >> /etc/hosts`
+  - check service using`telnet image-bouncer-webhook 30020` or `netstat -na | grep 30020`
   - Create custom kubeconfig with above service, its client certificate
-    - `/etc/kubernetes/pki/webhook/admission_kube_config.yaml`
+    - `/etc/kubernetes/pki/webhook/ib_kube_config.yaml`
 
     - ```yaml
       apiVersion: v1
@@ -1368,7 +1371,7 @@ spec:
       clusters:
       - cluster:
           certificate-authority: /etc/kubernetes/pki/webhook/server.crt
-          server: https://image-bouncer-webhook.default.svc:30080/image_policy
+          server: https://image-bouncer-webhook:30020/image_policy
         name: bouncer_webhook
       contexts:
       - context:
@@ -1384,19 +1387,20 @@ spec:
           client-key:  /etc/kubernetes/pki/apiserver.key
       ```
 
-  - Create ImagePolicyWebhook AdmissionConfiguration file, update custom kubeconfig file at
-    - `/etc/kubernetes/pki/admission_configuration.json`
-
-    - ```json
-      {
-        "imagePolicy": {
-          "kubeConfigFile": "/etc/kubernetes/pki/webhook/admission_kube_config.yaml",
-          "allowTTL": 50,
-          "denyTTL": 50,
-          "retryBackoff": 500,
-          "defaultAllow": false
-        }
-      }
+  - Create ImagePolicyWebhook AdmissionConfiguration file(json/yaml), update custom kubeconfig file at
+    - `/etc/kubernetes/pki/admission_config.json`
+    - ```yaml
+      apiVersion: apiserver.config.k8s.io/v1
+      kind: AdmissionConfiguration
+      plugins:
+      - name: ImagePolicyWebhook
+        configuration:
+          imagePolicy:
+            kubeConfigFile: /etc/kubernetes/pki/ib_kube_config.yaml
+            allowTTL: 50
+            denyTTL: 50
+            retryBackoff: 500
+            defaultAllow: false
       ```
   - Enable ImagePolicyWebhook in enable-admission-plugins in kubeapi server config at
   - Update admin-config file in kube api server admission-control-config-file
@@ -1404,7 +1408,7 @@ spec:
 
     ```yaml
     - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
-    - --admission-control-config-file=/etc/kubernetes/pki/admission_configuration.json
+    - --admission-control-config-file=/etc/kubernetes/pki/admission_config.yaml
     ```
   - Test
   ```yaml
