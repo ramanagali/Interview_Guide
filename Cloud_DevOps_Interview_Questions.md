@@ -411,7 +411,7 @@ communicate problems with data transmission
 	- Delivery everthing is auto but  has manual step before deploying in PRD 
 	- Deployment is a step up from Continuous Delivery 
 	- Deployment evey step is auto
-* Where to store artefacts
+* Where to store artifacts
 
 ### Ansible
 * How you used Ansible in your project
@@ -547,11 +547,12 @@ communicate problems with data transmission
 ### AWS Architect
 * How you Host DB if DB has to be in the region where AWS/AZURE not avail
 * Diff between Stateful and Stateless firewalls ?
-* Cloud Formation circular dependency issue
-* How to monitor a website in AWS
-* How to maintain AutoScalingGroup old instance logs
-* Explain DNS resolution in Route53?
-* Data security point of view what are options you will choose in AWS
+* Cloud Formation, how you will solve circular dependency issue ?
+* How you will setup to find uptime in AWS?
+* How to monitor a website in AWS ?
+* How to maintain AutoScalingGroup old instance logs ?
+* Explain DNS resolution in Route53 ?
+* Data security point of view what are options you will choose in AWS ?
 
 ### GCP 
 * Authentication mechanism in GCP ?

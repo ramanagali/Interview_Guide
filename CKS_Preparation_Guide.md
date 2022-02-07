@@ -1499,21 +1499,26 @@ spec:
 
 ### 5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)
 
-- Static YAML analysis using poular tool Kubesec
-- Kubesec scans and gives the risk score ``
-- Run Kubesec locally using ``
+- **Tips for Static Analysis**
+  - Avoid Host namespaces such as `hostNetwork: true, hostIPC: true, hostPID: true`
+  - Avoid running pod as `securityContext.privileged: true`
+  - Avoid running pod as root or 0 in `securityContext.runAsUser`
+-   Do not use `:latest` tag instead use specific version
+- **Static YAML analysis using poular tool Kubese**c
+  - Kubesec scans and gives the risk score ``
+  - Run Kubesec locally using ``
 
-  ```sh
-  # run scan using kubesec
-  kubesec scan pod.yaml
-  # run kubesec locally on 8080 port
-  kubesec http 8080 &
-  #kubesec API invoke and scan
-  curl -sSX POST --data-binary @”pod.yaml" https://v2.kubesec.io/scan
-  ```
+    ```sh
+    # run scan using kubesec
+    kubesec scan pod.yaml
+    # run kubesec locally on 8080 port
+    kubesec http 8080 &
+    #kubesec API invoke and scan
+    curl -sSX POST --data-binary @”pod.yaml" https://v2.kubesec.io/scan
+    ```
 
-- Ref: <https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#7-statically-analyse-yaml>
-- Ref: <https://kubesec.io/>
+  - Ref: <https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#7-statically-analyse-yaml>
+  - Ref: <https://kubesec.io/>
 
 ### 5.4 Scan images for known vulnerabilities
 
@@ -1525,9 +1530,10 @@ spec:
   - `trivy image-- severity CRITICAL,HIGH busybox:1.33.1`
   - `kubectl get pods -A -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n' | sort -u`
 
-- Ref: <https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids>
-- Ref: <https://github.com/aquasecurity/trivy>
-- Ref: <https://github.com/anchore/anchore-cli#command-line-examples>
+- Ref: https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids
+- Ref: https://github.com/aquasecurity/trivy
+- Ref: https://github.com/anchore/anchore-cli#command-line-examples
+- Ref: https://github.com/linuxacademy/content-cks-trivy-k8s-webhook
 
 </details>
    <hr />
