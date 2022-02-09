@@ -1523,18 +1523,33 @@ spec:
 ### 5.4 Scan images for known vulnerabilities
 
 - Vulnerability scanning tools are Trivy(*) & Anchore
-- Install Trivy (by Aquasec) on your control plane node
-- Scan an image using trivy
-  - `trivy image busybox:1.33.1`
-- It results Low, Medium, High, Critical & VulnarabilityID
-  - `trivy image-- severity CRITICAL,HIGH busybox:1.33.1`
-  - `kubectl get pods -A -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n' | sort -u`
-
+- 1. Install Trivy (by Aquasec) on your control plane node
+  - Scan an image using trivy
+    - `trivy image busybox:1.33.1`
+  - It results Low, Medium, High, Critical & VulnarabilityID
+    - `trivy image-- severity CRITICAL,HIGH busybox:1.33.1`
+    - `kubectl get pods -A -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n' | sort -u`
+- 2. Anchore CLI
+  - Install in Anchore CLI in mac using 
+  ```sh
+  #Install Solana
+  sh -c "$(curl -sSfL https://release.solana.com/v1.8.0/install)"
+  #Install Yarn
+  npm install -g yarn
+  #Install Rust Cargo
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  #Install Anchor by building the Rust project from Github and then installing the dependencies
+  cargo install --git https://github.com/project-serum/anchor --tag v0.21.0 anchor-cli --locked
+  
+  npm i -g @project-serum/anchor-cli
+  npm install -g @project-serum/anchor
+  ```
 - Ref: https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids
 - Ref: https://github.com/aquasecurity/trivy
 - Ref: https://github.com/anchore/anchore-cli#command-line-examples
 - Ref: https://github.com/linuxacademy/content-cks-trivy-k8s-webhook
-
+- Ref: https://project-serum.github.io/anchor/getting-started/installation.html#install-yarn
+- Ref: https://docs.anchore.com/3.0/docs/installation/
 </details>
    <hr />
 
