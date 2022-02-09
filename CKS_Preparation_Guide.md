@@ -1530,26 +1530,39 @@ spec:
     - `trivy image-- severity CRITICAL,HIGH busybox:1.33.1`
     - `kubectl get pods -A -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n' | sort -u`
 - 2. Anchore CLI
-  - Install in Anchore CLI in mac using 
+  - Anchore CLI in mac using Docker Compose command
   ```sh
-  #Install Solana
-  sh -c "$(curl -sSfL https://release.solana.com/v1.8.0/install)"
-  #Install Yarn
-  npm install -g yarn
-  #Install Rust Cargo
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  #Install Anchor by building the Rust project from Github and then installing the dependencies
-  cargo install --git https://github.com/project-serum/anchor --tag v0.21.0 anchor-cli --locked
-  
-  npm i -g @project-serum/anchor-cli
-  npm install -g @project-serum/anchor
+  curl -O https://engine.anchore.io/docs/quickstart/docker-compose.yaml
+  docker-compose up -d
+  docker-compose ps
+  docker-compose exec api anchore-cli system status
+  docker-compose exec api anchore-cli system feeds list
+  docker-compose exec api anchore-cli system wait 
+  docker-compose exec api anchore-cli image add nginx:1.19.0
+  docker-compose exec api anchore-cli image wait nginx:1.19.0
+  docker-compose exec api anchore-cli image content nginx:1.19.0 os
+  docker-compose exec api anchore-cli image vuln  nginx:1.19.0 all
+  docker-compose exec api anchore-cli evaluate check nginx:1.19.0
+  ```
+  - Anchore CLI in mac using Docker Compose with Anchore CLI commadn
+  ```sh
+  curl https://engine.anchore.io/docs/quickstart/docker-compose.yaml | docker-compose -p anchore -f - up -d
+  curl https://engine.anchore.io/docs/quickstart/docker-compose.yaml > docker-compose.yaml && docker-compose up -d
+
+
+  docker run --rm -e ANCHORE_CLI_URL=http://anchore_engine-api_1:8228/v1/ --network anchore_default -it anchore/engine-cli
+  anchore-cli --version
+  anchore-cli image add nginx:1.19.0 && anchore-cli image wait nginx:1.19.0
+  anchore-cli image vuln nginx:1.19.0 all
+  anchore-cli image evaluate check nginx:1.19.0 all
   ```
 - Ref: https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids
-- Ref: https://github.com/aquasecurity/trivy
+- Ref: https://github.com/aquasecurity/trivy 
 - Ref: https://github.com/anchore/anchore-cli#command-line-examples
 - Ref: https://github.com/linuxacademy/content-cks-trivy-k8s-webhook
 - Ref: https://project-serum.github.io/anchor/getting-started/installation.html#install-yarn
 - Ref: https://docs.anchore.com/3.0/docs/installation/
+- https://githubhelp.com/anchore/anchore-engine
 </details>
    <hr />
 
