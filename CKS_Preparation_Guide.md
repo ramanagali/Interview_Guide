@@ -1547,14 +1547,18 @@ spec:
   - Anchore CLI in mac using Docker Compose with Anchore CLI commadn
   ```sh
   curl https://engine.anchore.io/docs/quickstart/docker-compose.yaml | docker-compose -p anchore -f - up -d
-  curl https://engine.anchore.io/docs/quickstart/docker-compose.yaml > docker-compose.yaml && docker-compose up -d
-
-
   docker run --rm -e ANCHORE_CLI_URL=http://anchore_engine-api_1:8228/v1/ --network anchore_default -it anchore/engine-cli
   anchore-cli --version
   anchore-cli image add nginx:1.19.0 && anchore-cli image wait nginx:1.19.0
   anchore-cli image vuln nginx:1.19.0 all
   anchore-cli image evaluate check nginx:1.19.0 all
+  ```
+  - Clair
+  ```sh
+  docker run -p 5432:5432 -d --name db arminc/clair-db:latest
+  docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan:latest
+  clair-scanner -w example-alpine.yaml --ip YOUR_LOCAL_IP alpine:3.5
+
   ```
 - Ref: https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/#10-scan-images-and-run-ids
 - Ref: https://github.com/aquasecurity/trivy 
@@ -1575,18 +1579,26 @@ spec:
 
 - Falco can detect and alerts on any behavior that involves making Linux system calls
 - **Falco** operates at the user space and kernel space, major components...
+  - Driver
   - Policy Engine
   - Libraries
   - Falco Rules
-- Falco install
+- Falco install 
 - Helm Install Falco as DaemonSet
 
   ```sh
   helm repo add falcosecurity https://falcosecurity.github.io/charts
   helm repo update
-  helm install falco falcosecurity/falco
-  ```
 
+  helm upgrade -i falco falcosecurity/falco \
+    --set falcosidekick.enabled=true \
+    --set falcosidekick.webui.enabled=true \
+    --set auditLog.enabled=true \
+    --set falco.jsonOutput=true \
+    --set falco.fileOutput.enabled=true \
+    --set falcosidekick.config.slack.webhookurl="<<web-hook-url>>" 
+  ```
+  
 - **Falco Rules** Filters for engine events, in YAML format Example Rule
 
   ```yaml
@@ -1600,9 +1612,9 @@ spec:
 
 - **Falco Configuration** for Falco daemon, YAML file and it has key: value or list
   - config file located at `/etc/falco/falco.yaml`
-- Ref: <https://falco.org/docs/getting-started/>
-- Ref: <https://github.com/falcosecurity/charts>
-- Ref: <https://falco.org/blog/detect-cve-2020-8557/>
+- Ref: https://falco.org/docs/getting-started
+- Ref: https://github.com/falcosecurity/charts/tree/master/falco
+- Ref: https://falco.org/blog/detect-cve-2020-8557
 
 ### 6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads
 
