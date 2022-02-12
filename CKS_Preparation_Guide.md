@@ -1598,17 +1598,22 @@ spec:
     --set falco.fileOutput.enabled=true \
     --set falcosidekick.config.slack.webhookurl="<<web-hook-url>>" 
   ```
-  
+
 - **Falco Rules** Filters for engine events, in YAML format Example Rule
 
   ```yaml
-  - rule: Write below etc
-    desc: an attempt to write to any file below /etc
-    condition: write_etc_common
-    output: "File below /etc opened for writing (user=%user.name command=%proc.cmdline parent=%proc.pname pcmdline=%proc.pcmdline file=%fd.name program=%proc.name gparent=%proc.aname[2] ggparent=%proc.aname[3] gggparent=%proc.aname[4] container_id=%container.id image=%container.image.repository)"
+  - rule: Unauthorized process
+    desc: There is a running process not described in the base template
+    condition: spawned_process and container and k8s.ns.name=ping and not proc.name in (apache2, sh, ping)
+    output: Unauthorized process (%proc.cmdline) running in (%container.id)
     priority: ERROR
-    tags: [filesystem, mitre_persistence]
+    tags: [process]
   ```
+  kubectl exec client -n ping -- curl -F "s=OK" -F "user=bad" -F "passwd=wrongpasswd' OR 'a'='a" --form-string "ipaddr=localhost; cat /var/www/html/ping.php" -X POST http://ping/ping.php
+
+- Check the Logs
+  - `kubectl logs --selector app=falco | grep Error`
+  - 
 
 - **Falco Configuration** for Falco daemon, YAML file and it has key: value or list
   - config file located at `/etc/falco/falco.yaml`
