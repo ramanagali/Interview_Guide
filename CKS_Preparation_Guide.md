@@ -1669,7 +1669,7 @@ spec:
       containers:
       - name: sec-ctx-demo
         image: busybox
-        command: [ "sh", "-c", "sleep 1h" ]
+        command: [ "sh", "-c", "echo hello > /data/demo/hello.txt; sleep 1h" ]
         securityContext:
           privileged: true
           runAsUser: 0
