@@ -1663,9 +1663,6 @@ spec:
   metadata:
     name: security-context-demo
   spec:
-    securityContext:
-      readOnlyRootFilesystem: true
-      privileged: false
       volumes:
       - name: sec-ctx-vol
         emptyDir: {}
@@ -1673,11 +1670,15 @@ spec:
       - name: sec-ctx-demo
         image: busybox
         command: [ "sh", "-c", "sleep 1h" ]
+        securityContext:
+          privileged: true
+          runAsUser: 0
+          allowPrivilegeEscalation: true
+          readOnlyRootFilesystem: false
         volumeMounts:
         - name: sec-ctx-vol
           mountPath: /data/demo
-        securityContext:
-          allowPrivilegeEscalation: false
+          
   ```
 
 - Enforce using PSP(Pod Security Policies) - key logic `readOnlyRootFilesystem = true,  privileged=false; runAsUser=NonRoot`
