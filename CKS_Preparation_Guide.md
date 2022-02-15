@@ -1609,7 +1609,6 @@ spec:
     priority: ERROR
     tags: [process]
   ```
-  kubectl exec client -n ping -- curl -F "s=OK" -F "user=bad" -F "passwd=wrongpasswd' OR 'a'='a" --form-string "ipaddr=localhost; cat /var/www/html/ping.php" -X POST http://ping/ping.php
 
 - Check the Logs
   - `kubectl logs --selector app=falco | grep Error`
@@ -1741,6 +1740,9 @@ spec:
   - --audit-log-maxsize=100
   ```
 - Ref: https://kubernetes.io/docs/tasks/debug-application-cluster/audit/
+- Ref: https://cloud.google.com/kubernetes-engine/docs/concepts/audit-policy
+- Ref: https://falco.org/docs/event-sources/kubernetes-audit/
+- Ref: https://arabitnetwork.com/2021/03/13/k8s-enabling-auditing-logs-step-by-step/
 </details>
  <hr />
 
