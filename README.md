@@ -147,7 +147,8 @@ https://locust.io/<br/>
 **Bechmarking**<br/>
 https://pkg.go.dev/github.com/codesenberg/bombardier#readme-installation
 
-**
+**Kafka**
+https://www.conduktor.io/kafka/what-is-apache-kafka
 
 ## Cloud
 **Compare all Clouds**<br/>

@@ -1503,6 +1503,7 @@ spec:
   - Avoid Host namespaces such as `hostNetwork: true, hostIPC: true, hostPID: true`
   - Avoid running pod as `securityContext.privileged: true`
   - Avoid running pod as root or 0 in `securityContext.runAsUser`
+    - use nobody or some user xxxx
 -   Do not use `:latest` tag instead use specific version
 - **Static YAML analysis using poular tool Kubese**c
   - Kubesec scans and gives the risk score ``
