@@ -1749,3 +1749,4 @@ spec:
 
 - [Refer Certification Preparation Material my github page](https://github.com/ramanagali/Interview_Guide/blob/main/Certification_Preparation.md#cks)
 - [CCNF CKS Official Site](https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/)
+- [CKS youtube playlist my youtube channel](https://www.youtube.com/playlist?list=PLFkEchqXDZx6Bw3B2NRVc499j1TavjOvm)
