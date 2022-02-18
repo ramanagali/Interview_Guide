@@ -10,6 +10,7 @@ Below are the main categories for the System Design Interview
       - [Latency(T):](#latencyt)
       - [Throughtput](#throughtput)
       - [Availability](#availability)
+      - [CAP Theorm](#cap-theorm)
       - [Storage](#storage)
     - [3) Concrete and Quantitative Solution](#3-concrete-and-quantitative-solution)
     - [Solution Patterns](#solution-patterns)
@@ -88,8 +89,26 @@ Below are the main categories for the System Design Interview
     -  Clustering
     -  Backups & replications
     -  Geographic redundancy
-    -  Automatic testing, deployment, and rollbacks 
-#### Storage
+    -  Automatic testing, deployment, and rollbacks
+#### CAP Theorm 
+  - **Consistency** 
+    - any given data system looks and behaves the same irrespective of which node we query to access
+  - **Availability**
+    - the system will always return a valid response, even if nodes are unavailable or shut off
+  - **Partition tolerance**
+    - system performs well even when parts of the system get cut off due to network or other issues
+  -** CAP Theorm Trade-off**
+    - **CP (consistent and partition tolerant)**
+      - is called as Strong Consistency
+      - guarantees consistency; synchronizes data in dist systems
+      - gurantees ACID
+    - **AP (available and partition tolerant)**
+      - is called Eventual Consistency
+      - Guarantee availability over consistency
+    - **Weak consistency**
+      - considerable performance gain independently
+      - Causal Consistency
+#### Storage 
   - File Storage
   - Block Storage
     - HDD
