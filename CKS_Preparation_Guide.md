@@ -64,7 +64,8 @@ pull requests are welcome
         endPort: 6000
   ```
 - Ref: <https://kubernetes.io/docs/concepts/services-networking/network-policies/>
-
+- Ref: https://editor.cilium.io/
+- 
 ### 1.2 Install & Fix using kube-bench
 
 **kube-bench:** Tool to check Kubernetes cluster CIS Kubernetes Benchmarks
@@ -718,6 +719,8 @@ spec:
     deny /** w,
   }
   ```
+- copy deny-write profile to worker node01
+  `scp deny-write node01:/tmp`
 
 - load the profile on all our nodes default directory /etc/apparmor.d
   `sudo apparmor_parser /etc/apparmor.d/deny-write`
@@ -808,8 +811,6 @@ spec:
 - Defines policies to controls security sensitive aspects of the pod specification
 - PodSecurityPolicy is one of the admission controller
 - enable at api-server using  `--enable-admission-plugins=NameSpaceAutoProvision,PodSecurityPolicy`
-- Create Service Account
-  `kubectl create sa psp-test-sa -n dev`
 - Create Pod using PSP
   ```yaml
   apiVersion: policy/v1beta1
@@ -840,7 +841,11 @@ spec:
     fsGroup:
       rule: 'RunAsAny'
   ```
+  - Create Service Account
+    `kubectl create sa psp-test-sa -n dev`
   - Create ClusterRole
+    `kubectl -n psp-test create clusterrole psp-pod --verb=use --resource=podsecuritypolicies --resource-name=psp-test`
+    or
     ```yaml
     apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
@@ -854,12 +859,13 @@ spec:
       - psp-test
     ```
   - Create ClusterRoleBinding
+    `kubectl -n psp-test create rolebinding -n dev psp-mount --clusterrole=psp-pod --serviceaccount=dev:psp-test-sa`
+    or
     ```yaml
     apiVersion: rbac.authorization.k8s.io/v1
-    kind: RoleBinding
+    kind: ClusterRoleBinding
     metadata:
       name: psp-mount
-      namespace: dev
     roleRef:
       kind: ClusterRole
       name: psp-pod
@@ -1744,6 +1750,15 @@ spec:
 - Ref: https://cloud.google.com/kubernetes-engine/docs/concepts/audit-policy
 - Ref: https://falco.org/docs/event-sources/kubernetes-audit/
 - Ref: https://arabitnetwork.com/2021/03/13/k8s-enabling-auditing-logs-step-by-step/
+
+### debugging api-server/kubelet failures
+
+```sh
+/var/log/pods
+/var/log/containers
+docker ps + docker logs
+/var/log/syslog or journalctl -u kubelet
+```
 </details>
  <hr />
 
