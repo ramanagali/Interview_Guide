@@ -1772,27 +1772,28 @@ docker ps + docker logs
   export oy="-o yaml"
   export now="--force --grace-period=0"
   ```
-- **troubleshoot api server using...**
+- **troubleshoot api server using logs...**
   ```sh
   cd /var/log/pods/
   ls -l 
   cd kube-system_kube-apiserver-controlplane_xxx
   tail -f kube-apiserver/0.log
   ```
+- **troubleshoot api server using docker** `docker ps -a | grep -i kube-api`
+
 - **imperative command, open yaml, save/apply**
   ```sh
   kubectl run web --image nginx --dry-run=client -oyaml | vim - 
   :wq file1.yaml
   :wq kubectl apply -f -
   ```
-- **troubleshoot api server using** `docker ps -a | grep -i kube-api`
 - **find process and remove**
   ```sh
   netstat -atnlp | grep -i 9090 | grep -w -i listen
   apt list --installed | grep -i nginx
   systemctl list-units --all | grep -i nginx
   ```
-- **find kubelet config path using** `ps aux | grep -i kubelet | grep -i config`
+- **find kubelet config path using** `ps aux | grep -i kubelet | grep -w config`
 - NOTE1: **AppArmor profile to copied in all nodes**
 - NOTE2: **Trivy one liner** `trivy image -s CRITICAL nginx:1.14 | grep -i total`
  <hr />
