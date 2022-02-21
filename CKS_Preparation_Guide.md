@@ -1762,6 +1762,41 @@ docker ps + docker logs
 </details>
  <hr />
 
+## IMP Notes Tips for Prodcutivity
+- **use vimrc oneliner command**  
+  ```sh 
+  echo "set ts=2 sw=2 sts=2 expandtab" > ~/.vimrc
+  ```
+- use 
+  ```sh
+  export oy="-o yaml"
+  export now="--force --grace-period=0"
+  ```
+- **troubleshoot api server using...**
+  ```sh
+  cd /var/log/pods/
+  ls -l 
+  cd kube-system_kube-apiserver-controlplane_xxx
+  tail -f kube-apiserver/0.log
+  ```
+- **imperative command, open yaml, save/apply**
+  ```sh
+  kubectl run web --image nginx --dry-run=client -oyaml | vim - 
+  :wq file1.yaml
+  :wq kubectl apply -f -
+  ```
+- **troubleshoot api server using** `docker ps -a | grep -i kube-api`
+- **find process and remove**
+  ```sh
+  netstat -atnlp | grep -i 9090 | grep -w -i listen
+  apt list --installed | grep -i nginx
+  systemctl list-units --all | grep -i nginx
+  ```
+- **find kubelet config path using** `ps aux | grep -i kubelet | grep -i config`
+- NOTE1: **AppArmor profile to copied in all nodes**
+- NOTE2: **Trivy one liner** `trivy image -s CRITICAL nginx:1.14 | grep -i total`
+ <hr />
+
 - [CCNF CKS Official Site](https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/)
 - [Refer Certification Preparation Material - my github page](https://github.com/ramanagali/Interview_Guide/blob/main/Certification_Preparation.md#cks)
 - [CKS youtube playlist - my youtube channel](https://www.youtube.com/playlist?list=PLFkEchqXDZx6Bw3B2NRVc499j1TavjOvm)
