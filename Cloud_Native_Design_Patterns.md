@@ -53,6 +53,9 @@
   * isolate critical consumers
   * can use with retry and circuit breaker
 ### Retry Pattern
+  * sending the request one more time if transient failures
+  * Cancel, Retry & Retry after delay strategies
+  * 
 ### Static-Content Hosting Pattern
 ### Claim-Check Pattern
 ### Ambassador Pattern
@@ -71,3 +74,8 @@
 ### Cache-Aside Pattern
 ### Sequential Convoy Pattern
 ### Compensating Transactions Pattern
+
+## Linkes
+- http://en.clouddesignpattern.org/index.php/Main_Page
+- https://aws.amazon.com/architecture/reference-architecture-diagrams/?achp_addrcs5
+- 

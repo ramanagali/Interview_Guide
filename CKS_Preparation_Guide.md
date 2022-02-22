@@ -1794,6 +1794,8 @@ docker ps + docker logs
   systemctl list-units --all | grep -i nginx
   ```
 - **find kubelet config path using** `ps aux | grep -i kubelet | grep -w config`
+- find pod immutability issues using
+  - `k get po --output=custom-columns="NAME:.metadata.name,SEC:spec.securityContext,SEC_CXT:.spec.containers[*].securityContext"`
 - NOTE1: **AppArmor profile to copied in all nodes**
 - NOTE2: **Trivy one liner** `trivy image -s CRITICAL nginx:1.14 | grep -i total`
  <hr />
