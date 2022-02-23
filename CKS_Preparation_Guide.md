@@ -93,7 +93,11 @@ kubectl logs job-node-xxx
 ```sh
 curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.6.5/kube-bench_0.6.5_linux_amd64.tar.gz -o kube-bench_0.6.5_linux_amd64.tar.gz
 tar -xvf kube-bench_0.6.5_linux_amd64.tar.gz
+# run all tests
 ./kube-bench
+
+# run kube bench with specific target
+kube-bench run --targets=master/node/etcd
 
 ./kube-bench --config-dir `pwd`/cfg --config `pwd`/cfg/config.yaml master
 ./kube-bench --config-dir `pwd`/cfg --config `pwd`/cfg/config.yaml node
@@ -114,7 +118,6 @@ then ./kube-bench
 - Control plane components a ```/etc/kubernetes/manifests/```
 
 Ref: <https://github.com/aquasecurity/kube-bench/blob/main/docs/installation.md>
-
 ### 1.3 Ingress TLS termination
 
 - Secure an Ingress by specifying a Secret that contains a TLS private key and certificate
@@ -278,6 +281,8 @@ curl -LO https://dl.k8s.io/v1.23.1/kubernetes-client-darwin-arm64.tar.gz -o kube
 shasum -a 512 kubernetes-client-darwin-arm64.tar.gz
 # Print SHA Checksums - linux
 sha512sum kubernetes-client-darwin-arm64.tar.gz
+sha512sum kube-apiserver
+sha512sum kube-proxy
 ```
 
 Example 2
@@ -421,6 +426,12 @@ Ref: <https://kubernetes.io/docs/reference/access-authn-authz/rbac/>
       name: web
     serviceAccountName: test-svc
     automountServiceAccountToken: false
+  ```
+
+  ```sh
+  # hack
+  curl -k https://kubernetes.default/api/v1/namespaces/kube-system/secrets 
+    -H "Authorization: Bearer $(cat /run/secrets/kubernetes.io/serviceaccount/token)" 
   ```
 
 Ref: <https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server>
@@ -697,7 +708,8 @@ spec:
   localhostProfile: profiles/audit.json
   ```
 
-  - Ref: <https://kubernetes.io/docs/tutorials/clusters/seccomp/>
+  - Ref: https://kubernetes.io/docs/tutorials/clusters/seccomp
+  - Ref: https://man7.org/linux/man-pages/man2/syscalls.2.html
 
 #### 3.4.2 **APPARMOR**
 
@@ -777,7 +789,8 @@ spec:
 
 - Ref: https://kubernetes.io/docs/tutorials/clusters/apparmor
 - Ref: https://gitlab.com/apparmor/apparmor/-/wikis/Documentation
-
+- Ref: https://man7.org/linux/man-pages/man2/syscalls.2.html
+- 
 </details>
 <hr />
 
