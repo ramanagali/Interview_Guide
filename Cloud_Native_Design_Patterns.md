@@ -76,6 +76,7 @@
 ### Compensating Transactions Pattern
 
 ## Linkes
+- https://docs.microsoft.com/en-us/azure/architecture/patterns/
 - http://en.clouddesignpattern.org/index.php/Main_Page
 - https://aws.amazon.com/architecture/reference-architecture-diagrams/?achp_addrcs5
-- 
+- https://cloud.google.com/architecture?doctype=referencearchitecture
