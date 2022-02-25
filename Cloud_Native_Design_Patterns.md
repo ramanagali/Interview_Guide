@@ -80,3 +80,5 @@
 - http://en.clouddesignpattern.org/index.php/Main_Page
 - https://aws.amazon.com/architecture/reference-architecture-diagrams/?achp_addrcs5
 - https://cloud.google.com/architecture?doctype=referencearchitecture
+- https://www.codekarle.com/
+- https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html
