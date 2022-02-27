@@ -1806,9 +1806,21 @@ docker ps + docker logs
   apt list --installed | grep -i nginx
   systemctl list-units --all | grep -i nginx
   ```
-- **find kubelet config path using** `ps aux | grep -i kubelet | grep -w config`
+- **find kubelet config path using** 
+  - ```sh
+    ps aux | grep -i kubelet | grep -w config
+    ```
 - find pod immutability issues using
-  - `k get po --output=custom-columns="NAME:.metadata.name,SEC:spec.securityContext,SEC_CXT:.spec.containers[*].securityContext"`
+  - ```sh
+    k get po --output=custom-columns="NAME:.metadata.name,SEC:spec.securityContext,SEC_CXT:.spec.containers[*].securityContext"
+    ```
+- Find Falco rule using
+  - ```sh
+    journalctl -fu falco | grep "xyz error"
+    cat /etc/falco/falco_rules.yaml | grep "xyz error" -A5 -B5
+    cat /var/log/syslog | grep falco | grep xyz | grep anotherxxx
+    kubectl logs --selector app=falco | grep Error
+    ```
 - NOTE1: **AppArmor profile to copied in all nodes**
 - NOTE2: **Trivy one liner** `trivy image -s CRITICAL nginx:1.14 | grep -i total`
  <hr />
