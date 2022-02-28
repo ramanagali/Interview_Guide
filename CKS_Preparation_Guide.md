@@ -1847,7 +1847,7 @@ docker ps + docker logs
     ```
 - NOTE1: **AppArmor profile to copied in all nodes**
 - NOTE2: **Trivy one liner** `trivy image -s CRITICAL nginx:1.14 | grep -i total`
-- CKS Bookmarks downlaod from [here](resources/CKS-Bookmarks.html)
+- CKS Bookmarks Downloaded <a id="raw-url" href="resources/CKS-Bookmarks.html" download="CKS-Bookmarks.html">from here</a>
  <hr />
 
 - [CCNF CKS Official Site](https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/)
