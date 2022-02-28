@@ -1775,8 +1775,30 @@ docker ps + docker logs
 </details>
  <hr />
 
-## IMP Notes Tips for Prodcutivity
-- **use vimrc oneliner command**  
+## IMP Notes Tips for CKSExam
+### **CKS Exam Catergories**
+  1. **API Server Dependent**
+     - CIS Benchmarking
+     - PodSecurityPolicy
+     - ImagePolicyWebhook/AdmissionController
+     - AuditPolicy
+     - Hardening access to Kubernetes API
+     - Falco/SysDig
+     - Tracing Container syscall
+  2. **General**
+     - NetworkPolicy
+     - RBAC
+     - Secret
+     - ServiceAccount
+     - AppArmor
+     - SecComp
+     - RuntimeClass
+     - SecurityContext & Immutable Pods
+     - Static Analysis
+     - Trivy
+  
+### **CKS Exam Tips**
+- **Use vimrc oneliner command**  
   ```sh 
   echo "set ts=2 sw=2 sts=2 expandtab" > ~/.vimrc
   ```
@@ -1785,44 +1807,47 @@ docker ps + docker logs
   export oy="-o yaml"
   export now="--force --grace-period=0"
   ```
-- **troubleshoot api server using logs...**
+- **Troubleshoot api server using logs...**
   ```sh
   cd /var/log/pods/
   ls -l 
   cd kube-system_kube-apiserver-controlplane_xxx
   tail -f kube-apiserver/0.log
   ```
-- **troubleshoot api server using docker** `docker ps -a | grep -i kube-api`
+- **Troubleshoot api server using docker** `docker ps -a | grep -i kube-api`
 
-- **imperative command, open yaml, save/apply**
+- **Imperative command, open yaml, save/apply**
   ```sh
   kubectl run web --image nginx --dry-run=client -oyaml | vim - 
   :wq file1.yaml
   :wq kubectl apply -f -
   ```
-- **find process and remove**
+- **Find process and remove**
   ```sh
   netstat -atnlp | grep -i 9090 | grep -w -i listen
   apt list --installed | grep -i nginx
   systemctl list-units --all | grep -i nginx
   ```
-- **find kubelet config path using** 
+- **Find kubelet config path using** 
   - ```sh
     ps aux | grep -i kubelet | grep -w config
     ```
-- find pod immutability issues using
+- **Find pod immutability issues using**
   - ```sh
     k get po --output=custom-columns="NAME:.metadata.name,SEC:spec.securityContext,SEC_CXT:.spec.containers[*].securityContext"
     ```
-- Find Falco rule using
+- **Find Falco rule using**
   - ```sh
     journalctl -fu falco | grep "xyz error"
     cat /etc/falco/falco_rules.yaml | grep "xyz error" -A5 -B5
-    cat /var/log/syslog | grep falco | grep xyz | grep anotherxxx
+    cat /var/log/syslog | grep falco | grep xyz | grep error
+
+    # if falco installed as Helm/ds
     kubectl logs --selector app=falco | grep Error
     ```
 - NOTE1: **AppArmor profile to copied in all nodes**
 - NOTE2: **Trivy one liner** `trivy image -s CRITICAL nginx:1.14 | grep -i total`
+- CKS Bookmarks downlaod from [here](resources/CKS-Bookmarks.html)
  <hr />
 
 - [CCNF CKS Official Site](https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/)
