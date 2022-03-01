@@ -13,6 +13,7 @@ Below are the main categories for the System security
 
 ### Awesome API Security 
 - https://github.com/arainho/awesome-api-security
+- https://reconshell.com/api-security/
 
 ### API Security Checklist
 - https://github.com/shieldfy/API-Security-Checklist
