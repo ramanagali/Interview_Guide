@@ -82,3 +82,4 @@
 - https://cloud.google.com/architecture?doctype=referencearchitecture
 - https://www.codekarle.com/
 - https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html
+- https://www.awsgeek.com/
