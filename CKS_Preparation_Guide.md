@@ -1382,7 +1382,7 @@ spec:
   - Add this to resolve service `echo "127.0.0.1 image-bouncer-webhook" >> /etc/hosts`
   - check service using`telnet image-bouncer-webhook 30020` or `netstat -na | grep 30020`
   - Create custom kubeconfig with above service, its client certificate
-    - `/etc/kubernetes/pki/webhook/ib_kube_config.yaml`
+    - `/etc/kubernetes/pki/webhook/admission_kube_config.yaml`
 
     - ```yaml
       apiVersion: v1
@@ -1415,7 +1415,7 @@ spec:
       - name: ImagePolicyWebhook
         configuration:
           imagePolicy:
-            kubeConfigFile: /etc/kubernetes/pki/ib_kube_config.yaml
+            kubeConfigFile: /etc/kubernetes/pki/webhook/admission_kube_config.yaml
             allowTTL: 50
             denyTTL: 50
             retryBackoff: 500
@@ -1427,7 +1427,7 @@ spec:
 
     ```yaml
     - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
-    - --admission-control-config-file=/etc/kubernetes/pki/admission_config.yaml
+    - --admission-control-config-file=/etc/kubernetes/pki/admission_config.json
     ```
   - Test
   ```yaml
