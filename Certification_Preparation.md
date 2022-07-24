@@ -32,6 +32,8 @@ https://dannys.cloud/aws-devops-engineer-professional-exam-guide<br/>
 - https://www.whizlabs.com/blog/aws-cheat-sheet/
 - https://d1.awsstatic.com/whitepapers/Security/DDoS_White_Paper.pdf
 - https://wellarchitectedlabs.com/security/
+- https://wilsonmar.github.io/aws-security/
+- 
 - **Videos:** 
   - https://www.youtube.com/playlist?list=PLeLcvrwLe184Q24ljho5Md3Z38VY0keNt
   - https://www.youtube.com/watch?v=_MWjRddT0-o
