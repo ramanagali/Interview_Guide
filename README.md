@@ -92,6 +92,9 @@ https://github.com/nicolaka/netshoot
 * https://blogs.halodoc.io/kubernetes-disaster-recovery-with-velero/<br/>
 * https://rafay.co/the-kubernetes-current/kubernetes-cluster-backup-restore-with-velero-and-rafay/<br/>
 
+**Kubernetes Secets Manage**<br/>
+* https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
+
 **Docker**<br/>
 * https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf<br/>
 * https://design.jboss.org/redhatdeveloper/marketing/docker_cheatsheet/cheatsheet/images/docker_cheatsheet_r3v2.pdf<br/>
