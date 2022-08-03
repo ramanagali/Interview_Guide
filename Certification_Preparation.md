@@ -132,6 +132,9 @@ https://itnext.io/cks-exam-series-9-rbac-v2-23ee24dd77cd<br/>
 https://itnext.io/cks-exam-series-10-container-hardening-177588b8bbfe<br/>
 https://itnext.io/cks-exam-series-11-networkpolicies-default-deny-and-allowlist-b2ce4186551f<br/>
 
+## HashiCorp Vault Associate 
+https://medium.com/bb-tutorials-and-thoughts/200-practice-questions-for-hashicorp-vault-associate-certification-ebd7f7d27bc0<br/>
+
 ## Docker Certified Associate - DCA 
 
 https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce<br/>
