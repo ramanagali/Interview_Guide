@@ -33,7 +33,7 @@ https://dannys.cloud/aws-devops-engineer-professional-exam-guide<br/>
 - https://d1.awsstatic.com/whitepapers/Security/DDoS_White_Paper.pdf
 - https://wellarchitectedlabs.com/security/
 - https://wilsonmar.github.io/aws-security/
-- 
+- https://aws.plainenglish.io/2022-passing-the-aws-certified-security-specialty-exam-487701b33992
 - **Videos:** 
   - https://www.youtube.com/playlist?list=PLeLcvrwLe184Q24ljho5Md3Z38VY0keNt
   - https://www.youtube.com/watch?v=_MWjRddT0-o
