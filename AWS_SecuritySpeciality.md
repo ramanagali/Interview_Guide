@@ -87,6 +87,7 @@
 * S3 Invalid principal in policy 			- Principal is an unsupported type, IAM user/role has been deleted
 * S3 403 error from EC2 					- S3 bucket policy,KMS Key policy allow decrypt, EC2 Iam role permissions 
 * S3 encrypt each file with a diff encryption key 	- use SSE-S3
+* fastest way to block further access               - IAM =>Revoke all session
 
 ### on-premises related
 * on-premises apps to AWS most secure way - VPN Gateway over AWS Direct Connect
