@@ -21,6 +21,7 @@
 - KMS CMK resilient accross Regions 		- re-wrap CMK DEK from source to target region
 - S3 + KMS users change					- use KMS grants to AWS principals
 - Compliance Documents					- AWS artifacts
+- kms:ViaService                - limits use of an KMS key to requests from specified AWS services
 
 ### CloudFront
 - CloudFront records in S3 				- end-user request for an object
