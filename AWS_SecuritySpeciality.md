@@ -73,7 +73,13 @@
 * after decrypt of EBS KMS key is deleted 	- data is not recoverable
 * secure the EBS volume data at rest by explicit 			- Enable encryption with Cloud HSM
 * Encrypted EBS volumes are dettaching to EC2	- kms:CreateGrant & kms:GrantIsForAWSResource'
-
+* EBS Encryption
+  * Data at rest inside the volume is encrypted
+  * All data moving between the volume and the instance is encrypted
+  * All snapshots created from the volume is encrypted
+  * All volumes created from those snapshots are encrypted
+  * Data at rest inside the volume is encrypted 
+  * Data moving between the volume and the instance is encrypted
 
 ### IAM
 * IAM role consists of 					- policy can be empty, trust policy cannot be empty for assume role
