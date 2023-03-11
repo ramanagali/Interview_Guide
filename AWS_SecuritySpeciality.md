@@ -28,6 +28,19 @@
 - CloudFront restrict privately			- Create CF signed URL’s
 - CloudFront + web app + protect users	- app to use CF key pair to set singed cookies
 
+### WAF
+- WAF logs to s3 & view?       - WAF => Kinesis Data Firehose => s3 => GlueData catelog => Athena => QuickSight
+- block HTTP requests contain a specific User-Agent         - Custom Rules
+- block HTTP requests not ontain a specific User-Agent      - AWS Managed Rules
+- WAF rules in your web ACL             - to mitigate the DDosattack
+
+### Firewall Manager
+- account must be a member of AWS Organizations
+- account must be set as the AWS Firewall Manager administrator account
+- AWS Config enabled for your accounts and Regions
+- AWS Network Firewall or Route 53 resolver DNS Firewall - enable Resource Access Manager (AWS RAM).
+
+
 ### VPC Networking
 * NACL									- Inbound HTTP, outbound ephemral (1024 - 65535)
 * custom NAT instance what must 			- The source/destination checks should be disabled on NAT instance
@@ -114,7 +127,10 @@
 * monitor failed login attempts on aws accounts 	- CloudTrail => S3 => SNS =>  
 * CloudTrail logs syntax 				- AccountID_CloudTrail_RegionName_YYYYMMDDTHHmmZ_UniqueString.FileNameFormat 
 * CloudTrail failing to deliver to S3		- S3 Bucket policy should allow from CloudTrail
-* CloudTrail logs							- Single S3 bucket, single trail for all regions
+* CloudTrail logs							          - Single S3 bucket, single trail for all regions
+* Root users activities           - CT => CloudWatch Events => Alarm => SNS => subscribe
+* Root Use Access notiications    - Amazon EventBridge event rule to monitor userIdentity root logins
+
 
 ### Trusted Advisor, security related
 * Trusted Advisor perform security audits, tracking usage patterns in S3 - bucket logging
@@ -133,7 +149,7 @@
 * GuardDuty prevent false alerts 			- use ElasticIP, GuardDuty side add in trusted IP address list
 * GuardDuty cannot access DNS queries		- GuardDuty does not see these DNS requests
 * GuardDuty Suppress the findings			- Auto Archive the finding
-
+* GuardDuty findigs send - GuardDuty findigs => CW events => Lambda = WAF (create rule) => SNS notification => NACL entry
 
 ### ECS
 * ECS vulnerable images monitoring 				- Amazon Inspector to scan ECR
