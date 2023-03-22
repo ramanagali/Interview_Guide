@@ -22,6 +22,7 @@
 - S3 + KMS users change					- use KMS grants to AWS principals
 - Compliance Documents					- AWS artifacts
 - kms:ViaService                - limits use of an KMS key to requests from specified AWS services
+- kms:CreateGrant, kms:GrantIsForAWSResource policy condition     -we can allow an IAM user to start EC2 instances with encrypted EBS volumes without exposing the key to them.
 
 ### CloudFront
 - CloudFront records in S3 				- end-user request for an object
