@@ -127,11 +127,10 @@ Create TLS Certificate & key
 
 ```sh
 openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout tls.key -out tls.crt -subj "/CN=learnwithgvr.com" -days 365
-openssl req -nodes -new -x509 -keyout tls-ingress.key -out tls-ingress.crt -subj "/CN=learnwithgvr.com -days 365
 ```
 Create a Secret
 ```sh
-kubectl create secret tls learnwithgvr-sec --cert=tls.crt --key=tls
+kubectl create secret -n ingresstest tls learnwithgvr-sec --cert=tls.crt --key=tls.key
 ```
 
 Alternatively Apply this yaml
@@ -140,13 +139,13 @@ Alternatively Apply this yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: ingress-tls
+  name: learnwithgvr-sec
   namespace: ingresstest
 data:
   tls.crt: |
-    $(base64-encoded cert data from tls-ingress.crt)
+    $(base64-encoded cert data from tls.crt)
   tls.key: |
-    $(base64-encoded key data from tls-ingress.key)
+    $(base64-encoded key data from tls.key)
 type: kubernetes.io/tls
 ---
 apiVersion: networking.k8s.io/v1
@@ -195,7 +194,7 @@ spec:
   podSelector: {}
   policyTypes:
   - Ingress
-  egress:
+  ingress:
   - from:
     - ipBlock:
       cidr: 0.0.0.0/0
@@ -1106,7 +1105,7 @@ spec:
 
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
 
-- Sandboxing is concept of isoloation of containers from Host
+- Sandboxing is concept of isolation of containers from Host
 - docker uses default SecComp profiles restrict previleges. Whitlist or Blacklist
 - AppArmor finegrain control of that container can access. Whitlist or Blacklist
 - If large number of apps in containers, then SecComp/AppArmor is not the case
