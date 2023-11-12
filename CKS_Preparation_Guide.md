@@ -8,8 +8,7 @@ pull requests are welcome
 
 ## 1. Cluster Setup - 10%
 
-<details>
-<summary></summary>
+
 
 ### 1.1 Network security policies
 
@@ -315,8 +314,7 @@ echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
 
 ## 2. Cluster Hardening - 15%
 
-<details>
-<summary></summary>
+
 
 ### 2.1  Restrict access to Kubernetes API
 
@@ -449,8 +447,7 @@ Ref: <https://v1-21.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kub
 
 ## 3. System Hardening - 15%
 
-<details>
-<summary></summary>
+
 
 ### 3.1 Minimize host OS footprint (reduce attack surface)
 
@@ -795,8 +792,7 @@ spec:
 
 ## 4. Minimize Microservice Vulnerabilities - 20%
 
-<details>
-<summary></summary>
+
 
 ### 4.1 Setup appropriate OS level security domains e.g. using PSP, OPA, security contexts
 
@@ -1252,8 +1248,7 @@ spec:
 
 ## 5. Supply Chain Security - 20%
 
-<details>
-<summary></summary>
+
 
 ### 5.1 Minimize base image footprint
 
@@ -1591,8 +1586,7 @@ spec:
 
 ## 6. Monitoring, Logging and Runtime Security - 20%
 
-<details>
-<summary></summary>
+
 
 ### 6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities
 
