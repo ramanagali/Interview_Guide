@@ -6,6 +6,59 @@ Certified Kubernetes Security Specialist (CKS) exam point of view, below complet
 pull requests are welcome
 <hr />
 
+# Table of Contents
+   * [1. Cluster Setup - 10%](#1-cluster-setup---10)
+      * [1.1 Network security policies](#11-network-security-policies)
+      * [1.2 Install &amp; Fix using kube-bench](#12-install--fix-using-kube-bench)
+      * [1.3 Ingress TLS termination](#13-ingress-tls-termination)
+      * [1.4 Protect node metadata and endpoints with NetworkPolicy](#14-protect-node-metadata-and-endpoints-with-networkpolicy)
+      * [1.5 Minimize use of, and access to, GUI elements](#15-minimize-use-of-and-access-to-gui-elements)
+      * [1.6 Verify platform binaries before deploying](#16-verify-platform-binaries-before-deploying)
+   * [2. Cluster Hardening - 15%](#2-cluster-hardening---15)
+      * [2.1  Restrict access to Kubernetes API](#21--restrict-access-to-kubernetes-api)
+      * [2.2 Use Role-Based Access Controls to minimize exposure](#22-use-role-based-access-controls-to-minimize-exposure)
+      * [2.3 Exercise caution in using service accounts e.g. disable defaults, minimize permissions on newly created ones](#23-exercise-caution-in-using-service-accounts-eg-disable-defaults-minimize-permissions-on-newly-created-ones)
+      * [2.4 Update Kubernetes frequently](#24-update-kubernetes-frequently)
+   * [3. System Hardening - 15%](#3-system-hardening---15)
+      * [3.1 Minimize host OS footprint (reduce attack surface)](#31-minimize-host-os-footprint-reduce-attack-surface)
+      * [3.2 Minimize IAM roles](#32-minimize-iam-roles)
+      * [3.3. Minimize external access to the network](#33-minimize-external-access-to-the-network)
+      * [3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp](#34-appropriately-use-kernel-hardening-tools-such-as-apparmor-seccomp)
+         * [3.4.1 <strong>SECCOMP PROFILES</strong>](#341-seccomp-profiles)
+         * [3.4.2 <strong>APPARMOR</strong>](#342-apparmor)
+   * [4. Minimize Microservice Vulnerabilities - 20%](#4-minimize-microservice-vulnerabilities---20)
+      * [4.1 Setup appropriate OS level security domains e.g. using PSP, OPA, security contexts](#41-setup-appropriate-os-level-security-domains-eg-using-psp-opa-security-contexts)
+         * [<strong>Admission Controller</strong>](#admission-controller)
+         * [4.1.1 <strong>Pod Security Policies (PSP)</strong>](#411-pod-security-policies-psp)
+         * [4.1.2 <strong>Open Policy Agent (OPA)</strong>](#412-open-policy-agent-opa)
+         * [4.1.3 <strong>Security Contexts</strong>](#413-security-contexts)
+      * [4.2 Manage Kubernetes secrets](#42-manage-kubernetes-secrets)
+      * [4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)](#43-use-container-runtime-sandboxes-in-multi-tenant-environments-eg-gvisor-kata-containers)
+         * [4.3.1 gvisor](#431-gvisor)
+         * [4.3.4 kata containers](#434-kata-containers)
+         * [Install gVisor](#install-gvisor)
+         * [Container Runtime](#container-runtime)
+      * [4.4 Implement pod to pod encryption by use of mTLS](#44-implement-pod-to-pod-encryption-by-use-of-mtls)
+   * [5. Supply Chain Security - 20%](#5-supply-chain-security---20)
+      * [5.1 Minimize base image footprint](#51-minimize-base-image-footprint)
+      * [5.2 Secure your supply chain: whitelist allowed registries, sign and validate images](#52-secure-your-supply-chain-whitelist-allowed-registries-sign-and-validate-images)
+      * [5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)](#53-use-static-analysis-of-user-workloads-egkubernetes-resources-docker-files)
+      * [5.4 Scan images for known vulnerabilities](#54-scan-images-for-known-vulnerabilities)
+   * [6. Monitoring, Logging and Runtime Security - 20%](#6-monitoring-logging-and-runtime-security---20)
+      * [6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities](#61-perform-behavioral-analytics-of-syscall-process-and-file-activities-at-the-host-and-container-level-to-detect-malicious-activities)
+      * [6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads](#62-detect-threats-within-physical-infrastructure-apps-networks-data-users-and-workloads)
+      * [6.3 Detect all phases of attack regardless where it occurs and how it spreads](#63-detect-all-phases-of-attack-regardless-where-it-occurs-and-how-it-spreads)
+      * [6.4 Perform deep analytical investigation and identification of bad actors within environment](#64-perform-deep-analytical-investigation-and-identification-of-bad-actors-within-environment)
+      * [6.5 Ensure immutability of containers at runtime](#65-ensure-immutability-of-containers-at-runtime)
+      * [6.6 Use Audit Logs to monitor access](#66-use-audit-logs-to-monitor-access)
+      * [debugging api-server/kubelet failures](#debugging-api-serverkubelet-failures)
+   * [IMP Notes Tips for CKSExam](#imp-notes-tips-for-cksexam)
+      * [<strong>CKS Exam Catergories</strong>](#cks-exam-catergories)
+      * [<strong>CKS Exam Tips</strong>](#cks-exam-tips)
+         
+<hr />
+
+
 ## 1. Cluster Setup - 10%
 
 
