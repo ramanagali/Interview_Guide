@@ -24,14 +24,14 @@ pull requests are welcome
       * [3.2 Minimize IAM roles](#32-minimize-iam-roles)
       * [3.3. Minimize external access to the network](#33-minimize-external-access-to-the-network)
       * [3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp](#34-appropriately-use-kernel-hardening-tools-such-as-apparmor-seccomp)
-         * [3.4.1 <strong>SECCOMP PROFILES</strong>](#341-seccomp-profiles)
-         * [3.4.2 <strong>APPARMOR</strong>](#342-apparmor)
+         * [3.4.1 SECCOMP PROFILES](#341-seccomp-profiles)
+         * [3.4.2 APPARMOR ](#342-apparmor)
    * [4. Minimize Microservice Vulnerabilities - 20%](#4-minimize-microservice-vulnerabilities---20)
       * [4.1 Setup appropriate OS level security domains e.g. using PSP, OPA, security contexts](#41-setup-appropriate-os-level-security-domains-eg-using-psp-opa-security-contexts)
-         * [<strong>Admission Controller</strong>](#admission-controller)
-         * [4.1.1 <strong>Pod Security Policies (PSP)</strong>](#411-pod-security-policies-psp)
-         * [4.1.2 <strong>Open Policy Agent (OPA)</strong>](#412-open-policy-agent-opa)
-         * [4.1.3 <strong>Security Contexts</strong>](#413-security-contexts)
+         * [Admission Controller](#admission-controller)
+         * [4.1.1 Pod Security Policies (PSP)](#411-pod-security-policies-psp)
+         * [4.1.2 Open Policy Agent (OPA)](#412-open-policy-agent-opa)
+         * [4.1.3 Security Contexts](#413-security-contexts)
       * [4.2 Manage Kubernetes secrets](#42-manage-kubernetes-secrets)
       * [4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)](#43-use-container-runtime-sandboxes-in-multi-tenant-environments-eg-gvisor-kata-containers)
          * [4.3.1 gvisor](#431-gvisor)
@@ -53,8 +53,9 @@ pull requests are welcome
       * [6.6 Use Audit Logs to monitor access](#66-use-audit-logs-to-monitor-access)
       * [debugging api-server/kubelet failures](#debugging-api-serverkubelet-failures)
    * [IMP Notes Tips for CKSExam](#imp-notes-tips-for-cksexam)
-      * [<strong>CKS Exam Catergories</strong>](#cks-exam-catergories)
-      * [<strong>CKS Exam Tips</strong>](#cks-exam-tips)
+      * [CKS Exam Catergories](#cks-exam-catergories)
+      * [CKS Exam Tips](#cks-exam-tips)
+  * [CKS Youtube Video full tutorials - Lean with GVR ](#cks---youtube-playlist----my-youtube-channel---learn-with-gvr)
          
 <hr />
 
@@ -1899,3 +1900,6 @@ docker ps + docker logs
 - [CCNF CKS Official Site](https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/)
 - [Refer Certification Preparation Material - my github page](https://github.com/ramanagali/Interview_Guide/blob/main/Certification_Preparation.md#cks)
 - [CKS youtube playlist - my youtube channel](https://www.youtube.com/playlist?list=PLFkEchqXDZx6Bw3B2NRVc499j1TavjOvm)
+
+## CKS - youtube playlist  - my youtube channel - Learn with GVR
+  * [CKS youtube playlist - Learn with GVR](https://www.youtube.com/playlist?list=PLFkEchqXDZx6Bw3B2NRVc499j1TavjOvm)
