@@ -6,13 +6,66 @@ Certified Kubernetes Security Specialist (CKS) exam point of view, below complet
 pull requests are welcome
 <hr />
 
+# Table of Contents
+   * [1. Cluster Setup - 10%](#1-cluster-setup---10)
+      * [1.1 Network security policies](#11-network-security-policies)
+      * [1.2 Install &amp; Fix using kube-bench](#12-install--fix-using-kube-bench)
+      * [1.3 Ingress TLS termination](#13-ingress-tls-termination)
+      * [1.4 Protect node metadata and endpoints with NetworkPolicy](#14-protect-node-metadata-and-endpoints-with-networkpolicy)
+      * [1.5 Minimize use of, and access to, GUI elements](#15-minimize-use-of-and-access-to-gui-elements)
+      * [1.6 Verify platform binaries before deploying](#16-verify-platform-binaries-before-deploying)
+   * [2. Cluster Hardening - 15%](#2-cluster-hardening---15)
+      * [2.1  Restrict access to Kubernetes API](#21--restrict-access-to-kubernetes-api)
+      * [2.2 Use Role-Based Access Controls to minimize exposure](#22-use-role-based-access-controls-to-minimize-exposure)
+      * [2.3 Exercise caution in using service accounts e.g. disable defaults, minimize permissions on newly created ones](#23-exercise-caution-in-using-service-accounts-eg-disable-defaults-minimize-permissions-on-newly-created-ones)
+      * [2.4 Update Kubernetes frequently](#24-update-kubernetes-frequently)
+   * [3. System Hardening - 15%](#3-system-hardening---15)
+      * [3.1 Minimize host OS footprint (reduce attack surface)](#31-minimize-host-os-footprint-reduce-attack-surface)
+      * [3.2 Minimize IAM roles](#32-minimize-iam-roles)
+      * [3.3. Minimize external access to the network](#33-minimize-external-access-to-the-network)
+      * [3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp](#34-appropriately-use-kernel-hardening-tools-such-as-apparmor-seccomp)
+         * [3.4.1 SECCOMP PROFILES](#341-seccomp-profiles)
+         * [3.4.2 APPARMOR ](#342-apparmor)
+   * [4. Minimize Microservice Vulnerabilities - 20%](#4-minimize-microservice-vulnerabilities---20)
+      * [4.1 Setup appropriate OS level security domains e.g. using PSP, OPA, security contexts](#41-setup-appropriate-os-level-security-domains-eg-using-psp-opa-security-contexts)
+         * [Admission Controller](#admission-controller)
+         * [4.1.1 Pod Security Policies (PSP)](#411-pod-security-policies-psp)
+         * [4.1.2 Open Policy Agent (OPA)](#412-open-policy-agent-opa)
+         * [4.1.3 Security Contexts](#413-security-contexts)
+      * [4.2 Manage Kubernetes secrets](#42-manage-kubernetes-secrets)
+      * [4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)](#43-use-container-runtime-sandboxes-in-multi-tenant-environments-eg-gvisor-kata-containers)
+         * [4.3.1 gvisor](#431-gvisor)
+         * [4.3.4 kata containers](#434-kata-containers)
+         * [Install gVisor](#install-gvisor)
+         * [Container Runtime](#container-runtime)
+      * [4.4 Implement pod to pod encryption by use of mTLS](#44-implement-pod-to-pod-encryption-by-use-of-mtls)
+   * [5. Supply Chain Security - 20%](#5-supply-chain-security---20)
+      * [5.1 Minimize base image footprint](#51-minimize-base-image-footprint)
+      * [5.2 Secure your supply chain: whitelist allowed registries, sign and validate images](#52-secure-your-supply-chain-whitelist-allowed-registries-sign-and-validate-images)
+      * [5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)](#53-use-static-analysis-of-user-workloads-egkubernetes-resources-docker-files)
+      * [5.4 Scan images for known vulnerabilities](#54-scan-images-for-known-vulnerabilities)
+   * [6. Monitoring, Logging and Runtime Security - 20%](#6-monitoring-logging-and-runtime-security---20)
+      * [6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities](#61-perform-behavioral-analytics-of-syscall-process-and-file-activities-at-the-host-and-container-level-to-detect-malicious-activities)
+      * [6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads](#62-detect-threats-within-physical-infrastructure-apps-networks-data-users-and-workloads)
+      * [6.3 Detect all phases of attack regardless where it occurs and how it spreads](#63-detect-all-phases-of-attack-regardless-where-it-occurs-and-how-it-spreads)
+      * [6.4 Perform deep analytical investigation and identification of bad actors within environment](#64-perform-deep-analytical-investigation-and-identification-of-bad-actors-within-environment)
+      * [6.5 Ensure immutability of containers at runtime](#65-ensure-immutability-of-containers-at-runtime)
+      * [6.6 Use Audit Logs to monitor access](#66-use-audit-logs-to-monitor-access)
+      * [debugging api-server/kubelet failures](#debugging-api-serverkubelet-failures)
+   * [IMP Notes Tips for CKSExam](#imp-notes-tips-for-cksexam)
+      * [CKS Exam Catergories](#cks-exam-catergories)
+      * [CKS Exam Tips](#cks-exam-tips)
+  * [CKS Youtube Video full tutorials - Lean with GVR ](#cks---youtube-playlist----my-youtube-channel---learn-with-gvr)
+         
+<hr />
+
+
 ## 1. Cluster Setup - 10%
+[🔼 Back to top](#table-of-contents)
 
-<details>
-<summary></summary>
 
-### 1.1 Network security policies
-
+### 1.1 Network security policies                                                    
+[🔼 Back to top](#table-of-contents)
 - Create default deny all NetworkPolicy & allow required traffic
   ```yaml
   apiVersion: networking.k8s.io/v1
@@ -67,6 +120,7 @@ pull requests are welcome
 - Ref: https://editor.cilium.io/
 - 
 ### 1.2 Install & Fix using kube-bench
+[🔼 Back to top](#table-of-contents)
 
 **kube-bench:** Tool to check Kubernetes cluster CIS Kubernetes Benchmarks
 
@@ -119,6 +173,7 @@ then ./kube-bench
 
 Ref: <https://github.com/aquasecurity/kube-bench/blob/main/docs/installation.md>
 ### 1.3 Ingress TLS termination
+[🔼 Back to top](#table-of-contents)
 
 - Secure an Ingress by specifying a Secret that contains a TLS private key and certificate
 - The Ingress resource only supports a single TLS port, 443, and assumes TLS termination at the ingress point
@@ -178,6 +233,7 @@ echo $(minkube ip) learnwithgvr.com > | sudo tee -a /etc/hosts
 Ref: <https://kubernetes.io/docs/concepts/services-networking/ingress/#tls>
 
 ### 1.4 Protect node metadata and endpoints with NetworkPolicy
+[🔼 Back to top](#table-of-contents)
 
 - Restrict control plane ports (6443, 2379, 2380, 10250, 10251, 10252)
 - Restrict worker node ports(10250, 30000-32767)
@@ -205,6 +261,7 @@ spec:
 - <https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#restricting-cloud-metadata-api-access>
 
 ### 1.5 Minimize use of, and access to, GUI elements
+[🔼 Back to top](#table-of-contents)
 
 - Restrict Access to GUI like Kubernetes Dashboard
 
@@ -268,6 +325,7 @@ Ref: <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboa
 Ref: <https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md>
 
 ### 1.6 Verify platform binaries before deploying
+[🔼 Back to top](#table-of-contents)
 
 - binaries like kubectl, kubeadm and kubelets
 - before using binaries compare checksum with its official sha256/sha512 cryptographic hash value
@@ -314,11 +372,11 @@ echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
 <hr />
 
 ## 2. Cluster Hardening - 15%
+[🔼 Back to top](#table-of-contents)
 
-<details>
-<summary></summary>
 
 ### 2.1  Restrict access to Kubernetes API
+[🔼 Back to top](#table-of-contents)
 
 - secure access to the kube-apiserver
 
@@ -373,6 +431,7 @@ echo "$(<kubectl.sha256) /usr/local/bin/kubectl" | sha256sum -c
 * Ref: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-authentication-authorization/#kubelet-authentication
 
 ### 2.2 Use Role-Based Access Controls to minimize exposure
+[🔼 Back to top](#table-of-contents)
 
 Roles live in namespace, RoleBinding specific to ns
 ClusterRoles live across all namespace, ClusterRoleBidning
@@ -396,6 +455,7 @@ spec:
 Ref: <https://kubernetes.io/docs/reference/access-authn-authz/rbac/>
 
 ### 2.3 Exercise caution in using service accounts e.g. disable defaults, minimize permissions on newly created ones
+[🔼 Back to top](#table-of-contents)
 
 - Create ServiceAccount to not to automount secret to any pod `automountServiceAccountToken: false`
 
@@ -436,6 +496,7 @@ Ref: <https://kubernetes.io/docs/reference/access-authn-authz/rbac/>
 Ref: <https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server>
 
 ### 2.4 Update Kubernetes frequently
+[🔼 Back to top](#table-of-contents)
 
 - Minor versions(bug fixes) must be patched regularly
 
@@ -448,11 +509,11 @@ Ref: <https://v1-21.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kub
 <hr />
 
 ## 3. System Hardening - 15%
+[🔼 Back to top](#table-of-contents)
 
-<details>
-<summary></summary>
 
 ### 3.1 Minimize host OS footprint (reduce attack surface)
+[🔼 Back to top](#table-of-contents)
 
 - Containers will use host namespace(not k8s ns)
 
@@ -595,6 +656,7 @@ check lighthttpd service port       netstat -natulp | grep -i light
 ```
 
 ### 3.2 Minimize IAM roles
+[🔼 Back to top](#table-of-contents)
 
 - **Least Privilege:** make sure IAM roles of EC2 permissions are limited,
 - **Block Access:** If not IAM; block CIDR, Firewall or NetPol. Example block EC2 169.254.169.254
@@ -602,6 +664,7 @@ check lighthttpd service port       netstat -natulp | grep -i light
 Ref: <https://kubernetes.io/docs/reference/access-authn-authz/authentication/>
 
 ### 3.3. Minimize external access to the network
+[🔼 Back to top](#table-of-contents)
 
 - by default anyone has access cluster n/w can comminicate all pods and services
 - by defualt limit access to cluster n/w from outside
@@ -624,8 +687,10 @@ spec:
 ```
 
 ### 3.4 Appropriately use kernel hardening tools such as AppArmor, seccomp
+[🔼 Back to top](#table-of-contents)
 
 #### 3.4.1 **SECCOMP PROFILES**
+[🔼 Back to top](#table-of-contents)
 
 - restricting the system calls it is able to make from userspace into the kernel
 - SECCOMP can operate with 3 modes
@@ -711,6 +776,7 @@ spec:
   - Ref: https://man7.org/linux/man-pages/man2/syscalls.2.html
 
 #### 3.4.2 **APPARMOR**
+[🔼 Back to top](#table-of-contents)
 
 - Kernel Security Module to granular access control for programs on Host OS
 - **AppArmor Profile** - Set of Rules, to be enabled in nodes
@@ -794,11 +860,11 @@ spec:
 <hr />
 
 ## 4. Minimize Microservice Vulnerabilities - 20%
+[🔼 Back to top](#table-of-contents)
 
-<details>
-<summary></summary>
 
 ### 4.1 Setup appropriate OS level security domains e.g. using PSP, OPA, security contexts
+[🔼 Back to top](#table-of-contents)
 
 #### **Admission Controller**
 
@@ -819,6 +885,7 @@ spec:
 - Ref: <https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/>
 
 #### 4.1.1 **Pod Security Policies (PSP)**
+[🔼 Back to top](#table-of-contents)
 
 - Defines policies to controls security sensitive aspects of the pod specification
 - PodSecurityPolicy is one of the admission controller
@@ -894,6 +961,7 @@ spec:
 - Ref: <https://kubernetes.io/docs/concepts/policy/pod-security-policy/>
 
 #### 4.1.2 **Open Policy Agent (OPA)**
+[🔼 Back to top](#table-of-contents)
 
 - OPA for enforcing authorization policies for kubernetes
   - All images must be from approved repositories
@@ -936,6 +1004,7 @@ spec:
 - Ref: <https://open-policy-agent.github.io/gatekeeper/website/docs/install/>
 
 #### 4.1.3 **Security Contexts**
+[🔼 Back to top](#table-of-contents)
 
 - Defines privilege, access control, Linux capabilities settings for a Pod or Container
 - Set the security context for a Pod (applies to all containers)
@@ -1026,6 +1095,7 @@ spec:
 - Ref: <https://kubernetes.io/docs/tasks/configure-pod-container/security-context/>
 
 ### 4.2 Manage Kubernetes secrets
+[🔼 Back to top](#table-of-contents)
 
 - Types of Secrets
   - Opaque(Generic) secrets -
@@ -1104,6 +1174,7 @@ spec:
 - Ref: https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/
 
 ### 4.3 Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)
+[🔼 Back to top](#table-of-contents)
 
 - Sandboxing is concept of isolation of containers from Host
 - docker uses default SecComp profiles restrict previleges. Whitlist or Blacklist
@@ -1209,6 +1280,7 @@ spec:
 - Ref: <https://github.com/kubernetes/enhancements/blob/5dcf841b85f49aa8290529f1957ab8bc33f8b855/keps/sig-node/585-runtime-class/README.md#examples>
 
 ### 4.4 Implement pod to pod encryption by use of mTLS
+[🔼 Back to top](#table-of-contents)
 
 - mTLS: Is secure communication between pods
 - With service mesh Istio & Linkerd mTLS is easier, managable
@@ -1251,11 +1323,11 @@ spec:
 <hr />
 
 ## 5. Supply Chain Security - 20%
+[🔼 Back to top](#table-of-contents)
 
-<details>
-<summary></summary>
 
 ### 5.1 Minimize base image footprint
+[🔼 Back to top](#table-of-contents)
 
 - Use **Slim/Minimal** Images than base images
 - Use Docker **multi stage builds** for lean
@@ -1268,6 +1340,7 @@ spec:
 - Ref: <https://github.com/aquasecurity/trivy>
 
 ### 5.2 Secure your supply chain: whitelist allowed registries, sign and validate images
+[🔼 Back to top](#table-of-contents)
 
 - **Approach 1 - using ImagePolicyWebhook Admission Controller**
   - Prerequisites - ImagePolicyWebhook Admission webhook server (deployment & service)
@@ -1516,6 +1589,7 @@ spec:
     ```
 
 ### 5.3 Use static analysis of user workloads (e.g.Kubernetes resources, Docker files)
+[🔼 Back to top](#table-of-contents)
 
 - **Tips for Static Analysis**
   - Avoid Host namespaces such as `hostNetwork: true, hostIPC: true, hostPID: true`
@@ -1540,6 +1614,7 @@ spec:
   - Ref: <https://kubesec.io/>
 
 ### 5.4 Scan images for known vulnerabilities
+[🔼 Back to top](#table-of-contents)
 
 - Vulnerability scanning tools are Trivy(*) & Anchore
 - 1. Install Trivy (by Aquasec) on your control plane node
@@ -1590,11 +1665,11 @@ spec:
    <hr />
 
 ## 6. Monitoring, Logging and Runtime Security - 20%
+[🔼 Back to top](#table-of-contents)
 
-<details>
-<summary></summary>
 
 ### 6.1 Perform behavioral analytics of syscall process and file activities at the host and container level to detect malicious activities
+[🔼 Back to top](#table-of-contents)
 
 - Falco can detect and alerts on any behavior that involves making Linux system calls
 - **Falco** operates at the user space and kernel space, major components...
@@ -1640,8 +1715,11 @@ spec:
 - Ref: https://falco.org/blog/detect-cve-2020-8557
 
 ### 6.2 Detect threats within physical infrastructure, apps, networks, data, users and workloads
+[🔼 Back to top](#table-of-contents)
 
 ### 6.3 Detect all phases of attack regardless where it occurs and how it spreads
+[🔼 Back to top](#table-of-contents)
+
 - Kubernetes attack matrix (9 Tactics, 40 techniques)
   -  Initial access
   -  Execution
@@ -1663,6 +1741,8 @@ spec:
 - Ref: https://sysdig.com/blog/mitre-attck-framework-for-container-runtime-security-with-sysdig-falco/
 
 ### 6.4 Perform deep analytical investigation and identification of bad actors within environment
+[🔼 Back to top](#table-of-contents)
+
 - Monitor using sysdig k8s cluster, ns, svc, rc and labels
 - sysdig capture system calls and other OS events
 - Exploring a Kubernetes Cluster with csysdig
@@ -1672,6 +1752,8 @@ spec:
 - Ref: https://docs.sysdig.com/
 
 ### 6.5 Ensure immutability of containers at runtime
+[🔼 Back to top](#table-of-contents)
+
 - immutable = cannot modify original state
 - POD level using securityContext; key logic `readOnlyRootFilesystem = true,  privileged=false`
 
@@ -1724,6 +1806,8 @@ spec:
 - Ref: <https://kubernetes.io/blog/2018/03/principles-of-container-app-design/>
 
 ### 6.6 Use Audit Logs to monitor access
+[🔼 Back to top](#table-of-contents)
+
 - The cluster audits the activities
   - generated by users,
   - by applications that use the Kubernetes API
@@ -1775,6 +1859,8 @@ docker ps + docker logs
  <hr />
 
 ## IMP Notes Tips for CKSExam
+[🔼 Back to top](#table-of-contents)
+
 ### **CKS Exam Catergories**
   1. **API Server Dependent**
      - CIS Benchmarking
@@ -1797,6 +1883,8 @@ docker ps + docker logs
      - Trivy
   
 ### **CKS Exam Tips**
+[🔼 Back to top](#table-of-contents)
+
 - **Use vimrc oneliner command**  
   ```sh 
   echo "set ts=2 sw=2 sts=2 expandtab" > ~/.vimrc
@@ -1852,3 +1940,8 @@ docker ps + docker logs
 - [CCNF CKS Official Site](https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/)
 - [Refer Certification Preparation Material - my github page](https://github.com/ramanagali/Interview_Guide/blob/main/Certification_Preparation.md#cks)
 - [CKS youtube playlist - my youtube channel](https://www.youtube.com/playlist?list=PLFkEchqXDZx6Bw3B2NRVc499j1TavjOvm)
+
+## CKS - youtube playlist  - my youtube channel - Learn with GVR
+  * [CKS youtube playlist - Learn with GVR](https://www.youtube.com/playlist?list=PLFkEchqXDZx6Bw3B2NRVc499j1TavjOvm)
+
+[🔼 Back to top](#table-of-contents)
