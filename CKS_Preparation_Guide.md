@@ -551,7 +551,7 @@ spec:
       name: web
       resources: {}
       securityContext:
-        # container will ran as root (Default is false)
+        # container will run as root (Default is false)
         privileged: true
 
 ```
