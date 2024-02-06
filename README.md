@@ -53,6 +53,7 @@ https://www.whizlabs.com/blog/wp-content/uploads/2020/01/Ansible_Vs_Puppet_Vs_Ch
 * https://jayendrapatil.com/terraform-cheat-sheet/<br/>
 * https://www.zarinasnet.com/blog/how-to-pass-the-hashicorp-terraform-associate-exam<br/>
 * https://medium.com/@shandredreyer/terraform-cheatsheet-e2c7287cfa3c<br/>
+* https://spacelift.io/blog/terraform-tutorial<br/>
 
 **EKS with Terraform and Ansible**<br/>
 * https://medium.com/geekculture/how-to-deploy-the-kubernetes-application-to-aws-eks-using-terraform-and-ansible-7679a3a207a8<br/>
