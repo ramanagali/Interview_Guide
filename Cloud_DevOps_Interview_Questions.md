@@ -6,30 +6,30 @@ What happens when type google.com in browser and enter ?
 <summary></summary>
 
   * **type g**		
-  	* Browser Auto Complete function kicks in 
+  	* Browser Auto Complete function from history, bookmarks, cookies, cache and popular searches kicks in 
   * **press enter**	
-  	* char converted to int 13, signal will be sent
+  	* char converted to int 13, signal will be sent to hardware microprocessor
   * **parse URL**			
-      * it has http or /(slash)|
+      * it forms Uniform Resource Locator i.e. protocol-http and resource "/"
   * **URL or Search**		
-    - uses default search engine if its search term
-  * **Convert non-ASCII** 
-    * convert URL to a-z,A-Z,0-9,-,. to ASCII
+    - uses default search engine if its URL or search term ?
+  * **Convert non-ASCII chars in hostname** 
+    * convert URL hostname chars from a-z,A-Z,0-9,-,. to ASCII encoding
   * **HSTS Check**			
-    * browser checks preloded HTTP Strict Trasnport Security policy
-    * HTTP from the list
+    * browser checks preloded HTTP Strict Trasnport Security policy ?
+    * HTTPS instead of HTTP.
   * **DNS Lookup**
-    - verify DNS from browser cache
-    - check local machine hostfile mapping for DNS lookup
+    - verify DNS name from browser cache
+    - check local machine host file mapping for DNS lookup
     - if not local router or DNS server
-    - Address Resolution(ARP) process for default Gateway
+    - Address Resolution(ARP) process for default Gateway IP
   * **Address Resolution Protocol**
     - Check local ARP Cache for target IP
     - if not, any subnets target IP in the local route table
     - if not use default gateway subnet
     - grab local MAC address, look for target MAC Address
     - sends L2 (Data link)	
-    - broadcast the ARP request to all other ports and wait for reploy
+    - broadcast the ARP request to all other ports and wait for reply
     - if any switch, the re-broadcast the ARP request to all other ports
     - ARP reply is received, now we know DNS server IP
     - DNS client(source port 1023) establish socket UDP port 53 on DNS Server 
@@ -50,15 +50,17 @@ What happens when type google.com in browser and enter ?
       - Client sends ACK,ISN+1, receiver ack number
       - Data Transfers, sends ACK
       - closer sends FIN packet
+      - otherside ACK
   * **TLS Handshake**
     - Client sends TLS ClientHello, cipher algo & compression method
     - Server sends TLS ServerHello + public CA
-      - client verifies against trusted CA,
-      - generates pseudo random bytes for symmetric key
-    - encrypt with public key 
-    - Server decrypt using private key & makes own copy of symmetric master key
+      - client verifies CA against trusted CA's,
+      - generates pseudo random bytes ( symmetric key)
+    - Encrypt with Server Public key 
+    - Server decrypt using Private key & makes own copy of symmetric master key
     - Client sends Finished message with symetric key
-    - Server generetes hash, decrypts with client sent hash(symmetric key)
+    - Server generetes hash, decrypts with client sent hash(symmetric key) to verify it matches
+    - Server sends its own Finished message to the client, also encrypted with the symmetric key
     - TLS session transmits with symmetric key
   * **HTTP Protocol**
     - http reqeust will be sent
