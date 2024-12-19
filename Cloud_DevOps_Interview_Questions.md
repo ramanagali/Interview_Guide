@@ -96,7 +96,7 @@ What happens when type google.com in browser and enter ?
     * SYN-0, ACK=1, ACK number=3002, Initial Seq=7002
     * source port: client ephemeral port
     * destination port: 443
-  	<img src="https://lh6.googleusercontent.com/-L9GyKGal2kX0x1uhEr_WcIPJNjaXt56MwI4dppR9LKS0SKciZ4ehop6uYdAM7RFm9PYoPcK445rVYeqzjAWSOaHNXd6wvgoWbVUVQnwLZe-M2iav6FZVIfTlE15ULPrWuEYi4Mw" alt="" width="602" height="376" loading="lazy" class="">
+  	<img src="https://afteracademy.com/images/what-is-a-tcp-3-way-handshake-process-three-way-handshaking-establishing-connection-6a724e77ba96e241.jpg" alt="" width="602" height="376" loading="lazy" class="">
 
 * **Explain TLS Handshake?**
   * Transport Layer Security (TLS)
