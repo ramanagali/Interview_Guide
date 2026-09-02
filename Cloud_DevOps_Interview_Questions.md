@@ -99,7 +99,7 @@ What happens when type google.com in browser and enter ?
   	<img src="https://static.afteracademy.com/images/what-is-a-tcp-3-way-handshake-process-three-way-handshaking-establishing-connection-6a724e77ba96e241.jpg" alt="" width="602" height="376" loading="lazy" class="">
 
 * **Explain TLS Handshake?**
-  * Transport Layer Security (TLS)
+  * Transport Layer Security (TLS) The TLS handshake starts immediately after the TCP connection is ready, creating a secure tunnel for HTTPS traffic.
   * A cryptographic protocol used to establish a secure communication channel between two systems. 
   * TLS 1.3 is preferred cryptographic protocol on the web 
 <img src="https://sectigostore.com/page/wp-content/uploads/2020/05/image.png" alt="How Does HTTPS Work to Improve Website Security? - SectigoStore" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 587px; height: 380.06px; margin: 0px;"></br>
