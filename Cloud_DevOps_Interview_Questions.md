@@ -1,4 +1,4 @@
-# Cloud DevOps Engineer/Architect Interview Questions & Answers
+<img width="993" height="1294" alt="image" src="https://github.com/user-attachments/assets/47a6f421-99f6-45cb-a7a0-d8b08304c38f" /># Cloud DevOps Engineer/Architect Interview Questions & Answers
 
 ### Web Technologies
 What happens when type google.com in browser and enter ?
@@ -103,7 +103,8 @@ What happens when type google.com in browser and enter ?
   * A cryptographic protocol used to establish a secure communication channel between two systems. 
   * TLS 1.3 is preferred cryptographic protocol on the web 
 <img src="https://sectigostore.com/page/wp-content/uploads/2020/05/image.png" alt="How Does HTTPS Work to Improve Website Security? - SectigoStore" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 587px; height: 380.06px; margin: 0px;"></br>
-<img src="https://sematext.com/wp-content/uploads/2022/11/tls-handshake-1.jpg" itemprop="contentUrl" class="figure-details-image__main-image"></br>
+<img src="https://www.researchgate.net/profile/Wazen-Shbair/publication/321580115/figure/fig2/AS:614330361970700@1523479180738/The-TLS-handshake-protocol-messages-sequence.png" alt="4: The TLS handshake protocol messages sequence&nbsp;" itemprop="contentUrl" class="figure-details-image__main-image"></br>
+<img src="https://sematext.com/wp-content/uploads/2022/11/tls-handshake-1.jpg" alt="4: The TLS handshake protocol messages&nbsp;" itemprop="contentUrl" class="figure-details-image__main-image"></br>
 
 * **TLS 1.2 vs TLS 1.3 ?**</br>
   <img src="https://www.ssl2buy.com/wiki/wp-content/uploads/2018/08/ssl2buy-tls12-13.jpg" alt="TLS 1.3 Protocol Released – Move Ahead to Advanced Security and Privacy" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 527px; height: 343.643px; margin: 0px;">  
