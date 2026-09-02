@@ -106,7 +106,7 @@ What happens when type google.com in browser and enter ?
 <img src="https://sematext.com/wp-content/uploads/2022/11/tls-handshake-1.jpg" alt="4: The TLS handshake protocol messages&nbsp;" itemprop="contentUrl" class="figure-details-image__main-image" data-noaft="1" style="width: 587px; height: 380.06px; margin: 0px;"></br>
 
 * **TLS 1.2 vs TLS 1.3 ?**</br>
-  <img src="https://www.ssl2buy.com/wiki/wp-content/uploads/2018/08/ssl2buy-tls12-13.jpg" alt="TLS 1.3 Protocol Released – Move Ahead to Advanced Security and Privacy" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 527px; height: 650px; margin: 0px;">  
+  <img src="https://medium.com/@anil.goyal0057/what-is-https-441e1cd97e83" alt="TLS 1.2 vs TLS 1.3" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 527px; height: 650px; margin: 0px;">  
 
 * **What is SSL Certificate?**
   * Secure Socket Layer (SSL) Certificate	
